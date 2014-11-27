@@ -1,0 +1,87 @@
+
+! General options.
+! ----------------
+
+! Slightly largr terminal for line numbers in vim.
+*geometry: 84x25
+
+! Every shell is a login shell by default (for inclusion of all necessary
+! environment variables)
+*loginshell: true
+
+! right hand side scrollbar...
+!xterm*rightScrollBar: true
+*scrollBar: false
+
+! stop output to terminal from jumping down to bottom of scroll again
+*scrollTtyOutput: false
+
+! fancy cryptic colours
+*color0: rgb:00/00/00
+*color1: rgb:a8/00/00
+*color2: rgb:00/a8/00
+*color3: rgb:a8/54/00
+*color4: rgb:00/00/a8
+*color5: rgb:a8/00/a8
+*color6: rgb:00/a8/a8
+*color7: rgb:a8/a8/a8
+*color8: rgb:54/54/54
+*color9: rgb:fc/54/54
+*color10: rgb:54/fc/54
+*color11: rgb:fc/fc/54
+*color12: rgb:54/54/fc
+*color13: rgb:fc/54/fc
+*color14: rgb:54/fc/fc
+*color15: rgb:fc/fc/fc
+
+
+
+! URxvt
+! -----
+
+! Because tmux doesnt like rxvt-unicode-256color
+urxvt.termName: rxvt-unicode
+
+! Perls
+URxvt.perl-ext-common:  default,matcher,tabbedex,font-size
+
+! matcher: clickable urls
+URxvt.url-launcher:     /usr/bin/firefox
+URxvt.matcher.button:   1
+
+! tabbedex: tabs
+URxvt.tabbed.autohide:  true
+
+! font-size: zooming live
+URxvt.keysym.C-S-Up:    perl:font-size:increase
+URxvt.keysym.C-S-Down:  perl:font-size:decrease
+URxvt.iso14755:         false
+URxvt.iso14755_52:      false
+
+! Use a nice truetype font and size by default... 
+URxvt.font: xft:Source Code Pro for Powerline:size=10
+! URxvt.letterSpace: -1
+
+! Foreground and transparent background ([xx] == xx% opacity)
+URxvt.depth: 32
+urxvt*foreground: rgb:f8/f8/f8
+urxvt*background: [75]rgb:00/00/00
+
+
+
+! xterm
+! -----
+
+! Use a nice truetype font and size by default... 
+xterm*faceName: Source Code Pro for Powerline
+xterm*faceSize: 10
+
+! double-click to select whole URLs :D
+xterm*charClass: 33:48,36-47:48,58-59:48,61:48,63-64:48,95:48,126:48
+
+xterm*foreground: rgb:f8/f8/f8
+xterm*background: rgb:00/00/00
+
+! Using alt as a meta key.
+XTerm*metaSendsEscape: true
+
