@@ -101,6 +101,10 @@ noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
 
+" Keep selection after indenting
+vnoremap > >gv
+vnoremap < <gv
+
 " some shortcuts
 " go to start of line
 noremap H ^
