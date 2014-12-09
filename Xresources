@@ -17,24 +17,133 @@
 *scrollTtyOutput: false
 
 ! fancy cryptic colours
-*color0: rgb:00/00/00
-*color1: rgb:a8/00/00
-*color2: rgb:00/a8/00
-*color3: rgb:a8/54/00
-*color4: rgb:00/00/a8
-*color5: rgb:a8/00/a8
-*color6: rgb:00/a8/a8
-*color7: rgb:a8/a8/a8
-*color8: rgb:54/54/54
-*color9: rgb:fc/54/54
-*color10: rgb:54/fc/54
-*color11: rgb:fc/fc/54
-*color12: rgb:54/54/fc
-*color13: rgb:fc/54/fc
-*color14: rgb:54/fc/fc
-*color15: rgb:fc/fc/fc
+! Brown theme {{{
+!*background: #141314
+!*foreground: #ccc2a6
+!black
+!*color0:    #322a2c
+!*color8:    #46423b
+!red
+!*color1:    #70473a
+!*color9:    #916255
+!green
+!*color2:    #534d35
+!*color10:   #858167
+!yellow
+!*color3:    #9c7650
+!*color3:    #9c7650
+!*color11:   #ad8650
+!blue
+!*color4:    #473e38
+!*color12:   #75715e
+!magenta
+!*color5:    #543b3b
+!*color13:   #7b5d51
+!cyan
+!*color6:    #434450
+!*color14:   #586868
+!white
+!*color7:    #9a875f
+!*color15:   #917154
+! }}}
+
+! Normal theme {{{
+! --- ~/.Xresources ------------------------------------------------------------
+! ------------------------------------------------------------------------------
+! --- generated with 4bit Terminal Color Scheme Designer -----------------------
+! ------------------------------------------------------------------------------
+! --- http://ciembor.github.com/4bit -------------------------------------------
+! ------------------------------------------------------------------------------
+
+! --- special colors ---
+
+!*background: #17100d
+!*foreground: #ffffff
+
+! --- standard colors ---
+
+! black
+!*color0: #000000
+
+! bright_black
+!*color8: #202020
+
+! red
+!*color1: #9f0000
+
+! bright_red
+!*color9: #ff0808
+
+! green
+!*color2: #009f00
+
+! bright_green
+!*color10: #08ff08
+
+! yellow
+!*color3: #9f9f00
+
+! bright_yellow
+!*color11: #ffff08
+
+! blue
+!*color4: #00009f
+
+! bright_blue
+!*color12: #0808ff
+
+! magenta
+!*color5: #9f009f
+
+! bright_magenta
+!*color13: #ff08ff
+
+! cyan
+!*color6: #009f9f
+
+! bright_cyan
+!*color14: #08ffff
+
+! white
+!*color7: #a4a4a4
+
+! bright_white
+!*color15: #eaeaea
 
 
+! ------------------------------------------------------------------------------
+! --- end of terminal colors section -------------------------------------------
+! ------------------------------------------------------------------------------
+! }}}
+
+! Autumn theme (current) {{{
+*background: #17100d
+*foreground: #ffffff
+! black ! bright_black
+*color0: #000000
+*color8: #202020
+! red ! bright_red
+*color1: #c40800
+*color9: #ff0b00
+! green ! bright_green
+*color2: #c49000
+*color10: #ffbb00
+! yellow ! bright_yellow
+*color3: #c4590a
+*color11: #ff730d
+! blue ! bright_blue
+*color4: #2900c4
+*color12: #3500ff
+! magenta ! bright_magenta
+*color5: #b50ac4
+*color13: #eb0dff
+! cyan ! bright_cyan
+*color6: #003987
+*color14: #0283ff
+! white ! bright_white
+*color7: #a4a4a4
+*color15: #eaeaea
+! }}}
 
 ! URxvt
 ! -----
@@ -85,3 +194,4 @@ xterm*background: rgb:00/00/00
 ! Using alt as a meta key.
 XTerm*metaSendsEscape: true
 
+! vim: foldmethod=marker

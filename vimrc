@@ -54,7 +54,7 @@ set t_Co=256
 let g:solarized_termcolors=256
 let g:solarized_contrast="normal"
 let g:solarized_underline=0
-let g:solarized_termtrans=1
+let g:solarized_termtrans=0
 syntax enable
 set background=dark
 colorscheme solarized
@@ -220,7 +220,20 @@ function TexHook()
     set softtabstop=2
     " Make a pdf
     noremap <C-c> :!pdflatex '%'<CR><CR>
-    noremap <C-i> :!evince '%:r.pdf'<CR><CR>
+    noremap <C-i> :!spawn zathura '%:p:r.pdf'<CR><CR>
+endfunction
+
+" }}}
+
+"  Markdown {{{
+" ---------------------------------------------------------------------------- "
+
+autocmd Filetype markdown call MarkdownHook()
+
+function MarkdownHook()
+    " Making and showing html
+    noremap <C-c> :!markdown '%:p' > '%:p:r.html'<CR><CR>
+    noremap <C-i> :!spawn firefox '%:p:r.html'<CR><CR>
 endfunction
 
 " }}}
