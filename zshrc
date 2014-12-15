@@ -41,6 +41,5 @@ export GEM_HOME="$(ruby -e 'puts Gem.user_dir')"
 
 # For vim
 export EDITOR="vim"
-export PYTHONPATH=/usr/lib/python3.4/site-packages
 stty -ixon # turn of <C-s> for vimshell
 
