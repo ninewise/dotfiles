@@ -1,5 +1,6 @@
 #!/bin/bash
 
+
 hc() { "${herbstclient_command[@]:-herbstclient}" "$@" ;}
 monitor=${1:-0}
 geometry=( $(herbstclient monitor_rect "$monitor") )
@@ -62,19 +63,52 @@ hc pad $monitor $panel_height
     #   date    ^fg(#efefef)18:33^fg(#909090), 2013-10-^fg(#efefef)29
 
     #mpc idleloop player &
+
+    # time/date events
     while true ; do
         # "date" output is checked once a second, but an event is only
         # generated if the output changed compared to the previous run.
         date +$'date\t^fg(#efefef)%H:%M^fg(#909090), %Y-%m-^fg(#efefef)%d'
         sleep 1 || break
     done > >(uniq_linebuffered) &
-    childpid=$!
+    timeloop=$!
+
+    # battery events
+    while true ; do
+        ac="$(cat /sys/class/power_supply/AC/online)"
+        current="$(cat /sys/class/power_supply/BAT0/charge_now)"
+        full="$(cat /sys/class/power_supply/BAT0/charge_full)"
+        percent="$((current * 100 / full))"
+
+        if (( current > full )); then
+            current="$full"
+            percent="100"
+        fi
+
+        if (( percent < 5 && ac == 0 )); then
+            sb="^fg(#ff0000)"
+            eb="^fg(#900000)"
+        else
+            sb="^fg(#efefef)"
+            eb="^fg(#909090)"
+        fi
+        printf "power\t${eb}Bat: ${sb}%s%2d${eb}%%\n" \
+            "$(echo $ac | tr '01' '-+')" \
+            "$((current * 100 / full))"
+
+        sleep 5 || break
+    done > >(uniq_linebuffered) &
+    batteryloop=$!
+
+    # hc events
     hc --idle
-    kill $childpid
+    kill $timeloop
+    kill $batteryloop
 } 2> /dev/null | {
     IFS=$'\t' read -ra tags <<< "$(hc tag_status $monitor)"
     visible=true
     date=""
+    power=""
     windowtitle=""
     while true ; do
 
@@ -120,7 +154,7 @@ hc pad $monitor $panel_height
         echo -n "$separator"
         echo -n "^bg()^fg() ${windowtitle//^/^^}"
         # small adjustments
-        right="$separator^bg() $date $separator"
+        right="$separator^bg() $power $separator $date $separator"
         right_text_only=$(echo -n "$right" | sed 's.\^[^(]*([^)]*)..g')
         # get width of right aligned text.. and add some space..
         width=$($textwidth "$font" "$right_text_only    ")
@@ -146,6 +180,9 @@ hc pad $monitor $panel_height
             date)
                 #echo "resetting date" >&2
                 date="${cmd[@]:1}"
+                ;;
+            power)
+                power="${cmd[@]:1}"
                 ;;
             quit_panel)
                 exit
@@ -185,3 +222,5 @@ hc pad $monitor $panel_height
 } 2> /dev/null | dzen2 -w $panel_width -x $x -y $y -fn "$font" -h $panel_height \
     -e 'button3=;button4=exec:herbstclient use_index -1;button5=exec:herbstclient use_index +1' \
     -ta l -bg "$bgcolor" -fg '#efefef'
+
+# vim: foldmethod=marker
