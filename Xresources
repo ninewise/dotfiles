@@ -17,35 +17,15 @@
 *scrollTtyOutput: false
 
 ! fancy cryptic colours
-! Brown theme {{{
-!*background: #141314
-!*foreground: #ccc2a6
-!black
-!*color0:    #322a2c
-!*color8:    #46423b
-!red
-!*color1:    #70473a
-!*color9:    #916255
-!green
-!*color2:    #534d35
-!*color10:   #858167
-!yellow
-!*color3:    #9c7650
-!*color3:    #9c7650
-!*color11:   #ad8650
-!blue
-!*color4:    #473e38
-!*color12:   #75715e
-!magenta
-!*color5:    #543b3b
-!*color13:   #7b5d51
-!cyan
-!*color6:    #434450
-!*color14:   #586868
-!white
-!*color7:    #9a875f
-!*color15:   #917154
-! }}}
+
+! black
+! red
+! green
+! yellow
+! blue
+! magenta
+! cyan
+! white
 
 ! Normal theme {{{
 ! --- ~/.Xresources ------------------------------------------------------------
@@ -54,95 +34,64 @@
 ! ------------------------------------------------------------------------------
 ! --- http://ciembor.github.com/4bit -------------------------------------------
 ! ------------------------------------------------------------------------------
-
-! --- special colors ---
-
 !*background: #17100d
 !*foreground: #ffffff
-
-! --- standard colors ---
-
-! black
 !*color0: #000000
-
-! bright_black
-!*color8: #202020
-
-! red
 !*color1: #9f0000
-
-! bright_red
-!*color9: #ff0808
-
-! green
 !*color2: #009f00
-
-! bright_green
-!*color10: #08ff08
-
-! yellow
 !*color3: #9f9f00
-
-! bright_yellow
-!*color11: #ffff08
-
-! blue
 !*color4: #00009f
-
-! bright_blue
-!*color12: #0808ff
-
-! magenta
 !*color5: #9f009f
-
-! bright_magenta
-!*color13: #ff08ff
-
-! cyan
 !*color6: #009f9f
-
-! bright_cyan
-!*color14: #08ffff
-
-! white
 !*color7: #a4a4a4
-
-! bright_white
+!*color8: #202020
+!*color9: #ff0808
+!*color10: #08ff08
+!*color11: #ffff08
+!*color12: #0808ff
+!*color13: #ff08ff
+!*color14: #08ffff
 !*color15: #eaeaea
-
-
-! ------------------------------------------------------------------------------
-! --- end of terminal colors section -------------------------------------------
-! ------------------------------------------------------------------------------
 ! }}}
 
-! Autumn theme (current) {{{
-*background: #17100d
-*foreground: #ffffff
-! black ! bright_black
-*color0: #000000
-*color8: #202020
-! red ! bright_red
-*color1: #c40800
-*color9: #ff0b00
-! green ! bright_green
-*color2: #c49000
-*color10: #ffbb00
-! yellow ! bright_yellow
-*color3: #c4590a
-*color11: #ff730d
-! blue ! bright_blue
-*color4: #2900c4
-*color12: #3500ff
-! magenta ! bright_magenta
-*color5: #b50ac4
-*color13: #eb0dff
-! cyan ! bright_cyan
-*color6: #003987
-*color14: #0283ff
-! white ! bright_white
-*color7: #a4a4a4
-*color15: #eaeaea
+! Autumn theme {{{
+!*background: #17100d
+!*foreground: #ffffff
+!*color0: #000000
+!*color1: #c40800
+!*color2: #c49000
+!*color3: #c4590a
+!*color4: #2900c4
+!*color5: #b50ac4
+!*color6: #003987
+!*color7: #a4a4a4
+!*color8: #202020
+!*color9: #ff0b00
+!*color10: #ffbb00
+!*color11: #ff730d
+!*color12: #3500ff
+!*color13: #eb0dff
+!*color14: #0283ff
+!*color15: #eaeaea
+! }}}
+
+! Grayish theme (current) {{{
+*color0: #111111
+*color1: #784742
+*color2: #427363
+*color3: #665847
+*color4: #6a708b
+*color5: #7a378b
+*color6: #52707b
+*color7: #b3b3b3
+*color8: #4c4c4c
+*color9: #d43f10
+*color10: #cef318
+*color11: #ede265
+*color12: #6ac0fd
+*color13: #ef79ae
+*color14: #49d4dd
+*color15: #ffffff
 ! }}}
 
 ! URxvt
@@ -174,7 +123,8 @@ URxvt.font: xft:Source Code Pro for Powerline:size=10
 ! Foreground and transparent background ([xx] == xx% opacity)
 URxvt.depth: 32
 urxvt*foreground: rgb:f8/f8/f8
-urxvt*background: [75]rgb:00/00/00
+!urxvt*background: [75]rgb:00/00/00
+urxvt*background: rgb:00/00/00
 
 
 
