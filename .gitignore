@@ -1,0 +1,7 @@
+
+# lol passwords in plain text
+weechat/irc.conf
+
+# lol logs
+weechat/logs/
+weechat/weechat.log
