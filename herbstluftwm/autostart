@@ -25,6 +25,17 @@ hc keybind $Mod-Shift-r reload
 hc keybind $Mod-Shift-c close
 hc keybind $Mod-Return spawn urxvtc
 hc keybind $Mod-Shift-s spawn systemctl suspend
+hc keybind XF86AudioMute spawn sound_control.sh toggle
+hc keybind XF86AudioRaiseVolume spawn sound_control.sh up
+hc keybind XF86AudioLowerVolume spawn sound_control.sh down
+#hc keybind XF86AudioNext
+#hc keybind XF86AudioPlay
+#hc keybind XF86AudioPrev
+#hc keybind XF86MonBrightnessUp
+#hc keybind XF86MonBrightnessUp
+#hc keybind XF86MonBrightnessDown
+#hc keybind XF86MonBrightnessDown
+
 
 # basic movement
 # focusing clients
