@@ -1,4 +1,4 @@
 #!/bin/bash
 
-mpv ./plop.mp3
+mpv $HOME/.local/bin/plop.mp3
 

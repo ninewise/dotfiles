@@ -10,3 +10,6 @@ case $command in
     up)     amixer set Master "$((current + 5))%" ;;
     *)      notify-send "learn to volume" ;;
 esac
+
+sound_notification.sh
+
