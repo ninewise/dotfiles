@@ -112,7 +112,7 @@ hc keybind $Mod-i jumpto urgent
 # }}} keybindings
 
 # programs {{{
-hc keybind $Mod-e spawn dmenu_run
+hc keybind $Mod-e spawn dmenu_run -z
 # }}} programs
 
 # mouse bindings {{{
