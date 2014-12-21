@@ -1,7 +1,12 @@
 
-# lol passwords in plain text
+# weechat
 weechat/irc.conf
-
-# lol logs
 weechat/logs/
 weechat/weechat.log
+
+# vim
+vim/bundle
+vim/tmp
+
+# other
+*.pyc
