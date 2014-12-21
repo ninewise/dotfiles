@@ -35,6 +35,7 @@ fi
 urxvtd &
 redshift &
 dunst &
+xcape
 # screen locking
 xset dpms 0 0 50 &
 xset s off &
