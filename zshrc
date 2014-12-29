@@ -43,3 +43,7 @@ export GEM_HOME="$(ruby -e 'puts Gem.user_dir')"
 export EDITOR="vim"
 stty -ixon # turn of <C-s> for vimshell
 
+# GPG-agent
+envoy -t gpg-agent
+source <(envoy -p)
+
