@@ -35,7 +35,7 @@ fi
 urxvtd &
 redshift &
 dunst &
-xcape
+xcape -e 'Super_L=Scroll_Lock'
 # screen locking
 xset dpms 0 0 50 &
 xset s off &
