@@ -1,0 +1,11 @@
+
+browser firefox
+keep-articles-days 30
+mark-as-read-on-hover yes
+
+notify-program /usr/bin/notify-send
+notify-format "%d new articles on %f feeds"
+
+refresh-on-startup yes
+reload-time 10
+
