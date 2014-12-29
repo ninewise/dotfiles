@@ -29,7 +29,7 @@ hc keybind $Mod-Shift-c close
 hc keybind $Mod-Return spawn urxvtc
 hc keybind $Mod-Shift-s spawn systemctl suspend
 hc keybind $Mod-e spawn dmenu_run -z
-hc keybind Scroll_Lock spawn dmenu_run -z
+hc keybind Scroll_Lock spawn dmenu_run
 hc keybind $Mod-b spawn urxvtc -name ranger -e ranger
 hc keybind $Mod-Control-c spawn urxvtc -name weechat -e weechat
 hc keybind $Mod-Control-n spawn urxvtc -name newsbeuter -e newsbeuter
