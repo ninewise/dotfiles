@@ -20,11 +20,19 @@ hc keyunbind --all
 #Mod=Mod1    # Use alt as the main modifier
 Mod=Mod4   # Use the super key as the main modifier
 
+# herbstluft control
 hc keybind $Mod-Shift-q quit
 hc keybind $Mod-Shift-r reload
 hc keybind $Mod-Shift-c close
+
+# application spawning
 hc keybind $Mod-Return spawn urxvtc
 hc keybind $Mod-Shift-s spawn systemctl suspend
+hc keybind $Mod-e spawn dmenu_run -z
+hc keybind Scroll_Lock spawn dmenu_run -z
+hc keybind $Mod-b spawn urxvtc -name ranger -e ranger
+hc keybind $Mod-Control-c spawn urxvtc -name weechat -e weechat
+hc keybind $Mod-Control-n spawn urxvtc -name newsbeuter -e newsbeuter
 hc keybind XF86AudioMute spawn sound_control.sh toggle
 hc keybind XF86AudioRaiseVolume spawn sound_control.sh up
 hc keybind XF86AudioLowerVolume spawn sound_control.sh down
@@ -35,7 +43,6 @@ hc keybind XF86AudioLowerVolume spawn sound_control.sh down
 #hc keybind XF86MonBrightnessUp
 #hc keybind XF86MonBrightnessDown
 #hc keybind XF86MonBrightnessDown
-
 
 # basic movement
 # focusing clients
@@ -77,16 +84,17 @@ hc keybind $Mod-Control-Up      resize up +$resizestep
 hc keybind $Mod-Control-Right   resize right +$resizestep
 
 # tags
-tag_names=( {1..9} )
-tag_keys=( {1..9} 0 )
+tag_names=( {1..9} mail news chat )
+tag_keys=( {1..9} m n c 0 )
 
 hc rename default "${tag_names[0]}" || true
 for i in ${!tag_names[@]} ; do
-    hc add "${tag_names[$i]}"
+    name="${tag_names[$i]}"
     key="${tag_keys[$i]}"
+    hc add "$name"
     if ! [ -z "$key" ] ; then
-        hc keybind "$Mod-$key" use_index "$i"
-        hc keybind "$Mod-Shift-$key" move_index "$i"
+        hc keybind "$Mod-$key" use "$name"
+        hc keybind "$Mod-Shift-$key" move "$name"
         hc set_layout max
     fi
 done
@@ -106,14 +114,9 @@ hc keybind $Mod-p pseudotile toggle
 hc keybind $Mod-BackSpace   cycle_monitor
 hc keybind $Mod-Tab         cycle_all +1
 hc keybind $Mod-Shift-Tab   cycle_all -1
-hc keybind $Mod-c cycle
 hc keybind $Mod-i jumpto urgent
 
 # }}} keybindings
-
-# programs {{{
-hc keybind $Mod-e spawn dmenu_run -z
-# }}} programs
 
 # mouse bindings {{{
 hc mouseunbind --all
@@ -187,32 +190,23 @@ hc rule class=Gimp windowrole=gimp-toolbox focus=off index=00
 hc rule class=Gimp windowrole=gimp-dock focus=off index=1
 # }}} Gimp
 
-# zenity {{{
-hc rule class=zenity pseudotile=on
+# Additional Pseudotilers {{{
+hc rule class="zenity" pseudotile=on
+hc rule class="mpv" pseudotile=on
+hc rule instance="pinentry-gtk-2" pseudotile=on
 # }}}
 
-# mpv {{{
-hc rule class="mpv" pseudotile=on
-# }}} mpv
-
-# Thunderbird {{{
-hc add mail
+# Application tags {{{
 hc rule instance="Mail" tag=mail
-# [ -n "$(pgrep thunderbird)" ] || thunderbird
-hc keybind $Mod-m use mail
-# }}} Thunderbird
+hc rule title="weechat" tag=chat
+hc rule title="newsbeuter" tag=news
+# }}}
 
 # Weechat {{{
-hc add chat
-hc rule title="weechat" tag=chat
-# [ -n "$(pgrep weechat)" ] || urxvtc -name weechat -e weechat
-hc keybind $Mod-Shift-w spawn urxvtc -name weechat -e weechat
-hc keybind $Mod-w use chat
 # }}} Weechat
 
-# ranger {{{
-hc keybind $Mod-b spawn urxvtc -name ranger -e ranger
-# }}} ranger
+# newsbeuter {{{
+# }}} newsbeuter
 
 # }}} Application Specific
 
@@ -227,7 +221,7 @@ herbstclient set tree_style '╾│ ├└╼─┐'
 # or simply:
 xrandr --output LVDS1 --auto
 if grep -q "HDMI1 connected" <(xrandr); then
- xrandr --output HDMI1 --auto --right-of LVDS1
+ xrandr --output HDMI1 --auto --${ORIENTATION:-right}-of LVDS1
 fi
 hc detect_monitors
 # }}} monitors
