@@ -4,8 +4,11 @@ keep-articles-days 30
 mark-as-read-on-hover yes
 
 notify-program /usr/bin/notify-send
-notify-format "%d new articles on %f feeds"
+notify-format "%n new articles on %f feeds"
 
 refresh-on-startup yes
+auto-reload yes
 reload-time 10
+
+cache-file .cache/newsbeuter.db
 
