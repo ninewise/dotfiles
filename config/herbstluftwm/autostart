@@ -23,7 +23,7 @@ Mod=Mod4   # Use the super key as the main modifier
 # herbstluft control
 hc keybind $Mod-Shift-q quit
 hc keybind $Mod-Shift-r reload
-hc keybind $Mod-Shift-c close
+hc keybind $Mod-q close
 
 # application spawning
 hc keybind $Mod-Return spawn urxvtc
@@ -33,6 +33,7 @@ hc keybind Scroll_Lock spawn dmenu_run
 hc keybind $Mod-b spawn urxvtc -name ranger -e ranger
 hc keybind $Mod-Control-c spawn urxvtc -name weechat -e weechat
 hc keybind $Mod-Control-n spawn urxvtc -name newsbeuter -e newsbeuter
+hc keybind $Mod-Control-m spawn urxvtc -name sup -e sup
 hc keybind XF86AudioMute spawn sound_control.sh toggle
 hc keybind XF86AudioRaiseVolume spawn sound_control.sh up
 hc keybind XF86AudioLowerVolume spawn sound_control.sh down
@@ -200,13 +201,8 @@ hc rule instance="pinentry-gtk-2" pseudotile=on
 hc rule instance="Mail" tag=mail
 hc rule title="weechat" tag=chat
 hc rule title="newsbeuter" tag=news
+hc rule title="sup" tag=mail
 # }}}
-
-# Weechat {{{
-# }}} Weechat
-
-# newsbeuter {{{
-# }}} newsbeuter
 
 # }}} Application Specific
 

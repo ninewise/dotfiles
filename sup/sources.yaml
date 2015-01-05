@@ -1,0 +1,34 @@
+---
+- !supmua.org,2006-10-01/Redwood/Maildir
+  uri: maildir:/home/felix/Mail/gmail/Inbox
+  usual: true
+  archived: false
+  sync_back: true
+  id: 1
+  labels:
+  - GMail
+- !supmua.org,2006-10-01/Redwood/Maildir
+  uri: maildir:/home/felix/Mail/ugent/Inbox
+  usual: true
+  archived: false
+  sync_back: true
+  id: 3
+  labels:
+  - UGent
+- !supmua.org,2006-10-01/Redwood/Maildir
+  uri: maildir:/home/felix/Mail/gmail/Sent
+  usual: true
+  archived: true
+  sync_back: true
+  id: 2
+  labels:
+  - GMail
+- !supmua.org,2006-10-01/Redwood/Maildir
+  uri: maildir:/home/felix/Mail/ugent/Sent
+  usual: true
+  archived: true
+  sync_back: true
+  id: 4
+  labels:
+  - UGent
+- !supmua.org,2006-10-01/Redwood/SentLoader {}
