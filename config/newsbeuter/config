@@ -8,7 +8,7 @@ notify-format "%n new articles on %f feeds"
 
 refresh-on-startup yes
 auto-reload yes
-reload-time 10
+reload-time 60
 
 cache-file .cache/newsbeuter.db
 
