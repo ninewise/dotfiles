@@ -28,16 +28,22 @@
   :default:
     :name: Felix Van der Jeugt
     :email: felix.vanderjeugt@gmail.com
-    :alternates:
-    - felix.vanderjeugt@12urenloop.be
+    :alternates: []
     :sendmail: "/usr/bin/msmtp --account=gmail -t --read-envelope-from"
     :signature: "/home/felix/.signature"
     :gpgkey: ''
   :ugent:
     :name: Felix Van der Jeugt
     :email: felix.vanderjeugt@ugent.be
+    :alternates: []
     :sendmail: "/usr/bin/msmtp --account=ugent -t --read-envelope-from"
     :signature: "/home/felix/.signature"
     :gpgkey: ''
+  :12ul:
+    :name: Felix Van der Jeugt
+    :email: felix.vanderjeugt@12urenloop.be
     :alternates: []
+    :sendmail: "/usr/bin/msmtp --account=12ul -t --read-envelope-from"
+    :signature: "/home/felix/.signature"
+    :gpgkey: ''
 :time_mode: 24h

@@ -16,6 +16,14 @@
   labels:
   - UGent
 - !supmua.org,2006-10-01/Redwood/Maildir
+  uri: maildir:/home/felix/Mail/12ul/Inbox
+  usual: true
+  archived: false
+  sync_back: true
+  id: 5
+  labels:
+  - 12UL
+- !supmua.org,2006-10-01/Redwood/Maildir
   uri: maildir:/home/felix/Mail/gmail/Sent
   usual: true
   archived: true
@@ -31,4 +39,12 @@
   id: 4
   labels:
   - UGent
+- !supmua.org,2006-10-01/Redwood/Maildir
+  uri: maildir:/home/felix/Mail/12ul/Sent
+  usual: true
+  archived: true
+  sync_back: true
+  id: 6
+  labels:
+  - 12UL
 - !supmua.org,2006-10-01/Redwood/SentLoader {}
