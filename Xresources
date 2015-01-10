@@ -104,7 +104,7 @@ urxvt.termName: rxvt-unicode
 URxvt.perl-ext-common:  default,matcher,tabbedex,font-size
 
 ! matcher: clickable urls
-URxvt.url-launcher:     /usr/bin/firefox
+URxvt.url-launcher:     /home/felix/.local/bin/open.sh
 URxvt.matcher.button:   1
 
 ! tabbedex: tabs
