@@ -2,7 +2,7 @@
 # weechat
 weechat/irc.conf
 weechat/logs/
-weechat/xfer/
+weechat/xfer
 weechat/weechat.log
 weechat/script/plugins.xml.gz
 
