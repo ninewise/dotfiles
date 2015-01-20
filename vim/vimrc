@@ -219,7 +219,8 @@ autocmd FileType tex call TexHook()
 function TexHook()
     setlocal tabstop=2
     setlocal shiftwidth=2
-    set softtabstop=2
+    setlocal softtabstop=2
+    setlocal foldmethod=marker
     " Make a pdf
     noremap <C-c> :!pdflatex '%'<CR><CR>
     noremap <C-i> :!spawn zathura '%:p:r.pdf'<CR><CR>
