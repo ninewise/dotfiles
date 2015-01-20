@@ -118,7 +118,7 @@ URxvt.iso14755_52:      false
 
 ! Use a nice truetype font and size by default... 
 URxvt.font: xft:Source Code Pro for Powerline:size=10
-! URxvt.letterSpace: -1
+URxvt.letterSpace: -1
 
 ! Foreground and transparent background ([xx] == xx% opacity)
 URxvt.depth: 32
