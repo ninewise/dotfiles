@@ -100,15 +100,35 @@ hc pad $monitor $panel_height
     done > >(uniq_linebuffered) &
     batteryloop=$!
 
+    # quodlibet events
+    while true ; do
+        status=$(quodlibet --status | cut -d' ' -f1)
+        case $status in
+            "playing")
+                echo -en "music\t^fg(#909090)"
+                quodlibet --print-playing "<title~album>" | iconv -f utf-8 -t ascii//translit
+                ;;
+            "paused")
+                echo -e "music ^fg(#909090)pauzed"
+                ;;
+            *)
+                ;;
+        esac
+        sleep 5 || break
+    done > >(uniq_linebuffered) &
+    quodloop=$!
+
     # hc events
     hc --idle
     kill $timeloop
     kill $batteryloop
+    kill $quodloop
 } 2> /dev/null | {
     IFS=$'\t' read -ra tags <<< "$(hc tag_status $monitor)"
     visible=true
     date=""
     power=""
+    music=""
     windowtitle=""
     while true ; do
 
@@ -154,7 +174,7 @@ hc pad $monitor $panel_height
         echo -n "$separator"
         echo -n "^bg()^fg() ${windowtitle//^/^^}"
         # small adjustments
-        right="$separator^bg() $power $separator $date $separator"
+        right="$music $separator^bg() $power $separator $date $separator"
         right_text_only=$(echo -n "$right" | sed 's.\^[^(]*([^)]*)..g')
         # get width of right aligned text.. and add some space..
         width=$($textwidth "$font" "$right_text_only    ")
@@ -183,6 +203,9 @@ hc pad $monitor $panel_height
                 ;;
             power)
                 power="${cmd[@]:1}"
+                ;;
+            music)
+                music="${cmd[@]:1}"
                 ;;
             quit_panel)
                 exit
