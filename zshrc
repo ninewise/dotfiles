@@ -47,3 +47,6 @@ stty -ixon # turn of <C-s> for vimshell
 export GPG_TTY=$(tty)
 envoy -t gpg-agent
 source <(envoy -p)
+
+# Syntax highlighting
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
