@@ -35,17 +35,17 @@ Account   "12ul"
 
 # Local Stores {{{
 MaildirStore gmail-local
-Path         "~/Mail/gmail/"
-Inbox        "~/Mail/gmail/Inbox"
+Path         "/mnt/lexicon/Mail/gmail/"
+Inbox        "/mnt/lexicon/Mail/gmail/Inbox"
 
 MaildirStore ugent-local
-Path         "~/Mail/ugent/"
-Inbox        "~/Mail/ugent/Inbox"
-Trash        "~/Mail/ugent/Trash"
+Path         "/mnt/lexicon/Mail/ugent/"
+Inbox        "/mnt/lexicon/Mail/ugent/Inbox"
+Trash        "/mnt/lexicon/Mail/ugent/Trash"
 
 MaildirStore 12ul-local
-Path         "~/Mail/12ul/"
-Inbox        "~/Mail/12ul/Inbox"
+Path         "/mnt/lexicon/Mail/12ul/"
+Inbox        "/mnt/lexicon/Mail/12ul/Inbox"
 # }}}
 
 # Channels {{{

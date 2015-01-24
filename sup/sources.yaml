@@ -1,6 +1,6 @@
 ---
 - !supmua.org,2006-10-01/Redwood/Maildir
-  uri: maildir:/home/felix/Mail/gmail/Inbox
+  uri: maildir:/mnt/lexicon/Mail/gmail/Inbox
   usual: true
   archived: false
   sync_back: true
@@ -8,7 +8,7 @@
   labels:
   - GMail
 - !supmua.org,2006-10-01/Redwood/Maildir
-  uri: maildir:/home/felix/Mail/ugent/Inbox
+  uri: maildir:/mnt/lexicon/Mail/ugent/Inbox
   usual: true
   archived: false
   sync_back: true
@@ -16,7 +16,7 @@
   labels:
   - UGent
 - !supmua.org,2006-10-01/Redwood/Maildir
-  uri: maildir:/home/felix/Mail/12ul/Inbox
+  uri: maildir:/mnt/lexicon/Mail/12ul/Inbox
   usual: true
   archived: false
   sync_back: true
@@ -24,7 +24,7 @@
   labels:
   - 12UL
 - !supmua.org,2006-10-01/Redwood/Maildir
-  uri: maildir:/home/felix/Mail/gmail/Sent
+  uri: maildir:/mnt/lexicon/Mail/gmail/Sent
   usual: true
   archived: true
   sync_back: true
@@ -32,7 +32,7 @@
   labels:
   - GMail
 - !supmua.org,2006-10-01/Redwood/Maildir
-  uri: maildir:/home/felix/Mail/ugent/Sent
+  uri: maildir:/mnt/lexicon/Mail/ugent/Sent
   usual: true
   archived: true
   sync_back: true
@@ -40,7 +40,7 @@
   labels:
   - UGent
 - !supmua.org,2006-10-01/Redwood/Maildir
-  uri: maildir:/home/felix/Mail/12ul/Sent
+  uri: maildir:/mnt/lexicon/Mail/12ul/Sent
   usual: true
   archived: true
   sync_back: true
