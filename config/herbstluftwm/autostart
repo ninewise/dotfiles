@@ -34,15 +34,15 @@ hc keybind $Mod-b spawn urxvtc -name ranger -e ranger
 hc keybind $Mod-Control-c spawn urxvtc -name weechat -e weechat
 hc keybind $Mod-Control-n spawn urxvtc -name newsbeuter -e newsbeuter
 hc keybind $Mod-Control-m spawn urxvtc -name sup -e sup
+
+# Media buttons
 hc keybind XF86AudioMute spawn sound_control.sh toggle
 hc keybind XF86AudioRaiseVolume spawn sound_control.sh up
 hc keybind XF86AudioLowerVolume spawn sound_control.sh down
-#hc keybind XF86AudioNext
-#hc keybind XF86AudioPlay
-#hc keybind XF86AudioPrev
+hc keybind XF86AudioNext spawn quodlibet --next
+hc keybind XF86AudioPlay spawn quodlibet --play-pause
+hc keybind XF86AudioPrev spawn quodlibet --previous
 #hc keybind XF86MonBrightnessUp
-#hc keybind XF86MonBrightnessUp
-#hc keybind XF86MonBrightnessDown
 #hc keybind XF86MonBrightnessDown
 
 # basic movement
