@@ -103,13 +103,16 @@ hc pad $monitor $panel_height
     # quodlibet events
     while true ; do
         status=$(quodlibet --status | cut -d' ' -f1)
+        ts="^ca(1,quodlibet --toggle-window)"
+        te="^ca()"
         case $status in
             "playing")
-                echo -en "music\t^fg(#909090)"
-                quodlibet --print-playing "<title~album>" | iconv -f utf-8 -t ascii//translit
+                echo -en "music\t$ts^fg(#909090)"
+                echo -n "$(quodlibet --print-playing "<title~album>" | iconv -f utf-8 -t ascii//translit)"
+                echo "$te"
                 ;;
             "paused")
-                echo -e "music ^fg(#909090)pauzed"
+                echo -e "music $ts^fg(#909090)pauzed$te"
                 ;;
             *)
                 ;;
