@@ -112,7 +112,7 @@ hc pad $monitor $panel_height
                 echo "$te"
                 ;;
             "paused")
-                echo -e "music $ts^fg(#909090)pauzed$te"
+                echo -e "music\t$ts^fg(#909090)pauzed$te"
                 ;;
             *)
                 ;;
