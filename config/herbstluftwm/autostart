@@ -42,6 +42,8 @@ hc keybind XF86AudioLowerVolume spawn sound_control.sh down
 hc keybind XF86AudioNext spawn quodlibet --next
 hc keybind XF86AudioPlay spawn quodlibet --play-pause
 hc keybind XF86AudioPrev spawn quodlibet --previous
+hc keybind XF86MonBrightnessUp spawn xbacklight -inc 10
+hc keybind XF86MonBrightnessDown spawn xbacklight -dec 10
 #hc keybind XF86MonBrightnessUp
 #hc keybind XF86MonBrightnessDown
 
