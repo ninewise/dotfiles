@@ -10,7 +10,7 @@ hc emit_hook reload
 
 hc set default_frame_layout 2
 
-xsetroot -solid '#5A8E3A'
+# xsetroot -solid '#5A8E3A'
 
 # keybindings {{{
 # remove all existing keybindings
