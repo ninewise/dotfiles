@@ -1,0 +1,7 @@
+[Unit]
+Description=iSYnc IMAP Synchronizer
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/mbsync -a
+
