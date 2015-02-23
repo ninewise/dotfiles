@@ -1,0 +1,8 @@
+[Unit]
+Description=Rxvt Unicode Daemon
+
+[Service]
+ExecStart=/usr/bin/urxvtd
+
+[Install]
+WantedBy=default.target
