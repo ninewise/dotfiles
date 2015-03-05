@@ -20,6 +20,7 @@ Plugin 'Shougo/vimproc.vim'
 Plugin 'tpope/vim-markdown'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'junegunn/vim-easy-align'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -38,6 +39,7 @@ let NERDTreeIgnore=[
 " Configuring ctrlp
 noremap <C-p> :CtrlP<CR>
 noremap <C-o> :CtrlPBuffer<CR>
+let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
 " Configuring Airline
 let g:airline_powerline_fonts=1
@@ -53,7 +55,7 @@ set t_Co=256
 let g:solarized_termcolors=256
 let g:solarized_contrast="normal"
 let g:solarized_underline=0
-let g:solarized_termtrans=0
+let g:solarized_termtrans=1
 syntax enable
 set background=dark
 colorscheme solarized
@@ -61,7 +63,7 @@ colorscheme solarized
 " }}}
 
 "  General Options {{{
-" ============================================================================ "
+" ================================================================== "
 
 set number          " line numbers on the right side
 set showcmd         " show the commands while typing
@@ -73,10 +75,10 @@ set ruler           " show the lines/% bottomright
 set encoding=utf-8  " set default encoding
 set laststatus=2    " always show the status line
 
-" wrap lines at 80 characters
-set formatprg=par\ -w80
+" wrap lines at 70 characters
+set formatprg=par\ -w70
 set formatoptions=t
-set textwidth=80
+set textwidth=70
 
 " indentation
 set tabstop=4       " tab is 4 width
@@ -117,14 +119,15 @@ noremap <space> zz
 cmap w!! w !sudo tee % >/dev/null
 " paste the clipboard
 noremap <C-b> :r!xclip -sel c -o<CR><CR>
+noremap <C-m> :w !xclip -sel c<CR><CR>
 
 " }}}
 
 "  Filetype specific configuration. {{{
-" ============================================================================ "
+" ================================================================== "
 
 "  Haskell {{{
-" ---------------------------------------------------------------------------- "
+" ------------------------------------------------------------------ "
 
 autocmd FileType haskell call HaskellHook()
 autocmd BufRead,BufNewFile *.lhs call HaskellHook()
@@ -146,7 +149,7 @@ endfunction
 " }}}
 
 "  Java {{{
-" ---------------------------------------------------------------------------- "
+" ------------------------------------------------------------------ "
 
 autocmd FileType java call JavaHook()
 
@@ -161,7 +164,7 @@ endfunction
 " }}}
 
 "  C {{{
-" ---------------------------------------------------------------------------- "
+" ------------------------------------------------------------------ "
 
 autocmd FileType c call CHook()
 
@@ -176,7 +179,7 @@ endfunction
 " }}}
 
 "  Ruby {{{
-" ---------------------------------------------------------------------------- "
+" ------------------------------------------------------------------ "
 
 autocmd FileType ruby call RubyHook()
 autocmd FileType eruby call RubyHook()
@@ -197,7 +200,7 @@ endfunction
 " }}}
 
 "  R {{{
-" ---------------------------------------------------------------------------- "
+" ------------------------------------------------------------------ "
 
 autocmd FileType r call RHook()
 
@@ -209,7 +212,7 @@ endfunction
 " }}}
 
 "  Latex {{{
-" ---------------------------------------------------------------------------- "
+" ------------------------------------------------------------------ "
 
 autocmd FileType tex call TexHook()
 
@@ -226,7 +229,7 @@ endfunction
 " }}}
 
 "  Markdown {{{
-" ---------------------------------------------------------------------------- "
+" ------------------------------------------------------------------ "
 
 autocmd Filetype markdown call MarkdownHook()
 
@@ -239,7 +242,7 @@ endfunction
 " }}}
 
 "  Python {{{
-" ---------------------------------------------------------------------------- "
+" ------------------------------------------------------------------ "
 
 autocmd FileType python call PythonHook()
 
