@@ -76,6 +76,8 @@
 ! }}}
 
 ! Grayish theme (current) {{{
+*foreground: rgb:f8/f8/f8
+*background: rgb:00/00/00
 *color0: #111111
 *color1: #784742
 *color2: #427363
@@ -101,14 +103,11 @@
 urxvt.termName: rxvt-unicode
 
 ! Perls
-URxvt.perl-ext-common:  default,matcher,tabbedex,font-size
+URxvt.perl-ext-common:  default,matcher,font-size
 
 ! matcher: clickable urls
 URxvt.url-launcher:     /home/felix/.local/bin/open.sh
 URxvt.matcher.button:   1
-
-! tabbedex: tabs
-URxvt.tabbed.autohide:  true
 
 ! font-size: zooming live
 URxvt.keysym.C-S-Up:    perl:font-size:increase
@@ -122,9 +121,7 @@ URxvt.letterSpace: -1
 
 ! Foreground and transparent background ([xx] == xx% opacity)
 URxvt.depth: 32
-urxvt*foreground: rgb:f8/f8/f8
 !urxvt*background: [75]rgb:00/00/00
-urxvt*background: rgb:00/00/00
 
 
 
