@@ -2,10 +2,21 @@
 Config { font = "xft:Source Code Pro:size=9"
        , iconRoot = ".config/xmobar/icons"
        , commands = [ Run Date "%a %b %0d %l:%M" "date" 10
-                    , Run Battery [ "-t", "Bat: <acstatus><left>%"
-                                  , "--", "-O", "+" , "-i", "=" , "-o", "-"
-                                  ] 50
+                    , Run Battery
+                        [ "-t", "<leftipat>"
+                        , "--"
+                        , "--on-icon-pattern", "<icon=bat-%%-ac.xpm/>"
+                        , "--off-icon-patter", "<icon=bat-%%.xpm/>"
+                        ] 50
+                    , Run Network "enp9s0"
+                        [ "--template", "<rxipat>"
+                        , "--"
+                        , "--rx-icon-pattern", "<icon=net-%%.xpm/>"
+                        ] 50
+                    , Run Wireless "wlp7s0"
+                        [
+                        ] 50
                     , Run StdinReader
                     ]
-       , template = "%StdinReader% }{ %battery% | <fc=#ee9a00>%date%</fc> "
+       , template = "%StdinReader% }{ %wlp7s0wi% %enp9s0% %battery% | <fc=#ee9a00>%date%</fc> "
        }
