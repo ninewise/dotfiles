@@ -1,0 +1,11 @@
+
+Config { font = "xft:Source Code Pro:size=9"
+       , iconRoot = ".config/xmobar/icons"
+       , commands = [ Run Date "%a %b %0d %l:%M" "date" 10
+                    , Run Battery [ "-t", "Bat: <acstatus><left>%"
+                                  , "--", "-O", "+" , "-i", "=" , "-o", "-"
+                                  ] 50
+                    , Run StdinReader
+                    ]
+       , template = "%StdinReader% }{ %battery% | <fc=#ee9a00>%date%</fc> "
+       }
