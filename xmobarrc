@@ -14,9 +14,9 @@ Config { font = "xft:Source Code Pro:size=9"
                         , "--rx-icon-pattern", "<icon=wired/%%.xpm/>"
                         ] 50
                     , Run Wireless "wlp7s0"
-                        [ "--template", "<qualityvbar>"
-                        --, "--",
-                        --, "--quality-icon-pattern", "<icon=wireless/%%.xpm/>"
+                        [ "--template", "<qualityipat>"
+                        , "--"
+                        , "--quality-icon-pattern", "<icon=wireless/%%.xpm/>"
                         ] 50
                     , Run StdinReader
                     ]
