@@ -6,7 +6,7 @@ Config { font = "xft:Source Code Pro:size=9"
                         [ "-t", "<leftipat>"
                         , "--"
                         , "--on-icon-pattern", "<icon=bat-ac/%%.xpm/>"
-                        , "--off-icon-patter", "<icon=bat/%%.xpm/>"
+                        , "--off-icon-pattern", "<icon=bat/%%.xpm/>"
                         ] 50
                     , Run Network "enp9s0"
                         [ "--template", "<rxipat>"
@@ -14,7 +14,9 @@ Config { font = "xft:Source Code Pro:size=9"
                         , "--rx-icon-pattern", "<icon=wired/%%.xpm/>"
                         ] 50
                     , Run Wireless "wlp7s0"
-                        [
+                        [ "--template", "<qualityvbar>"
+                        --, "--",
+                        --, "--quality-icon-pattern", "<icon=wireless/%%.xpm/>"
                         ] 50
                     , Run StdinReader
                     ]
