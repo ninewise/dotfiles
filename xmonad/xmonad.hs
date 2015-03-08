@@ -20,6 +20,7 @@ import XMonad
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Layout.LayoutModifier
+import XMonad.Util.NamedScratchpad
 import Graphics.X11.ExtraTypes.XF86
 import Data.Monoid
 import System.Exit
@@ -32,6 +33,9 @@ import qualified Data.Map        as M
 --
 myTerminal :: [Char]
 myTerminal = "urxvtc"
+
+runInTerminal :: [Char] -> [Char] -> [Char]
+runInTerminal e n = myTerminal ++ " -name " ++ n ++ " -e " ++ e
 
 -- Whether focus follows the mouse pointer.
 myFocusFollowsMouse :: Bool
@@ -91,6 +95,17 @@ myNormalBorderColor  :: [Char]
 myNormalBorderColor  = "#dddddd"
 myFocusedBorderColor :: [Char]
 myFocusedBorderColor = "#ff0000"
+
+-- Scratchpads, applications to toggle
+myScratchPads :: [NamedScratchpad]
+myScratchPads =
+    [ interm "ranger"
+    , interm "weechat"
+    , interm "sup"
+    , interm "newsbeuter"
+    ]
+  where
+    interm prog = NS prog (runInTerminal prog prog) (appName =? prog) defaultFloating
 
 ------------------------------------------------------------------------
 -- Key bindings. Add, modify or remove key bindings here.
@@ -172,6 +187,11 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((0, xF86XK_AudioPrev), spawn "quodlibet --previous")
     , ((0, xF86XK_MonBrightnessUp), spawn "xbacklight -inc 10")
     , ((0, xF86XK_MonBrightnessDown), spawn "xbacklight -dec 10")
+
+    , ((modm .|. controlMask, xK_c), namedScratchpadAction myScratchPads "weechat")
+    , ((modm .|. controlMask, xK_b), namedScratchpadAction myScratchPads "ranger")
+    , ((modm .|. controlMask, xK_m), namedScratchpadAction myScratchPads "sup")
+    , ((modm .|. controlMask, xK_n), namedScratchpadAction myScratchPads "newsbeuter")
     ]
     ++
 
