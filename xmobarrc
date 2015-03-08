@@ -2,6 +2,7 @@
 Config { font = "xft:Source Code Pro:size=9"
        , iconRoot = ".config/xmobar/icons"
        , commands = [ Run Date "%B, %a %0d, %l:%M" "date" 10
+                    --, Run Mpris2 "org.mpris.quodlibet" [] 100
                     , Run Battery
                         [ "-t", "<leftipat>"
                         , "--"
@@ -32,7 +33,9 @@ Config { font = "xft:Source Code Pro:size=9"
                         , "--load-icon-patterns", "<icon=cpu/%%.xpm/>"
                         , "--load-icon-patterns", "<icon=cpu4/%%.xpm/>"
                         ] 50
+                    , Run Com "quodinfo" [] "quodlibet" 10
+                    , Run Com "soundinfo" [] "sound" 10
                     , Run StdinReader
                     ]
-       , template = " %StdinReader% } %date% { %multicpu% %wlp7s0wi%%enp9s0%%bright%%battery% "
+       , template = " %StdinReader%} %date% {<action=`quodlibet --toggle-window`>%quodlibet%</action>   %multicpu% <icon=sound/%sound%.xpm/> %wlp7s0wi% %enp9s0% %bright% %battery% "
        }
