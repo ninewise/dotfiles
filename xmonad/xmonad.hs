@@ -1,3 +1,4 @@
+{-# LANGUAGE FlexibleContexts #-}
 --
 -- xmonad example config file for xmonad-0.9
 --
@@ -19,6 +20,7 @@ import XMonad
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Layout.LayoutModifier
+import Graphics.X11.ExtraTypes.XF86
 import Data.Monoid
 import System.Exit
 
@@ -81,7 +83,7 @@ myModMask = mod4Mask
 -- > workspaces = ["web", "irc", "code" ] ++ map show [4..9]
 --
 myWorkspaces :: [[Char]]
-myWorkspaces = ["1","2","3","4","5","6","7","8","9"]
+myWorkspaces = map show ([1..9]::[Int])
 
 -- Border colors for unfocused and focused windows, respectively.
 --
@@ -101,9 +103,6 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     -- launch dmenu
     , ((0,                  xK_Scroll_Lock), spawn "dmenu_run")
-
-    -- launch gmrun
-    , ((modm .|. shiftMask, xK_p     ), spawn "gmrun")
 
     -- close focused window
     , ((modm .|. shiftMask, xK_c     ), kill)
@@ -164,6 +163,15 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     -- Restart xmonad
     , ((modm              , xK_q     ), spawn "xmonad --recompile; xmonad --restart")
+
+    , ((0, xF86XK_AudioMute), spawn "sound_control.sh toggle")
+    , ((0, xF86XK_AudioRaiseVolume), spawn "sound_control.sh up")
+    , ((0, xF86XK_AudioLowerVolume), spawn "sound_control.sh down")
+    , ((0, xF86XK_AudioNext), spawn "quodlibet --next")
+    , ((0, xF86XK_AudioPlay), spawn "quodlibet --play-pause")
+    , ((0, xF86XK_AudioPrev), spawn "quodlibet --previous")
+    , ((0, xF86XK_MonBrightnessUp), spawn "xbacklight -inc 10")
+    , ((0, xF86XK_MonBrightnessDown), spawn "xbacklight -dec 10")
     ]
     ++
 
@@ -222,8 +230,8 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
 -- The available layouts.  Note that each layout is separated by |||,
 -- which denotes layout choice.
 --
-myLayoutHook :: Choose Tall (Choose (Mirror Tall) Full) a
-myLayoutHook = tiled ||| Mirror tiled ||| Full
+myLayoutHook :: Choose Full (Choose Tall (Mirror Tall)) a
+myLayoutHook = Full ||| tiled ||| Mirror tiled
   where
     -- default tiling algorithm partitions the screen into two panes
     tiled   = Tall nmaster delta ratio
@@ -312,18 +320,27 @@ myStartupHook = return ()
 
 -- Custom PP, configure it as you like. It determines what is being
 -- written to the bar.
---myPP :: PP
---myPP = xmobarPP { ppCurrent = xmobarColor "#429942" "" . wrap "<" ">" }
+myPP :: PP
+myPP = xmobarPP { ppCurrent         = xmobarColor "red" ""
+                , ppVisible         = xmobarColor "orange" ""
+                , ppHidden          = id
+                , ppHiddenNoWindows = const ""
+                , ppUrgent          = xmobarColor "green" ""
+                , ppSep             = " - "
+                , ppWsSep           = " "
+                , ppOrder           = \(ws:_) -> [ws]
+                -- ...
+                }
 
 -- Key binding to toggle the gap for the bar.
---toggleStrutsKey :: XConfig Layout -> (KeyMask, KeySym)
---toggleStrutsKey XConfig {XMonad.modMask = m} = (m, xK_b)
+toggleStrutsKey :: XConfig Layout -> (KeyMask, KeySym)
+toggleStrutsKey XConfig {XMonad.modMask = m} = (m, xK_b)
 
 -- Bar.
---withBar :: LayoutClass l Window => XConfig l -> IO (XConfig (ModifiedLayout AvoidStruts l))
 --withBar :: XConfig (Choose Tall (Choose (Mirror Tall) Full)) -> IO (XConfig (ModifiedLayout
 --    AvoidStruts (Choose Tall (Choose (Mirror Tall) Full))))
---withBar = statusBar "xmobar" myPP toggleStrutsKey
+withBar :: LayoutClass l Window => XConfig l -> IO (XConfig (ModifiedLayout AvoidStruts l))
+withBar = statusBar "xmobar" myPP toggleStrutsKey
 
 ------------------------------------------------------------------------
 -- Now run xmonad with all the defaults we set up.
@@ -331,7 +348,7 @@ myStartupHook = return ()
 -- Run xmonad with the settings you specify. No need to modify this.
 --
 main :: IO ()
-main = xmonad =<< xmobar defaults
+main = xmonad =<< withBar defaults
 
 -- A structure containing your configuration settings, overriding
 -- fields in the default config. Any you don't override, will
@@ -339,7 +356,7 @@ main = xmonad =<< xmobar defaults
 --
 -- No need to modify this.
 --
-defaults :: XConfig (Choose Tall (Choose (Mirror Tall) Full))
+defaults :: XConfig (Choose Full (Choose Tall (Mirror Tall)))
 defaults = defaultConfig {
       -- simple stuff
         terminal           = myTerminal,
