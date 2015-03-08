@@ -343,7 +343,7 @@ myStartupHook = return ()
 myPP :: PP
 myPP = xmobarPP { ppCurrent         = xmobarColor "red" ""
                 , ppVisible         = xmobarColor "orange" ""
-                , ppHidden          = id
+                , ppHidden          = \n -> if n == "NSP" then "" else n
                 , ppHiddenNoWindows = const ""
                 , ppUrgent          = xmobarColor "green" ""
                 , ppSep             = " - "
