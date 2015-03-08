@@ -1,7 +1,7 @@
 
 Config { font = "xft:Source Code Pro:size=9"
        , iconRoot = ".config/xmobar/icons"
-       , commands = [ Run Date "%B, %a %0d, %l:%M" "date" 10
+       , commands = [ Run Date "%B, %a %0d, %H:%M" "date" 10
                     --, Run Mpris2 "org.mpris.quodlibet" [] 100
                     , Run Battery
                         [ "-t", "<leftipat>"
