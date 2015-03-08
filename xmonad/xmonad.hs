@@ -283,8 +283,9 @@ myLayoutHook = Full ||| tiled ||| Mirror tiled
 myManageHook :: Query (Endo WindowSet)
 myManageHook = composeAll
     [ className =? "MPlayer"        --> doFloat
-    , className =? "mpv"           --> doFloat
+    , className =? "mpv"            --> doFloat
     , className =? "Gimp"           --> doFloat
+    , className =? "Wfica_Seamless" --> doFloat
     , resource  =? "desktop_window" --> doIgnore
     , resource  =? "kdesktop"       --> doIgnore ]
 
