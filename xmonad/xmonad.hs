@@ -21,6 +21,7 @@ import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Layout.LayoutModifier
 import XMonad.Util.NamedScratchpad
+import XMonad.Actions.WindowBringer
 import Graphics.X11.ExtraTypes.XF86
 import Data.Monoid
 import System.Exit
@@ -192,6 +193,11 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm .|. controlMask, xK_b), namedScratchpadAction myScratchPads "ranger")
     , ((modm .|. controlMask, xK_m), namedScratchpadAction myScratchPads "sup")
     , ((modm .|. controlMask, xK_n), namedScratchpadAction myScratchPads "newsbeuter")
+
+    -- Dmenu open programs
+    , ((modm .|. shiftMask, xK_Tab), gotoMenu)
+    , ((modm .|. controlMask, xK_Tab), bringMenu)
+
     ]
     ++
 
