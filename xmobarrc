@@ -37,5 +37,5 @@ Config { font = "xft:Source Code Pro:size=9"
                     , Run Com "soundinfo" [] "sound" 10
                     , Run StdinReader
                     ]
-       , template = " %StdinReader%} %date% {<action=`quodlibet --toggle-window`>%quodlibet%</action>   %multicpu% <icon=sound/%sound%.xpm/> %wlp7s0wi% %enp9s0% %bright% %battery% "
+       , template = " %StdinReader%} %date% {<action=`quodlibet --toggle-window`>%quodlibet%</action>   %multicpu%<icon=sound/%sound%.xpm/>%wlp7s0wi%%enp9s0%%bright%%battery% "
        }
