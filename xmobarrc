@@ -1,6 +1,23 @@
 
 Config { font = "xft:Source Code Pro:size=9"
+       , additionalFonts = []
+       , bgColor = "#000000"
+       , fgColor = "#bfbfbf"
+       , sepChar = "%"
+       , alignSep = "}{"
+       , border = NoBorder
+       , borderColor = "#000000"
+       , position = Top
+       , lowerOnStart = False
+       , hideOnStart = False
+       , allDesktops = True
+       , overrideRedirect = True
+       , pickBroadest = False
+       , persistent = False
+       , textOffset = 16
+       , alpha = 0
        , iconRoot = ".config/xmobar/icons"
+       , iconOffset = 8
        , commands = [ Run Date "%B, %a %0d, %H:%M" "date" 10
                     --, Run Mpris2 "org.mpris.quodlibet" [] 100
                     , Run Battery
