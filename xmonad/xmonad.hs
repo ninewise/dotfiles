@@ -20,6 +20,7 @@ import XMonad
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Layout.LayoutModifier
+import XMonad.Layout.NoBorders
 import XMonad.Util.NamedScratchpad
 import XMonad.Actions.WindowBringer
 import Graphics.X11.ExtraTypes.XF86
@@ -256,8 +257,8 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
 -- The available layouts.  Note that each layout is separated by |||,
 -- which denotes layout choice.
 --
-myLayoutHook :: Choose Full (Choose Tall (Mirror Tall)) a
-myLayoutHook = Full ||| tiled ||| Mirror tiled
+myLayoutHook :: ModifiedLayout SmartBorder (Choose Full (Choose Tall (Mirror Tall))) a
+myLayoutHook = smartBorders $ Full ||| tiled ||| Mirror tiled
   where
     -- default tiling algorithm partitions the screen into two panes
     tiled   = Tall nmaster delta ratio
@@ -383,7 +384,7 @@ main = xmonad =<< withBar defaults
 --
 -- No need to modify this.
 --
-defaults :: XConfig (Choose Full (Choose Tall (Mirror Tall)))
+defaults :: XConfig (ModifiedLayout SmartBorder (Choose Full (Choose Tall (Mirror Tall))))
 defaults = defaultConfig {
       -- simple stuff
         terminal           = myTerminal,
