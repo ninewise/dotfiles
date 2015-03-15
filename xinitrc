@@ -34,7 +34,8 @@ fi
 # For now, start stuff here
 redshift &
 dunst &
-xcape -e 'Super_L=Scroll_Lock;Shift_L=Escape'
+xcape -t 100 -e 'Super_L=Scroll_Lock;Shift_L=Escape'
+feh  --bg-scale '/home/felix/Pictures/lain.png' &
 # screen locking
 xset dpms 0 0 50 &
 xset s off &
