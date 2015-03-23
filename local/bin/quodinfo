@@ -1,8 +1,0 @@
-#!/bin/bash
-
-status=$(quodlibet --status | cut -d' ' -f1)
-case "$status" in
-    "playing") quodlibet --print-playing "<title~album>" ;;
-    *) ;;
-esac
-

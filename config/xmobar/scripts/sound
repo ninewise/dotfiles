@@ -1,17 +1,19 @@
 #!/bin/bash
 
+sound="mute"
+
 if grep -q "\[on\]" <(amixer get Master); then
     current="$(amixer get Master | sed -n '/%/s/.*\[\(.*\)%\].*/\1/p' | head -1)"
     if (( current <= 25 )); then
-        echo "none"
+        sound="none"
     elif (( current <= 50 )); then
-        echo "low"
+        sound="low"
     elif (( current <= 75 )); then
-        echo "medium"
+        sound="medium"
     else
-        echo "high"
+        sound="high"
     fi
-else
-    echo "mute"
 fi
+
+echo "<icon=sound/$sound.xpm/>"
 
