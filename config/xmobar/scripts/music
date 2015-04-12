@@ -1,0 +1,10 @@
+#!/bin/bash
+
+if mpc -q; then
+    case "$(mpc status | sed -n '2s/\[\(\w*\)\].*/\1/p')" in
+        "playing") icon="<icon=music/play.xpm/>"  ;;
+        "paused")  icon="<icon=music/pause.xpm/>" ;;
+    esac
+    echo '<action=`urxvtc -e "ncmpcpp"`>'"$icon"'</action>'
+fi
+

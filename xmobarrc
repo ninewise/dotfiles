@@ -50,9 +50,9 @@ Config { font = "xft:Source Code Pro:size=9"
                         , "--load-icon-patterns", "<icon=cpu/%%.xpm/>"
                         , "--load-icon-patterns", "<icon=cpu4/%%.xpm/>"
                         ] 50
-                    , Run Com ".config/xmobar/scripts/quodlibet" [] "quodlibet" 10
+                    , Run Com ".config/xmobar/scripts/music" [] "music" 10
                     , Run Com ".config/xmobar/scripts/sound" [] "sound" 10
                     , Run StdinReader
                     ]
-       , template = " %StdinReader%} %date% {%multicpu%%quodlibet%%sound%%wlp7s0wi%%enp9s0%%bright%%battery% "
+       , template = " %StdinReader%} %date% {%multicpu%%music%%sound%%wlp7s0wi%%enp9s0%%bright%%battery% "
        }

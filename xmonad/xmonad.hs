@@ -184,9 +184,9 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((0, xF86XK_AudioMute), spawn "sound_control.sh toggle")
     , ((0, xF86XK_AudioRaiseVolume), spawn "sound_control.sh up")
     , ((0, xF86XK_AudioLowerVolume), spawn "sound_control.sh down")
-    , ((0, xF86XK_AudioNext), spawn "quodlibet --next")
-    , ((0, xF86XK_AudioPlay), spawn "quodlibet --play-pause")
-    , ((0, xF86XK_AudioPrev), spawn "quodlibet --previous")
+    , ((0, xF86XK_AudioNext), spawn "mpc -q next")
+    , ((0, xF86XK_AudioPlay), spawn "mpc -q toggle")
+    , ((0, xF86XK_AudioPrev), spawn "mpc -q prev")
     , ((0, xF86XK_MonBrightnessUp), spawn "xbacklight -inc 10")
     , ((0, xF86XK_MonBrightnessDown), spawn "xbacklight -dec 10")
 
