@@ -39,7 +39,7 @@ feh  --bg-scale '/home/felix/Pictures/lain.png' &
 # screen locking
 xset dpms 0 0 50 &
 xset s off &
-xautolock -time 1 -locker i3lock-fancy &
+xautolock -time 1 -locker xsecurelock &
 
 # Start herbstluftwm in locked mode. Is unlocked after autostart.
 #exec herbstluftwm --locked
