@@ -42,6 +42,8 @@ export GEM_HOME="$(ruby -e 'puts Gem.user_dir')"
 # For vim
 export EDITOR="vim"
 stty -ixon # turn of <C-s> for vimshell
+alias vi="vim"
+alias nano="vim"
 
 # GPG ssh tty
 export GPG_TTY=$(tty)
@@ -50,3 +52,6 @@ source <(envoy -p)
 
 # Syntax highlighting
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# Don't type that config location al the time.
+alias ncmpcpp="ncmpcpp -c ~/.config/ncmpcpp/config"
