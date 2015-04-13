@@ -222,7 +222,7 @@ mpd_music_dir = /mnt/lexicon/Music
 #playlist_separate_albums = no
 ## Note: Possible display modes: classic, columns.
 #playlist_display_mode = columns
-#browser_display_mode = classic
+browser_display_mode = columns
 #search_engine_display_mode = classic
 #playlist_editor_display_mode = classic
 #discard_colors_if_item_is_selected = yes
@@ -233,19 +233,19 @@ mpd_music_dir = /mnt/lexicon/Music
 #centered_cursor = no
 ## Note: You can specify third character which will
 ## be used to build 'empty' part of progressbar.
-#progressbar_look = =>
-#progressbar_boldness = yes
+progressbar_look = =-
+progressbar_boldness = no
 ## Available values: database, playlist.
 #default_place_to_search_in = database
 ## Available values: classic, alternative.
-#user_interface = classic
+user_interface = alternative
 #data_fetching_delay = yes
 ## Available values: artist, album_artist, date, genre, composer, performer.
 media_library_primary_tag = genre
 ## Available values: wrapped, normal.
 #default_find_mode = wrapped
 ## Available values: add, select.
-#default_space_mode = add
+default_space_mode = select
 #default_tag_editor_pattern = %n - %t
 #header_visibility = yes
 #statusbar_visibility = yes
@@ -274,7 +274,7 @@ media_library_primary_tag = genre
 ##
 ## Screens available for use: help, playlist, browser, search_engine,
 ## media_library, playlist_editor, tag_editor, outputs, visualizer, clock.
-#screen_switcher_mode = playlist, browser
+screen_switcher_mode = playlist, media_library
 ## Note: You can define startup screen for ncmpcpp
 ## by choosing screen from the list above.
 #startup_screen = playlist
