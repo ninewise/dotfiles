@@ -42,5 +42,4 @@ xset s off &
 xautolock -time 1 -locker xsecurelock &
 
 # Start herbstluftwm in locked mode. Is unlocked after autostart.
-#exec herbstluftwm --locked
 exec xmonad
