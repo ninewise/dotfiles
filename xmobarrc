@@ -14,7 +14,7 @@ Config { font = "xft:Source Code Pro:size=9"
        , overrideRedirect = True
        , pickBroadest = False
        , persistent = False
-       , textOffset = 16
+       , textOffset = 13
        , alpha = 0
        , iconRoot = ".config/xmobar/icons"
        , iconOffset = 8
