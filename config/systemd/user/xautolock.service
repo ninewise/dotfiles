@@ -1,0 +1,10 @@
+[Unit]
+Description=X Autolocker
+After=display-manager.service
+Wants=display-manager.service
+
+[Service]
+ExecStart=/usr/bin/xautolock -time 1 -locker xsecurelock
+
+[Install]
+WantedBy=default.target

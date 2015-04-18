@@ -1,0 +1,10 @@
+[Unit]
+Description=Set screen timeout properties
+After=display-manager.service
+Wants=display-manager.service
+
+[Service]
+ExecStart=/usr/bin/xset dpms 0 0 50 s off
+
+[Install]
+WantedBy=default.target
