@@ -37,7 +37,7 @@ myTerminal :: [Char]
 myTerminal = "urxvtc"
 
 runInTerminal :: [Char] -> [Char] -> [Char]
-runInTerminal e n = myTerminal ++ " -name " ++ n ++ " -e " ++ e
+runInTerminal e n = myTerminal ++ " -name " ++ n ++ " -e " ++ e ++ " > /dev/null 2>&1"
 
 -- Whether focus follows the mouse pointer.
 myFocusFollowsMouse :: Bool
@@ -119,7 +119,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     [ ((modm .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf)
 
     -- launch dmenu
-    , ((0,                  xK_Scroll_Lock), spawn "dmenu_run")
+    , ((0,                  xK_Scroll_Lock), spawn "PATH=\"/home/felix/.local/bin:$PATH\" dmenu_run")
 
     -- close focused window
     , ((modm .|. shiftMask, xK_c     ), kill)
