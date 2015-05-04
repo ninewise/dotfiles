@@ -40,7 +40,10 @@ runInTerminal :: [Char] -> [Char] -> [Char]
 runInTerminal e n = myTerminal ++ " -name " ++ n ++ " -e " ++ e
 
 logged :: [Char] -> [Char]
-logged m = "nohup " ++ m ++ " | logger"
+logged m = m ++ " 2>&1 | logger"
+
+silent :: [Char] -> [Char]
+silent m = m ++ " > /dev/null 2>&1"
 
 -- Whether focus follows the mouse pointer.
 myFocusFollowsMouse :: Bool
@@ -184,9 +187,9 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- Restart xmonad
     , ((modm              , xK_q     ), spawn "xmonad --recompile; xmonad --restart")
 
-    , ((0, xF86XK_AudioMute), spawn "sound_control.sh toggle")
-    , ((0, xF86XK_AudioRaiseVolume), spawn "sound_control.sh up")
-    , ((0, xF86XK_AudioLowerVolume), spawn "sound_control.sh down")
+    , ((0, xF86XK_AudioMute), spawn $ silent "sound_control.sh toggle")
+    , ((0, xF86XK_AudioRaiseVolume), spawn $ silent "sound_control.sh up")
+    , ((0, xF86XK_AudioLowerVolume), spawn $ silent "sound_control.sh down")
     , ((0, xF86XK_AudioNext), spawn "mpc -q next")
     , ((0, xF86XK_AudioPlay), spawn "mpc -q toggle")
     , ((0, xF86XK_AudioPrev), spawn "mpc -q prev")

@@ -33,15 +33,15 @@ fi
 
 # Forking graphical programs
 forklog() {
-    nohup $* | logger &
+    $* 2>&1 | logger &
 }
 
 forklog redshift
 forklog dunst
 forklog xcape -t 100 -e 'Super_L=Scroll_Lock;Shift_L=Escape'
 forklog feh  --bg-scale '/home/felix/Pictures/lain.png'
-forklog xautolock -time 1 -locker xsecurelock &
-forklog xset dpms 0 0 50 s off &
+forklog xautolock -time 1 -locker xsecurelock
+forklog xset dpms 0 0 50 s off
 
 # Start herbstluftwm in locked mode. Is unlocked after autostart.
 exec xmonad
