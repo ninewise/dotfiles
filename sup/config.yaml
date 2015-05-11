@@ -22,7 +22,7 @@
 :col_jump: 2
 :stem_language: english
 :sync_back_to_maildir: true
-:continuous_scroll: false
+:continuous_scroll: true
 :always_edit_async: false
 :accounts:
   :default:
