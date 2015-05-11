@@ -18,9 +18,8 @@
 
 import XMonad
 import XMonad.Hooks.DynamicLog
-import XMonad.Hooks.ManageDocks
-import XMonad.Layout.LayoutModifier
 import XMonad.Layout.NoBorders
+import XMonad.Layout.Grid
 import XMonad.Util.NamedScratchpad
 import XMonad.Actions.WindowBringer
 import Graphics.X11.ExtraTypes.XF86
@@ -100,7 +99,7 @@ myWorkspaces = map show ([1..9]::[Int])
 -- Border colors for unfocused and focused windows, respectively.
 --
 myNormalBorderColor  :: [Char]
-myNormalBorderColor  = "#dddddd"
+myNormalBorderColor  = "#000000"
 myFocusedBorderColor :: [Char]
 myFocusedBorderColor = "#ff0000"
 
@@ -263,20 +262,7 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
 -- The available layouts.  Note that each layout is separated by |||,
 -- which denotes layout choice.
 --
-myLayoutHook :: ModifiedLayout SmartBorder (Choose Full (Choose Tall (Mirror Tall))) a
-myLayoutHook = smartBorders $ Full ||| tiled ||| Mirror tiled
-  where
-    -- default tiling algorithm partitions the screen into two panes
-    tiled   = Tall nmaster delta ratio
-
-    -- The default number of windows in the master pane
-    nmaster = 1
-
-    -- Default proportion of screen occupied by master pane
-    ratio   = 1/2
-
-    -- Percent of screen to increment by when resizing panes
-    delta   = 3/100
+myLayoutHook = smartBorders $ Full ||| GridRatio (4/3)
 
 ------------------------------------------------------------------------
 -- Window rules:
@@ -371,9 +357,6 @@ toggleStrutsKey :: XConfig Layout -> (KeyMask, KeySym)
 toggleStrutsKey XConfig {XMonad.modMask = m} = (m, xK_b)
 
 -- Bar.
---withBar :: XConfig (Choose Tall (Choose (Mirror Tall) Full)) -> IO (XConfig (ModifiedLayout
---    AvoidStruts (Choose Tall (Choose (Mirror Tall) Full))))
-withBar :: LayoutClass l Window => XConfig l -> IO (XConfig (ModifiedLayout AvoidStruts l))
 withBar = statusBar "xmobar" myPP toggleStrutsKey
 
 ------------------------------------------------------------------------
@@ -390,7 +373,6 @@ main = xmonad =<< withBar defaults
 --
 -- No need to modify this.
 --
-defaults :: XConfig (ModifiedLayout SmartBorder (Choose Full (Choose Tall (Mirror Tall))))
 defaults = defaultConfig {
       -- simple stuff
         terminal           = myTerminal,
