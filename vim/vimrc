@@ -22,6 +22,7 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'chriskempson/base16-vim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'junegunn/vim-easy-align'
+Plugin 'LaTeX-Box-Team/LaTeX-Box'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -60,6 +61,9 @@ let g:solarized_termtrans=1
 
 " Loaing base16
 let base16colorspace=256
+
+" Configuring LaTeX-Box
+let g:LatexBox_Folding = 1
 
 " }}}
 
@@ -237,7 +241,7 @@ function TexHook()
     setlocal tabstop=2
     setlocal shiftwidth=2
     setlocal softtabstop=2
-    setlocal foldmethod=marker
+    " setlocal foldmethod=marker
     " Make a pdf
     noremap <C-c> :!pdflatex '%'<CR><CR>
     noremap <C-i> :!spawn zathura '%:p:r.pdf'<CR><CR>
