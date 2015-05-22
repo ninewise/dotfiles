@@ -5,11 +5,13 @@ weechat/plugins.conf
 weechat/logs/
 weechat/xfer
 weechat/weechat.log
+weechat/slack.cache
 weechat/script/plugins.xml.gz
 
 # vim
 vim/bundle
 vim/tmp
+vim/spell
 
 # other
 *.pyc
