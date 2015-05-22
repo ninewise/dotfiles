@@ -1,6 +1,7 @@
 
 # weechat
 weechat/irc.conf
+weechat/plugins.conf
 weechat/logs/
 weechat/xfer
 weechat/weechat.log
