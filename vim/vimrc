@@ -243,7 +243,7 @@ function TexHook()
     setlocal softtabstop=2
     " setlocal foldmethod=marker
     " Make a pdf
-    noremap <C-c> :!pdflatex '%'<CR><CR>
+    noremap <C-c> :!pdflatex -shell-escape '%'<CR><CR>
     noremap <C-i> :!spawn zathura '%:p:r.pdf'<CR><CR>
 endfunction
 
