@@ -204,6 +204,10 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm .|. shiftMask, xK_Tab), gotoMenu)
     , ((modm .|. controlMask, xK_Tab), bringMenu)
 
+    -- Screens
+    , ((modm .|. shiftMask, xK_p), spawn $ silent "push.sh")
+    , ((modm .|. controlMask, xK_p), spawn $ silent "push.sh -s")
+
     ]
     ++
 
