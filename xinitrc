@@ -39,7 +39,7 @@ forklog() {
 forklog redshift
 forklog dunst
 forklog xcape -t 100 -e 'Super_L=Scroll_Lock;Shift_L=Escape'
-forklog feh  --bg-scale '/home/felix/Pictures/lain.png'
+forklog bash ~/.fehbg
 forklog xautolock -time 1 -locker xsecurelock
 forklog xset dpms 0 0 50 s off
 

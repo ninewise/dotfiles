@@ -15,7 +15,7 @@ Config { font = "xft:Source Code Pro:size=9"
        , pickBroadest = False
        , persistent = False
        , textOffset = 13
-       , alpha = 0
+       , alpha = 200
        , iconRoot = ".config/xmobar/icons"
        , iconOffset = 8
        , commands = [ Run Date "%B, %a %0d, %H:%M" "date" 10
