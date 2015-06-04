@@ -1,0 +1,30 @@
+#!/bin/bash
+
+qutemarks="/home/felix/.config/qutebrowser/qutemarks"
+commands="$(echo -e "add\ndelete\ntabopen\nopen")"
+
+# Select a command
+command="$(dmenu <<<"$commands")"
+case "$command" in
+    "add")
+        echo "$QUTE_URL $QUTE_TITLE" >> "$qutemarks"
+        ;;
+    "delete")
+        to_remove="$(cat -n "$qutemarks" | sed 's/^ *//' | dmenu)"
+        [ -z "$to_remove" ] || sed -i "${to_remove%%	*}d" "$qutemarks"
+        ;;
+    "tabopen")
+        opener="open -t"
+        ;;
+    "{tab,}open")
+        opener="open"
+        if [ "$command" = "tabopen" ]; then
+            opener="open -t"
+        fi
+        to_open="$(dmenu < "$qutemarks")"
+        echo "$command $to_open" >> "$QUTE_FIFO"
+        ;;
+    *)
+        ;;
+esac
+
