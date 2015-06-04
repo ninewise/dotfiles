@@ -1,5 +1,5 @@
 
-browser firefox
+browser xdg-open
 keep-articles-days 30
 mark-as-read-on-hover yes
 

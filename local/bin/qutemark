@@ -11,18 +11,17 @@ case "$command" in
         ;;
     "delete")
         to_remove="$(cat -n "$qutemarks" | sed 's/^ *//' | dmenu)"
-        [ -z "$to_remove" ] || sed -i "${to_remove%%	*}d" "$qutemarks"
+        if [[ "$to_remove" =~ "[0-9]*	.*" ]]; then
+            sed -i "${to_remove%%	*}d" "$qutemarks"
+        fi
         ;;
-    "tabopen")
-        opener="open -t"
-        ;;
-    "{tab,}open")
+    "tabopen"|"open")
         opener="open"
         if [ "$command" = "tabopen" ]; then
             opener="open -t"
         fi
         to_open="$(dmenu < "$qutemarks")"
-        echo "$command $to_open" >> "$QUTE_FIFO"
+        echo "$command ${to_open%% *}" >> "$QUTE_FIFO"
         ;;
     *)
         ;;
