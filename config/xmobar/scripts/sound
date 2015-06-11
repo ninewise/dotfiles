@@ -15,5 +15,5 @@ if grep -q "\[on\]" <(amixer get Master); then
     fi
 fi
 
-echo "<icon=sound/$sound.xpm/>"
+echo '<action=`pavucontrol`><icon=sound/'"$sound.xpm"'/></action>'
 
