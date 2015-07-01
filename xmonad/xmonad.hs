@@ -18,6 +18,7 @@
 
 import XMonad
 import XMonad.Hooks.DynamicLog
+import XMonad.Hooks.ManageHelpers
 import XMonad.Layout.NoBorders
 import XMonad.Layout.Grid
 import XMonad.Util.NamedScratchpad
@@ -25,6 +26,7 @@ import XMonad.Actions.WindowBringer
 import Graphics.X11.ExtraTypes.XF86
 import Data.Monoid
 import System.Exit
+
 
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
@@ -94,7 +96,7 @@ myModMask = mod4Mask
 -- > workspaces = ["web", "irc", "code" ] ++ map show [4..9]
 --
 myWorkspaces :: [[Char]]
-myWorkspaces = (:) "NSP" $ map show ([1..9]::[Int])
+myWorkspaces = map show ([1..9]::[Int]) ++ ["NSP"]
 
 -- Border colors for unfocused and focused windows, respectively.
 --
@@ -112,7 +114,9 @@ myScratchPads =
     , interm "newsbeuter"
     ]
   where
-    interm prog = NS prog (runInTerminal prog prog) (appName =? prog) defaultFloating
+    placement = doRectFloat $ W.RationalRect 0.05 0.05 0.9 0.9 -- x, y, w, h
+    interm prog = NS prog (runInTerminal prog prog) (appName =? prog) placement
+
 
 ------------------------------------------------------------------------
 -- Key bindings. Add, modify or remove key bindings here.
@@ -216,7 +220,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- mod-shift-[1..9], Move client to workspace N
     --
     [((m .|. modm, k), windows $ f i)
-        | (i, k) <- zip (XMonad.workspaces conf) [xK_0 .. xK_9]
+        | (i, k) <- zip (XMonad.workspaces conf) $ [xK_1 .. xK_9] ++ [xK_0]
         , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]]
     ++
 
@@ -394,7 +398,7 @@ defaults = defaultConfig {
 
       -- hooks, layouts
         layoutHook         = myLayoutHook,
-        manageHook         = myManageHook,
+        manageHook         = namedScratchpadManageHook myScratchPads <+> myManageHook,
         handleEventHook    = myEventHook,
         logHook            = myLogHook,
         startupHook        = myStartupHook
