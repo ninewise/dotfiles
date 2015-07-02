@@ -18,7 +18,6 @@
 
 import XMonad
 import XMonad.Hooks.DynamicLog
-import XMonad.Hooks.ManageHelpers
 import XMonad.Layout.NoBorders
 import XMonad.Layout.Grid
 import XMonad.Util.NamedScratchpad
@@ -108,14 +107,14 @@ myFocusedBorderColor = "#ff0000"
 -- Scratchpads, applications to toggle
 myScratchPads :: [NamedScratchpad]
 myScratchPads =
-    [ interm "ranger"
-    , interm "weechat"
-    , interm "sup"
-    , interm "newsbeuter"
+    [ interm "ranger"     nonFloating
+    , interm "weechat"    centerFloating
+    , interm "sup"        centerFloating
+    , interm "newsbeuter" centerFloating
     ]
   where
-    placement = doRectFloat $ W.RationalRect 0.05 0.05 0.9 0.9 -- x, y, w, h
-    interm prog = NS prog (runInTerminal prog prog) (appName =? prog) placement
+    centerFloating = customFloating $ W.RationalRect 0.05 0.05 0.9 0.9 -- x, y, w, h
+    interm prog = NS prog (runInTerminal prog prog) (appName =? prog)
 
 
 ------------------------------------------------------------------------
