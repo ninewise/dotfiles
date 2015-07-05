@@ -1,0 +1,16 @@
+#!/bin/bash
+# turn cbz files created by manga_downloader.py into scrollable pdf's
+
+input="$1"
+output="${input%.cbz}.pdf"
+
+# unzipping the cbz
+image_files="$(mktemp)"
+unzip "$input" | sed -n 's/.*extracting: \(.*\)/\1/p' > "$image_files"
+
+# makeing them pdf's
+cat "$image_files" <(echo "-compress jpeg") <(echo "$output") | xargs convert
+
+cat "$image_files" | xargs rm
+rm "$image_files"
+
