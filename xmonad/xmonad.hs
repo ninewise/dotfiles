@@ -126,8 +126,8 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- launch a terminal
     [ ((modm .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf)
 
-    -- launch dmenu
-    , ((0,                  xK_Scroll_Lock), spawn $ logged "dmenu_run")
+    -- launch program launcher
+    , ((0,                  xK_Scroll_Lock), spawn $ logged "rofi -show run")
 
     -- close focused window
     , ((modm .|. shiftMask, xK_c     ), kill)
