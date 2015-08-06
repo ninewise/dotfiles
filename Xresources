@@ -182,7 +182,7 @@ rofi.run-command:                    {cmd}
 !rofi.run-list-command:
 rofi.run-shell-command:              {terminal} -e {cmd}
 rofi.disable-history:                false
-rofi.levenshtein-sort:               true
+rofi.levenshtein-sort:               false
 rofi.case-sensitive:                 false
 rofi.sidebar-mode:                   false
 rofi.lazy-filter-limit:              5000
