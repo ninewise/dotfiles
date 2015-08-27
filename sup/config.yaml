@@ -28,7 +28,7 @@
   :default:
     :name: Felix Van der Jeugt
     :email: felix.vanderjeugt@gmail.com
-    :alternates: []
+    :alternates: [felixvdj@zeus.ugent.be]
     :sendmail: "/usr/bin/msmtp --account=gmail -t --read-envelope-from"
     :signature: "/home/felix/.signature"
     :gpgkey: ''
