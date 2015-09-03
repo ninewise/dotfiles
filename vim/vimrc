@@ -72,7 +72,8 @@ let g:LatexBox_Folding = 1
 
 syntax enable
 set background=dark
-colorscheme base16-3024
+colorscheme desert
+silent! colorscheme base16-3024 " conditional colorscheme
 
 set number          " line numbers on the right side
 set showcmd         " show the commands while typing
