@@ -132,6 +132,9 @@ cmap w!! w !sudo tee % >/dev/null
 noremap <C-b> :r!xclip -sel c -o<CR><CR>
 noremap <C-m> :w !xclip -sel c<CR><CR>
 
+" Unfold everything upon opening a new file
+"autocmd BufRead * normal zR
+set foldlevelstart=2
 " }}}
 
 "  Filetype specific configuration. {{{
@@ -207,6 +210,23 @@ endfunction
 autocmd FileType ruby call RubyHook()
 autocmd FileType eruby call RubyHook()
 
+function RubyFold(lnum)
+    if getline(a:lnum) =~ '^\s*def\s' || getline(a:lnum) =~ '^\s*class\s' || getline(a:lnum) =~ '^\s*module\s'
+        return indent(a:lnum) / 2 + 1
+    endif
+    if getline(a:lnum) =~ '^\s*end'
+        return indent(a:lnum) / 2 + 1
+    endif
+    if getline(a:lnum - 1) =~ '^\s*end'
+        return indent(a:lnum - 1) / 2
+    endif
+    return '='
+endfunction
+
+function RubyFoldText()
+    return getline(v:foldstart) . ' +'
+endfunction
+
 function RubyHook()
     setlocal tabstop=2
     setlocal shiftwidth=2
@@ -217,7 +237,9 @@ function RubyHook()
     set makeprg=rake
 
     " Folding
-    set foldmethod=syntax
+    set foldmethod=expr
+    set foldexpr=RubyFold(v:lnum)
+    set foldtext=RubyFoldText()
 endfunction
 
 " }}}
