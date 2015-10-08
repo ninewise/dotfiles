@@ -204,8 +204,8 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm .|. controlMask, xK_n), namedScratchpadAction myScratchPads "newsbeuter")
 
     -- Dmenu open programs
-    , ((modm .|. shiftMask, xK_Tab), gotoMenu)
-    , ((modm .|. controlMask, xK_Tab), bringMenu)
+    , ((modm .|. shiftMask, xK_Tab), gotoMenuArgs ["-l", "10"])
+    , ((modm .|. controlMask, xK_Tab), bringMenuArgs ["-l", "10"])
 
     -- Screens
     , ((modm .|. shiftMask, xK_p), spawn $ silent "push.sh")
