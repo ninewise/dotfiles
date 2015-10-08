@@ -268,7 +268,7 @@ function TexHook()
     " setlocal foldmethod=marker
     " Make a pdf
     noremap <C-c> :!pdflatex -shell-escape '%'<CR><CR>
-    noremap <C-i> :!spawn zathura '%:p:r.pdf'<CR><CR>
+    noremap <C-i> :!rifle '%:p:r.pdf'<CR><CR>
 endfunction
 
 " }}}
@@ -281,7 +281,7 @@ autocmd Filetype markdown call MarkdownHook()
 function MarkdownHook()
     " Making and showing html
     noremap <C-c> :!markdown '%:p' > '%:p:r.html'<CR><CR>
-    noremap <C-i> :!spawn firefox '%:p:r.html'<CR><CR>
+    noremap <C-i> :!rifle '%:p:r.html'<CR><CR>
 endfunction
 
 " }}}
