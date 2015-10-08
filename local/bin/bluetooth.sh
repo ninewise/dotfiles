@@ -7,9 +7,12 @@ zeusplay 60:E3:27:09:12:DE
 HERE
 )"
 
-command="connect ${mac#* }"
+command="$(cat <<HERE
+connect ${mac#* }
+quit
+HERE
+)"
 
 if ! pgrep pulseaudio; then pulseaudio --start 2> /dev/null ; fi
-cat "$command" <(echo "quit") \
-    | bluetoothctl > /dev/null 2>&1
+echo "$command" | bluetoothctl > /dev/null 2>&1
 
