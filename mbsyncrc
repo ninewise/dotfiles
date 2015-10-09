@@ -13,13 +13,6 @@ User            "felix.vanderjeugt@ugent.be"
 PassCmd         "gpg -u Noctua -q --for-your-eyes-only --no-tty -d ~/.config/passwords.gpg | sed -n 's/ugent=//p'"
 SSLTYPE         "STARTTLS"
 CertificateFile "/etc/ssl/certs/ca-certificates.crt"
-
-IMAPAccount     12ul
-Host            "imap.gmail.com"
-User            "felix.vanderjeugt@12urenloop.be"
-PassCmd         "gpg -u Noctua -q --for-your-eyes-only --no-tty -d ~/.config/passwords.gpg | sed -n 's/12ul=//p'"
-SSLType         "IMAPS"
-CertificateFile "/etc/ssl/certs/ca-certificates.crt"
 # }}} Accounts
 
 # Remote Stores {{{
@@ -28,9 +21,6 @@ Account   "gmail"
 
 IMAPStore ugent-remote
 Account   "ugent"
-
-IMAPStore 12ul-remote
-Account   "12ul"
 # }}}
 
 # Local Stores {{{
@@ -42,10 +32,6 @@ MaildirStore ugent-local
 Path         "/mnt/lexicon/Mail/ugent/"
 Inbox        "/mnt/lexicon/Mail/ugent/Inbox"
 Trash        "/mnt/lexicon/Mail/ugent/Trash"
-
-MaildirStore 12ul-local
-Path         "/mnt/lexicon/Mail/12ul/"
-Inbox        "/mnt/lexicon/Mail/12ul/Inbox"
 # }}}
 
 # Channels {{{
@@ -76,25 +62,6 @@ Slave     ":ugent-local:"
 Create    "Slave"
 Patterns  "*"
 SyncState "*"
-
-Channel   12ul-inbox
-Master    ":12ul-remote:"
-Slave     ":12ul-local:"
-Create    "Slave"
-Pattern   "INBOX"
-SyncState "*"
-
-Channel   12ul-sent
-Master    ":12ul-remote:[Gmail]/Verzonden berichten"
-Slave     ":12ul-local:Sent"
-Create    "Slave"
-SyncState "*"
-
-Channel   12ul-trash
-Master    ":12ul-remote:[Gmail]/Prullenbak"
-Slave     ":12ul-local:Trash"
-Create    "Slave"
-SyncState "*"
 # }}}
 
 # Groups {{{
@@ -102,11 +69,6 @@ Group   gmail
 Channel "gmail-inbox"
 Channel "gmail-sent"
 Channel "gmail-trash"
-
-Group 12ul
-Channel "inbox-inbox"
-Channel "12ul-sent"
-Channel "12ul-trash"
 # }}}
 
 # vim: foldmethod=marker
