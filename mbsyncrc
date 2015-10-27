@@ -32,6 +32,7 @@ MaildirStore ugent-local
 Path         "/mnt/lexicon/Mail/ugent/"
 Inbox        "/mnt/lexicon/Mail/ugent/Inbox"
 Trash        "/mnt/lexicon/Mail/ugent/Trash"
+SubFolders   "Verbatim"
 # }}}
 
 # Channels {{{
