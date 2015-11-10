@@ -88,7 +88,7 @@ set laststatus=2    " always show the status line
 
 " wrap lines at 70 characters
 set formatprg=par\ -w70
-set formatoptions=t
+set formatoptions=tcrqnlj
 set textwidth=70
 
 " indentation
@@ -295,6 +295,12 @@ function MarkdownHook()
     " Making and showing html
     noremap <C-c> :!markdown '%:p' > '%:p:r.html'<CR><CR>
     noremap <C-i> :!rifle '%:p:r.html'<CR><CR>
+    setlocal textwidth=0
+    setlocal wrapmargin=0
+    setlocal colorcolumn=0
+    setlocal wrap
+    setlocal linebreak
+    setlocal nolist
 endfunction
 
 " }}}
