@@ -1,2 +1,5 @@
 #!/bin/bash
-rifle "$1" | grep 'cannot open' && xdg-open "$1"
+curl -IL "$1" \
+    | grep Content-Type \
+    | tail -n 1 \
+    | grep image && rifle "$1" || xdg-open "$1"
