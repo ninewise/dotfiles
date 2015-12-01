@@ -184,7 +184,7 @@ autocmd FileType sh call ShellHook()
 
 function ShellHook()
     " Execute in subshell
-    noremap <C-i> :!bash ./%<CR>
+    noremap <C-i> :!bash --init-file ./%<CR><CR>
 endfunction
 
 " }}}
