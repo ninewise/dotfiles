@@ -111,6 +111,7 @@ myScratchPads =
     , interm "weechat"    centerFloating
     , interm "sup"        centerFloating
     , interm "newsbeuter" centerFloating
+    , interm "vimus" centerFloating
     ]
   where
     centerFloating = customFloating $ W.RationalRect 0.05 0.05 0.9 0.9 -- x, y, w, h
@@ -202,6 +203,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm .|. controlMask, xK_b), namedScratchpadAction myScratchPads "ranger")
     , ((modm .|. controlMask, xK_m), namedScratchpadAction myScratchPads "sup")
     , ((modm .|. controlMask, xK_n), namedScratchpadAction myScratchPads "newsbeuter")
+    , ((modm .|. controlMask, xK_v), namedScratchpadAction myScratchPads "vimus")
 
     -- Dmenu open programs
     , ((modm .|. shiftMask, xK_Tab), gotoMenuArgs ["-l", "10"])

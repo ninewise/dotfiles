@@ -5,6 +5,6 @@ if mpc -q; then
         "playing") icon="<icon=music/play.xpm/>"  ;;
         *)         icon="<icon=music/pause.xpm/>" ;;
     esac
-    echo '<action=`urxvtc -e "ncmpcpp" "-c" "~/.config/ncmpcpp/config"`>'"$icon"'</action>'
+    echo '<action=`urxvtc -e "vimus"`>'"$icon"'</action>'
 fi
 
