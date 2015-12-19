@@ -22,9 +22,10 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'chriskempson/base16-vim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'junegunn/vim-easy-align'
-Plugin 'LaTeX-Box-Team/LaTeX-Box'
+"Plugin 'LaTeX-Box-Team/LaTeX-Box'
 Plugin 'chase/vim-ansible-yaml'
 Plugin 'rust-lang/rust.vim'
+Plugin 'easymotion/vim-easymotion'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -40,8 +41,12 @@ let NERDTreeIgnore=[
             \ ".*\\.pyc$"
             \ ]
 
+let mapleader=';'
+
 " Configuring ctrlp
+nnoremap <Leader>l :CtrlP<CR>
 noremap <C-p> :CtrlP<CR>
+nnoremap <Leader>o :CtrlPBuffer<CR>
 noremap <C-o> :CtrlPBuffer<CR>
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
@@ -65,7 +70,14 @@ let g:solarized_termtrans=1
 let base16colorspace=256
 
 " Configuring LaTeX-Box
-let g:LatexBox_Folding = 1
+"let g:LatexBox_Folding = 1
+
+" Configuring EasyMotion
+let g:EasyMotion_do_mapping = 0  " Disable default mappings
+nmap <Leader>w <Plug>(easymotion-w)
+nmap <Leader>s <Plug>(easymotion-s)
+nmap <Leader>j <Plug>(easymotion-j)
+nmap <Leader>k <Plug>(easymotion-k)
 
 " }}}
 
@@ -130,8 +142,8 @@ noremap <space> zz
 " rewrite file with sudo
 cmap w!! w !sudo tee % >/dev/null
 " paste the clipboard
-noremap <C-b> :r!xclip -sel c -o<CR><CR>
-noremap <C-m> :w !xclip -sel c<CR><CR>
+noremap <Leader>p :r!xclip -sel c -o<CR><CR>
+noremap <Leader>y :w !xclip -sel c<CR><CR>
 
 " Unfold everything upon opening a new file
 "autocmd BufRead * normal zR
