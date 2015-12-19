@@ -36,8 +36,8 @@ export PATH="$HOME/.local/bin":"$PATH"
 #export PATH="$HOME/.cabal/bin":"$PATH"
 
 # Gems
-export PATH="$(ruby -rubygems -e "puts Gem.user_dir")/bin":"$PATH"
-export GEM_HOME="$(ruby -e 'puts Gem.user_dir')"
+#export PATH="$(ruby -rubygems -e "puts Gem.user_dir")/bin":"$PATH"
+#export GEM_HOME="$(ruby -e 'puts Gem.user_dir')"
 
 # For vim
 export EDITOR="vim"
@@ -59,3 +59,4 @@ alias ncmpcpp="ncmpcpp -c ~/.config/ncmpcpp/config"
 # Base16 Shell
 BASE16_SHELL="$HOME/.config/base16-shell/base16-3024.dark.sh"
 [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
+
