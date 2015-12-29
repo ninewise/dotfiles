@@ -23,14 +23,14 @@ git_status() {
     fi
 }
 autoload -U colors && colors
-export PS1="[%*] %{$fg[red]%}%n@%m%{$reset_color%} %{$fg_bold[green]%}%~%{$reset_color%} "'$(git_status | xargs echo)'"
+PS1="[%*] %{$fg[red]%}%n@%m%{$reset_color%} %{$fg_bold[green]%}%~%{$reset_color%} "'$(git_status | xargs echo)'"
  %(?.$.%%) "; setopt promptsubst
 
 # Color ls
 alias ls="ls --color=auto"
 
 # Local scripts
-export PATH="$HOME/.local/bin":"$PATH"
+PATH="$HOME/.local/bin":"$PATH"
 
 # Cabal
 #export PATH="$HOME/.cabal/bin":"$PATH"
@@ -40,7 +40,7 @@ export PATH="$HOME/.local/bin":"$PATH"
 #export GEM_HOME="$(ruby -e 'puts Gem.user_dir')"
 
 # For vim
-export EDITOR="vim"
+EDITOR="vim"
 stty -ixon # turn of <C-s> for vimshell
 alias vi="vim"
 alias nano="vim"
