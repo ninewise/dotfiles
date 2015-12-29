@@ -45,3 +45,10 @@ forklog xset dpms 0 0 50 s off
 
 # Start herbstluftwm in locked mode. Is unlocked after autostart.
 exec xmonad
+
+# Cleaning up
+pkill redshift
+pkill dunst
+pkill xcape
+pkill xautolock
+
