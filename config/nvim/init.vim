@@ -32,13 +32,24 @@ set listchars=tab:·\ ,trail:·
                     " display tabs with a leading \cdot
                     " trailing whitespace looks like \cdot
 
-" Learning to use decent vim.
-noremap <Up> <NOP>
-noremap <Down> <NOP>
-noremap <Left> <NOP>
-noremap <Right> <NOP>
+" Movement keys
+nnoremap <Up>       <NOP>
+nnoremap <Down>     <NOP>
+nnoremap <Left>     <NOP>
+nnoremap <Right>    <NOP>
+nnoremap <Leader>gg <C-w><C-w>
+nnoremap <Leader>gh <C-w>h
+nnoremap <Leader>gj <C-w>j
+nnoremap <Leader>gk <C-w>k
+nnoremap <Leader>gl <C-w>l
 
+" Not too much folding
 set foldlevelstart=2
+
+" Hmmmm neovim terminals
+nnoremap <Leader>s :vsplit +:terminal<CR>
+tnoremap <Esc> <C-\><C-n>
+
 "  General Options }}}
 
 "  Plugins {{{
@@ -81,7 +92,7 @@ nmap     <Leader>a <Plug>(EasyAlign)
 
 let g:EasyMotion_do_mapping=0
 nmap     <Leader>w <Plug>(easymotion-w)
-nmap     <Leader>s <Plug>(easymotion-s)
+nmap     <Leader>f <Plug>(easymotion-s)
 nmap     <Leader>j <Plug>(easymotion-j)
 nmap     <Leader>k <Plug>(easymotion-k)
 
