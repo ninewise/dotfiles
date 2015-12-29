@@ -64,6 +64,7 @@ call plug#end()
 " Plugin configuration
 " --------------------
 let g:ctrlp_map='<Leader>l'
+let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
 let g:airline_powerline_fonts=1
 
