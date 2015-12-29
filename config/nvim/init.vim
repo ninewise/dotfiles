@@ -6,7 +6,7 @@ let mapleader=';'
 
 syntax enable
 set background=dark
-colorscheme desert
+colorscheme darkblue
 
 set number          " line numbers on the right side
 set showcmd         " show the commands while typing
@@ -66,10 +66,12 @@ Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-fugitive'
 Plug 'rust-lang/rust.vim'
 Plug 'Valloric/YouCompleteMe'
-Plug 'altercation/vim-colors-solarized'
 Plug 'chriskempson/base16-vim'
 "Plugin 'LaTeX-Box-Team/LaTeX-Box'
 "Plugin 'chase/vim-ansible-yaml'
+
+Plug 'junegunn/vim-after-object'
+Plug 'junegunn/vim-peekaboo'
 call plug#end()
 
 " Plugin configuration
@@ -99,14 +101,12 @@ nmap     <Leader>k <Plug>(easymotion-k)
 let g:ycm_global_ycm_extra_conf = '~/.config/nvim/ycm_extra_conf.py'
 "set completeopt=menu
 
-set t_Co=256
-let g:solarized_termcolors=256
-let g:solarized_contrast="normal"
-let g:solarized_underline=0
-let g:solarized_termtrans=1
-
 let base16colorspace=256
-colorscheme base16-3024
+colorscheme base16-colors
+" damn base16's grey linenr background
+highlight LineNr ctermfg=08 ctermbg=NONE
+
+autocmd VimEnter * call after_object#enable('=', ':', '-', '#', ' ')
 "  Plugged }}}
 
 " vim: foldmethod=marker

@@ -27,74 +27,56 @@
 ! cyan
 ! white
 
-! Normal theme {{{
-! --- ~/.Xresources ------------------------------------------------------------
-! ------------------------------------------------------------------------------
-! --- generated with 4bit Terminal Color Scheme Designer -----------------------
-! ------------------------------------------------------------------------------
-! --- http://ciembor.github.com/4bit -------------------------------------------
-! ------------------------------------------------------------------------------
-!*background: #17100d
-!*foreground: #ffffff
-!*color0: #000000
-!*color1: #9f0000
-!*color2: #009f00
-!*color3: #9f9f00
-!*color4: #00009f
-!*color5: #9f009f
-!*color6: #009f9f
-!*color7: #a4a4a4
-!*color8: #202020
-!*color9: #ff0808
-!*color10: #08ff08
-!*color11: #ffff08
-!*color12: #0808ff
-!*color13: #ff08ff
-!*color14: #08ffff
-!*color15: #eaeaea
-! }}}
+! Base16 Isotope
+! Scheme: Jan T. Sott
 
-! Autumn theme {{{
-!*background: #17100d
-!*foreground: #ffffff
-!*color0: #000000
-!*color1: #c40800
-!*color2: #c49000
-!*color3: #c4590a
-!*color4: #2900c4
-!*color5: #b50ac4
-!*color6: #003987
-!*color7: #a4a4a4
-!*color8: #202020
-!*color9: #ff0b00
-!*color10: #ffbb00
-!*color11: #ff730d
-!*color12: #3500ff
-!*color13: #eb0dff
-!*color14: #0283ff
-!*color15: #eaeaea
-! }}}
+#define base00 #000000
+#define base01 #404040
+#define base02 #606060
+#define base03 #808080
+#define base04 #c0c0c0
+#define base05 #d0d0d0
+#define base06 #e0e0e0
+#define base07 #ffffff
+#define base08 #ff0000
+#define base09 #ff9900
+#define base0A #ff0099
+#define base0B #33ff00
+#define base0C #00ffff
+#define base0D #0066ff
+#define base0E #cc00ff
+#define base0F #3300ff
 
-! Grayish theme (current) {{{
-*foreground: rgb:f8/f8/f8
-*background: rgb:00/00/00
-*color0: #111111
-*color1: #784742
-*color2: #427363
-*color3: #665847
-*color4: #6a708b
-*color5: #7a378b
-*color6: #52707b
-*color7: #b3b3b3
-*color8: #4c4c4c
-*color9: #d43f10
-*color10: #cef318
-*color11: #ede265
-*color12: #6ac0fd
-*color13: #ef79ae
-*color14: #49d4dd
-*color15: #ffffff
-! }}}
+*.foreground:   base05
+*.background:   base00
+*.cursorColor:  base05
+
+*.color0:       base00
+*.color1:       base08
+*.color2:       base0B
+*.color3:       base0A
+*.color4:       base0D
+*.color5:       base0E
+*.color6:       base0C
+*.color7:       base05
+
+*.color8:       base03
+*.color9:       base08
+*.color10:      base0B
+*.color11:      base0A
+*.color12:      base0D
+*.color13:      base0E
+*.color14:      base0C
+*.color15:      base07
+
+! Note: colors beyond 15 might not be loaded (e.g., xterm, urxvt),
+! use 'shell' template to set these if necessary
+*.color16:      base09
+*.color17:      base0F
+*.color18:      base01
+*.color19:      base02
+*.color20:      base04
+*.color21:      base06
 
 ! URxvt
 ! -----

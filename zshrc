@@ -23,7 +23,7 @@ git_status() {
     fi
 }
 autoload -U colors && colors
-PS1="[%*] %{$fg[red]%}%n@%m%{$reset_color%} %{$fg_bold[green]%}%~%{$reset_color%} "'$(git_status | xargs echo)'"
+PS1="[%*] %{$fg[red]%}%n@%m%{$reset_color%} %{$fg[green]%}%~%{$reset_color%} "'$(git_status | xargs echo)'"
  %(?.$.%%) "; setopt promptsubst
 
 # Color ls
@@ -57,6 +57,25 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 alias ncmpcpp="ncmpcpp -c ~/.config/ncmpcpp/config"
 
 # Base16 Shell
+BASE16_SHELL="$HOME/.config/base16-shell/base16-greenscreen.dark.sh"
+
 BASE16_SHELL="$HOME/.config/base16-shell/base16-3024.dark.sh"
+BASE16_SHELL="$HOME/.config/base16-shell/base16-solarized.dark.sh"
+BASE16_SHELL="$HOME/.config/base16-shell/base16-shapeshifter.dark.sh"
+BASE16_SHELL="$HOME/.config/base16-shell/base16-railscasts.dark.sh"
+BASE16_SHELL="$HOME/.config/base16-shell/base16-monokai.dark.sh"
+BASE16_SHELL="$HOME/.config/base16-shell/base16-marrakesh.dark.sh"
+BASE16_SHELL="$HOME/.config/base16-shell/base16-harmonic16.dark.sh"
+BASE16_SHELL="$HOME/.config/base16-shell/base16-default.dark.sh"
+BASE16_SHELL="$HOME/.config/base16-shell/base16-colors.dark.sh"
+BASE16_SHELL="$HOME/.config/base16-shell/base16-chalk.dark.sh"
+BASE16_SHELL="$HOME/.config/base16-shell/base16-atelierseaside.dark.sh"
+BASE16_SHELL="$HOME/.config/base16-shell/base16-atelierlakeside.dark.sh"
+BASE16_SHELL="$HOME/.config/base16-shell/base16-atelierforest.dark.sh"
+BASE16_SHELL="$HOME/.config/base16-shell/base16-atelierdune.dark.sh"
+BASE16_SHELL="$HOME/.config/base16-shell/base16-brewer.dark.sh"
+BASE16_SHELL="$HOME/.config/base16-shell/base16-isotope.dark.sh"
+# Also modify: https://github.com/chriskempson/base16-xresources
+
 [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
 
