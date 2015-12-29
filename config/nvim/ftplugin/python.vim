@@ -3,7 +3,7 @@
 nnoremap <buffer> <Leader>i :terminal python -i '%'<CR>
 
 " Lint
-function Pylint()
+function! Pylint()
     silent !pylint --reports=n --output-format=parseable '%' > /tmp/errors.err 2> /dev/null
     cfile
     silent !rm /tmp/errors.err
@@ -14,7 +14,7 @@ endfunction
 nnoremap <buffer> <Leader>x :call Pylint()<CR>
 
 " Folding
-function PythonFold(lnum)
+function! PythonFold(lnum)
     if getline(a:lnum-1) =~ '^\s*def\s' || getline(a:lnum-1) =~ '^\s*class\s'
         return indent(a:lnum-1) / 4 + 1
     endif
@@ -30,7 +30,7 @@ function PythonFold(lnum)
     return '='
 endfunction
 
-function PythonFoldText()
+function! PythonFoldText()
     return repeat(' ', indent(v:foldstart - 1) + 4) . '+'
 endfunction
 

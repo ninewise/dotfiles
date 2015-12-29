@@ -7,7 +7,7 @@ setlocal tabstop=2
 setlocal shiftwidth=2
 
 " Folding
-function RubyFold(lnum)
+function! RubyFold(lnum)
     if getline(a:lnum) =~ '^\s*def\s' || getline(a:lnum) =~ '^\s*class\s' || getline(a:lnum) =~ '^\s*module\s'
         return indent(a:lnum) / 2 + 1
     endif
@@ -20,7 +20,7 @@ function RubyFold(lnum)
     return '='
 endfunction
 
-function RubyFoldText()
+function! RubyFoldText()
     return getline(v:foldstart) . ' +'
 endfunction
 
