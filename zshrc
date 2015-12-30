@@ -40,10 +40,10 @@ PATH="$HOME/.local/bin":"$PATH"
 #export GEM_HOME="$(ruby -e 'puts Gem.user_dir')"
 
 # For vim
-EDITOR="vim"
-stty -ixon # turn of <C-s> for vimshell
-alias vi="vim"
-alias nano="vim"
+export EDITOR="nvim"
+#stty -ixon # turn of <C-s> for vimshell
+alias vi="nvim"
+alias nano="nvim"
 
 # GPG ssh tty
 export GPG_TTY=$(tty)
