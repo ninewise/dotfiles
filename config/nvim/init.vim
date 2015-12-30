@@ -37,11 +37,11 @@ nnoremap <Up>       <NOP>
 nnoremap <Down>     <NOP>
 nnoremap <Left>     <NOP>
 nnoremap <Right>    <NOP>
-nnoremap <Leader>gg <C-w><C-w>
-nnoremap <Leader>gh <C-w>h
-nnoremap <Leader>gj <C-w>j
-nnoremap <Leader>gk <C-w>k
-nnoremap <Leader>gl <C-w>l
+nnoremap <Leader>wg <C-w><C-w>
+nnoremap <Leader>wh <C-w>h
+nnoremap <Leader>wj <C-w>j
+nnoremap <Leader>wk <C-w>k
+nnoremap <Leader>wl <C-w>l
 
 " Not too much folding
 set foldlevelstart=2
@@ -49,6 +49,11 @@ set foldlevelstart=2
 " Hmmmm neovim terminals
 nnoremap <Leader>s :vsplit +:terminal<CR>
 tnoremap <Esc> <C-\><C-n>
+
+" Quickfixing
+nnoremap <Leader>co :copen<CR>
+nnoremap <Leader>cn :cnext<CR>
+nnoremap <Leader>cp :cprevious<CR>
 
 "  General Options }}}
 
@@ -72,12 +77,14 @@ Plug 'chriskempson/base16-vim'
 
 Plug 'junegunn/vim-after-object'
 Plug 'junegunn/vim-peekaboo'
+Plug 'takac/vim-hardtime'
+Plug 'mhinz/vim-grepper'
 call plug#end()
 
 " Plugin configuration
 " --------------------
 let g:ctrlp_map='<Leader>l'
-let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+let g:ctrlp_user_command=['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
 let g:airline_powerline_fonts=1
 
@@ -98,7 +105,7 @@ nmap     <Leader>f <Plug>(easymotion-s)
 nmap     <Leader>j <Plug>(easymotion-j)
 nmap     <Leader>k <Plug>(easymotion-k)
 
-let g:ycm_global_ycm_extra_conf = '~/.config/nvim/ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf='~/.config/nvim/ycm_extra_conf.py'
 "set completeopt=menu
 
 let base16colorspace=256
@@ -107,6 +114,12 @@ colorscheme base16-colors
 highlight LineNr ctermfg=08 ctermbg=NONE
 
 autocmd VimEnter * call after_object#enable('=', ':', '-', '#', ' ')
+
+let g:hardtime_default_on=1
+let g:hardtime_ignore_quickfix=1
+let g:hardtime_maxcount=2
+
+nnoremap <Leader>g :Grepper<CR>
 "  Plugged }}}
 
 " vim: foldmethod=marker
