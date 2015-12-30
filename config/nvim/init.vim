@@ -79,6 +79,9 @@ Plug 'junegunn/vim-after-object'
 Plug 'junegunn/vim-peekaboo'
 Plug 'takac/vim-hardtime'
 Plug 'mhinz/vim-grepper'
+Plug 'neovimhaskell/haskell-vim'
+Plug 'kassio/neoterm'
+Plug 'brettanomyces/nvim-editcommand'
 call plug#end()
 
 " Plugin configuration
@@ -120,6 +123,16 @@ let g:hardtime_ignore_quickfix=1
 let g:hardtime_maxcount=2
 
 nnoremap <Leader>g :Grepper<CR>
+
+let g:haskell_enable_quantification=1
+let g:haskell_enable_recursivedo=1
+let g:haskell_enable_arrowsyntax=1
+let g:haskell_enable_pattern_synonyms=1
+let g:haskell_enable_typeroles=1
+let g:haskell_enable_static_pointers=1
+
+let g:edticommand_no_mappings=1
+tmap <C-e> <Plug>EditCommand
 "  Plugged }}}
 
 " vim: foldmethod=marker
