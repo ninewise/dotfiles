@@ -42,6 +42,7 @@ PATH="$HOME/.local/bin":"$PATH"
 # For vim
 export EDITOR="nvim"
 #stty -ixon # turn of <C-s> for vimshell
+alias vim="sl"
 alias vi="nvim"
 alias nano="nvim"
 
