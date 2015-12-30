@@ -11,7 +11,7 @@ pair="$(zenity --password --username --title="Password Calculator")"
 alias_="${pair%|*}"
 secret="${pair#*|}"
 
-pass="$(echo -n "$secret$alias_" | shasum | xxd -r -p | base64 | colrm 17)"
+pass="$(echo -n "$secret$alias_" | shasum | sed 's/../\\\\x&/g' | xargs echo -e | base64 | colrm 17)"
 
 echo -n "$pass" | xclip
 echo -n "$pass" | xclip -sel c
