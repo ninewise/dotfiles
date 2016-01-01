@@ -82,6 +82,7 @@ Plug 'mhinz/vim-grepper'
 Plug 'neovimhaskell/haskell-vim'
 Plug 'kassio/neoterm'
 Plug 'brettanomyces/nvim-editcommand'
+Plug 'benekastah/neomake'
 call plug#end()
 
 " Plugin configuration
