@@ -27,25 +27,25 @@
 ! cyan
 ! white
 
-! Base16 Isotope
-! Scheme: Jan T. Sott
+! Base16 Brewer
+! Scheme: Timothée Poisot (http://github.com/tpoisot)
 
-#define base00 #000000
-#define base01 #404040
-#define base02 #606060
-#define base03 #808080
-#define base04 #c0c0c0
-#define base05 #d0d0d0
-#define base06 #e0e0e0
-#define base07 #ffffff
-#define base08 #ff0000
-#define base09 #ff9900
-#define base0A #ff0099
-#define base0B #33ff00
-#define base0C #00ffff
-#define base0D #0066ff
-#define base0E #cc00ff
-#define base0F #3300ff
+#define base00 #0c0d0e
+#define base01 #2e2f30
+#define base02 #515253
+#define base03 #737475
+#define base04 #959697
+#define base05 #b7b8b9
+#define base06 #dadbdc
+#define base07 #fcfdfe
+#define base08 #e31a1c
+#define base09 #e6550d
+#define base0A #dca060
+#define base0B #31a354
+#define base0C #80b1d3
+#define base0D #3182bd
+#define base0E #756bb1
+#define base0F #b15928
 
 *.foreground:   base05
 *.background:   base00

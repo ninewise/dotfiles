@@ -75,7 +75,6 @@ BASE16_SHELL="$HOME/.config/base16-shell/base16-atelierlakeside.dark.sh"
 BASE16_SHELL="$HOME/.config/base16-shell/base16-atelierforest.dark.sh"
 BASE16_SHELL="$HOME/.config/base16-shell/base16-atelierdune.dark.sh"
 BASE16_SHELL="$HOME/.config/base16-shell/base16-brewer.dark.sh"
-BASE16_SHELL="$HOME/.config/base16-shell/base16-isotope.dark.sh"
 # Also modify: https://github.com/chriskempson/base16-xresources
 
 [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
