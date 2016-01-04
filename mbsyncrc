@@ -6,17 +6,33 @@ User            "felix.vanderjeugt@gmail.com"
 PassCmd         "gpg -u Noctua -q --for-your-eyes-only --no-tty -d ~/.config/passwords.gpg | sed -n 's/gmail=//p'"
 SSLType         "IMAPS"
 CertificateFile "/etc/ssl/certs/ca-certificates.crt"
+
+IMAPAccount     ugent
+Host            "mail.ugent.be"
+User            "felix.vanderjeugt@ugent.be"
+PassCmd         "gpg -u Noctua -q --for-your-eyes-only --no-tty -d ~/.config/passwords.gpg | sed -n 's/ugent=//p'"
+SSLTYPE         "STARTTLS"
+CertificateFile "/etc/ssl/certs/ca-certificates.crt"
 # }}} Accounts
 
 # Remote Stores {{{
 IMAPStore gmail-remote
 Account   "gmail"
+
+IMAPStore ugent-remote
+Account   "ugent"
 # }}}
 
 # Local Stores {{{
 MaildirStore gmail-local
 Path         "/mnt/lexicon/Mail/gmail/"
 Inbox        "/mnt/lexicon/Mail/gmail/Inbox"
+
+MaildirStore ugent-local
+Path         "/mnt/lexicon/Mail/ugent/"
+Inbox        "/mnt/lexicon/Mail/ugent/Inbox"
+Trash        "/mnt/lexicon/Mail/ugent/Trash"
+SubFolders   "Verbatim"
 # }}}
 
 # Channels {{{
@@ -39,6 +55,13 @@ Channel   gmail-trash
 Master    ":gmail-remote:[Google Mail]/Bin"
 Slave     ":gmail-local:Trash"
 Create    "Slave"
+SyncState "*"
+
+Channel   ugent
+Master    ":ugent-remote:"
+Slave     ":ugent-local:"
+Create    "Slave"
+Patterns  "*"
 SyncState "*"
 # }}}
 
