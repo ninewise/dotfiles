@@ -1,5 +1,7 @@
 #!/bin/sh
 
+xsecurelock  # force login before further initing
+
 userresources=$HOME/.config/Xresources
 usermodmap=$HOME/.Xmodmap
 sysresources=/etc/X11/xinit/.Xresources
@@ -44,11 +46,13 @@ forklog xautolock -time 1 -locker xsecurelock
 forklog xset dpms 0 0 50 s off
 
 # Start herbstluftwm in locked mode. Is unlocked after autostart.
-exec xmonad
+xmonad
 
 # Cleaning up
 pkill redshift
 pkill dunst
 pkill xcape
 pkill xautolock
+
+wait
 
