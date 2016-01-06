@@ -1,0 +1,2 @@
+#!/bin/bash
+exec xloadimage -fullscreen -windowid $XSCREENSAVER_WINDOW /home/felix/.config/screensaver_image

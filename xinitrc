@@ -1,6 +1,6 @@
 #!/bin/sh
 
-xsecurelock  # force login before further initing
+xsecurelock auth_pam_x11 saver_image  # force login before further initing
 
 userresources=$HOME/.config/Xresources
 usermodmap=$HOME/.Xmodmap
@@ -55,4 +55,6 @@ pkill xcape
 pkill xautolock
 
 wait
+
+systemctl poweroff
 
