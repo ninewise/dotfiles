@@ -1,7 +1,5 @@
 #!/bin/sh
 
-xsecurelock auth_pam_x11 saver_image  # force login before further initing
-
 userresources=$HOME/.config/Xresources
 usermodmap=$HOME/.Xmodmap
 sysresources=/etc/X11/xinit/.Xresources
@@ -45,5 +43,12 @@ forklog bash ~/.fehbg
 forklog xautolock -time 1 -locker xsecurelock
 forklog xset dpms 0 0 50 s off
 
-exec xmonad
+xmonad
+
+pkill redshift
+pkill dunst
+pkill xcape
+pkill xautolock
+
+wait
 
