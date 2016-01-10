@@ -4,23 +4,24 @@
 set -e
 
 sshhost="Flesje"
-fles="http://flashyoshi.me"
+fles="http://t2-wan.be"
+port="7070"
 
 # Find ssh username
 user=$(
     # Join config entries
     sed -n '$!{/host /I!{H;d}};x;s/\n/ /g;p' $HOME/.ssh/config  |
     # Extract user/host combinations
-    grep -i 'user' |
+    grep -i 'user' | tr -s ' ' ' ' |
     sed 's/^.*host \([^ \t]\+\).*user \([^ \t]\+\).*$/\1 \2/I' |
     # Find user
     (grep "^$sshhost" || echo $USER) | cut -d ' ' -f 2 )
-    
+
 file="$(mktemp XXXXXX.png)"
 escrotum $* "$file"
-chmod 755 $file
+chmod 644 $file
 scp -p $file $sshhost:~/images/
 rm "$file"
-url="$fles:8080/~$user/images/$file"
+url="$fles:$port/~$user/$file"
 notify-send "Screenshot uploaded to $url"
 echo "$url" | xclip
