@@ -8,10 +8,11 @@ SSLType         "IMAPS"
 CertificateFile "/etc/ssl/certs/ca-certificates.crt"
 
 IMAPAccount     ugent
-Host            "mail.ugent.be"
+Host            "owa.ugent.be"
 User            "felix.vanderjeugt@ugent.be"
 PassCmd         "gpg -u Noctua -q --for-your-eyes-only --no-tty -d ~/.config/passwords.gpg | sed -n 's/ugent=//p'"
-SSLTYPE         "STARTTLS"
+AuthMechs       "PLAIN"
+SSLTYPE         "IMAPS"
 CertificateFile "/etc/ssl/certs/ca-certificates.crt"
 # }}} Accounts
 
@@ -60,7 +61,8 @@ SyncState "*"
 Channel   ugent
 Master    ":ugent-remote:"
 Slave     ":ugent-local:"
-Create    "Slave"
+Create    "both"
+Expunge   "both"
 Patterns  "*"
 SyncState "*"
 # }}}
