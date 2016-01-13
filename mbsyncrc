@@ -42,14 +42,12 @@ Master    ":gmail-remote:"
 Slave     ":gmail-local:"
 Create    "Slave"
 Pattern   "INBOX"
-#Expunge   "Slave"
 SyncState "*"
 
 Channel   gmail-sent
 Master    ":gmail-remote:[Google Mail]/Sent Mail"
 Slave     ":gmail-local:Sent"
 Create    "Slave"
-#Expunge   "Slave"
 SyncState "*"
 
 Channel   gmail-trash
@@ -58,12 +56,22 @@ Slave     ":gmail-local:Trash"
 Create    "Slave"
 SyncState "*"
 
-Channel   ugent
-Master    ":ugent-remote:"
+Channel   ugent-inbox
+Master    ":ugent-remote:Inbox"
 Slave     ":ugent-local:"
-Create    "both"
-Expunge   "both"
-Patterns  "*"
+Create    "Slave"
+SyncState "*"
+
+Channel   ugent-sent
+Master    ":ugent-remote:Verzonden Items"
+Slave     ":ugent-local:Sent"
+Create    "Slave"
+SyncState "*"
+
+Channel   ugent-trash
+Master    ":ugent-remote:Verwijderde Items"
+Slave     ":ugent-local:Trash"
+Create    "Slave"
 SyncState "*"
 # }}}
 
@@ -72,6 +80,11 @@ Group   gmail
 Channel "gmail-inbox"
 Channel "gmail-sent"
 Channel "gmail-trash"
+
+Group   ugent
+Channel "ugent-inbox"
+Channel "ugent-sent"
+Channel "ugent-trash"
 # }}}
 
 # vim: foldmethod=marker
