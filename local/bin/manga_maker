@@ -11,6 +11,8 @@ unzip "$input" | sed -n 's/.*extracting: \(.*\)/\1/p' > "$image_files"
 # makeing them pdf's
 cat "$image_files" <(echo "-compress jpeg") <(echo "$output") | xargs convert
 
+# convert *.jpg -compress jpeg -resize 1240x1753 -units PixelsPerInch -density 150x150 -page a4 second.pdf
+
 cat "$image_files" | xargs rm
 rm "$image_files"
 
