@@ -31,6 +31,7 @@
   id: 2
   labels:
   - GMail
+  - Sent
 - !supmua.org,2006-10-01/Redwood/Maildir
   uri: maildir:/mnt/lexicon/Mail/ugent/Sent
   usual: true
@@ -39,6 +40,7 @@
   id: 4
   labels:
   - UGent
+  - Sent
 - !supmua.org,2006-10-01/Redwood/Maildir
   uri: maildir:/mnt/lexicon/Mail/12ul/Sent
   usual: true
@@ -47,4 +49,5 @@
   id: 6
   labels:
   - 12UL
+  - Sent
 - !supmua.org,2006-10-01/Redwood/SentLoader {}
