@@ -108,13 +108,12 @@ myFocusedBorderColor = "#ff0000"
 myScratchPads :: [NamedScratchpad]
 myScratchPads =
     [ interm "ranger"     nonFloating
-    , interm "weechat"    centerFloating
-    , interm "sup"        centerFloating
-    , interm "newsbeuter" centerFloating
-    , interm "vimus" centerFloating
+    , interm "weechat"    nonFloating
+    , interm "sup"        nonFloating
+    , interm "newsbeuter" nonFloating
+    , interm "vimus"      nonFloating
     ]
   where
-    centerFloating = customFloating $ W.RationalRect 0.05 0.05 0.9 0.9 -- x, y, w, h
     interm prog = NS prog (runInTerminal prog prog) (appName =? prog)
 
 
@@ -381,7 +380,7 @@ main = xmonad =<< withBar defaults
 --
 -- No need to modify this.
 --
-defaults = defaultConfig {
+defaults = def {
       -- simple stuff
         terminal           = myTerminal,
         focusFollowsMouse  = myFocusFollowsMouse,
