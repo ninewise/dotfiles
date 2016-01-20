@@ -65,30 +65,28 @@ nnoremap <Leader>cp :cprevious<CR>
 call plug#begin('~/.config/nvim/plugged')
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'bling/vim-airline'
-Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'junegunn/vim-easy-align'
 Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-fugitive'
-Plug 'rust-lang/rust.vim'
+Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 Plug 'Valloric/YouCompleteMe'
 Plug 'chriskempson/base16-vim'
-"Plugin 'LaTeX-Box-Team/LaTeX-Box'
-"Plugin 'chase/vim-ansible-yaml'
+Plug 'LaTeX-Box-Team/LaTeX-Box', { 'for': 'tex' }
+Plug 'chase/vim-ansible-yaml', { 'for': 'yaml' }
 
-Plug 'junegunn/vim-after-object'
 Plug 'junegunn/vim-peekaboo'
 Plug 'takac/vim-hardtime'
-Plug 'mhinz/vim-grepper'
+Plug 'mhinz/vim-grepper', { 'on': 'Grepper' }
 Plug 'neovimhaskell/haskell-vim'
-Plug 'kassio/neoterm'
-Plug 'brettanomyces/nvim-editcommand'
-Plug 'benekastah/neomake'
+Plug 'kassio/neoterm', { 'on': 'T' }
+
 call plug#end()
 
 " Plugin configuration
 " --------------------
 let g:ctrlp_map='<Leader>l'
-let g:ctrlp_user_command=['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+let g:ctrlp_user_command=['.git/', 'git --git-dir=%s/.git ls-files . -co --exclude-standard']
 
 let g:airline_powerline_fonts=1
 
@@ -104,20 +102,18 @@ xnoremap <Leader>a <Plug>(EasyAlign)
 nmap     <Leader>a <Plug>(EasyAlign)
 
 let g:EasyMotion_do_mapping=0
-nmap     <Leader>w <Plug>(easymotion-w)
-nmap     <Leader>f <Plug>(easymotion-s)
-nmap     <Leader>j <Plug>(easymotion-j)
-nmap     <Leader>k <Plug>(easymotion-k)
+map      <Leader>w <Plug>(easymotion-w)
+map      <Leader>f <Plug>(easymotion-s)
+map      <Leader>j <Plug>(easymotion-j)
+map      <Leader>k <Plug>(easymotion-k)
 
 let g:ycm_global_ycm_extra_conf='~/.config/nvim/ycm_extra_conf.py'
-"set completeopt=menu
+set completeopt=menu
 
 let base16colorspace=256
 colorscheme base16-colors
 " damn base16's grey linenr background
 highlight LineNr ctermfg=08 ctermbg=NONE
-
-autocmd VimEnter * call after_object#enable('=', ':', '-', '#', ' ')
 
 let g:hardtime_default_on=1
 let g:hardtime_ignore_quickfix=1
@@ -131,9 +127,6 @@ let g:haskell_enable_arrowsyntax=1
 let g:haskell_enable_pattern_synonyms=1
 let g:haskell_enable_typeroles=1
 let g:haskell_enable_static_pointers=1
-
-let g:editcommand_no_mappings=1
-tmap <C-e> <Plug>EditCommand
 "  Plugged }}}
 
 " vim: foldmethod=marker
