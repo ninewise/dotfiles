@@ -127,7 +127,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     [ ((modm .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf)
 
     -- launch program launcher
-    , ((0,                  xK_Scroll_Lock), spawn $ logged "rofi -show run")
+    , ((0,                  xK_Scroll_Lock), spawn $ logged "dmenu_run")
 
     -- close focused window
     , ((modm .|. shiftMask, xK_c     ), kill)
@@ -203,6 +203,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm .|. controlMask, xK_m), namedScratchpadAction myScratchPads "sup")
     , ((modm .|. controlMask, xK_n), namedScratchpadAction myScratchPads "newsbeuter")
     , ((modm .|. controlMask, xK_v), namedScratchpadAction myScratchPads "vimus")
+    , ((modm, xK_s), spawn $ silent "abduco_run")
 
     -- Dmenu open programs
     , ((modm .|. shiftMask, xK_Tab), gotoMenuArgs ["-l", "10"])
