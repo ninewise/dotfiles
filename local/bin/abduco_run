@@ -1,2 +1,3 @@
 #!/bin/bash
-dmenu_path | dmenu | xargs --replace={} urxvtc -e abduco -A {} {}
+command="$(dmenu_path | dmenu)"
+urxvtc -e abduco -A "$command" $command
