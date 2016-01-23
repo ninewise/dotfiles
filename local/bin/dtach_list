@@ -1,0 +1,5 @@
+#!/bin/bash
+socketdir="${XDG_CACHE_HOME:-$HOME/.cache}/dtach"
+mkdir -p "$socketdir"
+session="$(ls "$socketdir" | dmenu)"
+urxvtc -e dtach -a "$socketdir/$session"

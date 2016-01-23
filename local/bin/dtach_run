@@ -1,0 +1,5 @@
+#!/bin/bash
+socketdir="${XDG_CACHE_HOME:-$HOME/.cache}/dtach"
+mkdir -p "$socketdir"
+command="$(dmenu_path | dmenu)"
+urxvtc -e dtach -A "$socketdir/$command" $command
