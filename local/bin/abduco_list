@@ -1,0 +1,3 @@
+#!/bin/bash
+session="$(abduco | tail -n +2 | cut -f3 | dmenu)"
+urxvtc -e abduco -a "$session"

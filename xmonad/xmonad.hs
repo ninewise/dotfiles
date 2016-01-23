@@ -184,8 +184,8 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((0, xF86XK_MonBrightnessUp), spawn "xbacklight -inc 10")
     , ((0, xF86XK_MonBrightnessDown), spawn "xbacklight -dec 10")
 
-    , ((modm, xK_s), spawn $ silent "dtach_run")
-    , ((modm, xK_a), spawn $ silent "dtach_list")
+    , ((modm, xK_s), spawn $ silent "abduco_run")
+    , ((modm, xK_a), spawn $ silent "abduco_list")
 
     -- Screens
     , ((modm .|. shiftMask, xK_p), spawn $ silent "push.sh")
