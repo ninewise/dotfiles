@@ -17,3 +17,8 @@ echo -n "$pass" | xclip
 echo -n "$pass" | xclip -sel c
 notify-send "xclip set to ${pass:0:3}...${pass:(-3):3}"
 
+sleep 2
+cat -A /dev/urandom | head -c10 | xclip
+cat -A /dev/urandom | head -c10 | xclip -sel c
+notify-send "cleaned xclip"
+
