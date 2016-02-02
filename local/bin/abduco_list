@@ -1,5 +1,7 @@
 #!/bin/bash
 session="$(abduco | tail -n +2 | cut -f3 | dmenu)"
 if [ ! -z "$session" ]; then
-    urxvtc -e abduco -a "$session"
+    if abduco | grep -q "$session"; then
+        urxvtc -e abduco -a "$session"
+    fi
 fi
