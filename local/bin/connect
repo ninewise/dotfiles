@@ -1,0 +1,3 @@
+#!/bin/bash
+profile="$(netctl list | dmenu | sed 's/.* //')"
+urxvtc -e sudo netctl switch-to "$profile"
