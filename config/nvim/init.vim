@@ -37,11 +37,6 @@ nnoremap <Up>       <NOP>
 nnoremap <Down>     <NOP>
 nnoremap <Left>     <NOP>
 nnoremap <Right>    <NOP>
-nnoremap <Leader>wg <C-w><C-w>
-nnoremap <Leader>wh <C-w>h
-nnoremap <Leader>wj <C-w>j
-nnoremap <Leader>wk <C-w>k
-nnoremap <Leader>wl <C-w>l
 
 " Not too much folding
 set foldlevelstart=2
