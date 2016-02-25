@@ -76,7 +76,6 @@ Plug 'LaTeX-Box-Team/LaTeX-Box', { 'for': 'tex' }
 Plug 'chase/vim-ansible-yaml', { 'for': 'yaml' }
 
 Plug 'junegunn/vim-peekaboo'
-Plug 'takac/vim-hardtime'
 Plug 'mhinz/vim-grepper', { 'on': 'Grepper' }
 Plug 'neovimhaskell/haskell-vim'
 Plug 'kassio/neoterm', { 'on': 'T' }
@@ -102,10 +101,18 @@ xnoremap <Leader>a <Plug>(EasyAlign)
 nmap     <Leader>a <Plug>(EasyAlign)
 
 let g:EasyMotion_do_mapping=0
-map      <Leader>w <Plug>(easymotion-w)
+let g:EasyMotion_startofline=0
+map      <Leader>w <Plug>(easymotion-bd-w)
 map      <Leader>f <Plug>(easymotion-s)
 map      <Leader>j <Plug>(easymotion-j)
 map      <Leader>k <Plug>(easymotion-k)
+nmap     <Leader>L <Plug>(easymotion-overwin-line)
+nmap     <Leader>w <Plug>(easymotion-overwin-w)
+map      /         <Plug>(easymotion-sn)
+omap     /         <Plug>(easymotion-tn)
+map      n         <Plug>(easymotion-next)
+map      N         <Plug>(easymotion-prev)
+set nohlsearch
 
 let g:ycm_global_ycm_extra_conf='~/.config/nvim/ycm_extra_conf.py'
 set completeopt=menu
@@ -114,10 +121,6 @@ let base16colorspace=256
 colorscheme base16-colors
 " damn base16's grey linenr background
 highlight LineNr ctermfg=08 ctermbg=NONE
-
-let g:hardtime_default_on=1
-let g:hardtime_ignore_quickfix=1
-let g:hardtime_maxcount=2
 
 nnoremap <Leader>g :Grepper<CR>
 
