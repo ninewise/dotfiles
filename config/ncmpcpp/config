@@ -245,7 +245,6 @@ media_library_primary_tag = genre
 ## Available values: wrapped, normal.
 #default_find_mode = wrapped
 ## Available values: add, select.
-default_space_mode = select
 #default_tag_editor_pattern = %n - %t
 #header_visibility = yes
 #statusbar_visibility = yes
