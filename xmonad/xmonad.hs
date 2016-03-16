@@ -17,9 +17,6 @@
 --
 
 import XMonad
-import XMonad.Hooks.DynamicLog
-import XMonad.Layout.NoBorders
-import XMonad.Layout.Grid
 import Graphics.X11.ExtraTypes.XF86
 import Data.Monoid
 import System.Exit
@@ -249,7 +246,19 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
 -- The available layouts.  Note that each layout is separated by |||,
 -- which denotes layout choice.
 --
-myLayoutHook = smartBorders $ Full ||| GridRatio (4/3)
+myLayoutHook = Full ||| tiled
+  where
+    -- default tiling algorithm partitions the screen into two panes
+    tiled = Tall nmaster delta ratio
+    
+    -- The default number of windows in the master pane
+    nmaster = 1
+
+    -- Default proportion of screen occupied by master pane
+    ratio = 1/2
+
+    -- Percent of screen to increment by while resizing panes
+    delta = 3/100
 
 ------------------------------------------------------------------------
 -- Window rules:
@@ -322,36 +331,12 @@ myStartupHook :: X ()
 myStartupHook = return ()
 
 ------------------------------------------------------------------------
--- I'm adding the xmobar configuration here.
-
--- Custom PP, configure it as you like. It determines what is being
--- written to the bar.
-myPP :: PP
-myPP = xmobarPP { ppCurrent         = xmobarColor "red" ""
-                , ppVisible         = xmobarColor "orange" ""
-                , ppHidden          = \n -> if n == "NSP" then "" else n
-                , ppHiddenNoWindows = const ""
-                , ppUrgent          = xmobarColor "green" ""
-                , ppSep             = " - "
-                , ppWsSep           = " "
-                , ppOrder           = \(ws:_) -> [ws]
-                -- ...
-                }
-
--- Key binding to toggle the gap for the bar.
-toggleStrutsKey :: XConfig Layout -> (KeyMask, KeySym)
-toggleStrutsKey XConfig {XMonad.modMask = m} = (m, xK_b)
-
--- Bar.
-withBar = statusBar "xmobar" myPP toggleStrutsKey
-
-------------------------------------------------------------------------
 -- Now run xmonad with all the defaults we set up.
 
 -- Run xmonad with the settings you specify. No need to modify this.
 --
 main :: IO ()
-main = xmonad =<< withBar defaults
+main = xmonad defaults
 
 -- A structure containing your configuration settings, overriding
 -- fields in the default config. Any you don't override, will
