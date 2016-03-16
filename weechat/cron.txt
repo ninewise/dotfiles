@@ -2,4 +2,3 @@
 # WeeChat crontab for script cron.py
 # format: min hour monthday month weekday repeat buffer command args
 #
-1 * * * * * irc.zeus.#plusplusplusplus command /repeat 50 /say plus!
