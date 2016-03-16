@@ -36,19 +36,13 @@ forklog() {
     $* 2>&1 | logger &
 }
 
-forklog redshift
-forklog dunst
+# forklog dunst
 forklog xcape -t 100 -e 'Super_L=Scroll_Lock;Shift_L=Escape'
-forklog bash ~/.fehbg
+forklog sh ~/.fehbg
 forklog xautolock -time 1 -locker xsecurelock
 forklog xset dpms 0 0 50 s off
 
-xmonad
+#forklog sxhkd -c ~/.config/sxhkd/sxhkd.conf
+#exec nwm
 
-pkill redshift
-pkill dunst
-pkill xcape
-pkill xautolock
-
-wait
-
+exec xmonad
