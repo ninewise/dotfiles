@@ -1,6 +1,6 @@
 
 # Lines configured by zsh-newuser-install
-HISTFILE=~/.histfile
+HISTFILE=~/.local/share/zsh/histfile
 HISTSIZE=1000
 SAVEHIST=1000
 setopt appendhistory
@@ -33,7 +33,7 @@ alias ls="ls --color=auto"
 PATH="$HOME/.local/bin":"$PATH"
 
 # Cabal
-#export PATH="$HOME/.cabal/bin":"$PATH"
+export PATH="$HOME/.cabal/bin":"$PATH"
 
 # Gems
 #export PATH="$(ruby -rubygems -e "puts Gem.user_dir")/bin":"$PATH"
@@ -42,17 +42,9 @@ PATH="$HOME/.local/bin":"$PATH"
 # For vim
 export EDITOR="nvim"
 #stty -ixon # turn of <C-s> for vimshell
-alias vim="sl"
+alias vim="nvim"
 alias vi="nvim"
 alias nano="nvim"
-
-# GPG ssh tty
-export GPG_TTY=$(tty)
-envoy -t gpg-agent
-source <(envoy -p)
-
-# Syntax highlighting
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Don't type that config location al the time.
 alias ncmpcpp="ncmpcpp -c ~/.config/ncmpcpp/config"
