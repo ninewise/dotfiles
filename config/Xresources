@@ -85,10 +85,11 @@
 urxvt.termName: rxvt-unicode
 
 ! Perls
+URXvt.perl-lib:         /home/noctua/.config/urxvt/ext/
 URxvt.perl-ext-common:  default,matcher,font-size
 
 ! matcher: clickable urls
-URxvt.url-launcher:     /home/felix/.local/bin/open.sh
+URxvt.url-launcher:     /home/noctua/.local/bin/open.sh
 URxvt.matcher.button:   1
 
 ! font-size: zooming live
