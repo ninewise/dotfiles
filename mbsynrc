@@ -26,13 +26,13 @@ Account   "ugent"
 
 # Local Stores {{{
 MaildirStore gmail-local
-Path         "/mail/gmail/"
-Inbox        "/mail/gmail/Inbox"
+Path         "/data/mail/gmail/"
+Inbox        "/data/mail/gmail/Inbox"
 
 MaildirStore ugent-local
-Path         "/mail/ugent/"
-Inbox        "/mail/ugent/Inbox"
-Trash        "/mail/ugent/Trash"
+Path         "/data/mail/ugent/"
+Inbox        "/data/mail/ugent/Inbox"
+Trash        "/data/mail/ugent/Trash"
 # }}}
 
 # Channels {{{
