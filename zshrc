@@ -30,14 +30,10 @@ PS1="[%*] %{$fg[red]%}%n@%m%{$reset_color%} %{$fg[green]%}%~%{$reset_color%} "'$
 alias ls="ls --color=auto"
 
 # Local scripts
-PATH="$HOME/.local/bin":"$PATH"
-
-# Cabal
+export PATH="$HOME/.local/bin":"$PATH"
 export PATH="$HOME/.cabal/bin":"$PATH"
-
-# Gems
-#export PATH="$(ruby -rubygems -e "puts Gem.user_dir")/bin":"$PATH"
-#export GEM_HOME="$(ruby -e 'puts Gem.user_dir')"
+export PATH="$(ruby -rubygems -e "puts Gem.user_dir")/bin":"$PATH"
+export GEM_HOME="$(ruby -e 'puts Gem.user_dir')"
 
 # For vim
 export EDITOR="nvim"
