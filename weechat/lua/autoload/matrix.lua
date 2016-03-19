@@ -1,1 +1,1 @@
-/home/felix/.weechat/lua/matrix.lua
+../matrix.lua

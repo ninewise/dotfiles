@@ -1,4 +1,4 @@
-#!/bin/env python
+#!/bin/env python3
 # Filter items not containing keywords (given as parameters) from a rss feed.
 # Reads stdin, writes stdout.
 

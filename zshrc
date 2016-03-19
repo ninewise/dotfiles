@@ -1,6 +1,6 @@
 
 # Lines configured by zsh-newuser-install
-HISTFILE=~/.histfile
+HISTFILE=~/.local/share/zsh/histfile
 HISTSIZE=1000
 SAVEHIST=1000
 setopt appendhistory
@@ -30,32 +30,21 @@ PS1="[%*] %{$fg[red]%}%n@%m%{$reset_color%} %{$fg[green]%}%~%{$reset_color%} "'$
 alias ls="ls --color=auto"
 
 # Local scripts
-PATH="$HOME/.local/bin":"$PATH"
-
-# Cabal
-#export PATH="$HOME/.cabal/bin":"$PATH"
-
-# Gems
-#export PATH="$(ruby -rubygems -e "puts Gem.user_dir")/bin":"$PATH"
-#export GEM_HOME="$(ruby -e 'puts Gem.user_dir')"
+export PATH="$HOME/.local/bin":"$PATH"
+export PATH="$HOME/.cabal/bin":"$PATH"
+export PATH="$(ruby -rubygems -e "puts Gem.user_dir")/bin":"$PATH"
+export GEM_HOME="$(ruby -e 'puts Gem.user_dir')"
 
 # For vim
 export EDITOR="nvim"
 #stty -ixon # turn of <C-s> for vimshell
-alias vim="sl"
+alias vim="nvim"
 alias vi="nvim"
 alias nano="nvim"
 
-# GPG ssh tty
-export GPG_TTY=$(tty)
-envoy -t gpg-agent
-source <(envoy -p)
-
-# Syntax highlighting
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
 # Don't type that config location al the time.
 alias ncmpcpp="ncmpcpp -c ~/.config/ncmpcpp/config"
+alias mbsync="mbsync -c ~/.config/mbsync/config"
 
 # Base16 Shell
 BASE16_SHELL="$HOME/.config/base16-shell/base16-greenscreen.dark.sh"

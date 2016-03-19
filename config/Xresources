@@ -85,10 +85,11 @@
 urxvt.termName: rxvt-unicode
 
 ! Perls
+URXvt.perl-lib:         /home/noctua/.config/urxvt/ext/
 URxvt.perl-ext-common:  default,matcher,font-size
 
 ! matcher: clickable urls
-URxvt.url-launcher:     /home/felix/.local/bin/open.sh
+URxvt.url-launcher:     /home/noctua/.local/bin/open.sh
 URxvt.matcher.button:   1
 
 ! font-size: zooming live
@@ -98,8 +99,8 @@ URxvt.iso14755:         false
 URxvt.iso14755_52:      false
 
 ! Use a nice truetype font and size by default... 
-URxvt.font: xft:Source Code Pro for Powerline:size=7
-URxvt.letterSpace: -1
+URxvt.font: xft:Source Code Pro:size=11
+URxvt.letterSpace: 0
 
 ! Foreground and transparent background ([xx] == xx% opacity)
 URxvt.depth: 32
@@ -123,87 +124,5 @@ xterm*background: rgb:00/00/00
 ! Using alt as a meta key.
 XTerm*metaSendsEscape: true
 
-! rofi configuration
-! ------------------
-
-rofi.modi:                           window,run,ssh
-rofi.opacity:                        100
-rofi.width:                          50
-rofi.lines:                          15
-rofi.columns:                        1
-rofi.font:                           mono 12
-rofi.fg:                             rgb:f8/f8/f8
-rofi.bg:                             rgb:00/00/00
-rofi.color-enabled:                  false
-rofi.color-normal:                   #fdf6e3,#002b36,#eee8d5,#586e75,#eee8d5
-rofi.color-urgent:                   #fdf6e3,#dc322f,#eee8d5,#dc322f,#fdf6e3
-rofi.color-active:                   #fdf6e3,#268bd2,#eee8d5,#268bd2,#fdf6e3
-rofi.color-window:                   #fdf6e3,#002b36
-rofi.fg-active:                      #268BD2
-rofi.fg-urgent:                      #DC322F
-rofi.hlfg-active:                    #FDF6E3
-rofi.hlfg-urgent:                    #FDF6E3
-rofi.bg-active:                      #FDF6E3
-rofi.bg-urgent:                      #FDF6E3
-rofi.hlbg-active:                    #268BD2
-rofi.hlbg-urgent:                    #DC322F
-rofi.bgalt:                          rgb:00/00/00
-rofi.hlfg:                           #EEE8D5
-rofi.hlbg:                           #586E75
-rofi.bc:                             #002B36
-rofi.bw:                             1
-rofi.location:                       0
-rofi.padding:                        5
-rofi.yoffset:                        0
-rofi.xoffset:                        0
-rofi.fixed-num-lines:                false
-rofi.terminal:                       urxvtc
-rofi.ssh-client:                     ssh
-rofi.ssh-command:                    {terminal} -e {ssh-client} {host}
-rofi.run-command:                    {cmd}
-!rofi.run-list-command:
-rofi.run-shell-command:              {terminal} -e {cmd}
-rofi.disable-history:                false
-rofi.levenshtein-sort:               false
-rofi.case-sensitive:                 false
-rofi.sidebar-mode:                   false
-rofi.lazy-filter-limit:              5000
-rofi.eh:                             1
-rofi.auto-select:                    false
-rofi.parse-hosts:                    false
-rofi.combi-modi:                     window,run
-rofi.pid:                            /run/user/1000/rofi.pid
-rofi.kb-primary-paste:               Control+Shift+v,Shift+Insert
-rofi.kb-secondary-paste:             Control+v,Insert
-rofi.kb-clear-line:                  Control+u
-rofi.kb-move-front:                  Control+a
-rofi.kb-move-end:                    Control+e
-rofi.kb-move-word-back:              Alt+b
-rofi.kb-move-word-forward:           Alt+f
-rofi.kb-move-char-back:              Left,Control+b
-rofi.kb-move-char-forward:           Right,Control+f
-rofi.kb-remove-word-back:            Control+Alt+h
-rofi.kb-remove-word-forward:         Control+Alt+d
-rofi.kb-remove-char-forward:         Delete,Control+d
-rofi.kb-remove-char-back:            BackSpace,Control+h
-rofi.kb-accept-entry:                Control+j,Control+m,Return,KP_Enter
-rofi.kb-accept-custom:               Control+Return
-rofi.kb-accept-entry-continue:       Shift+Return
-rofi.kb-mode-next:                   Shift+Right,Control+Tab
-rofi.kb-mode-previous:               Shift+Left,Control+Shift+Tab
-rofi.kb-toggle-case-sensitivity:     grave,dead_grave
-rofi.kb-delete-entry:                Shift+Delete
-rofi.kb-custom-1:                    Alt+1
-rofi.kb-custom-2:                    Alt+2
-rofi.kb-custom-3:                    Alt+3
-rofi.kb-custom-4:                    Alt+4
-rofi.kb-custom-5:                    Alt+5
-rofi.kb-custom-6:                    Alt+6
-rofi.kb-custom-7:                    Alt+7
-rofi.kb-custom-8:                    Alt+8
-rofi.kb-custom-9:                    Alt+9
-!rofi.key-window:
-!rofi.key-run:
-!rofi.key-ssh:
 
 ! vim: foldmethod=marker

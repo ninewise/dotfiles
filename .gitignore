@@ -13,5 +13,10 @@ vim/bundle
 vim/tmp
 vim/spell
 
+# runit user services
+services/*/supervise
+services/*/lock
+services/*/current
+
 # other
 *.pyc

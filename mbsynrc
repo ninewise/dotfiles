@@ -3,14 +3,14 @@
 IMAPAccount     gmail
 Host            "imap.gmail.com"
 User            "felix.vanderjeugt@gmail.com"
-PassCmd         "gpg -u Noctua -q --for-your-eyes-only --no-tty -d ~/.config/passwords.gpg | sed -n 's/gmail=//p'"
+PassCmd         "gpg2 -u Noctua -q --for-your-eyes-only --no-tty -d ~/.config/passwords.gpg | sed -n 's/gmail=//p'"
 SSLType         "IMAPS"
 CertificateFile "/etc/ssl/certs/ca-certificates.crt"
 
 IMAPAccount     ugent
 Host            "owa.ugent.be"
 User            "felix.vanderjeugt@ugent.be"
-PassCmd         "gpg -u Noctua -q --for-your-eyes-only --no-tty -d ~/.config/passwords.gpg | sed -n 's/ugent=//p'"
+PassCmd         "gpg2 -u Noctua -q --for-your-eyes-only --no-tty -d ~/.config/passwords.gpg | sed -n 's/ugent=//p'"
 AuthMechs       "PLAIN"
 SSLTYPE         "IMAPS"
 CertificateFile "/etc/ssl/certs/ca-certificates.crt"
@@ -26,14 +26,13 @@ Account   "ugent"
 
 # Local Stores {{{
 MaildirStore gmail-local
-Path         "/mnt/lexicon/Mail/gmail/"
-Inbox        "/mnt/lexicon/Mail/gmail/Inbox"
+Path         "/data/mail/gmail/"
+Inbox        "/data/mail/gmail/Inbox"
 
 MaildirStore ugent-local
-Path         "/mnt/lexicon/Mail/ugent/"
-Inbox        "/mnt/lexicon/Mail/ugent/Inbox"
-Trash        "/mnt/lexicon/Mail/ugent/Trash"
-SubFolders   "Verbatim"
+Path         "/data/mail/ugent/"
+Inbox        "/data/mail/ugent/Inbox"
+Trash        "/data/mail/ugent/Trash"
 # }}}
 
 # Channels {{{
