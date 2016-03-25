@@ -26,6 +26,14 @@ autoload -U colors && colors
 PS1="[%*] %{$fg[red]%}%n@%m%{$reset_color%} %{$fg[green]%}%~%{$reset_color%} "'$(git_status | xargs echo)'"
  %(?.$.%%) "; setopt promptsubst
 
+# XDG dirs
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_RUNTIME_DIR="/tmp/runtime-noctua"
+mkdir -p "/tmp/runtime-noctua"
+chmod 0700 /tmp/runtime-noctua
+
 # Color ls
 alias ls="ls --color=auto"
 
