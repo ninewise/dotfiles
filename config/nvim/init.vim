@@ -8,6 +8,7 @@ syntax enable
 set background=dark
 colorscheme darkblue
 
+set mouse=n         " fuck you, mouse
 set number          " line numbers on the right side
 set showcmd         " show the commands while typing
 set splitright      " open new splits on the right
@@ -110,6 +111,7 @@ map      N         <Plug>(easymotion-prev)
 set nohlsearch
 
 let g:ycm_global_ycm_extra_conf='~/.config/nvim/ycm_extra_conf.py'
+let g:ycm_rust_src_path='/data/programming/rustc-1.7.0/src'
 set completeopt=menu
 
 let base16colorspace=256
