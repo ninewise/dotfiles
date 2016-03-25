@@ -41,6 +41,7 @@ forklog xcape -t 100 -e 'Super_L=Scroll_Lock;Shift_L=Escape'
 forklog sh ~/.fehbg
 forklog xautolock -time 1 -locker xsecurelock
 forklog xset dpms 0 0 50 s off
+forklog yabar
 
 #forklog sxhkd -c ~/.config/sxhkd/sxhkd.conf
 #exec nwm
