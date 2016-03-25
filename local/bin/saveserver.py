@@ -1,4 +1,4 @@
-#!/bin/python
+#!/bin/python3
 
 from flask import Flask, request
 from werkzeug import secure_filename
