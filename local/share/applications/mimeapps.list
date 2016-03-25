@@ -1,4 +1,4 @@
 
 [Default Applications]
-x-sheme-handler/http=qutebrowser.desktop
-x-sheme-handler/https=qutebrowser.desktop
+x-scheme-handler/http=qutebrowser.desktop
+x-scheme-handler/https=qutebrowser.desktop
