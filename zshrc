@@ -26,6 +26,13 @@ autoload -U colors && colors
 PS1="[%*] %{$fg[red]%}%n@%m%{$reset_color%} %{$fg[green]%}%~%{$reset_color%} "'$(git_status | xargs echo)'"
  %(?.$.%%) "; setopt promptsubst
 
+# Loading fizsh
+source "$HOME/.config/zsh/zsh-history-substring-search.zsh"
+zmodload zsh/terminfo
+bindkey "$terminfo[kcuu1]" history-substring-search-up
+bindkey "$terminfo[kcud1]" history-substring-search-down
+setopt HIST_FIND_NO_DUPS
+
 # XDG dirs
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CONFIG_HOME="$HOME/.config"
