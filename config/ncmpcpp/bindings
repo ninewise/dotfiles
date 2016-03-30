@@ -231,6 +231,15 @@ def_key "l"
 #def_key "delete"
 #  delete_stored_playlist
 #
+def_key "d"
+  delete_playlist_items
+
+def_key "d"
+  delete_browser_items
+
+def_key "d"
+  delete_stored_playlist
+#
 #def_key "right"
 #  next_column
 #
