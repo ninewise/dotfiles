@@ -21,7 +21,7 @@ ncmpcpp_directory = ~/.config/ncmpcpp
 #mpd_port = 6600
 #mpd_connection_timeout = 5
 ## Needed for tag editor and file operations to work.
-mpd_music_dir = /mnt/lexicon/Music
+mpd_music_dir = /data/music
 #mpd_crossfade_time = 5
 # }}}
 
