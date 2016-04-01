@@ -1,0 +1,2 @@
+#!/bin/sh
+ICAROOT="$HOME/.icaclient/linuxx64" "$HOME/.icaclient/linuxx64/wfica" "$@"
