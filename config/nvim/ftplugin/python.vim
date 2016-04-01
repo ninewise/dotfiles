@@ -1,6 +1,6 @@
 
 " Interactive
-nnoremap <buffer> <Leader>i :terminal python -i %<CR>
+nnoremap <buffer> <Leader>i :terminal python3 -i %<CR>
 
 " Lint
 function! Pylint()
