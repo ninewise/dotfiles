@@ -40,7 +40,7 @@ nnoremap <Left>     <NOP>
 nnoremap <Right>    <NOP>
 
 " Not too much folding
-set foldlevelstart=2
+"set foldlevelstart=2
 
 " Hmmmm neovim terminals
 nnoremap <Leader>s :vsplit +:terminal<CR>

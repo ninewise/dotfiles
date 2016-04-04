@@ -13,25 +13,49 @@ endfunction
 
 nnoremap <buffer> <Leader>x :call Pylint()<CR>
 
+function! IndentLevel(lnum)
+    return indent(a:lnum) / &shiftwidth
+endfunction
+
+function! IsBlankLine(lnum)
+    return getline(a:lnum) =~? '\v^\s*$'
+endfunction
+
+function! IsDefLine(lnum)
+    return getline(a:lnum) =~ '^\s*def\s' || getline(a:lnum) =~ '^\s*class\s'
+endfunction
+
 " Folding
 function! PythonFold(lnum)
-    if getline(a:lnum-1) =~ '^\s*def\s' || getline(a:lnum-1) =~ '^\s*class\s'
-        return indent(a:lnum-1) / 4 + 1
+    if IsBlankLine(a:lnum)
+        return '-1'
     endif
-    if getline(a:lnum) =~ '^\s*def\s' || getline(a:lnum) =~ '^\s*class\s'
-        return indent(a:lnum) / 4
+
+    let this_indent = IndentLevel(a:lnum)
+    if IsDefLine(a:lnum)
+        return '>' . (this_indent + 1)
     endif
-    if getline(a:lnum+1) =~ '^\s*def\s' || getline(a:lnum+1) =~ '^\s*class\s'
-        return indent(a:lnum + 1) / 4
-    endif
-    if getline(a:lnum+1) =~ '^\S.*$'
-        return '0'
-    endif
-    return '='
+
+    let minimum = this_indent
+    let current = a:lnum
+    while current > 1 && minimum > 0
+        let current -= 1
+        if IsBlankLine(current)
+            continue
+        endif
+        let current_indent = IndentLevel(current)
+        if current_indent < minimum
+            if IsDefLine(current)
+                return current_indent + 1
+            endif
+            let minimum = current_indent
+        endif
+    endwhile
+    return minimum
 endfunction
 
 function! PythonFoldText()
-    return repeat(' ', indent(v:foldstart - 1) + 4) . '+'
+    return getline(v:foldstart) . ' (' . (v:foldend - v:foldstart) . ' lines) '
 endfunction
 
 setlocal foldmethod=expr
