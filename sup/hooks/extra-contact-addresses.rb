@@ -25,10 +25,10 @@ when '0'
       name = name.strip.chomp("'").chomp('"').reverse
                        .chomp("'").chomp('"').reverse unless name.nil?
       email.downcase!
-      if name.nil? or email.include? name
+      if name.nil? or email.include? name.downcase
         contacts[email] = Set.new unless contacts.has_key? email
       else
-        contacts[email] << name
+        contacts[email] <<= name
       end
     end
   end
