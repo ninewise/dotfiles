@@ -37,9 +37,9 @@ setopt HIST_FIND_NO_DUPS
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
-export XDG_RUNTIME_DIR="/tmp/runtime-noctua"
-mkdir -p "/tmp/runtime-noctua"
-chmod 0700 /tmp/runtime-noctua
+export XDG_RUNTIME_DIR="/tmp/runtime-$(whoami)"
+mkdir -p "$XDG_RUNTIME_DIR"
+chmod 0700 "$XDG_RUNTIME_DIR"
 
 # Color ls
 alias ls="ls --color=auto"
