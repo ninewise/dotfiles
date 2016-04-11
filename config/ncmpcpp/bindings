@@ -190,6 +190,7 @@ def_key "j"
 #def_key "home"
 #  move_home
 def_key "h"
+    require_screen "browser"
     move_home
     enter_directory
 #
@@ -202,6 +203,7 @@ def_key "h"
 #def_key "enter"
 #  enter_directory
 def_key "l"
+    require_screen "browser"
     enter_directory
 #
 #def_key "enter"
@@ -213,8 +215,17 @@ def_key "l"
 #def_key "enter"
 #  play_item
 #
-#def_key "space"
-#  add_item_to_playlist
+def_key "space"
+    require_screen "playlist"
+    select_item
+    scroll_down
+
+def_key "space"
+  add_item_to_playlist
+
+def_key "insert"
+    select_item
+    scroll_down
 #
 #def_key "space"
 #  toggle_lyrics_update_on_song_change
