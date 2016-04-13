@@ -120,6 +120,11 @@ colorscheme base16-colors
 highlight LineNr ctermfg=08 ctermbg=NONE
 
 nnoremap <Leader>g :Grepper<CR>
+let g:grepper={
+  \ 'tools': ['git', 'grep'],
+  \ 'open': 1,
+  \ 'jump': 0,
+  \ }
 
 let g:haskell_enable_quantification=1
 let g:haskell_enable_recursivedo=1
