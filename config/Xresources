@@ -99,8 +99,8 @@ URxvt.iso14755:         false
 URxvt.iso14755_52:      false
 
 ! Use a nice truetype font and size by default... 
-URxvt.font: xft:Source Code Pro:size=11
-URxvt.letterSpace: 0
+URxvt.font: xft:Source Code Pro:size=11,xft:Consolas:size=11
+!URxvt.letterSpace: 0
 
 ! Foreground and transparent background ([xx] == xx% opacity)
 URxvt.depth: 32
