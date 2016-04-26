@@ -1,0 +1,13 @@
+
+# Compressed files
+*.gz
+*.zip
+
+# Java
+*.jar
+*.class
+
+# C
+*.o
+a.out
+

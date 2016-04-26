@@ -1,7 +1,11 @@
 [user]
-	name = Felix Van der Jeugt
 	email = felix.vanderjeugt@gmail.com
-[push]
-	default = simple
+	name = Felix Van der Jeugt
 [pull]
 	rebase = true
+[merge]
+	conflictstyle = diff3
+[push]
+	default = simple
+[core]
+	excludesfile = ~/.config/gitignore
