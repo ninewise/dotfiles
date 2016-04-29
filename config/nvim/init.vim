@@ -69,25 +69,23 @@ Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 Plug 'Valloric/YouCompleteMe'
 Plug 'chriskempson/base16-vim'
 Plug 'LaTeX-Box-Team/LaTeX-Box', { 'for': 'tex' }
-Plug 'chase/vim-ansible-yaml', { 'for': 'yaml' }
-
-Plug 'junegunn/vim-peekaboo'
-Plug 'mhinz/vim-grepper', { 'on': 'Grepper' }
-Plug 'neovimhaskell/haskell-vim'
 Plug 'kassio/neoterm', { 'on': 'T' }
-
+Plug 'mhinz/vim-grepper', { 'on': 'Grepper' }
+Plug 'junegunn/vim-peekaboo'
+"
+Plug 'neovimhaskell/haskell-vim'
 call plug#end()
 
 " Plugin configuration
 " --------------------
 let g:ctrlp_map='<Leader>l'
 let g:ctrlp_user_command=['.git/', 'git --git-dir=%s/.git ls-files . -co --exclude-standard']
-let g:ctrlp_cmd = 'CtrlPMixed'
-let g:ctrlp_mruf_exclude = '/\.git/.*\|tmp/.*\|term://.*'
-let g:ctrlp_switch_buffer = ''
-let g:ctrlp_follow_symlinks = 1
-let g:ctrlp_mruf_exclude_nomod = 1
-let g:ctrlp_custom_ignore = {
+let g:ctrlp_cmd='CtrlPMixed'
+let g:ctrlp_mruf_exclude='/\.git/.*\|tmp/.*\|term://.*'
+let g:ctrlp_switch_buffer=''
+let g:ctrlp_follow_symlinks=1
+let g:ctrlp_mruf_exclude_nomod=1
+let g:ctrlp_custom_ignore={
   \ 'dir':  '\v[\/]\(.git|.hg|.svn|tmp)$',
   \ 'file': '\v\.(exe|so|dll)$',
   \ 'link': 'some_bad_symbolic_links',
