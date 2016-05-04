@@ -80,16 +80,6 @@ call plug#end()
 " --------------------
 let g:ctrlp_map='<Leader>l'
 let g:ctrlp_user_command=['.git/', 'git --git-dir=%s/.git ls-files . -co --exclude-standard']
-let g:ctrlp_cmd='CtrlPMixed'
-let g:ctrlp_mruf_exclude='/\.git/.*\|tmp/.*\|term://.*'
-let g:ctrlp_switch_buffer=''
-let g:ctrlp_follow_symlinks=1
-let g:ctrlp_mruf_exclude_nomod=1
-let g:ctrlp_custom_ignore={
-  \ 'dir':  '\v[\/]\(.git|.hg|.svn|tmp)$',
-  \ 'file': '\v\.(exe|so|dll)$',
-  \ 'link': 'some_bad_symbolic_links',
-  \ }
 
 let g:airline_powerline_fonts=1
 
