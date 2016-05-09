@@ -3,6 +3,9 @@
 *.gz
 *.zip
 
+# Database files
+*.db
+
 # Java
 *.jar
 *.class

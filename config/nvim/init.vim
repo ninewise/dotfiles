@@ -8,7 +8,7 @@ syntax enable
 set background=dark
 colorscheme darkblue
 
-set mouse=n         " fuck you, mouse
+set mouse=          " fuck you, mouse
 set number          " line numbers on the right side
 set showcmd         " show the commands while typing
 set splitright      " open new splits on the right
