@@ -59,7 +59,6 @@ alias nano="nvim"
 
 # Don't type that config location al the time.
 alias ncmpcpp="ncmpcpp -c ~/.config/ncmpcpp/config"
-alias mbsync="mbsync -c ~/.config/mbsync/config"
 
 # Base16 Shell
 BASE16_SHELL="$HOME/.config/base16-shell/base16-greenscreen.dark.sh"
