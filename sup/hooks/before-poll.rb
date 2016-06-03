@@ -1,4 +1,4 @@
 say "Running mbsync..."
-if not system "mbsync", "-a", "-qq"
+if not system "mbsync", "-qq", "ugent", "gmail"
   say "mbsync unsuccesful."
 end
