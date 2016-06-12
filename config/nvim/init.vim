@@ -126,6 +126,8 @@ let g:grepper={
   \ 'jump': 0,
   \ }
 
+let g:gutentags_cache_dir = '~/.cache/gutentag'
+
 nnoremap <Leader>o :Tagbar<CR>
 let g:tagbar_autoclose=1
 let g:tagbar_autofocus=1

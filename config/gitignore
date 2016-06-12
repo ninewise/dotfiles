@@ -14,6 +14,3 @@
 *.o
 a.out
 
-# Tag files
-tags
-
