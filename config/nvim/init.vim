@@ -43,7 +43,6 @@ nnoremap <Right>    <NOP>
 "set foldlevelstart=2
 
 " Hmmmm neovim terminals
-nnoremap <Leader>s :vsplit +:terminal<CR>
 tnoremap <Esc> <C-\><C-n>
 
 " Quickfixing
@@ -72,6 +71,7 @@ Plug 'LaTeX-Box-Team/LaTeX-Box', { 'for': 'tex' }
 Plug 'kassio/neoterm', { 'on': 'T' }
 Plug 'mhinz/vim-grepper', { 'on': 'Grepper' }
 Plug 'junegunn/vim-peekaboo'
+Plug 'ludovicchabant/vim-gutentags'
 "
 Plug 'neovimhaskell/haskell-vim'
 call plug#end()
@@ -80,6 +80,7 @@ call plug#end()
 " --------------------
 let g:ctrlp_map='<Leader>l'
 let g:ctrlp_user_command=['.git/', 'git --git-dir=%s/.git ls-files . -co --exclude-standard']
+nnoremap <Leader>s :CtrlPTag<CR>
 
 let g:airline_powerline_fonts=1
 
