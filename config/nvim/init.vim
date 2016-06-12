@@ -72,6 +72,7 @@ Plug 'kassio/neoterm', { 'on': 'T' }
 Plug 'mhinz/vim-grepper', { 'on': 'Grepper' }
 Plug 'junegunn/vim-peekaboo'
 Plug 'ludovicchabant/vim-gutentags'
+Plug 'majutsushi/tagbar'
 "
 Plug 'neovimhaskell/haskell-vim'
 call plug#end()
@@ -123,6 +124,33 @@ let g:grepper={
   \ 'tools': ['git', 'grep'],
   \ 'open': 1,
   \ 'jump': 0,
+  \ }
+
+nnoremap <Leader>o :Tagbar<CR>
+let g:tagbar_autoclose=1
+let g:tagbar_autofocus=1
+let g:tagbar_sort=0
+let g:tagbar_compact=1
+let g:tagbar_iconchars=['▸', '▾']
+let g:tagbar_type_make={
+  \ 'kinds': ['m:macros', 't:targets']
+  \ }
+let g:tagbar_type_rust={
+  \ 'ctagstype': 'rust',
+  \ 'kinds': [
+    \ 'n:modules',
+    \ 's:structs',
+    \ 'i:interfaces',
+    \ 'c:implementations',
+    \ 'f:functions',
+    \ 'g:enums',
+    \ 't:typedefs',
+    \ 'v:variables',
+    \ 'M:macros',
+    \ 'm:fields',
+    \ 'e:enumerators',
+    \ 'F:methods',
+    \ ]
   \ }
 
 let g:haskell_enable_quantification=1
