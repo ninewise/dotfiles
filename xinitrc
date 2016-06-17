@@ -36,7 +36,6 @@ forklog() {
     $* 2>&1 | logger &
 }
 
-forklog dunst
 forklog xcape -t 100 -e 'Super_L=Scroll_Lock;Shift_L=Escape'
 forklog sh ~/.fehbg
 forklog xautolock -time 1 -locker xsecurelock
