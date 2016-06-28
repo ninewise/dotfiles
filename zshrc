@@ -44,6 +44,10 @@ chmod 0700 "$XDG_RUNTIME_DIR"
 # Color ls
 alias ls="ls --color=auto"
 
+# No need for less history and more
+alias less="LESSHISTFILE=- less"
+alias more="less"
+
 # Local scripts
 export PATH="$HOME/.local/bin":"$PATH"
 export PATH="$HOME/.cabal/bin":"$PATH"
