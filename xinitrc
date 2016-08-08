@@ -34,7 +34,7 @@ fi
 # My lovely bar
 bar() {
     while sleep 1; do
-        xsetroot -name "$(date +'%a %d %b, %I:%M')"
+        xsetroot -name "B$(acpi -b | tr -d ' ' | cut -d',' -f2)   $(date +'%a %d %b, %I:%M')"
     done
 }
 
