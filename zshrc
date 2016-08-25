@@ -48,6 +48,9 @@ alias ls="ls --color=auto"
 alias less="LESSHISTFILE=- less"
 alias more="less"
 
+# Ready for ssh'ing
+alias agent='eval "$(ssh-agent)" && ssh-add'
+
 # Local scripts
 export PATH="$HOME/.local/bin":"$PATH"
 export PATH="$HOME/.cabal/bin":"$PATH"
