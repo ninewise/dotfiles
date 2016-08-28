@@ -17,8 +17,6 @@
 --
 
 import XMonad
-import XMonad.Layout.NoBorders
-import XMonad.Hooks.ManageDocks
 import Graphics.X11.ExtraTypes.XF86
 import Data.Monoid
 import System.Exit
@@ -166,7 +164,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- Use this binding with avoidStruts from Hooks.ManageDocks.
     -- See also the statusBar function from Hooks.DynamicLog.
     --
-    , ((modm              , xK_b     ), sendMessage ToggleStruts)
+    -- , ((modm              , xK_b     ), sendMessage ToggleStruts)
 
     -- Quit xmonad
     , ((modm .|. shiftMask, xK_q     ), io (exitWith ExitSuccess))
@@ -248,11 +246,11 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
 -- The available layouts.  Note that each layout is separated by |||,
 -- which denotes layout choice.
 --
-myLayoutHook = smartBorders $ avoidStruts $ Full ||| tiled
+myLayoutHook = Full ||| tiled
   where
     -- default tiling algorithm partitions the screen into two panes
     tiled = Tall nmaster delta ratio
-
+    
     -- The default number of windows in the master pane
     nmaster = 1
 
@@ -364,8 +362,8 @@ defaults = def {
 
       -- hooks, layouts
         layoutHook         = myLayoutHook,
-        manageHook         = myManageHook <+> manageDocks,
-        handleEventHook    = myEventHook <+> docksEventHook,
+        manageHook         = myManageHook,
+        handleEventHook    = myEventHook,
         logHook            = myLogHook,
         startupHook        = myStartupHook
     }
