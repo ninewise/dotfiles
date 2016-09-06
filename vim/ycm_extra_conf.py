@@ -1,1 +1,0 @@
-../config/nvim/ycm_extra_conf.py
