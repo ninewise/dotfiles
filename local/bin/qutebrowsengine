@@ -1,0 +1,3 @@
+#!/bin/sh
+
+/home/noctua/.local/bin/qutebrowser --debug --backend webengine "$@" &> /data/programming/qutebrowser/recent.log
