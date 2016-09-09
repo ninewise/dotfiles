@@ -7,7 +7,7 @@
 #read -s -p "Secret: " secret
 
 # GUI
-pair="$(zenity --password --username --title="Password Calculator")"
+pair="$(zenity --password --username --title="Password Calculator" 2> /dev/null)"
 alias_="${pair%|*}"
 secret="${pair#*|}"
 
