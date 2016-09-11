@@ -4,3 +4,6 @@ ctags
 readtags
 html2text
 dwm
+
+# shouldn't share this one with the world
+macaddress
