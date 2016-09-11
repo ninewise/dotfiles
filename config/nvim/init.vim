@@ -115,7 +115,7 @@ let g:ycm_rust_src_path='/data/programming/rustc-1.7.0/src'
 set completeopt=menu
 
 let base16colorspace=256
-colorscheme base16-colors
+colorscheme base16-brewer
 " damn base16's grey linenr background
 highlight LineNr ctermfg=08 ctermbg=NONE
 
