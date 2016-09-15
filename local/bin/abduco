@@ -1,0 +1,18 @@
+#!/bin/bash
+
+result="$(case "$1" in
+    list)      abduco | tail -n +2 | cut -f3 | dmenu ;;
+    run|watch) dmenu_path | dmenu ;;
+    *)         echo "other" ;;
+esac)"
+
+if test "$result" = "other"; then
+    exec /usr/bin/abduco "$@"
+fi
+
+case "$1" in
+    list)  if abduco | grep -q "$result"; then exec urxvtc -e /usr/bin/abduco -a "$result"; fi ;;
+    watch) result="watch $result" ;&
+    run)   exec urxvtc -e /usr/bin/abduco -A "$result" $result ;;
+esac
+

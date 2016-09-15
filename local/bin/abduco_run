@@ -1,5 +1,0 @@
-#!/bin/bash
-command="$(dmenu_path | dmenu)"
-if [ ! -z "$command" ]; then
-    urxvtc -e abduco -A "$command" $command
-fi
