@@ -9,7 +9,7 @@ bindkey -v
 # End of lines configured by zsh-newuser-install
 
 # The following lines were added by compinstall
-zstyle :compinstall filename '/home/felix/.zshrc'
+zstyle :compinstall filename '/home/noctua/.zshrc'
 
 autoload -Uz compinit
 compinit
@@ -33,14 +33,6 @@ bindkey "$terminfo[kcuu1]" history-substring-search-up
 bindkey "$terminfo[kcud1]" history-substring-search-down
 setopt HIST_FIND_NO_DUPS
 
-# XDG dirs
-export XDG_DATA_HOME="$HOME/.local/share"
-export XDG_CONFIG_HOME="$HOME/.config"
-export XDG_CACHE_HOME="$HOME/.cache"
-export XDG_RUNTIME_DIR="/tmp/runtime-$(whoami)"
-mkdir -p "$XDG_RUNTIME_DIR"
-chmod 0700 "$XDG_RUNTIME_DIR"
-
 # Color ls
 alias ls="ls --color=auto"
 
@@ -48,28 +40,16 @@ alias ls="ls --color=auto"
 alias less="LESSHISTFILE=- less"
 alias more="less"
 
-# Ready for ssh'ing
-alias agent='eval "$(ssh-agent)" && ssh-add'
-
-# Local scripts
-export PATH="$HOME/.local/bin":"$PATH"
-export PATH="$HOME/.cabal/bin":"$PATH"
-export PATH="$(ruby -rubygems -e "puts Gem.user_dir")/bin":"$PATH"
-export GEM_HOME="$(ruby -e 'puts Gem.user_dir')"
-
-# For vim
-export EDITOR="nvim"
-#stty -ixon # turn of <C-s> for vimshell
+# There is only one vim
 alias vim="nvim"
 alias vi="nvim"
 alias nano="nvim"
 
-# Don't type that config location al the time.
-alias ncmpcpp="ncmpcpp -c ~/.config/ncmpcpp/config"
+# Ready for ssh'ing
+alias agent='eval "$(ssh-agent)" && ssh-add'
 
 # Base16 Shell
 BASE16_SHELL="$HOME/.config/base16-shell/base16-greenscreen.dark.sh"
-
 BASE16_SHELL="$HOME/.config/base16-shell/base16-3024.dark.sh"
 BASE16_SHELL="$HOME/.config/base16-shell/base16-solarized.dark.sh"
 BASE16_SHELL="$HOME/.config/base16-shell/base16-shapeshifter.dark.sh"
