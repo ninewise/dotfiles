@@ -121,7 +121,7 @@ highlight LineNr ctermfg=08 ctermbg=NONE
 
 nnoremap <Leader>g :Grepper<CR>
 let g:grepper={
-  \ 'tools': ['git', 'rg', 'grep'],
+  \ 'tools': ['rg', 'git', 'grep'],
   \ 'open': 1,
   \ 'jump': 0,
   \ }
