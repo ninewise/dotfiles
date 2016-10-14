@@ -40,7 +40,7 @@ nnoremap <Left>     <NOP>
 nnoremap <Right>    <NOP>
 
 " Not too much folding
-"set foldlevelstart=2
+set foldlevelstart=3
 
 " Hmmmm neovim terminals
 tnoremap <Esc> <C-\><C-n>
