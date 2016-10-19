@@ -1,4 +1,4 @@
-#!/usr/bin/python3.4
+#!/usr/bin/python3
 # EASY-INSTALL-ENTRY-SCRIPT: 'qutebrowser==0.8.1','gui_scripts','qutebrowser'
 __requires__ = 'qutebrowser==0.8.1'
 import re
