@@ -4,6 +4,10 @@ ctags
 readtags
 html2text
 dwm
+dmenu
+dmenu_path
+dmenu_run
+stest
 
 # shouldn't share this one with the world
 macaddress
