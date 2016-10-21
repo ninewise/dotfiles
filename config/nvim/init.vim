@@ -46,6 +46,7 @@ set foldlevelstart=3
 tnoremap <Esc> <C-\><C-n>
 
 " Quickfixing
+nnoremap <Leader>d  :split<CR>
 nnoremap <Leader>co :copen<CR>
 nnoremap <Leader>cn :cnext<CR>
 nnoremap <Leader>cp :cprevious<CR>
@@ -73,8 +74,8 @@ Plug 'mhinz/vim-grepper', { 'on': 'Grepper' }
 Plug 'junegunn/vim-peekaboo'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'majutsushi/tagbar'
-"
 Plug 'neovimhaskell/haskell-vim'
+Plug 'haya14busa/incsearch.vim'
 call plug#end()
 
 " Plugin configuration
@@ -98,17 +99,11 @@ nmap     <Leader>a <Plug>(EasyAlign)
 
 let g:EasyMotion_do_mapping=0
 let g:EasyMotion_startofline=0
-map      <Leader>w <Plug>(easymotion-bd-w)
 map      <Leader>f <Plug>(easymotion-s)
 map      <Leader>j <Plug>(easymotion-j)
 map      <Leader>k <Plug>(easymotion-k)
-nmap     <Leader>L <Plug>(easymotion-overwin-line)
+map      <Leader>w <Plug>(easymotion-bd-w)
 nmap     <Leader>w <Plug>(easymotion-overwin-w)
-map      /         <Plug>(easymotion-sn)
-omap     /         <Plug>(easymotion-tn)
-map      n         <Plug>(easymotion-next)
-map      N         <Plug>(easymotion-prev)
-set nohlsearch
 
 let g:ycm_global_ycm_extra_conf='~/.config/nvim/ycm_extra_conf.py'
 let g:ycm_rust_src_path='/data/programming/rustc-1.7.0/src'
@@ -161,6 +156,18 @@ let g:haskell_enable_arrowsyntax=1
 let g:haskell_enable_pattern_synonyms=1
 let g:haskell_enable_typeroles=1
 let g:haskell_enable_static_pointers=1
+
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
+set hlsearch
+let g:incsearch#auto_nohlsearch = 1
+map n  <Plug>(incsearch-nohl-n)
+map N  <Plug>(incsearch-nohl-N)
+map *  <Plug>(incsearch-nohl-*)
+map #  <Plug>(incsearch-nohl-#)
+map g* <Plug>(incsearch-nohl-g*)
+map g# <Plug>(incsearch-nohl-g#)
 "  Plugged }}}
 
 " vim: foldmethod=marker
