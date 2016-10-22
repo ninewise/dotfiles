@@ -1,0 +1,15 @@
+#!/bin/bash
+
+wd="$(pwd)"
+temp="$(mktemp)"
+
+find /data -name '.git' -exec dirname \{\} \; | while read gitrepo; do
+    cd "$gitrepo"
+    echo "$gitrepo"
+
+    git remote | while read remote; do
+        git fetch --prune "$remote"
+    done 2>&1 | sed 's/^/    /'
+done
+
+cd "$wd"
