@@ -6,6 +6,8 @@ result="$(case "$1" in
     *)         echo "other" ;;
 esac)"
 
+[ -z "$result" ] && exit 1
+
 if test "$result" = "other"; then
     exec /usr/bin/abduco "$@"
 fi
