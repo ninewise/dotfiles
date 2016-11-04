@@ -1,0 +1,18 @@
+#!/bin/sh
+
+if [ -z "$1" ]; then
+    echo "usage: $0 [--colour] <file>"
+    echo
+    echo "   -c | --colour  print in colour"
+    echo "   file           file (print-ready) to print or -"
+    echo
+    echo "print print-ready files with the UGent printers. Accepts only"
+    echo ".txt, .ps, .pdf, .pcl, .cht and .prn."
+    exit 1
+fi >&2
+
+if [ "$1" == "-c" -o "$1" == "--colour" ]; then
+    curl --insecure -F "fileToPrint=@$2" 'https://we02pr06.ugent.be/hp/device/Print/Print'
+else
+    curl --insecure -F "localFile=@$1" 'https://we02pr04.ugent.be/hp/device/this.printservice?printThis'
+fi
