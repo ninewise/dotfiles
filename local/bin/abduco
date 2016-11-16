@@ -1,7 +1,7 @@
 #!/bin/bash
 
 result="$(case "$1" in
-    list)      abduco | tail -n +2 | cut -f3 | dmenu ;;
+    list)      abduco | tail -n +2 | grep -v '^\*' | cut -f3 | dmenu ;;
     run|watch) dmenu_path | dmenu ;;
     *)         echo "other" ;;
 esac)"
