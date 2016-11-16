@@ -1,5 +1,5 @@
 #!/bin/sh
-APPBASE="/data/courses/java programmeren/bluej"
+APPBASE="/data/courses/java-programmeren/bluej"
 JAVAPATH="/usr/lib/jvm/jdk1.8.0_73"
 CP="$APPBASE/lib/bluej.jar:$JAVAPATH/lib/tools.jar"
 "$JAVAPATH/bin/java" -Dawt.useSystemAAFontSettings=on -cp "$CP" bluej.Boot  "$@"
