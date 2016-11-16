@@ -208,6 +208,7 @@ mpd_music_dir = /data/music
 ##   tag and then composer and performer if previous ones are
 ##   not available.
 #song_columns_list_format = (20)[]{a} (6f)[green]{NE} (50)[white]{t|f:Title} (20)[cyan]{b} (7f)[magenta]{l}
+song_columns_list_format = (16)[]{a} (10f)[green]{NrE} (50)[white]{t|f:Title} (20)[cyan]{b} (7f)[magenta]{l}
 # }}}
 
 ##### various settings ##### {{{
