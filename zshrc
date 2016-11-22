@@ -48,6 +48,9 @@ alias nano="nvim"
 # Ready for ssh'ing
 alias agent='eval "$(ssh-agent)" && ssh-add'
 
+# Cloning my terminal
+alias copy='urxvtc'
+
 # Base16 Shell
 BASE16_SHELL="$HOME/.config/base16-shell/base16-greenscreen.dark.sh"
 BASE16_SHELL="$HOME/.config/base16-shell/base16-3024.dark.sh"
