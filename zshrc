@@ -34,7 +34,7 @@ bindkey "$terminfo[kcud1]" history-substring-search-down
 setopt HIST_FIND_NO_DUPS
 
 # Color ls
-alias ls="ls --color=auto"
+alias ls="ls -hF --color=auto"
 
 # No need for less history and more
 alias less="LESSHISTFILE=- less"
