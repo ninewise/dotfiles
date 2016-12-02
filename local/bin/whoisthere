@@ -1,0 +1,6 @@
+#!/bin/sh
+
+cat /data/random/ips | while read name host ip; do
+    ping -c1 -w1 "$ip" > /dev/null && echo "$name"
+done
+
