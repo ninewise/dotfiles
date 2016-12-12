@@ -49,6 +49,7 @@ forklog sh ~/.fehbg
 forklog xautolock -time 1 -locker slock
 forklog redshift -l 51.2:3.75
 forklog xset dpms 0 0 50 s off
+forklog xset r rate 300 55
 forklog bar
 
 #forklog sxhkd -c ~/.config/sxhkd/sxhkd.conf
