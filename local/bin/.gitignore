@@ -8,6 +8,7 @@ dmenu
 dmenu_path
 dmenu_run
 stest
+wjt
 
 # shouldn't share this one with the world
 macaddress
