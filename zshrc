@@ -51,6 +51,12 @@ alias agent='eval "$(ssh-agent)" && ssh-add'
 # Cloning my terminal
 alias copy='urxvtc'
 
+# FZF
+function go() {
+    dir="$(lr /home /data -L -t 'type = d' | fzf)"
+    [ -n "$dir" ] && cd "$dir" || false
+}
+
 # Base16 Shell
 BASE16_SHELL="$HOME/.config/base16-shell/base16-greenscreen.dark.sh"
 BASE16_SHELL="$HOME/.config/base16-shell/base16-3024.dark.sh"
