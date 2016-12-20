@@ -59,7 +59,6 @@ nnoremap <Leader>cp :cprevious<CR>
 " Plugged
 " -------
 call plug#begin('~/.config/nvim/plugged')
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'bling/vim-airline'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'junegunn/vim-easy-align'
@@ -70,20 +69,16 @@ Plug 'Valloric/YouCompleteMe'
 Plug 'chriskempson/base16-vim'
 Plug 'LaTeX-Box-Team/LaTeX-Box', { 'for': 'tex' }
 Plug 'kassio/neoterm', { 'on': 'T' }
-Plug 'mhinz/vim-grepper', { 'on': 'Grepper' }
 Plug 'junegunn/vim-peekaboo'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'majutsushi/tagbar'
-Plug 'neovimhaskell/haskell-vim'
+Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
 Plug 'haya14busa/incsearch.vim'
+Plug 'junegunn/fzf.vim'
 call plug#end()
 
 " Plugin configuration
 " --------------------
-let g:ctrlp_map='<Leader>l'
-let g:ctrlp_user_command=['.git/', 'git --git-dir=%s/.git ls-files . -co --exclude-standard']
-nnoremap <Leader>s :CtrlPTag<CR>
-
 let g:airline_powerline_fonts=1
 
 nnoremap <Leader>t :NERDTreeToggle<CR><CR>
@@ -113,13 +108,6 @@ let base16colorspace=256
 colorscheme base16-brewer
 " damn base16's grey linenr background
 highlight LineNr ctermfg=08 ctermbg=NONE
-
-nnoremap <Leader>g :Grepper<CR>
-let g:grepper={
-  \ 'tools': ['rg', 'git', 'grep'],
-  \ 'open': 1,
-  \ 'jump': 0,
-  \ }
 
 let g:gutentags_cache_dir = '~/.cache/gutentag'
 
@@ -168,6 +156,16 @@ map *  <Plug>(incsearch-nohl-*)
 map #  <Plug>(incsearch-nohl-#)
 map g* <Plug>(incsearch-nohl-g*)
 map g# <Plug>(incsearch-nohl-g#)
-"  Plugged }}}
+
+" path for fzf install
+set rtp+=/usr/share/vim/vimfiles/
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --follow --column --line-number --no-heading --color=always '.shellescape(<q-args>), 0,
+  \   <bang>0)
+nnoremap <Leader>g :Rg<CR>
+nnoremap <Leader>l :Files<CR>
+nnoremap <Leader>s :Tags<CR>
+" Plugged }}}
 
 " vim: foldmethod=marker
