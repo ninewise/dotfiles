@@ -53,7 +53,6 @@ alias copy='urxvtc'
 
 # FZF
 function go() {
-    #dir="$(find -L /home /data /etc -name "\.*" -prune , -type d \! -name '.git' 2>/dev/null | fzf)"
     dir="$(lr /home /data /etc -L -t '(name ~~ "\.*" && prune || print) && type = d && !(name = ".git")' | fzf)"
     [ -n "$dir" ] && cd "$dir" || false
 }
