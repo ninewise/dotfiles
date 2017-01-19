@@ -1,6 +1,7 @@
 [user]
 	email = felix.vanderjeugt@gmail.com
 	name = Felix Van der Jeugt
+	signingkey = 68FF561137C38F9618E97339AF25A2C2862AA368
 [pull]
 	rebase = true
 [merge]
@@ -9,3 +10,7 @@
 	default = simple
 [core]
 	excludesfile = ~/.config/gitignore
+[gpg]
+	program = gpg2
+[commit]
+	gpgsign = true
