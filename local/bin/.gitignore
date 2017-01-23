@@ -10,6 +10,7 @@ dmenu_run
 stest
 wjt
 jshon
+pygmentize
 
 # shouldn't share this one with the world
 macaddress
