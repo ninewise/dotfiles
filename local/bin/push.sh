@@ -4,7 +4,7 @@
 set -e
 
 sshhost="Flesje"
-fles="http://t2-wan.be"
+fles="http://r2t2.be"
 
 # Find ssh username
 user=$(
