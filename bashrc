@@ -25,6 +25,10 @@ unset RED
 unset GREEN
 unset RESET
 
+# Completion
+complete -c man
+complete -cf sudo
+
 # Color ls
 alias ls="lr -1FG"
 

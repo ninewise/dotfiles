@@ -1,0 +1,13 @@
+$include /etc/inputrc
+
+set show-all-if-ambiguous on
+
+set editing-mode vi
+$if mode=vi
+set keymap vi-command
+"\e[A": history-search-backward
+"\e[B": history-search-forward
+set keymap vi-insert
+"\e[A": history-search-backward
+"\e[B": history-search-forward
+$endif
