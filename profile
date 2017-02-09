@@ -9,10 +9,10 @@ mkdir -p "$XDG_RUNTIME_DIR"
 chmod 0700 "$XDG_RUNTIME_DIR"
 
 # Local scripts
-export GEM_HOME="$(ruby -e 'puts Gem.user_dir')"
 export CABAL_HOME="$HOME/.cabal"
 export CARGO_HOME="$HOME/.cargo"
-export PATH="$HOME/.local/bin:$CABAL_HOME/bin:$GEM_HOME/bin:$CARGO_HOME/bin:$PATH"
+export RVM_HOME="$HOME/.rvm"
+export PATH="$HOME/.local/bin:$CABAL_HOME/bin:$RVM_HOME/bin:$CARGO_HOME/bin:$PATH"
 
 # For vim
 export EDITOR="nvim"
