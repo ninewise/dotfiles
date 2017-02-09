@@ -12,7 +12,7 @@ if [ -z "$1" ]; then
 fi >&2
 
 if [ "$1" = "-c" -o "$1" = "--colour" ]; then
-    curl --insecure -F "fileToPrint=@$2" 'https://we02pr06.ugent.be/hp/device/Print/Print'
+    curl --silent --insecure -F "fileToPrint=@$2" -F "FormButtonSubmit=Print" 'https://we02pr06.ugent.be/hp/device/Print/Print'
 else
-    curl --insecure -F "localFile=@$1" 'https://we02pr04.ugent.be/hp/device/this.printservice?printThis'
-fi
+    curl --silent --insecure -F "localFile=@$1" 'https://we02pr04.ugent.be/hp/device/this.printservice?printThis'
+fi > /dev/null
