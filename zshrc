@@ -1,19 +1,18 @@
+# vim: foldmethod=marker
 
-# Lines configured by zsh-newuser-install
-HISTFILE=~/.local/share/zsh/histfile
+# Lines configured by zsh-newuser-install {{{
+HISTFILE=~/.cache/zhistfile
 HISTSIZE=1000
 SAVEHIST=1000
-setopt appendhistory
-unsetopt beep
-bindkey -v
-# End of lines configured by zsh-newuser-install
-
-# The following lines were added by compinstall
+bindkey -e
+# }}}
+#
+# The following lines were added by compinstall {{{
+zstyle ':completion:*' completer _complete _ignored
 zstyle :compinstall filename '/home/noctua/.zshrc'
-
 autoload -Uz compinit
 compinit
-# End of lines added by compinstall
+# }}}
 
 # Get ourselves a nice prompt.
 git_status() {
@@ -49,32 +48,12 @@ alias nano="nvim"
 alias agent='eval "$(ssh-agent)" && ssh-add'
 
 # Cloning my terminal
-alias copy='urxvtc'
+alias terminal='st'
+alias copy='terminal'
 
 # FZF
 function go() {
     dir="$(lr /home /data /etc -L -t '(name ~~ "\.*" && prune || print) && type = d && !(name = ".git")' | fzf)"
     [ -n "$dir" ] && cd "$dir" || false
 }
-
-# Base16 Shell
-BASE16_SHELL="$HOME/.config/base16-shell/base16-greenscreen.dark.sh"
-BASE16_SHELL="$HOME/.config/base16-shell/base16-3024.dark.sh"
-BASE16_SHELL="$HOME/.config/base16-shell/base16-solarized.dark.sh"
-BASE16_SHELL="$HOME/.config/base16-shell/base16-shapeshifter.dark.sh"
-BASE16_SHELL="$HOME/.config/base16-shell/base16-railscasts.dark.sh"
-BASE16_SHELL="$HOME/.config/base16-shell/base16-monokai.dark.sh"
-BASE16_SHELL="$HOME/.config/base16-shell/base16-marrakesh.dark.sh"
-BASE16_SHELL="$HOME/.config/base16-shell/base16-harmonic16.dark.sh"
-BASE16_SHELL="$HOME/.config/base16-shell/base16-default.dark.sh"
-BASE16_SHELL="$HOME/.config/base16-shell/base16-colors.dark.sh"
-BASE16_SHELL="$HOME/.config/base16-shell/base16-chalk.dark.sh"
-BASE16_SHELL="$HOME/.config/base16-shell/base16-atelierseaside.dark.sh"
-BASE16_SHELL="$HOME/.config/base16-shell/base16-atelierlakeside.dark.sh"
-BASE16_SHELL="$HOME/.config/base16-shell/base16-atelierforest.dark.sh"
-BASE16_SHELL="$HOME/.config/base16-shell/base16-atelierdune.dark.sh"
-BASE16_SHELL="$HOME/.config/base16-shell/base16-brewer.dark.sh"
-# Also modify: https://github.com/chriskempson/base16-xresources
-
-[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
 
