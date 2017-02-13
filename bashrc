@@ -1,4 +1,6 @@
 
+exec fish
+
 # Get ourselves a nice prompt
 keep_status() {
     s="$?"
