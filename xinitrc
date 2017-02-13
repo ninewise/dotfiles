@@ -44,7 +44,7 @@ forklog() {
     $* 2>&1 | logger &
 }
 
-forklog xcape -t 100 -e 'Super_L=Scroll_Lock;Shift_L=Escape'
+forklog xcape -t 100 -e 'Super_L=Scroll_Lock;Shift_L=Escape;Alt_L=Control_R|G'
 forklog sh ~/.fehbg
 forklog xautolock -time 1 -locker slock
 forklog redshift -l 51.2:3.75
