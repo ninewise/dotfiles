@@ -5,8 +5,6 @@
 let mapleader=';'
 
 syntax enable
-set background=dark
-colorscheme darkblue
 
 set mouse=          " fuck you, mouse
 set number          " line numbers on the right side
@@ -59,22 +57,28 @@ nnoremap <Leader>cp :cprevious<CR>
 " Plugged
 " -------
 call plug#begin('~/.config/nvim/plugged')
+" Layout
 Plug 'bling/vim-airline'
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug 'junegunn/vim-easy-align'
-Plug 'easymotion/vim-easymotion'
-Plug 'tpope/vim-fugitive'
-Plug 'rust-lang/rust.vim', { 'for': 'rust' }
-Plug 'Valloric/YouCompleteMe'
-Plug 'chriskempson/base16-vim'
-Plug 'LaTeX-Box-Team/LaTeX-Box', { 'for': 'tex' }
-Plug 'kassio/neoterm', { 'on': 'T' }
 Plug 'junegunn/vim-peekaboo'
+" Files
+Plug 'scrooloose/nerdtree',       { 'on': 'NERDTreeToggle' }
+Plug 'junegunn/fzf.vim',          { 'on': ['Rg', 'Files', 'Tags'] }
+" Movement
+Plug 'easymotion/vim-easymotion'
+Plug 'haya14busa/incsearch.vim'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'majutsushi/tagbar'
+" Integration
+Plug 'tpope/vim-fugitive',        { 'on': ['Gdiff', 'Gstatus', 'Gcommit', 'Gblame'] }
+Plug 'kassio/neoterm',            { 'on': 'T' }
+" Formatting
+Plug 'junegunn/vim-easy-align',   { 'on': 'EasyAlign' }
+" Languages
+Plug 'LaTeX-Box-Team/LaTeX-Box',  { 'for': 'tex' }
+Plug 'rust-lang/rust.vim',        { 'for': 'rust' }
 Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }
-Plug 'haya14busa/incsearch.vim'
-Plug 'junegunn/fzf.vim'
+" Completion
+Plug 'Valloric/YouCompleteMe'
 call plug#end()
 
 " Plugin configuration
@@ -89,8 +93,8 @@ let NERDTreeIgnore=[
   \ ".*\\.pyc$"
   \ ]
 
-xnoremap <Leader>a <Plug>(EasyAlign)
-nmap     <Leader>a <Plug>(EasyAlign)
+xnoremap <Leader>a :EasyAlign<CR>
+nmap     <Leader>a :EasyAlign<CR>
 
 let g:EasyMotion_do_mapping=0
 let g:EasyMotion_startofline=0
@@ -103,11 +107,6 @@ nmap     <Leader>w <Plug>(easymotion-overwin-w)
 let g:ycm_global_ycm_extra_conf='~/.config/nvim/ycm_extra_conf.py'
 let g:ycm_rust_src_path='/data/programming/rustc-1.7.0/src'
 set completeopt=menu
-
-let base16colorspace=256
-colorscheme base16-brewer
-" damn base16's grey linenr background
-highlight LineNr ctermfg=08 ctermbg=NONE
 
 let g:gutentags_cache_dir = '~/.cache/gutentag'
 
