@@ -1,2 +1,0 @@
-#!/bin/sh
-exec rvm 2.3.3 do sup

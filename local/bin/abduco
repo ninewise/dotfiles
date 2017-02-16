@@ -13,7 +13,7 @@ if test "$result" = "other"; then
 fi
 
 case "$1" in
-    list)  if abduco | grep -q "$result"; then exec st -e /usr/bin/abduco -a "$result"; fi ;;
+    list)  exec st -e /usr/bin/abduco -A "$result" ;;
     watch) result="watch $result" ;&
     run)   exec st -e /usr/bin/abduco -A "$result" $result ;;
 esac
