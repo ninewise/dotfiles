@@ -62,14 +62,14 @@ Plug 'bling/vim-airline'
 Plug 'junegunn/vim-peekaboo'
 " Files
 Plug 'scrooloose/nerdtree',       { 'on': 'NERDTreeToggle' }
-Plug 'junegunn/fzf.vim',          { 'on': ['Rg', 'Files', 'Tags'] }
+Plug 'junegunn/fzf.vim'
 " Movement
 Plug 'easymotion/vim-easymotion'
 Plug 'haya14busa/incsearch.vim'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'majutsushi/tagbar'
 " Integration
-Plug 'tpope/vim-fugitive',        { 'on': ['Gdiff', 'Gstatus', 'Gcommit', 'Gblame'] }
+Plug 'tpope/vim-fugitive'
 Plug 'kassio/neoterm',            { 'on': 'T' }
 " Formatting
 Plug 'junegunn/vim-easy-align',   { 'on': 'EasyAlign' }
