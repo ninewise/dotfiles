@@ -48,6 +48,7 @@ nnoremap <Leader>d  :split<CR>
 nnoremap <Leader>co :copen<CR>
 nnoremap <Leader>cn :cnext<CR>
 nnoremap <Leader>cp :cprevious<CR>
+nnoremap <Leader>cc :cclose<CR>
 
 "  General Options }}}
 
