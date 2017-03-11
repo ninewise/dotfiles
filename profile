@@ -12,7 +12,7 @@ chmod 0700 "$XDG_RUNTIME_DIR"
 export CABAL_HOME="$HOME/.cabal"
 export CARGO_HOME="$HOME/.cargo"
 export RVM_HOME="$HOME/.rvm"
-export PATH="$HOME/.local/bin:$CABAL_HOME/bin:$RVM_HOME/bin:$CARGO_HOME/bin:$PATH"
+export PATH="$HOME/.local/bin:$CABAL_HOME/bin:$RVM_HOME/bin:$CARGO_HOME/bin:$JAVA_HOME/bin:$PATH"
 
 # For vim
 export EDITOR="nvim"
