@@ -1,3 +1,4 @@
+#!/bin/sh
 
 cmd_url=kelder.zeus.ugent.be/webcam/cgi/ptdc.cgi
 
