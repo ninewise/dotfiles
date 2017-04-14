@@ -167,7 +167,7 @@ map g# <Plug>(incsearch-nohl-g#)
 
 " path for fzf install
 set rtp+=/usr/share/vim/vimfiles/
-nnoremap <Leader>l :Files<CR>
+nnoremap <Leader>l :GitFiles<CR>
 nnoremap <Leader>s :Tags<CR>
 " Plugged }}}
 
