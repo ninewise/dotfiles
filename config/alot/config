@@ -1,0 +1,30 @@
+
+initial_command = search tag:inbox OR tag:draft AND NOT tag:killed
+periodic_hook_frequency = 60
+
+[accounts]
+
+    [[gmail]]
+        realname = Felix Van der Jeugt
+        address = felix.vanderjeugt@gmail.com
+        alias_regexp = felix\.vanderjeugt\+.+@gmail.com
+        sendmail_command = /usr/bin/msmtp --account=gmail -t
+        sent_box = maildir:///data/mail/gmail/Sent
+        draft_box = maildir:///data/mail/gmail/Sent
+        sent_tags = sent, gmail
+        sign_by_default = True
+
+    [[ugent]]
+        realname = Felix Van der Jeugt
+        address = felix.vanderjeugt@ugent.be
+        aliases = Felix.VanderJeugt@UGent.be,
+        gpg_key = 68FF561137C38F9618E97339AF25A2C2862AA368
+        sendmail_command = /usr/bin/msmtp --account=ugent -t
+        sent_box = maildir:///data/mail/ugent/Sent
+        draft_box = maildir:///data/mail/ugent/Sent
+        sent_tags = sent, ugent
+        sign_by_default = True
+
+[bindings]
+
+    P = shellescape --thread True --refocus True notmuch\ new\ --quiet
