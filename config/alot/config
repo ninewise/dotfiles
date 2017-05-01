@@ -28,3 +28,4 @@ periodic_hook_frequency = 60
 [bindings]
 
     P = shellescape --thread True --refocus True notmuch\ new\ --quiet
+    t = toggletags selected; move down
