@@ -1,0 +1,15 @@
+#!/bin/sh
+
+srctype="$1"
+dpi="$2"
+tempsrc="$(mktemp --suffix=".$1")"
+tempsvg="$(mktemp --suffix='.svg')"
+temppng="$(mktemp --suffix='.png')"
+
+cat > "$tempsrc"
+highlight -O svg -I "$tempsrc" | grep -v 'rect' > "$tempsvg"
+inkscape --without-gui --export-area-drawing --export-background-opacity=256 --export-dpi="$dpi" --export-png="$temppng" "$tempsvg" > /dev/null
+png2ff < "$temppng"
+
+rm "$tempsrc" "$tempsvg" "$temppng"
+
