@@ -108,6 +108,7 @@ nmap     <Leader>w <Plug>(easymotion-overwin-w)
 
 let g:ycm_global_ycm_extra_conf='~/.config/nvim/ycm_extra_conf.py'
 let g:ycm_rust_src_path='/data/programming/rustc-1.7.0/src'
+let g:ycm_server_python_interpreter='/usr/bin/python2'
 set completeopt=menu
 
 nnoremap <Leader>g :Grepper<CR>
