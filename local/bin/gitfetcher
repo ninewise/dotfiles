@@ -10,6 +10,8 @@ find /data -name '.git' -exec dirname \{\} \; | while read gitrepo; do
     git remote | while read remote; do
         git fetch --prune "$remote"
     done 2>&1 | sed 's/^/    /'
+
+    git status | grep behind | sed 's/^/    /'
 done
 
 cd "$wd"
