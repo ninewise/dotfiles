@@ -11,7 +11,7 @@ periodic_hook_frequency = 60
         sendmail_command = /usr/bin/msmtp --account=gmail -t
         sent_box = maildir:///data/mail/gmail/Sent
         draft_box = maildir:///data/mail/gmail/Sent
-        sent_tags = sent, gmail
+        sent_tags = inbox, gmail
         sign_by_default = True
 
     [[ugent]]
@@ -22,7 +22,7 @@ periodic_hook_frequency = 60
         sendmail_command = /usr/bin/msmtp --account=ugent -t
         sent_box = maildir:///data/mail/ugent/Sent
         draft_box = maildir:///data/mail/ugent/Sent
-        sent_tags = sent, ugent
+        sent_tags = inbox, ugent
         sign_by_default = True
 
 [bindings]
