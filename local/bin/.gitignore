@@ -14,6 +14,8 @@ pygmentize
 st
 dvtm*
 sent
+automat-visualize
+notmuch
 
 # shouldn't share this one with the world
 macaddress
