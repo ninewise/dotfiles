@@ -1,29 +1,29 @@
 
-exec fish
-
 # Get ourselves a nice prompt
-keep_status() {
-    s="$?"
-    $*
-    return "$s"
-}
-git_status() {
+ks() { s="$?" ; $* ; return "$s" ; }
+prompt_gbranch() { git branch | sed -n 's/^\* (*\(.* \)*\([^ )]*\))*$/\2/p' ; }
+prompt_gbehind() { git status --branch --porcelain=2 | sed -n 's/^# branch\.ab.*-\([^0].*\)$/⇃\1/p' ; }
+prompt_gbefore() { git status --branch --porcelain=2 | sed -n 's/^# branch\.ab +\([^0].*\) .*$/↿\1/p' ; }
+prompt_gstatus() { git status --porcelain | sed 's/\(..\).*/\1/' | cat <(echo OK) -  | tail -1 ; }
+prompt_git() {
     if git status 2>/dev/null 1>&2; then
-        echo "$(git branch | grep \*)" \
-             "$(git status --porcelain | cat <(echo OK) - | sed 's/\(..\).*/(\1)/' | tail -1)"
+        echo " ($(prompt_gbranch)$(prompt_gbefore)$(prompt_gbehind)|$(prompt_gstatus))"
     fi
 }
-exit_status() {
+prompt_pwd() {
+    pwd | sed -e "s_${HOME}_~_" -e 's_\(/*.\)[^/]*/_\1/_g'
+}
+prompt_status() {
     if [ "$?" = "0" ]
-    then echo "$"
-    else echo "%"
+    then echo " $"
+    else echo " %"
     fi
 }
-RED="$(tput setaf 1)"
-GREEN="$(tput setaf 2)"
-RESET="$(tput sgr0)"
-PS1="[\T] $RED\u@\h$RESET $GREEN\w$RESET \$(keep_status git_status)\n \$(exit_status) "
-unset RED
+BOLD="\[$(tput bold)\]"
+GREEN="\[$(tput setaf 2)\]"
+RESET="\[$(tput sgr0)\]"
+PS1="$BOLD[\T]$RESET $GREEN\$(ks prompt_pwd)$RESET\$(ks prompt_git)\$(prompt_status) "
+unset BOLD
 unset GREEN
 unset RESET
 
@@ -46,13 +46,11 @@ alias nano="nvim"
 # Ready for ssh'ing
 alias agent='eval "$(ssh-agent)" && ssh-add'
 
-# Cloning my terminal
-alias terminal='st'
-alias copy='terminal'
-
 # FZF
-function go() {
-    dir="$(lr /home /data /etc -L -t '(name ~~ "\.*" && prune || print) && type = d && !(name = ".git")' | fzf)"
+go() {
+    dir="$(lr /home /data /etc -L -t '(name ~~ ".*" && prune || print) && type = d && !(name = ".git")' \
+          | fzf --height 10 \
+          )"
     [ -n "$dir" ] && cd "$dir" || false
 }
 
