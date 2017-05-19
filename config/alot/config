@@ -17,6 +17,13 @@ prefer_plaintext = True
         sent_tags = inbox
         sign_by_default = True
 
+        [[[abook]]]
+            type = shellcommand
+            command = 'notmuch-abook.sh'
+            regexp = '\[?{"name": "(?P<name>.*)", "address": "(?P<email>.+)", "name-addr": ".*"}[,\]]?'
+            shellcommand_external_filtering = True
+
+
     [[ugent]]
         realname = Felix Van der Jeugt
         address = felix.vanderjeugt@ugent.be
@@ -27,6 +34,12 @@ prefer_plaintext = True
         draft_box = maildir:///data/mail/ugent/Sent
         sent_tags = inbox
         sign_by_default = True
+
+        [[[abook]]]
+            type = shellcommand
+            command = 'notmuch-abook.sh'
+            regexp = '\[?{"name": "(?P<name>.*)", "address": "(?P<email>.+)", "name-addr": ".*"}[,\]]?'
+            shellcommand_external_filtering = True
 
 [bindings]
 
