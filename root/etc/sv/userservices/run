@@ -1,0 +1,2 @@
+#!/bin/sh
+exec chpst -u $(groups noctua | tr -s ' ' ':') runsvdir /home/noctua/services 2>&1
