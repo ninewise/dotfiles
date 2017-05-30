@@ -2,16 +2,23 @@
 
 wd="$(pwd)"
 temp="$(mktemp)"
+name="$(basename "$0")"
 
 find /data -name '.git' -exec dirname \{\} \; | while read gitrepo; do
     cd "$gitrepo"
-    echo "$gitrepo"
-
-    git remote | while read remote; do
-        git fetch --prune "$remote"
-    done 2>&1 | sed 's/^/    /'
-
-    git status | grep behind | sed 's/^/    /'
+    case "$name" in
+        "gitfetcher")
+            echo "$gitrepo"
+            git remote | while read remote; do
+                git fetch --prune "$remote"
+            done 2>&1 | sed 's/^/    /'
+            ;;
+        "gitlister")
+            if git status | grep -q behind; then
+                echo "$gitrepo"
+            fi
+            ;;
+    esac
 done
 
 cd "$wd"
