@@ -88,6 +88,7 @@ call plug#end()
 let g:airline_powerline_fonts=1
 
 nnoremap <Leader>t :NERDTreeToggle<CR><CR>
+nnoremap <Leader>; :wincmd w<CR>
 let NERDTreeIgnore=[
   \ ".*\\.class$",
   \ ".*\\.o$",
