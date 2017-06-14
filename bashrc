@@ -46,6 +46,8 @@ alias nano="nvim"
 # Ready for ssh'ing
 alias agent='eval "$(ssh-agent)" && ssh-add'
 
+alias stop-after-this-song="mpc single && mpc idle && mpc single"
+
 # FZF
 go() {
     dir="$(lr /home /data /etc -L -t '(name ~~ ".*" && prune || print) && type = d && !(name = ".git")' \
