@@ -1,0 +1,5 @@
+#!/bin/sh
+exec env                         \
+    HOME="${HOME:-/home/noctua}" \
+    DISPLAY="${DISPLAY:-:0}"     \
+    ./notmuch
