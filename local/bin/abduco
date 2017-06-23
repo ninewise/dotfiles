@@ -1,8 +1,16 @@
 #!/bin/bash
 
+if [ -t 1 ]; then
+    pick() { fzf --height 10; }
+    run() { /usr/bin/abduco -A "$@" "$@"; clear; }
+else
+    pick() { dmenu; }
+    run() { exec st -e /usr/bin/abduco -A "$@" "$@"; }
+fi
+
 result="$(case "$1" in
-    list)      find ~/.abduco -not -executable -type s -exec basename \{\} \; | cut -d@ -f1 | dmenu ;;
-    run|watch) dmenu_path | dmenu ;;
+    list)      find ~/.abduco -not -executable -type s -exec basename \{\} \; | cut -d@ -f1 | pick ;;
+    run|watch) dmenu_path | pick ;;
     *)         echo "other" ;;
 esac)"
 
@@ -13,8 +21,7 @@ if test "$result" = "other"; then
 fi
 
 case "$1" in
-    list)  exec st -e /usr/bin/abduco -A "$result" ;;
-    watch) result="watch $result" ;&
-    run)   exec st -e /usr/bin/abduco -A "$result" $result ;;
+    watch)      result="watch $result" ;&
+    list|run)   run $result ;;
 esac
 
