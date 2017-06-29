@@ -125,6 +125,7 @@ global:
       <F5>: reload
       <Return>: follow-selected
       <back>: back
+      <backspace>: back
       <forward>: forward
       '=': zoom
       '?': set-cmd-text ?
@@ -246,14 +247,14 @@ global:
     register:
       <Escape>: leave-mode
   content.ssl_strict: true
+  default_page: https://calendar.google.com
   downloads.location.suggestion: both
   editor.command:
   - st
   - -e
   - nvim
   - '{}'
-  hints.auto_follow: unique-match
-  hints.auto_follow_timeout: 500
+  hints.auto_follow: full-match
   hints.dictionary: /usr/share/dict/mnemonic
   hints.mode: word
   new_instance_open_target: tab-silent
