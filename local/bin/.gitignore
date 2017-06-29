@@ -16,6 +16,7 @@ dvtm*
 sent
 automat-visualize
 notmuch
+rbenv
 
 # shouldn't share this one with the world
 macaddress

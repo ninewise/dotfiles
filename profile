@@ -11,8 +11,8 @@ chmod 0700 "$XDG_RUNTIME_DIR"
 # Local scripts
 export CABAL_HOME="$HOME/.cabal"
 export CARGO_HOME="$HOME/.cargo"
-export RVM_HOME="$HOME/.rvm"
-export PATH="$HOME/.local/bin:$CABAL_HOME/bin:$RVM_HOME/bin:$CARGO_HOME/bin:$JAVA_HOME/bin:$PATH"
+export RBENV_HOME="$HOME/.rbenv"
+export PATH="$HOME/.local/bin:$CABAL_HOME/bin:$RBENV_HOME/shims:$CARGO_HOME/bin:$JAVA_HOME/bin:$PATH"
 
 # For vim
 export EDITOR="nvim"
