@@ -4,11 +4,7 @@
 ip route ls | grep -v '' && exit 1
 
 # check if the gpg-agent is running
-if ! pgrep gpg-agent >/dev/null; then
-    notify-send "no gpg-agent"
-    sleep 10
-    exit 2
-fi
+pgrep gpg-agent >/dev/null || exit 2
 
 while notmuch --config="$HOME/.notmuch-config" new --quiet 2>&1 | grep -v "Ignoring" | xargs -0 --no-run-if-empty notify-send && sleep 3m; do
     true
