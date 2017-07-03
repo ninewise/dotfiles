@@ -247,7 +247,6 @@ global:
     register:
       <Escape>: leave-mode
   content.ssl_strict: true
-  default_page: https://calendar.google.com
   downloads.location.suggestion: both
   editor.command:
   - st
@@ -257,10 +256,10 @@ global:
   hints.auto_follow: full-match
   hints.dictionary: /usr/share/dict/mnemonic
   hints.mode: word
-  new_instance_open_target: tab-silent
-  new_instance_open_target_window: last-focused
-  start_page:
-  - https://calendar.google.com
   tabs.background: true
   tabs.last_close: default-page
   tabs.show: multiple
+  url.default_page: https://calendar.google.com
+  url.new_instance_open_target: tab-silent
+  url.start_pages:
+  - https://calendar.google.com
