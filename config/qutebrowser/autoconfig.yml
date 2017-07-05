@@ -256,10 +256,10 @@ global:
   hints.auto_follow: full-match
   hints.dictionary: /usr/share/dict/mnemonic
   hints.mode: word
+  new_instance_open_target: tab-silent
   tabs.background: true
   tabs.last_close: default-page
   tabs.show: multiple
   url.default_page: https://calendar.google.com
-  url.new_instance_open_target: tab-silent
   url.start_pages:
   - https://calendar.google.com
