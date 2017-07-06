@@ -18,6 +18,9 @@ export PATH="$HOME/.local/bin:$CABAL_HOME/bin:$RBENV_HOME/shims:$CARGO_HOME/bin:
 export EDITOR="nvim"
 #stty -ixon # turn of <C-s> for vimshell
 
+# Searching
+export FZF_DEFAULT_COMMAND='(git ls-files -co --exclude-standard || rg --files) 2> /dev/null'
+
 # Start X if we're in tty1
 xsession() {
     startx 2>&1 || vlock
