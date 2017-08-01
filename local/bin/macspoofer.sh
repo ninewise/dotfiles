@@ -3,13 +3,15 @@
 # Reading our private mac
 here="$(dirname "$0")"
 mac="$(cat "$here/macaddress")"
-link="$(basename /sys/class/net/enp*)"
+enp="$(basename /sys/class/net/enp*)"
+wlp="$(basename /sys/class/net/wlp*)"
 
 # Setting the MAC address for our wired
-sudo ip link set "$link" down
-sudo ip link set "$link" address "$mac"
-sudo ip link set "$link" up
+sudo ip link set "$enp" down
+sudo ip link set "$enp" address "$mac"
+sudo ip link set "$enp" up
 
 # No more wireless
 sudo sv stop wpa_supplicant
+sudo ip link set "$wlp" down
 
