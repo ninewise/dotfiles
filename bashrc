@@ -1,15 +1,6 @@
 
 # Get ourselves a nice prompt
 ks() { s="$?" ; $* ; return "$s" ; }
-prompt_gbranch() { git branch | sed -n 's/^\* (*\(.* \)*\([^ )]*\))*$/\2/p' ; }
-prompt_gbehind() { git status --branch --porcelain=2 | sed -n 's/^# branch\.ab.*-\([^0].*\)$/⇃\1/p' ; }
-prompt_gbefore() { git status --branch --porcelain=2 | sed -n 's/^# branch\.ab +\([^0].*\) .*$/↿\1/p' ; }
-prompt_gstatus() { git status --porcelain | sed 's/\(..\).*/\1/' | cat <(echo OK) -  | tail -1 ; }
-prompt_git() {
-    if git status 2>/dev/null 1>&2; then
-        echo " ($(prompt_gbranch)$(prompt_gbefore)$(prompt_gbehind)|$(prompt_gstatus))"
-    fi
-}
 prompt_pwd() {
     pwd | sed -e "s_${HOME}_~_" -e 's_\(/*.\)[^/]*/_\1/_g'
 }
@@ -22,7 +13,12 @@ prompt_status() {
 BOLD="\[$(tput bold)\]"
 GREEN="\[$(tput setaf 2)\]"
 RESET="\[$(tput sgr0)\]"
-PS1="$BOLD[\T]$RESET $GREEN\$(ks prompt_pwd)$RESET\$(ks prompt_git)\$(prompt_status) "
+source /usr/share/git/git-prompt.sh
+export GIT_PS1_SHOWDIRTYSTATE=1
+export GIT_PS1_SHOWSTASHSTATE=1
+export GIT_PS1_SHOWUNTRACKEDFILES=1
+export GIT_PS1_SHOWUPSTREAM="auto verbose"
+PROMPT_COMMAND="__git_ps1 \"$BOLD[\T]$RESET $GREEN\$(ks prompt_pwd)$RESET\" \"\$(prompt_status) \""
 unset BOLD
 unset GREEN
 unset RESET
@@ -30,6 +26,7 @@ unset RESET
 # Completion
 complete -c man
 complete -cf sudo
+complete -cf exec
 
 # Color ls
 alias ls="lr -1FG"
