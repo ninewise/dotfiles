@@ -2,12 +2,12 @@
 # Get ourselves a nice prompt
 ks() { s="$?" ; $* ; return "$s" ; }
 prompt_gbranch() { git branch | sed -n 's/^\* (*\(.* \)*\([^ )]*\))*$/\2/p' ; }
-prompt_gbehind() { git rev-list --left-only  --count @{upstream}...HEAD | sed -n 's/[^0].*/⇃&/p' ; }
-prompt_gbefore() { git rev-list --right-only --count @{upstream}...HEAD | sed -n 's/[^0].*/↿&/p' ; }
+prompt_gbehind() { git status --branch --porcelain=2 | sed -n 's/^# branch\.ab.*-\([^0].*\)$/⇃\1/p' ; }
+prompt_gbefore() { git status --branch --porcelain=2 | sed -n 's/^# branch\.ab +\([^0].*\) .*$/↿\1/p' ; }
 prompt_gstatus() { git status --porcelain | sed 's/\(..\).*/\1/' | cat <(echo OK) -  | tail -1 ; }
 prompt_git() {
     if git status 2>/dev/null 1>&2; then
-        echo " ($(prompt_gbranch)$(prompt_gbehind)$(prompt_gbefore) $(prompt_gstatus))"
+        echo " ($(prompt_gbranch)$(prompt_gbehind)$(prompt_gbefore)|$(prompt_gstatus))"
     fi
 }
 prompt_pwd() {
