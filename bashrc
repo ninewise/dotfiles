@@ -30,6 +30,7 @@ unset RESET
 # Completion
 complete -c man
 complete -cf sudo
+complete -cf exec
 
 # Color ls
 alias ls="lr -1FG"
