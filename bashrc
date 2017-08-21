@@ -33,7 +33,7 @@ complete -cf sudo
 complete -cf exec
 
 # Color ls
-alias ls="lr -1FG"
+alias ls="exa -aF"
 
 # No need for less history and more
 alias less="LESSHISTFILE=- less"
