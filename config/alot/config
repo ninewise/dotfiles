@@ -1,5 +1,5 @@
 
-initial_command = search tag:inbox OR tag:draft AND NOT tag:killed
+initial_command = search (tag:inbox OR tag:draft) AND NOT tag:killed
 periodic_hook_frequency = 60
 
 attachment_prefix = /data/temporary
