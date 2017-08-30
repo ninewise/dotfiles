@@ -1,18 +1,61 @@
 #!/bin/sh
 
-if [ -z "$1" ]; then
+help() {
     echo "usage: $0 [--colour] <file>"
     echo
-    echo "   -c | --colour  print in colour"
-    echo "   file           file (print-ready) to print or -"
+    echo "   -c | --colour     print in colour"
+    echo "   -r | --rasterize  raster pdf before printing"
+    echo "   file              file (print-ready) to print or -"
     echo
     echo "print print-ready files with the UGent printers. Accepts only"
     echo ".txt, .ps, .pdf, .pcl, .cht and .prn."
     exit 1
-fi >&2
+}
 
-if [ "$1" = "-c" -o "$1" = "--colour" ]; then
-    curl --silent --insecure -F "fileToPrint=@$2" -F "FormButtonSubmit=Print" 'https://we02pr06.ugent.be/hp/device/Print/Print'
-else
-    curl --silent --insecure -F "localFile=@$1" 'https://we02pr04.ugent.be/hp/device/this.printservice?printThis'
-fi > /dev/null
+if [ -z "$1" ]; then help; fi >&2
+
+printer="print_mono"
+format="tiffscaled8"
+raster=""
+while [ -n "$2" ]; do
+    case "$1" in
+        -c|--colour) printer="print_colour"
+                     format="tiffscaled24"
+                     ;;
+        -r|--raster) raster="true"
+                     ;;
+        *)           help
+                     ;;
+    esac
+    shift
+done
+
+printfile="$1"
+if test -n "$raster"; then
+    tiff="$(mktemp)"
+    printfile="$(mktemp)"
+    gs -sDEVICE="$format" -o "$tiff" "$1"
+    tiff2pdf -z -f -F -pA4 -o "$printfile" "$tiff"
+    rm "$tiff"
+fi
+
+# pdf2ps -dLanguageLevel=1 input.pdf - | ps2pdf -sPAPERSIZE=a4 - output.pdf
+
+print_colour() {
+    echo curl --silent --insecure \
+         -F "fileToPrint=@$1" \
+         -F "FormButtonSubmit=Print" \
+         'https://we02pr06.ugent.be/hp/device/Print/Print'
+    zathura "$1"
+}
+
+print_mono() {
+    echo curl --silent --insecure \
+         -F "localFile=@$1" \
+         'https://we02pr04.ugent.be/hp/device/this.printservice?printThis'
+    zathura "$1"
+}
+
+"$printer" "$printfile"
+
+if test -n "$raster"; then rm "$printfile"; fi
