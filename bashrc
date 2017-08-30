@@ -32,6 +32,9 @@ complete -c man
 complete -cf sudo
 complete -cf exec
 
+# history
+export HISTCONTROL=ignorespace:erasedups
+
 # Color ls
 alias ls="exa -aF"
 
