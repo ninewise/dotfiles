@@ -42,18 +42,16 @@ fi
 # pdf2ps -dLanguageLevel=1 input.pdf - | ps2pdf -sPAPERSIZE=a4 - output.pdf
 
 print_colour() {
-    echo curl --silent --insecure \
+    curl --silent --insecure \
          -F "fileToPrint=@$1" \
          -F "FormButtonSubmit=Print" \
          'https://we02pr06.ugent.be/hp/device/Print/Print'
-    zathura "$1"
 }
 
 print_mono() {
-    echo curl --silent --insecure \
+    curl --silent --insecure \
          -F "localFile=@$1" \
          'https://we02pr04.ugent.be/hp/device/this.printservice?printThis'
-    zathura "$1"
 }
 
 "$printer" "$printfile"
