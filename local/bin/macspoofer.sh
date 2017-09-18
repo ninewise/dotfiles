@@ -12,6 +12,5 @@ sudo ip link set "$enp" address "$mac"
 sudo ip link set "$enp" up
 
 # No more wireless
-sudo sv stop wpa_supplicant
 sudo ip link set "$wlp" down
 
