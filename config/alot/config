@@ -46,3 +46,4 @@ prefer_plaintext = True
 
     P = shellescape --thread True --refocus True notmuch\ new\ --quiet
     t = toggletags selected; move down
+    x = 'toggletags inbox,killed'
