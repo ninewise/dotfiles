@@ -31,6 +31,7 @@ unset RESET
 complete -c man
 complete -cf sudo
 complete -cf exec
+complete -cf run
 
 # history
 export HISTCONTROL=ignorespace:erasedups
@@ -49,14 +50,18 @@ alias nano="nvim"
 
 # Ready for ssh'ing
 alias agent='eval "$(ssh-agent)" && ssh-add'
+alias unlock='gpg-connect-agent <<<bye'
 
 alias stop-after-this-song="mpc single && mpc idle && mpc single"
 
-# FZF
 go() {
     dir="$(lr /home /data /etc -L -t '(name ~~ ".*" && prune || print) && type = d && !(name = ".git")' \
           | fzf --height 10 \
           )"
     [ -n "$dir" ] && cd "$dir" || false
+}
+
+run() {
+    exec "$@" > /dev/null 2>&1 &
 }
 
