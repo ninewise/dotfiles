@@ -17,6 +17,22 @@ sent
 automat-visualize
 notmuch
 rbenv
+tox
+tox-quickstart
 
 # shouldn't share this one with the world
 macaddress
+
+# garbage
+cftp
+ckeygen
+conch
+easy_install
+easy_install-2.7
+mailmail
+pyhtmlizer
+tkconch
+trial
+twist
+twistd
+virtualenv
