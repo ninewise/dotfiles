@@ -1,3 +1,0 @@
-#!/bin/sh
-
-exec /home/noctua/.local/bin/qutebrowser --debug --backend webengine "$@" 2>&1 | svlogd /home/noctua/.cache/qutebrowsengine/

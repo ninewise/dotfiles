@@ -1,5 +1,6 @@
 #!/usr/bin/python
 
+config.backend = "webengine"
 config.load_autoconfig = False
 
 c.completion.shrink = True

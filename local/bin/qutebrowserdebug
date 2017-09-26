@@ -1,0 +1,4 @@
+#!/bin/sh
+
+mkdir -p /home/noctua/.cache/qutebrowser/log/
+exec /home/noctua/.local/bin/qutebrowser --debug "$@" 2>&1 | svlogd /home/noctua/.cache/qutebrowser/log/
