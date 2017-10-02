@@ -43,6 +43,7 @@ MaildirStore ugent-local
 Path         "/data/mail/ugent/"
 Inbox        "/data/mail/ugent/Inbox"
 Trash        "/data/mail/ugent/Trash"
+SubFolders   "Verbatim"
 
 MaildirStore thijs-local
 Path         "/data/temporary/thijs/"
