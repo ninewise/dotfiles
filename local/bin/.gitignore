@@ -19,6 +19,8 @@ notmuch
 rbenv
 tox
 tox-quickstart
+hlint
+stylish-haskell
 
 # shouldn't share this one with the world
 macaddress
