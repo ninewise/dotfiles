@@ -21,6 +21,10 @@ c.tabs.last_close = "close"
 c.tabs.show = "multiple"
 c.url.default_page = "https://calendar.google.com"
 c.url.start_pages = ["https://calendar.google.com"]
+c.aliases = { "wq": "quit --save"
+            , "set": "set -t"
+            , "bind": "bind -t"
+            }
 
 config.bind("<backspace>", "back", mode="normal")
 config.bind("x", "spawn --detach mpv {url}", mode="normal")
