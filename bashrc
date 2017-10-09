@@ -28,10 +28,29 @@ unset GREEN
 unset RESET
 
 # Completion
+_comp_git() {
+    local IFS=$'\n'
+    # $1 is the name of the command whose arguments are being completed
+    # $2 is the word being completed
+    # $3 is the word preceding the word being completed
+
+    # branch names
+    COMPREPLY=( $(git branch -a --format "%(refname:short)" | grep "^$2") )
+
+    # remotes
+    COMPREPLY+=( $(git remote | grep "^$2") )
+
+    # subcommands
+    if [ "$3" = "git" ]; then
+        COMPREPLY+=( $({ compgen -c "git-"; command ls /usr/libexec/git-core; } | sed -n 's/^git-//p' | grep "^$2") )
+    fi
+}
+
 complete -c man
 complete -cf sudo
 complete -cf exec
 complete -cf run
+complete -fF _comp_git git
 
 # history
 export HISTCONTROL=ignorespace:erasedups
