@@ -7,7 +7,7 @@ notmuch search tag:new | cut -d' ' --complement -f1 | xargs -0 --no-run-if-empty
 notmuch tag +inbox -new -- tag:new
 
 # some filtering
-notmuch tag +killed -- subject:'^\[SPAM\]' to:ugent
+notmuch tag +killed -- subject:'^[SPAM]' to:ugent
 
 # remove killed thread from inbox
 notmuch tag -inbox -- tag:killed
