@@ -16,6 +16,7 @@ vis.events.subscribe(vis.events.WIN_OPEN, function(win)
 	vis:command('set show-tabs on')
 	vis:command('set number')
 	vis:command('set theme dark-16')
+	vis:command('set escdelay 1')
 end)
 
 vis:map(vis.modes.NORMAL, ";l", function()
