@@ -40,6 +40,9 @@ _comp_git() {
     # remotes
     COMPREPLY+=( $(git remote | grep "^$2") )
 
+    # files
+    COMPREPLY+=( $(git ls-files -co --exclude-standard | grep "^$2") )
+
     # subcommands
     if [ "$3" = "git" ]; then
         COMPREPLY+=( $({ compgen -c "git-"; command ls /usr/libexec/git-core; } | sed -n 's/^git-//p' | grep "^$2") )
@@ -50,7 +53,7 @@ complete -c man
 complete -cf sudo
 complete -cf exec
 complete -cf run
-complete -fF _comp_git git
+complete -F _comp_git git
 
 # history
 export HISTCONTROL=ignorespace:erasedups
