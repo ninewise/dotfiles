@@ -24,5 +24,7 @@ vis:map(vis.modes.NORMAL, ";l", function()
 	if out then
 		vis:command(string.format('open %s', out))
 	end
-	vis:feedkeys("")
+	vis:feedkeys("<vis-redraw>")
 end)
+
+vis:map(vis.modes.NORMAL, ";;", "<vis-window-next>")
