@@ -1,11 +1,11 @@
 #!/bin/sh
 
 # some filtering
-notmuch tag +killed -new -- subject:'^[SPAM]' to:ugent
+notmuch tag +killed -new -unread -- subject:'^[SPAM]' to:ugent
 
 # notify for new messages
 notmuch search tag:new | cut -d' ' --complement -f1 | xargs -0 --no-run-if-empty notify-send
 
-# put new messages in the inbox
-notmuch tag +inbox -new -- tag:new
+# processed new messages are no longer new
+notmuch tag -new -- tag:new
 

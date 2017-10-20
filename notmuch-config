@@ -61,7 +61,7 @@ ignore=
 #		query will override that exclusion.
 #
 [search]
-exclude_tags=deleted;spam;
+exclude_tags=killed;deleted;spam;
 
 # Maildir compatibility configuration
 #
