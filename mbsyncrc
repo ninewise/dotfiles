@@ -14,13 +14,6 @@ PassCmd         "gpg2 -u Noctua -q --no-secmem-warning --for-your-eyes-only --no
 AuthMechs       "PLAIN"
 SSLTYPE         "IMAPS"
 CertificateFile "/etc/ssl/certs/ca-certificates.crt"
-
-IMAPAccount     thijs
-Host            "owa.ugent.be"
-User            "thijs.vangerrewey@ugent.be"
-AuthMechs       "PLAIN"
-SSLTYPE         "IMAPS"
-CertificateFile "/etc/ssl/certs/ca-certificates.crt"
 # }}} Accounts
 
 # Remote Stores {{{
@@ -29,9 +22,6 @@ Account   "gmail"
 
 IMAPStore ugent-remote
 Account   "ugent"
-
-IMAPStore thijs-remote
-Account   "thijs"
 # }}}
 
 # Local Stores {{{
@@ -44,11 +34,6 @@ Path         "/data/mail/ugent/"
 Inbox        "/data/mail/ugent/Inbox"
 Trash        "/data/mail/ugent/Trash"
 SubFolders   "Verbatim"
-
-MaildirStore thijs-local
-Path         "/data/temporary/thijs/"
-Inbox        "/data/temporary/thijs/Inbox"
-Trash        "/data/temporary/thijs/Trash"
 # }}}
 
 # Channels {{{
@@ -86,13 +71,6 @@ SyncState "*"
 Channel   ugent-trash
 Master    ":ugent-remote:Verwijderde Items"
 Slave     ":ugent-local:Trash"
-Create    "Slave"
-SyncState "*"
-
-Channel   thijs-inbox
-Master    ":thijs-remote:"
-Patterns  "*"
-Slave     ":thijs-local:"
 Create    "Slave"
 SyncState "*"
 # }}}
