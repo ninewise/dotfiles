@@ -11,7 +11,7 @@ prompt_git() {
     fi
 }
 prompt_pwd() {
-    pwd | sed -e "s_${HOME}_~_" -e 's_\(/*.\)[^/]*/_\1/_g'
+    pwd | sed -e "s_${HOME}_~_" -e 's_\(/*\.*.\)[^/]*/_\1/_g'
 }
 prompt_status() {
     if [ "$?" = "0" ]
