@@ -41,7 +41,7 @@ _comp_git() {
     COMPREPLY+=( $(git remote | grep "^$2") )
 
     # files
-    COMPREPLY+=( $(git ls-files -co --exclude-standard | grep "^$2") )
+    COMPREPLY+=( $(git ls-files -co --exclude-standard "$2*" | sed "s?\($2[^/]*\).*?\1?") )
 
     # subcommands
     if [ "$3" = "git" ]; then
@@ -53,7 +53,7 @@ complete -c man
 complete -cf sudo
 complete -cf exec
 complete -cf run
-complete -F _comp_git git
+complete -o filenames -F _comp_git git
 
 # history
 export HISTCONTROL=ignorespace:erasedups
