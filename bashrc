@@ -79,7 +79,7 @@ alias stop-after-this-song="mpc single && mpc idle && mpc single"
 alias morning="maintain && gitfetcher"
 
 go() {
-    dir="$(lr /home /data /etc -L -t '(name ~~ ".*" && prune || print) && type = d && !(name = ".git")' \
+    dir="$(lr /home /data /etc -t '(name ~~ ".*" && prune || print) && type = d && !(name = ".git")' \
           | fzf --height 10 \
           )"
     [ -n "$dir" ] && cd "$dir" || false
