@@ -1,0 +1,4 @@
+#!/bin/sh
+wjt -x "$(xbacklight -get)" | while read next; do
+    xbacklight -set "$next"
+done
