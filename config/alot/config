@@ -48,4 +48,5 @@ prefer_plaintext = True
 
     [[search]]
         x = toggletags killed
-        a = toggletags archived
+        a = tag archived
+        A = untag archived
