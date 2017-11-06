@@ -2,9 +2,9 @@
 
 cd /data/programming/void-packages
 
-./xbps-src update-check notmuch \
-                        kcov \
-                        qutebrowser \
-                        ranger \
-                        escrotum
+./xbps-src update-check notmuch
+./xbps-src update-check kcov
+./xbps-src update-check qutebrowser
+./xbps-src update-check ranger
+./xbps-src update-check escrotum
 
