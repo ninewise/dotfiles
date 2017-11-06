@@ -24,6 +24,7 @@ c.url.start_pages = ["https://calendar.google.com"]
 c.aliases = { "wq": "quit --save"
             , "set": "set -t"
             , "bind": "bind -t"
+            , "quickmarks": "open qute://bookmarks/"
             }
 
 config.bind("<backspace>", "back", mode="normal")
@@ -42,3 +43,10 @@ config.bind("z", 'enter-mode insert ;; \
                               break; \
                           } \
                       }', mode="normal")
+
+# I don't use bookmarks
+config.unbind('M')
+config.unbind('wB')
+config.unbind('gb')
+config.unbind('gB')
+config.unbind('Sb')
