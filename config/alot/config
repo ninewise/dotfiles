@@ -47,6 +47,10 @@ prefer_plaintext = True
     t = toggletags selected; move down
 
     [[search]]
-        x = toggletags killed
+        x = tag killed
         a = tag archived
         A = untag archived
+
+    [[thread]]
+        a = tag archived ; fold
+        A = untag archived ; unfold
