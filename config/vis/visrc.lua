@@ -8,8 +8,7 @@ vis.events.subscribe(vis.events.INIT, function()
 end)
 
 vis.events.subscribe(vis.events.WIN_OPEN, function(win)
-	-- Your per window configuration options e.g.
-	-- vis:command('set number')
+	-- Your per window configuration options
 	vis:command('set tabwidth 4')
 	vis:command('set autoindent on')
 	vis:command('set expandtab on')
@@ -20,12 +19,15 @@ vis.events.subscribe(vis.events.WIN_OPEN, function(win)
 end)
 
 vis:command_register("fzf", function(argv, force, cur_win, selection, range)
-	local old = cur_win
 	local out = io.popen("fzf"):read()
+	--local out = io.popen("fzf " .. table.concat(argv, " ")):read()
 	if out then
-		vis:command(string.format('open %s', out))
 		if argv[1] then
-			old:close(force)
+			vis:command(string.format('e %s', out))
+			-- or vis:command(string.format('open %s', out))
+			-- should e return false when failed
+		else
+			vis:command(string.format('open %s', out))
 		end
 		vis:feedkeys("<vis-redraw>")
 	end
