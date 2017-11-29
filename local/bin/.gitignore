@@ -22,6 +22,9 @@ tox-quickstart
 hlint
 stylish-haskell
 unlit
+vis
+vis-*
+cabal
 
 # shouldn't share this one with the world
 macaddress

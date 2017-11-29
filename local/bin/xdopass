@@ -1,0 +1,11 @@
+#!/bin/bash
+
+window="$(xdotool getwindowfocus)"
+
+alias_="$(zenity --password --title="Password Calculator - Alias" 2> /dev/null)"
+secret="$(zenity --password --title="Password Calculator - Secret" 2> /dev/null)"
+
+pass="$(echo -n "$secret$alias_" | shasum | sed 's/../\\\\x&/g' | xargs echo -e | base64 -w16 | head -1)"
+
+xdotool type --window "$window" "$pass"
+xdotool windowfocus "$window"
