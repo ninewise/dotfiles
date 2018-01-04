@@ -15,7 +15,7 @@ c.hints.auto_follow = "full-match"
 c.hints.dictionary = "/usr/share/dict/mnemonic"
 c.hints.mode = "word"
 c.new_instance_open_target = "tab-silent"
-c.session_default_name = "default"
+c.session.default_name = "default"
 c.tabs.background = True
 c.tabs.last_close = "close"
 c.tabs.show = "multiple"
@@ -30,6 +30,7 @@ c.aliases = { "wq": "quit --save"
 config.bind("<backspace>", "back", mode="normal")
 config.bind("x", "spawn --detach mpv {url}", mode="normal")
 config.bind(";x", "hint links spawn --detach mpv {hint-url}", mode="normal")
+config.bind("si", "jseval --quiet --file simplyread.js", mode="normal")
 config.bind("z", 'enter-mode insert ;; \
                   jseval --quiet \
                       var inputs = document.getElementsByTagName("input"); \
