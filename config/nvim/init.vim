@@ -31,12 +31,6 @@ set listchars=tab:·\ ,trail:·
                     " display tabs with a leading \cdot
                     " trailing whitespace looks like \cdot
 
-" Movement keys
-nnoremap <Up>       <NOP>
-nnoremap <Down>     <NOP>
-nnoremap <Left>     <NOP>
-nnoremap <Right>    <NOP>
-
 " Not too much folding
 set foldlevelstart=3
 
