@@ -86,13 +86,3 @@ exclude_tags=killed;deleted;spam;
 #
 [maildir]
 synchronize_flags=true
-
-# Cryptography related configuration
-#
-# The following option is supported here:
-#
-#	gpg_path
-#		binary name or full path to invoke gpg.
-#
-[crypto]
-gpg_path=gpg2
