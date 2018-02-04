@@ -78,6 +78,7 @@ alias stop-after-this-song="mpc single && mpc idle && mpc single"
 
 alias morning="maintain && gitfetcher"
 
+alias weechat="ssh -t weechat@Chatmachine abduco -a weechat"
 go() {
     dir="$(lr /home /data /etc -t '(name ~~ ".*" && prune || print) && type = d && !(name = ".git")' \
           | fzf --height 10 \
