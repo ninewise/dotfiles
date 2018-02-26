@@ -1,4 +1,4 @@
 #!/bin/sh
-wjt -x "$(xbacklight -get)" | while read next; do
-    xbacklight -set "$next"
+xbacklight -get | xargs printf '%.0f' | xargs wjt -x | while read next; do
+    xbacklight -time 0 -set "$next"
 done
