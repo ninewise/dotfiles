@@ -6,6 +6,7 @@ config.load_autoconfig = False
 c.completion.shrink = True
 c.confirm_quit = ["downloads"]
 # c.content.developer_extras = True
+c.content.javascript.enabled = False
 c.content.ssl_strict = True
 c.downloads.location.directory = "/data/temporary"
 c.downloads.location.suggestion = "both"
