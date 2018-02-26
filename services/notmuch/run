@@ -1,6 +1,6 @@
 #!/bin/sh
-exec env                         \
-    HOME="${HOME:-/home/noctua}" \
-    PATH="/usr/local/bin:$PATH"  \
-    DISPLAY="${DISPLAY:-:0}"     \
+exec env                                         \
+    HOME="${HOME:-/home/noctua}"                 \
+    PATH="/usr/local/bin:$HOME/.local/bin:$PATH" \
+    DISPLAY="${DISPLAY:-:0}"                     \
     ./notmuch
