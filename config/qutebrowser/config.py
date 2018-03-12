@@ -52,3 +52,18 @@ config.unbind('wB')
 config.unbind('gb')
 config.unbind('gB')
 config.unbind('Sb')
+
+# Allowing javascript for...
+allowed = [ 'https://calendar.google.com/*'
+          , 'https://www.facebook.com/*'
+          , 'https://www.glowing-bear.org/*'
+          , 'https://zeuswpi.slack.com/*'
+          , 'https://github.com/*'
+          , 'https://github.ugent.be/*'
+          , 'https://dodona.ugent.be/*'
+          , 'https://secure.ogone.com/*'             # bancontact
+          , 'https://belgium-3dsecure.wlp-acs.com/*' # bancontact
+          ]
+
+for pattern in allowed:
+    config.set('content.javascript.enabled', True, pattern)
