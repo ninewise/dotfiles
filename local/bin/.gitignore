@@ -1,49 +1,46 @@
 
 # Some actual binary files
+automat-visualize
+cabal
 ctags
-readtags
-html2text
-dwm
 dmenu
 dmenu_path
 dmenu_run
-stest
-wjt
-jshon
-pygmentize
-st
 dvtm*
-sent
-automat-visualize
+dwm
+gloss-juicy-viewer
+hlint
+html2text
+jshon
 notmuch
+pygmentize
 rbenv
+readtags
+sent
+st
+stest
+stylish-haskell
 tox
 tox-quickstart
-hlint
-stylish-haskell
 unlit
 vis
 vis-*
-cabal
+wjt
 
 # shouldn't share this one with the world
 macaddress
 
 # garbage
-cftp
-ckeygen
-conch
+chardetect
 easy_install
 easy_install-2.7
-mailmail
-pyhtmlizer
-tkconch
-trial
-twist
-twistd
-virtualenv
-chardetect
+epylint
+f2py
+isort
+jsonschema
 pybabel
+pylint
+pyreverse
 rst2html.py
 rst2html4.py
 rst2html5.py
@@ -60,3 +57,4 @@ sphinx-apidoc
 sphinx-autogen
 sphinx-build
 sphinx-quickstart
+symilar
