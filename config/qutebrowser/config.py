@@ -8,6 +8,7 @@ c.confirm_quit = ["downloads"]
 # c.content.developer_extras = True
 c.content.javascript.enabled = False
 c.content.ssl_strict = True
+c.content.headers.accept_language = "en-US"
 c.downloads.location.directory = "/data/temporary"
 c.downloads.location.suggestion = "both"
 c.downloads.open_dispatcher = "rifle"
@@ -59,10 +60,10 @@ allowed = [ 'https://calendar.google.com/*'
           , 'https://www.glowing-bear.org/*'
           , 'https://zeuswpi.slack.com/*'
           , 'https://github.com/*'
-          , 'https://github.ugent.be/*'
-          , 'https://dodona.ugent.be/*'
+          , 'https://*.ugent.be/*'
           , 'https://secure.ogone.com/*'             # bancontact
           , 'https://belgium-3dsecure.wlp-acs.com/*' # bancontact
+          , 'https://*.axabank.be/*'
           ]
 
 for pattern in allowed:
