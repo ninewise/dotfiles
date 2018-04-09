@@ -1,2 +1,5 @@
 #!/bin/sh
-notmuch address --format=json --output=recipients --output=sender --deduplicate=address from:"$*" OR to:"$*" | rg -i "$*"
+notmuch address --output=recipients --output=sender --deduplicate=address from:'*'"$*"'*' OR to:'*'"$*"'*' \
+	| grep -i "$*" \
+	| grep -v noreply \
+	| sort | uniq

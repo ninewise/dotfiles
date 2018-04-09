@@ -23,7 +23,7 @@ editor_cmd = "st -e vis"
         [[[abook]]]
             type = shellcommand
             command = 'notmuch-abook.sh'
-            regexp = '\[?{"name": "(?P<name>.*)", "address": "(?P<email>.+)", "name-addr": ".*"}[,\]]?'
+            regexp = (?P<name>.*) <(?P<email>.+)>
             shellcommand_external_filtering = True
 
 
@@ -41,7 +41,7 @@ editor_cmd = "st -e vis"
         [[[abook]]]
             type = shellcommand
             command = 'notmuch-abook.sh'
-            regexp = '\[?{"name": "(?P<name>.*)", "address": "(?P<email>.+)", "name-addr": ".*"}[,\]]?'
+            regexp = (?P<name>.*) <(?P<email>.+)>
             shellcommand_external_filtering = True
 
 [bindings]
@@ -56,4 +56,5 @@ editor_cmd = "st -e vis"
     [[thread]]
         a = tag archived ; fold
         A = untag archived ; unfold
-        n = nextctype
+        n = nextpart
+        p = prevpart
