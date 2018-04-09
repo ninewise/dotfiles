@@ -15,7 +15,7 @@ export RBENV_HOME="$HOME/.rbenv"
 export PATH="$HOME/.local/bin:$CABAL_HOME/bin:$RBENV_HOME/shims:$CARGO_HOME/bin:$JAVA_HOME/bin:$PATH"
 
 # For vim
-export EDITOR="nvim"
+export EDITOR="vis"
 #stty -ixon # turn of <C-s> for vimshell
 
 # Searching
@@ -24,7 +24,7 @@ export FZF_DEFAULT_COMMAND='(git ls-files -co --exclude-standard || rg --files) 
 # Start X if we're in tty1
 xsession() {
     startx 2>&1 || vlock
-    sudo poweroff
-    sleep infinity
+    #sudo poweroff
+    #sleep infinity
 }
 if tty | grep -q '/dev/tty1'; then xsession; fi

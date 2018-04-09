@@ -16,4 +16,3 @@ contains "$where" "above" "below" "left-of" "right-of" || exit 1
 xset dpms 0 0 0
 xautolock -disable
 xrandr --output DP1 --auto --$where eDP1
-bash ~/.fehbg
