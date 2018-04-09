@@ -11,9 +11,9 @@ if [ -n "$1" ]; then
                    feh "$foto"
                    rm "$foto"
                    ;;
-            klein) curl --data "command=set_pos&posX=0&posY=12"           "$cmd_url"  ;;
+            klein) curl --data "command=set_pos&posX=16&posY=16"          "$cmd_url"  ;;
             groot) curl --data "command=set_pos&posX=50&posY=10"          "$cmd_url"  ;;
-            zetel) curl --data "command=set_pos&posX=50&posY=22"          "$cmd_url"  ;;
+            zetel) curl --data "command=set_pos&posX=0&posY=12"           "$cmd_url"  ;;
             \>)    curl --data "command=set_relative_pos&posX=10&posY=0"  "$cmd_url"  ;;
             \<)    curl --data "command=set_relative_pos&posX=-10&posY=0" "$cmd_url"  ;;
             v)     curl --data "command=set_relative_pos&posX=0&posY=-10" "$cmd_url"  ;;
