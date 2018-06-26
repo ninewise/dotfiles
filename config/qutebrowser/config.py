@@ -64,6 +64,10 @@ allowed = [ 'https://calendar.google.com/*'
           , 'https://secure.ogone.com/*'             # bancontact
           , 'https://belgium-3dsecure.wlp-acs.com/*' # bancontact
           , 'https://*.axabank.be/*'
+          , 'https://*.ing.be/*'
+          , 'https://accounts.google.com/*'
+          , 'https://www.openstreetmap.org/*'
+          , 'https://web.whatsapp.com'
           ]
 
 for pattern in allowed:
