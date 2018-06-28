@@ -2,10 +2,11 @@
 
 window="$(xdotool getwindowfocus)"
 
-alias_="$(zenity --password --title="Password Calculator - Alias" 2> /dev/null)"
-secret="$(zenity --password --title="Password Calculator - Secret" 2> /dev/null)"
+key="$(cd ~/.password-store; find * -name '*.gpg' -exec basename \{\} \; | sed 's/\..*$//' | dmenu)"
 
-pass="$(echo -n "$secret$alias_" | shasum | sed 's/../\\\\x&/g' | xargs echo -e | base64 -w16 | head -1)"
+[ -z "$key" ] && exit
 
-xdotool type --window "$window" "$pass"
+key="$(cd ~/.password-store; find * -name '*'"$key"'*' | sed 's/\.gpg$//')"
+
+xdotool type --clearmodifiers --window "$window" "$(pass show "$key" | head -1)"
 xdotool windowfocus "$window"
