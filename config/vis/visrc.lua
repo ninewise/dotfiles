@@ -47,29 +47,3 @@ vis:map(vis.modes.NORMAL, ";i", function()
 		vis:command("!python -i $vis_filename")
 	end
 end)
-
-lines = nil
-index = 1
-
-vis:map(vis.modes.INSERT, "<Tab>", function()
-	local win = vis.win
-	local pos = win.selection.pos
-	local word = win.file:content(win.file:text_object_word(pos - 1))
-	if word:gsub("%s+", "") == "" then
-		vis:insert("	")
-		return pos+1
-	end
-
-	lines = {}
-	local nlines = 0
-	local handle = io.popen(string.format("cut -f1 tags | uniq | grep '^%s'", word))
-	for line in handle:lines() do
-		table.insert(lines, line)
-		nlines = nlines + 1
-	end
-
-	if nlines == 0 then
-		lines = nil
-	end
-end)
--- Rec
