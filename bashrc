@@ -41,7 +41,7 @@ _comp_git() {
     COMPREPLY+=( $(git remote | grep "^$2") )
 
     # files
-    COMPREPLY+=( $(git ls-files -co --exclude-standard "$2*" | sed "s?\($2[^/]*\).*?\1?") )
+    COMPREPLY+=( $(git ls-files -coz --exclude-standard "$2*" | tr '\0' '\n' | sed "s?\($2[^/]*\).*?\1?") )
 
     # subcommands
     if [ "$3" = "git" ]; then
@@ -66,9 +66,9 @@ alias less="LESSHISTFILE=- less"
 alias more="less"
 
 # There is only one vim
-alias vim="nvim"
-alias vi="nvim"
-alias nano="nvim"
+alias vim="vis"
+alias vi="vis"
+alias nano="vis"
 
 # Ready for ssh'ing
 alias agent='eval "$(ssh-agent)" && ssh-add'
@@ -78,7 +78,7 @@ alias stop-after-this-song="mpc single && mpc idle && mpc single"
 
 alias morning="maintain && gitfetcher"
 
-alias weechat="ssh -t weechat@Chatmachine abduco -a weechat"
+alias weechat="ssh -t weechat@Chatmachine abduco -A weechat"
 alias bearchat="ssh -f -N -L localhost:9001:localhost:8001 weechat@Chatmachine"
 
 go() {
@@ -92,3 +92,6 @@ run() {
     exec "$@" > /dev/null 2>&1 &
 }
 
+terminfo() {
+    infocmp -x | ssh $@ 'cat > $TERM.info && tic -x $TERM.info && rm $TERM.info'
+}
