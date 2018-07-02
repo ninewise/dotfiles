@@ -1,6 +1,0 @@
-#!/bin/sh
-
-case "$1" in
-    "binaural") play -n -t sl - synth sine %-29 sine %-30 ;;
-    "brown"|*)  play -t sl - synth brownnoise band -n 1200 200 tremolo 20 .1 < /dev/zero ;;
-esac
