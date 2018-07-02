@@ -55,7 +55,8 @@ config.unbind('gB')
 config.unbind('Sb')
 
 # Allowing javascript for...
-allowed = [ 'https://calendar.google.com/*'
+allowed = [ 'https://duckduckgo.com/*'
+          , 'https://calendar.google.com/*'
           , 'https://www.facebook.com/*'
           , 'https://www.glowing-bear.org/*'
           , 'https://zeuswpi.slack.com/*'
