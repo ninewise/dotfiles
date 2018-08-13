@@ -1,2 +1,2 @@
 #!/bin/sh
-mbsync -qq ugent gmail
+mbsync -qq -a

@@ -3,17 +3,23 @@
 IMAPAccount     gmail
 Host            "imap.gmail.com"
 User            "felix.vanderjeugt@gmail.com"
-PassCmd         "gpg2 -u Noctua -q --no-secmem-warning --for-your-eyes-only --no-tty -d ~/.config/passwords.gpg | sed -n 's/gmail=//p'"
+PassCmd         "pass show other/gmail"
 SSLType         "IMAPS"
 CertificateFile "/etc/ssl/certs/ca-certificates.crt"
 
 IMAPAccount     ugent
 Host            "owa.ugent.be"
 User            "felix.vanderjeugt@ugent.be"
-PassCmd         "gpg2 -u Noctua -q --no-secmem-warning --for-your-eyes-only --no-tty -d ~/.config/passwords.gpg | sed -n 's/ugent=//p'"
+PassCmd         "pass show web/ugent.be | head -1"
 AuthMechs       "PLAIN"
 SSLTYPE         "IMAPS"
 CertificateFile "/etc/ssl/certs/ca-certificates.crt"
+
+IMAPAccount     posteo
+Host            "posteo.de"
+User            "felix.vanderjeugt@posteo.net"
+PassCmd         "pass show other/posteo-mbsync"
+SSLTYPE         "IMAPS"
 # }}} Accounts
 
 # Remote Stores {{{
@@ -22,6 +28,9 @@ Account   "gmail"
 
 IMAPStore ugent-remote
 Account   "ugent"
+
+IMAPStore posteo-remote
+Account   "posteo"
 # }}}
 
 # Local Stores {{{
@@ -34,6 +43,10 @@ Path         "/data/mail/ugent/"
 Inbox        "/data/mail/ugent/Inbox"
 Trash        "/data/mail/ugent/Trash"
 SubFolders   "Verbatim"
+
+MaildirStore posteo-local
+Path         "/data/mail/posteo/"
+Inbox        "/data/mail/posteo/Inbox"
 # }}}
 
 # Channels {{{
@@ -73,6 +86,30 @@ Master    ":ugent-remote:Verwijderde Items"
 Slave     ":ugent-local:Trash"
 Create    "Slave"
 SyncState "*"
+
+Channel   posteo-inbox
+Master    ":posteo-remote:Inbox"
+Slave     ":posteo-local:"
+Create    "Slave"
+SyncState "*"
+
+Channel   posteo-sent
+Master    ":posteo-remote:Sent"
+Slave     ":posteo-local:Sent"
+Create    "Slave"
+SyncState "*"
+
+Channel   posteo-trash
+Master    ":posteo-remote:Trash"
+Slave     ":posteo-local:Trash"
+Create    "Slave"
+SyncState "*"
+
+Channel   posteo-draft
+Master    ":posteo-remote:Drafts"
+Slave     ":posteo-local:Drafts"
+Create    "Slave"
+SyncState "*"
 # }}}
 
 # Groups {{{
@@ -85,6 +122,12 @@ Group   ugent
 Channel "ugent-inbox"
 Channel "ugent-sent"
 Channel "ugent-trash"
+
+Group   posteo
+Channel "posteo-inbox"
+Channel "posteo-sent"
+Channel "posteo-trash"
+Channel "posteo-draft"
 # }}}
 
 # vim: foldmethod=marker

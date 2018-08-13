@@ -8,10 +8,26 @@ editor_cmd = "st -e vis"
 
 [accounts]
 
+    [[posteo]]
+        realname = Felix Van der Jeugt
+        address = felix.vanderjeugt@posteo.net
+        gpg_key = 68FF561137C38F9618E97339AF25A2C2862AA368
+        sendmail_command = /usr/bin/msmtp --account=posteo -t
+        sent_box = maildir:///data/mail/posteo/Sent
+        draft_box = maildir:///data/mail/posteo/Drafts
+        sent_tags = # none
+        sign_by_default = False
+
+        [[[abook]]]
+            type = shellcommand
+            command = 'notmuch address date:1Y..'
+            regexp = (?P<name>.*) <(?P<email>.+)>
+            shellcommand_external_filtering = False
+
     [[gmail]]
         realname = Felix Van der Jeugt
         address = felix.vanderjeugt@gmail.com
-        aliases = Felix.Vanderjeugt@gmail.com,
+        aliases = felixvdj@zeus.ugent.be
         alias_regexp = felix\.vanderjeugt\+.+@gmail.com
         gpg_key = 68FF561137C38F9618E97339AF25A2C2862AA368
         sendmail_command = /usr/bin/msmtp --account=gmail -t
@@ -22,9 +38,9 @@ editor_cmd = "st -e vis"
 
         [[[abook]]]
             type = shellcommand
-            command = 'notmuch-abook.sh'
+            command = 'notmuch address date:1Y..'
             regexp = (?P<name>.*) <(?P<email>.+)>
-            shellcommand_external_filtering = True
+            shellcommand_external_filtering = False
 
 
     [[ugent]]
@@ -40,9 +56,9 @@ editor_cmd = "st -e vis"
 
         [[[abook]]]
             type = shellcommand
-            command = 'notmuch-abook.sh'
+            command = 'notmuch address date:1Y..'
             regexp = (?P<name>.*) <(?P<email>.+)>
-            shellcommand_external_filtering = True
+            shellcommand_external_filtering = False
 
 [bindings]
 
