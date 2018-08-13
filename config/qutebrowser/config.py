@@ -23,8 +23,8 @@ c.session.default_name = "default"
 c.tabs.background = True
 c.tabs.last_close = "close"
 c.tabs.show = "multiple"
-c.url.default_page = "https://calendar.google.com"
-c.url.start_pages = ["https://calendar.google.com"]
+c.url.default_page = "about:blank"
+c.url.start_pages = ["qute://bookmarks"]
 c.aliases = { "wq": "quit --save"
             , "set": "set -t"
             , "bind": "bind -t"
@@ -50,7 +50,6 @@ config.bind("z", 'enter-mode insert ;; \
                       }', mode="normal")
 
 # I don't use bookmarks
-config.unbind('M')
 config.unbind('wB')
 config.unbind('gb')
 config.unbind('gB')
@@ -71,6 +70,8 @@ allowed = [ 'https://duckduckgo.com/*'
           , 'https://accounts.google.com/*'
           , 'https://www.openstreetmap.org/*'
           , 'https://web.whatsapp.com'
+          , 'https://chat.zeus.gent/*'
+          , 'https://posteo.de/*'
           ]
 
 for pattern in allowed:

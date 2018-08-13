@@ -1,0 +1,23 @@
+[calendars]
+
+[[private]]
+path = /data/calendar/private/plebbb
+color = dark green
+
+[[arbeit]]
+path = /data/calendar/arbeit/oqzdgp
+color = dark red
+
+[[default]]
+path = /data/calendar/default/default
+
+[locale]
+timeformat = %H:%M
+dateformat = %Y-%m-%d
+longdateformat = %Y-%m-%d
+datetimeformat = %Y-%m-%d %H:%M
+longdatetimeformat = %Y-%m-%d %H:%M
+
+[default]
+highlight_event_days = True
+
