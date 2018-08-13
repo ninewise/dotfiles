@@ -2,7 +2,7 @@
 
 window="$(xdotool getwindowfocus)"
 
-key="$(cd ~/.password-store; find * -name '*.gpg' -exec basename \{\} \; | sed 's/\..*$//' | dmenu)"
+key="$(cd ~/.password-store; find * -name '*.gpg' -exec basename \{\} \; | sed 's/\.[^.]*$//' | dmenu)"
 
 [ -z "$key" ] && exit
 
