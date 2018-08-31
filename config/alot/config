@@ -19,10 +19,7 @@ editor_cmd = "st -e vis"
         sign_by_default = False
 
         [[[abook]]]
-            type = shellcommand
-            command = 'notmuch address date:1Y..'
-            regexp = (?P<name>.*) <(?P<email>.+)>
-            shellcommand_external_filtering = False
+            type = abook
 
     [[gmail]]
         realname = Felix Van der Jeugt
@@ -37,10 +34,7 @@ editor_cmd = "st -e vis"
         sign_by_default = True
 
         [[[abook]]]
-            type = shellcommand
-            command = 'notmuch address date:1Y..'
-            regexp = (?P<name>.*) <(?P<email>.+)>
-            shellcommand_external_filtering = False
+            type = abook
 
 
     [[ugent]]
@@ -55,10 +49,7 @@ editor_cmd = "st -e vis"
         sign_by_default = True
 
         [[[abook]]]
-            type = shellcommand
-            command = 'notmuch address date:1Y..'
-            regexp = (?P<name>.*) <(?P<email>.+)>
-            shellcommand_external_filtering = False
+            type = abook
 
 [bindings]
 
