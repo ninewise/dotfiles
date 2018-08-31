@@ -23,6 +23,9 @@ unlit
 vis
 vis-*
 wjt
+khal
+ikhal
+khald
 
 # shouldn't share this one with the world
 macaddress
