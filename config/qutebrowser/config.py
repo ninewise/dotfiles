@@ -6,6 +6,7 @@ config.load_autoconfig = False
 c.completion.shrink = True
 c.confirm_quit = ["downloads"]
 # c.content.developer_extras = True
+c.content.proxy = "socks://localhost:9050"
 c.content.javascript.enabled = False
 c.content.ssl_strict = True
 c.content.headers.accept_language = "en-US,en;q=0.5"
@@ -72,6 +73,7 @@ allowed = [ 'https://duckduckgo.com/*'
           , 'https://web.whatsapp.com'
           , 'https://chat.zeus.gent/*'
           , 'https://posteo.de/*'
+          , 'https://doc.rust-lang.org/*'
           ]
 
 for pattern in allowed:
