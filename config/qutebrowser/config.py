@@ -61,17 +61,18 @@ allowed = [ 'https://duckduckgo.com/*'
           , 'https://calendar.google.com/*'
           , 'https://www.facebook.com/*'
           , 'https://www.glowing-bear.org/*'
-          , 'https://zeuswpi.slack.com/*'
           , 'https://github.com/*'
           , 'https://*.ugent.be/*'
           , 'https://secure.ogone.com/*'             # bancontact
           , 'https://belgium-3dsecure.wlp-acs.com/*' # bancontact
+          , 'https://bcr.girogate.be/*'              # bancontact
           , 'https://*.axabank.be/*'
           , 'https://*.ing.be/*'
           , 'https://accounts.google.com/*'
           , 'https://www.openstreetmap.org/*'
           , 'https://web.whatsapp.com'
           , 'https://chat.zeus.gent/*'
+          , 'https://mattermost.zeus.gent/*'
           , 'https://posteo.de/*'
           , 'https://doc.rust-lang.org/*'
           ]
