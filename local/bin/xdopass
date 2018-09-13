@@ -6,7 +6,8 @@ key="$(cd ~/.password-store; find * -name '*.gpg' -exec basename \{\} \; | sed '
 
 [ -z "$key" ] && exit
 
-key="$(cd ~/.password-store; find * -name '*'"$key"'*' | sed 's/\.gpg$//')"
+key="$(cd ~/.password-store; find * -name "$key"'.*' | sed 's/\.gpg$//')"
 
 xdotool type --clearmodifiers --window "$window" "$(pass show "$key" | head -1)"
 xdotool windowfocus "$window"
+
