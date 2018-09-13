@@ -14,3 +14,6 @@ sudo ip link set "$enp" up
 # No more wireless
 sudo ip link set "$wlp" down
 
+# Restart tor on network change
+sudo sv restart tor
+
