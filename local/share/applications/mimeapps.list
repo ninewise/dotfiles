@@ -1,5 +1,0 @@
-
-[Default Applications]
-x-scheme-handler/http=qutebrowser.desktop
-x-scheme-handler/https=qutebrowser.desktop
-application/x-ica=wfica.desktop
