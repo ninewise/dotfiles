@@ -1,2 +1,3 @@
 #!/bin/sh
-java -jar /data/courses/java-programmeren/bluej/lib/bluej.jar
+cd /data/courses/java-programmeren/bluej
+make run

@@ -1,5 +1,5 @@
 #!/bin/sh
 APPBASE="/data/courses/java-programmeren/greenfoot"
-JAVAPATH="/usr/lib/jvm/jdk1.8.0_152"
+JAVAPATH="/usr/lib/jvm/oracle-jdk"
 CP="$APPBASE/lib/bluej.jar:$JAVAPATH/lib/tools.jar"
 "$JAVAPATH/bin/java" -cp "$CP" bluej.Boot -greenfoot=true -bluej.compiler.showunchecked=false "$@"
