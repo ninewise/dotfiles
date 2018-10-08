@@ -62,10 +62,10 @@ export HISTCONTROL=ignorespace:erasedups
 alias ls="exa -aF"
 
 # No need for less history and more
-alias less="LESSHISTFILE=- less"
-alias more="less"
+alias less="bat"
+alias more="bat"
 
-# There is only one vim
+# There is only one vis
 alias vim="vis"
 alias vi="vis"
 alias nano="vis"
