@@ -17,3 +17,7 @@ a.out
 # Haskell
 .stack-work
 *.hi
+
+# Rust
+Cargo.lock
+target/
