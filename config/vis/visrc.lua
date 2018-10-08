@@ -2,6 +2,7 @@
 require('vis')
 require('plugins/complete-word')
 require('plugins/myfiletype')
+require('editorconfig/editorconfig')
 
 vis.events.subscribe(vis.events.INIT, function()
 	-- Your global configuration options
@@ -42,8 +43,22 @@ end)
 
 vis:map(vis.modes.NORMAL, ";;", "<vis-window-next>")
 
+interactives = {
+	["python"] = "!python -i $vis_filename",
+	["haskell"] = "!stack ghci $vis_filepath",
+	["lithaskell"] = "!stack ghci $vis_filepath",
+}
 vis:map(vis.modes.NORMAL, ";i", function()
-	if vis.win.syntax == "python" then
-		vis:command("!python -i $vis_filename")
+	local command = interactives[vis.win.syntax]
+	if command then
+		vis:command(command)
 	end
+end)
+
+vis:map(vis.modes.NORMAL, ";w", function()
+	vis:command('set theme light-16')
+end)
+
+vis:map(vis.modes.NORMAL, ";b", function()
+	vis:command('set theme dark-16')
 end)
