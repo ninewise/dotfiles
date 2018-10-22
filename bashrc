@@ -1,13 +1,14 @@
 
 # Get ourselves a nice prompt
 ks() { s="$?" ; $* ; return "$s" ; }
-prompt_gbranch() { git branch | sed -n 's/^\* (*\(.* \)*\([^ )]*\))*$/\2/p' ; }
-prompt_gbehind() { git status --branch --porcelain=2 | sed -n 's/^# branch\.ab.*-\([^0].*\)$/⇃\1/p' ; }
-prompt_gbefore() { git status --branch --porcelain=2 | sed -n 's/^# branch\.ab +\([^0].*\) .*$/↿\1/p' ; }
-prompt_gstatus() { git status --porcelain | sed 's/\(..\).*/\1/' | cat <(echo OK) -  | tail -1 ; }
 prompt_git() {
     if git status 2>/dev/null 1>&2; then
-        echo " ($(prompt_gbranch)$(prompt_gbehind)$(prompt_gbefore)|$(prompt_gstatus))"
+        local branch="$(git branch | sed -n 's/^\* (*\(.* \)*\([^ )]*\))*$/\2/p')"
+        local behind="$(git status --branch --porcelain=2 | sed -n 's/^# branch\.ab.*-\([^0].*\)$/⇃\1/p')"
+        local before="$(git status --branch --porcelain=2 | sed -n 's/^# branch\.ab +\([^0].*\) .*$/↿\1/p')"
+        local status="$(git status --porcelain | sed 's/\(..\).*/\1/' | cat <(echo OK) -  | tail -1)"
+        
+        echo " (${branch}${behind}${before}|${status})"
     fi
 }
 prompt_pwd() {
@@ -15,14 +16,14 @@ prompt_pwd() {
 }
 prompt_status() {
     if [ "$?" = "0" ]
-    then echo " $"
-    else echo " %"
+    then echo "$"
+    else echo "%"
     fi
 }
-BOLD="\[$(tput bold)\]"
-GREEN="\[$(tput setaf 2)\]"
-RESET="\[$(tput sgr0)\]"
-PS1="$BOLD[\T]$RESET $GREEN\$(ks prompt_pwd)$RESET\$(ks prompt_git)\$(prompt_status) "
+BOLD="\001$(tput bold)\002"
+GREEN="\001$(tput setaf 2)\002"
+RESET="\001$(tput sgr0)\002"
+PS1="$BOLD[\T]$RESET $GREEN\$(ks prompt_pwd)$RESET\$(ks prompt_git) \$(prompt_status) "
 unset BOLD
 unset GREEN
 unset RESET
