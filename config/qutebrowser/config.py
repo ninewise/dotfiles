@@ -3,6 +3,8 @@
 config.backend = "webengine"
 config.load_autoconfig = False
 
+# c.qt.force_software_rendering = "software-opengl"
+
 c.completion.shrink = True
 c.confirm_quit = ["downloads"]
 # c.content.developer_extras = True
@@ -36,19 +38,10 @@ config.bind("<backspace>", "back", mode="normal")
 config.bind("x", "spawn --detach mpv {url}", mode="normal")
 config.bind(";x", "hint links spawn --detach mpv {hint-url}", mode="normal")
 config.bind("si", "jseval --quiet --file simplyread.js", mode="normal")
-config.bind("z", 'enter-mode insert ;; \
-                  jseval --quiet \
-                      var inputs = document.getElementsByTagName("input"); \
-                      for(var i = 0; i < inputs.length; i++) { \
-                          var hidden = false; \
-                          for(var j = 0; j < inputs[i].attributes.length; j++) { \
-                              hidden = hidden || inputs[i].attributes[j].value.includes("hidden"); \
-                          }; \
-                          if(!hidden) { \
-                              inputs[i].focus(); \
-                              break; \
-                          } \
-                      }', mode="normal")
+config.bind("<Alt+j>", "prompt-item-focus next", mode="prompt")
+config.bind("<Alt+k>", "prompt-item-focus prev", mode="prompt")
+config.bind("<Alt+l>", "fake-key -g /", mode="prompt")
+config.bind("<Alt+h>", "rl-unix-filename-rubout", mode="prompt")
 
 # I don't use bookmarks
 config.unbind('wB')
@@ -67,6 +60,7 @@ allowed = [ 'https://duckduckgo.com/*'
           , 'https://belgium-3dsecure.wlp-acs.com/*' # bancontact
           , 'https://bcr.girogate.be/*'              # bancontact
           , 'https://*.axabank.be/*'
+          , 'https://*.triodos.be/*'
           , 'https://*.ing.be/*'
           , 'https://accounts.google.com/*'
           , 'https://www.openstreetmap.org/*'
