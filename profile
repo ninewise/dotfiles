@@ -14,6 +14,9 @@ export CARGO_HOME="$HOME/.cargo"
 export RBENV_HOME="$HOME/.rbenv"
 export PATH="$HOME/.local/bin:$CABAL_HOME/bin:$RBENV_HOME/shims:$CARGO_HOME/bin:$JAVA_HOME/bin:$PATH"
 
+# Ledger settings
+export LEDGER_FILE="/data/documents/ledger.dat"
+
 # For vim
 export EDITOR="vis"
 #stty -ixon # turn of <C-s> for vimshell
