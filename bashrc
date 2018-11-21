@@ -23,7 +23,7 @@ prompt_status() {
 BOLD="\001$(tput bold)\002"
 GREEN="\001$(tput setaf 2)\002"
 RESET="\001$(tput sgr0)\002"
-PS1="$BOLD[\T]$RESET $GREEN\$(ks prompt_pwd)$RESET\$(ks prompt_git) \$(prompt_status) "
+PS1="$BOLD[\t]$RESET $GREEN\$(ks prompt_pwd)$RESET\$(ks prompt_git) \$(prompt_status) "
 unset BOLD
 unset GREEN
 unset RESET
