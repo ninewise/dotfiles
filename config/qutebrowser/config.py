@@ -69,6 +69,7 @@ allowed = [ 'https://duckduckgo.com/*'
           , 'https://mattermost.zeus.gent/*'
           , 'https://posteo.de/*'
           , 'https://doc.rust-lang.org/*'
+          , 'https://www.paypal.com/*'
           ]
 
 for pattern in allowed:
