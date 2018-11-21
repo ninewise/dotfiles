@@ -50,3 +50,18 @@ url = "https://posteo.de:8443/calendars/felix.vanderjeugt/plebbb/"
 username = "felix.vanderjeugt@posteo.net"
 password.fetch = ["command", "pass", "other/vdirsyncer"]
 
+[pair posteo_contacts]
+a = "contacts_local"
+b = "contacts_remote"
+collections = ["from a", "from b"]
+
+[storage contacts_local]
+type = "filesystem"
+path = "/data/contacts"
+fileext = ".vcf"
+
+[storage contacts_remote]
+type = "carddav"
+url = "https://posteo.de:8843/addressbooks/felix.vanderjeugt/default"
+username = "felix.vanderjeugt@posteo.net"
+password.fetch = ["command", "pass", "other/vdirsyncer"]
