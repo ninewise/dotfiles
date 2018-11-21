@@ -2,4 +2,4 @@
 APPBASE="/data/courses/java-programmeren/greenfoot"
 JAVAPATH="/usr/lib/jvm/oracle-jdk"
 CP="$APPBASE/lib/bluej.jar:$JAVAPATH/lib/tools.jar"
-"$JAVAPATH/bin/java" -cp "$CP" bluej.Boot -greenfoot=true -bluej.compiler.showunchecked=false "$@"
+_JAVA_AWT_WM_NONREPARENTING=1 "$JAVAPATH/bin/java" -cp "$CP" bluej.Boot -greenfoot=true -bluej.compiler.showunchecked=false "$@"
