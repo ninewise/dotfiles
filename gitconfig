@@ -8,6 +8,7 @@
 	conflictstyle = diff3
 [push]
 	default = simple
+	followTags = true
 [core]
 	excludesfile = ~/.config/gitignore
 [gpg]
@@ -17,6 +18,7 @@
 [alias]
 	pf = push --force-with-lease
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-    ff = merge --ff-only
-    co = checkout
-    jn = merge --no-ff
+	ff = merge --ff-only
+	co = checkout
+	jn = merge --no-ff --log --edit
+
