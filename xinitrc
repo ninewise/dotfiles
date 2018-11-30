@@ -10,7 +10,6 @@ xset r rate 300 55
 # xsetroot -solid "#002a3b"
 
 forklog feh --bg-fill $(find -L /data/pictures/background-source/ -type f | sort -R | head)
-forklog xcape -t 80 -e 'Shift_L=Escape;Alt_L=Control_R|G'
 forklog redshift -l 51.2:3.75
 
 exec dwm
