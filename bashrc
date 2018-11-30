@@ -14,6 +14,9 @@ prompt_git() {
 prompt_pwd() {
     pwd | sed -e "s_${HOME}_~_" -e 's_\(/*\.*.\)[^/]*/_\1/_g'
 }
+prompt_agent() {
+    [ -z "$SSH_AGENT_PID" ] || echo " (A)"
+}
 prompt_status() {
     if [ "$?" = "0" ]
     then echo "$"
@@ -23,7 +26,7 @@ prompt_status() {
 BOLD="\001$(tput bold)\002"
 GREEN="\001$(tput setaf 2)\002"
 RESET="\001$(tput sgr0)\002"
-PS1="$BOLD[\t]$RESET $GREEN\$(ks prompt_pwd)$RESET\$(ks prompt_git) \$(prompt_status) "
+PS1="$BOLD[\t]$RESET $GREEN\$(ks prompt_pwd)$RESET\$(ks prompt_git)\$(ks prompt_agent) \$(prompt_status) "
 unset BOLD
 unset GREEN
 unset RESET
