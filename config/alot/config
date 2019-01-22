@@ -11,6 +11,8 @@ editor_cmd = "dvtm 'vis %s'"
     [[posteo]]
         realname = Felix Van der Jeugt
         address = felix.vanderjeugt@posteo.net
+        aliases = felixvdj@zeus.ugent.be
+        alias_regexp = felix\.vanderjeugt\+.+@posteo.net
         gpg_key = 68FF561137C38F9618E97339AF25A2C2862AA368
         sendmail_command = /usr/bin/msmtp --account=posteo -t
         sent_box = maildir:///data/mail/posteo/Sent
@@ -27,7 +29,6 @@ editor_cmd = "dvtm 'vis %s'"
     [[gmail]]
         realname = Felix Van der Jeugt
         address = felix.vanderjeugt@gmail.com
-        aliases = felixvdj@zeus.ugent.be
         alias_regexp = felix\.vanderjeugt\+.+@gmail.com
         gpg_key = 68FF561137C38F9618E97339AF25A2C2862AA368
         sendmail_command = /usr/bin/msmtp --account=gmail -t
@@ -73,3 +74,24 @@ editor_cmd = "dvtm 'vis %s'"
         A = untag archived ; unfold
         n = nextpart
         p = prevpart
+
+[tags]
+
+    [[encrypted]]
+        translated =
+
+    [[archived]]
+        translated = 
+
+    [[replied]]
+        translated = 
+
+    [[signed]]
+        translated = 
+
+    [[attachment]]
+        translated = 
+
+    [[sent]]
+        translated = 
+
