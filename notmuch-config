@@ -30,8 +30,8 @@ path=/data/mail
 #
 [user]
 name=Felix Van der Jeugt
-primary_email=felix.vanderjeugt@gmail.com
-other_email=felix.vanderjeugt@ugent.be;
+primary_email=felix.vanderjeugt@posteo.net
+other_email=felix.vanderjeugt@ugent.be;felix.vanderjeugt@gmail.com
 
 # Configuration for "notmuch new"
 #
