@@ -14,15 +14,13 @@ export CARGO_HOME="$HOME/.cargo"
 export RBENV_HOME="$HOME/.rbenv"
 export PATH="$HOME/.local/bin:$CABAL_HOME/bin:$RBENV_HOME/shims:$CARGO_HOME/bin:$JAVA_HOME/bin:$PATH"
 
-# Ledger settings
-export LEDGER_FILE="/data/documents/ledger.dat"
-
-# For vim
+# Environmental settings
 export EDITOR="vis"
-#stty -ixon # turn of <C-s> for vimshell
-
-# Searching
+export LEDGER_FILE="/data/documents/ledger.dat"
+export LESSHISTFILE=-
 export FZF_DEFAULT_COMMAND='(git ls-files -co --exclude-standard || rg --files) 2> /dev/null'
+
+#stty -ixon # disable <C-s>
 
 # Start X if we're in tty1
 xsession() {
