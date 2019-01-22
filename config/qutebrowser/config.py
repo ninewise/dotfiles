@@ -10,6 +10,8 @@ c.confirm_quit = ["downloads"]
 # c.content.developer_extras = True
 c.content.proxy = "socks://localhost:9050"
 c.content.javascript.enabled = False
+c.content.canvas_reading = False # https://en.wikipedia.org/wiki/Canvas_fingerprinting
+c.content.webgl = False # https://browserleaks.com/webgl
 c.content.ssl_strict = True
 c.content.headers.accept_language = "en-US,en;q=0.5"
 c.content.headers.custom = { "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8" }
@@ -30,9 +32,11 @@ c.tabs.last_close = "close"
 c.tabs.show = "multiple"
 c.url.default_page = "about:blank"
 c.url.start_pages = ["qute://bookmarks"]
+c.url.searchengines = { "DEFAULT": "https://startpage.com/do/search?query={}"
+                      , "ddg": "https://duckduckgo.com/?q={}"
+                      }
 c.aliases = { "wq": "quit --save"
             , "set": "set -t"
-            , "bind": "bind -t"
             , "quickmarks": "open qute://bookmarks/"
             }
 
@@ -76,3 +80,4 @@ allowed = [ 'https://duckduckgo.com/*'
 
 for pattern in allowed:
     config.set('content.javascript.enabled', True, pattern)
+
