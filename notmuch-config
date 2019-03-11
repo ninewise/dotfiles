@@ -48,7 +48,7 @@ other_email=felix.vanderjeugt@ugent.be;felix.vanderjeugt@gmail.com
 #		in the mail store.
 #
 [new]
-tags=unread;new;
+tags=new;
 ignore=
 
 # Search configuration
@@ -61,7 +61,7 @@ ignore=
 #		query will override that exclusion.
 #
 [search]
-exclude_tags=killed;deleted;spam;
+exclude_tags=spam;
 
 # Maildir compatibility configuration
 #
@@ -86,3 +86,6 @@ exclude_tags=killed;deleted;spam;
 #
 [maildir]
 synchronize_flags=true
+
+[query]
+inbox=not tag:spam and not tag:archived

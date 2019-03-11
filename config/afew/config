@@ -1,0 +1,29 @@
+[TagOrContact.1]
+query = to:felixvdj.*@posteo.be OR to:felix.vanderjeugt.*@posteo.net
+
+[Filter.1]
+message = Tag messages to my UGent account
+query = to:felix.vanderjeugt@ugent.be
+tags = +ugent
+
+[Filter.2]
+message = Tag messages to my Zeus account
+query = to:felixvdj@zeus.ugent.be
+tags = +zeus
+
+[Filter.3]
+message = The Dodona alias
+query = to:dodona@ugent.be
+tags = +dodona
+
+[Filter.4]
+message = The Unipept alias
+query = to:unipept@ugent.be
+tags = +unipept
+
+[ListMailsFilter]
+
+[Filter.0]
+message = Add all new messages to the inbox
+query = tag:new
+tags = +unread;-new
