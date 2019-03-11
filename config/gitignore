@@ -21,3 +21,9 @@ a.out
 # Rust
 Cargo.lock
 target/
+
+# LaTeX
+*.log
+*.aux
+*.toc
+*.pdf
