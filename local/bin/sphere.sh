@@ -1,6 +1,6 @@
 #!/bin/sh
 
-cmd_url=kelder.zeus.ugent.be/webcam/cgi/ptdc.cgi
+cmd_url="https://kelder.zeus.ugent.be/webcam/cgi/ptdc.cgi"
 
 if [ -n "$1" ]; then
     while [ -n "$1" ]; do
