@@ -15,7 +15,7 @@ c.content.webgl = False # https://browserleaks.com/webgl
 c.content.ssl_strict = True
 c.content.headers.accept_language = "en-US,en;q=0.5"
 c.content.headers.custom = { "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8" }
-c.content.headers.user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36"
+c.content.headers.user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36"
 c.content.webrtc_ip_handling_policy = "default-public-interface-only"
 c.content.cookies.accept = "no-3rdparty"
 c.downloads.location.directory = "/data/temporary"
@@ -33,6 +33,7 @@ c.tabs.show = "multiple"
 c.url.default_page = "about:blank"
 c.url.start_pages = ["qute://bookmarks"]
 c.url.searchengines = { "DEFAULT": "https://startpage.com/do/search?query={}"
+                      , "ecosia": "https://www.ecosia.org/search?q={}"
                       , "ddg": "https://duckduckgo.com/?q={}"
                       }
 c.aliases = { "wq": "quit --save"
