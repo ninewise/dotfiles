@@ -47,6 +47,7 @@ interactives = {
 	["python"] = "!python -i $vis_filename",
 	["haskell"] = "!stack ghci $vis_filepath",
 	["lithaskell"] = "!stack ghci $vis_filepath",
+	["latex"] = "!pdflatex $vis_filepath",
 }
 vis:map(vis.modes.NORMAL, ";i", function()
 	local command = interactives[vis.win.syntax]
@@ -61,4 +62,25 @@ end)
 
 vis:map(vis.modes.NORMAL, ";b", function()
 	vis:command('set theme dark-16')
+end)
+
+vis:map(vis.modes.INSERT, '<Backspace>', function()
+	local found_tab = true
+	local tabwidth = 4
+	for selection in vis.win:selections_iterator() do
+		local pos = selection.pos
+		if not pos or pos < tabwidth or vis.win.file:content(pos - tabwidth, tabwidth) ~= string.rep(' ', tabwidth) then
+			found_tab = false
+			break
+		end
+	end             
+	vis:feedkeys(string.rep('<vis-delete-char-prev>', found_tab and tabwidth or 1))
+end)
+
+vis:map(vis.modes.NORMAL, ";s", function()
+	vis:command("!sent $vis_filepath")
+end)
+
+vis:map(vis.modes.NORMAL, ";p", function()
+	vis:command("<xclip -o")
 end)
