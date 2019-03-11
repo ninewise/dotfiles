@@ -63,7 +63,10 @@ complete -o filenames -F _comp_git git
 export HISTCONTROL=ignorespace:erasedups
 
 # Color ls
-alias ls="lr -1FGG | git column --mode=dense --padding=3"
+ls_() {
+    lr -1FGG "$@" | git column --mode=dense --padding=3
+}
+alias ls="ls_"
 alias ll="lr -Fl1Ghov"
 
 # There is only one vis
