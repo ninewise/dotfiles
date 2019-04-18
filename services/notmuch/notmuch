@@ -7,6 +7,5 @@ ip route ls | grep -v '' && exit 1
 pgrep gpg-agent >/dev/null || exit 2
 
 notmuch --config="$HOME/.notmuch-config" new --quiet 2>&1 \
-    | grep -v "Ignoring"                                  \
     | xargs -0 --no-run-if-empty notify-send              \
     && exec sleep 3m

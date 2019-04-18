@@ -2,6 +2,31 @@ from afew.filters.BaseFilter import Filter
 from afew.FilterRegistry import register_filter
 
 spammers = """
+rediffmail.com
+msgsu.edu.tr
+ecco.spgb.email
+academicaloxy.com
+sbcglobal.net
+sharonwinstonw2@gmail.com
+educagri.fr
+ac-versailles.fr
+bioscopegroup.org
+microbiologyreposit.com
+ijarcce.com
+wsztest.com
+outlookconferences.com
+cellibc2019.com
+web.imrj.online
+sib.caister.com
+gavin-publishers-group.com
+paper-longsslim@daum.net
+c2.aoamj-conferences.email
+wgc2018-congress.com
+saumail.sakarya.edu.tr
+journalinsight.org
+m.copernicuspublishing.org
+aripd.combined@gmail.com
+support.aoam.email
 hbguirui.net
 foodcongress2019.com
 congresssummit.com

@@ -1,11 +1,5 @@
 #!/bin/sh
 
-# filtering spam
-afew --tag --new -e SpamFilter,KnownSpammers
-notmuch tag -new -- tag:spam and tag:new
-
-# notify for new messages
-notmuch search tag:new | cut -d' ' --complement -f1 | xargs -0 --no-run-if-empty notify-send
-
-# tagging messages
 afew --tag --new
+notmuch search tag:new | cut -d' ' --complement -f1 | xargs -0 --no-run-if-empty notify-send
+notmuch tag -new +unread -- tag:new
