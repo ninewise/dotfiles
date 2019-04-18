@@ -1,5 +1,5 @@
 [global]
-    font = Source Code Pro
+    font = M+ 1mn
 
     # Allow a small subset of html markup:
     #   <b>bold</b>
