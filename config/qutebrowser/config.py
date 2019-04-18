@@ -32,9 +32,9 @@ c.tabs.last_close = "close"
 c.tabs.show = "multiple"
 c.url.default_page = "about:blank"
 c.url.start_pages = ["qute://bookmarks"]
-c.url.searchengines = { "DEFAULT": "https://startpage.com/do/search?query={}"
+c.url.searchengines = { "startpage": "https://startpage.com/do/search?query={}"
                       , "ecosia": "https://www.ecosia.org/search?q={}"
-                      , "ddg": "https://duckduckgo.com/?q={}"
+                      , "DEFAULT": "https://3g2upl4pq6kufc4m.onion/html?q={}"
                       }
 c.aliases = { "wq": "quit --save"
             , "set": "set -t"
@@ -59,7 +59,7 @@ config.unbind('Sb')
 # Allowing javascript for...
 allowed = [ 'https://duckduckgo.com/*'
           , 'https://calendar.google.com/*'
-          , 'https://www.facebook.com/*'
+          , 'https://www.facebookcorewwwi.onion/*'
           , 'https://www.glowing-bear.org/*'
           , 'https://github.com/*'
           , 'https://*.ugent.be/*'
@@ -77,6 +77,8 @@ allowed = [ 'https://duckduckgo.com/*'
           , 'https://posteo.de/*'
           , 'https://doc.rust-lang.org/*'
           , 'https://www.paypal.com/*'
+          , 'https://www.paypal-topup.be/*'
+          , 'https://homebank.argenta.be/*'
           ]
 
 for pattern in allowed:
