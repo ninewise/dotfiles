@@ -1,0 +1,30 @@
+#!/bin/sh
+
+ledger="${1:-$LEDGER_FILE}"
+
+selection="$(sed -n 's/....-..-..\( [*!]\)\? //p' "$ledger" | sort | uniq | fzf)"
+[ -z "$selection" ] && clear && exit 0 # quit if escaped
+
+cat <<HERE | ed --silent "$ledger"
+# append a newline for easier searching
+\$a
+
+.
+# yank matching transaction (closed by empty line)
+?^....-..-..\( [*!]\)\? ${selection}\$?;/^\$/y
+# select line below last none-empty line
+$
+?^..*?
++
+# put transaction
+x
+# replace date with today
+?^\$?
++s/....-..-../$(date +'%Y-%m-%d')/
+# delete empty lines at end and quit
+/^\$/,\$d
+wq
+HERE
+
+vis +\$ "$ledger"
+clear
