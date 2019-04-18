@@ -15,8 +15,9 @@ export RBENV_HOME="$HOME/.rbenv"
 export PATH="$HOME/.local/bin:$CABAL_HOME/bin:$RBENV_HOME/shims:$CARGO_HOME/bin:$JAVA_HOME/bin:$PATH"
 
 # Environmental settings
+export ESCDELAY=50 # for dvtm e.a.
 export EDITOR="vis"
-export LEDGER_FILE="/data/documents/ledger.dat"
+export LEDGER_FILE="/data/documents/ledger.journal"
 export LESSHISTFILE=-
 export FZF_DEFAULT_COMMAND='(git ls-files -co --exclude-standard || rg --files) 2> /dev/null'
 
