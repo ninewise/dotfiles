@@ -1,0 +1,2 @@
+#!/bin/sh
+exec qutebrowser --temp-basedir ":config-source $HOME/.config/qutebrowser/config.py"

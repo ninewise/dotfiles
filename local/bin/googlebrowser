@@ -1,0 +1,2 @@
+#!/bin/sh
+exec qutebrowser --basedir "$HOME/.config/googlebrowser"
