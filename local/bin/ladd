@@ -20,7 +20,7 @@ $
 x
 # replace date with today
 ?^\$?
-+s/....-..-../$(date +'%Y-%m-%d')/
++s/....-..-..\( [*!]\)\?/$(date +'%Y-%m-%d')/
 # delete empty lines at end and quit
 /^\$/,\$d
 wq
