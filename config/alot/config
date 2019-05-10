@@ -19,7 +19,7 @@ theme = "mutt"
         sendmail_command = /usr/bin/msmtp --account=posteo -t
         sent_box = maildir:///data/mail/posteo/Sent
         draft_box = maildir:///data/mail/posteo/Drafts
-        sent_tags = # none
+        sent_tags = posteo
         passed_tags = # none
         sign_by_default = False
 
@@ -37,7 +37,7 @@ theme = "mutt"
         sendmail_command = /usr/bin/msmtp --account=gmail -t
         sent_box = maildir:///data/mail/gmail/Sent
         draft_box = maildir:///data/mail/gmail/Sent
-        sent_tags = # none
+        sent_tags = gmail
         passed_tags = # none
         sign_by_default = True
 
@@ -55,7 +55,7 @@ theme = "mutt"
         sendmail_command = /usr/bin/msmtp --account=ugent -t
         sent_box = maildir:///data/mail/ugent/Sent
         draft_box = maildir:///data/mail/ugent/Sent
-        sent_tags = # none
+        sent_tags = ugent
         passed_tags = # none
         sign_by_default = True
 
@@ -65,9 +65,20 @@ theme = "mutt"
             regexp = '^(?P<email>[^@]+@[^\t]+)\t+(?P<name>[^\t]+)'
             ignorecase = True
 
+    [[todo]]
+        realname = Felix Van der Jeugt
+        address = todo@localhost
+        sendmail_command = /usr/bin/true
+        sent_box = maildir:///data/mail/todo
+        draft_box = maildir:///data/mail/todo
+        sent_tags = todo
+        passed_tags = # none
+
+
 [bindings]
 
     t = toggletags selected; move down
+    n = compose --sender todo@localhost --to todo
 
     [[search]]
         x = tag spam
