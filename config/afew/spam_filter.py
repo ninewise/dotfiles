@@ -2,6 +2,12 @@ from afew.filters.BaseFilter import Filter
 from afew.FilterRegistry import register_filter
 
 spammers = """
+iarjset.com
+ibc-congress2019.com
+drugtech-2018.com
+food-congress2019.com
+globalfest.online
+elpfuly.com
 rediffmail.com
 msgsu.edu.tr
 ecco.spgb.email
