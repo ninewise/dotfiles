@@ -1,6 +1,6 @@
 #!/usr/bin/python3
-# EASY-INSTALL-ENTRY-SCRIPT: 'alot==0.8','console_scripts','alot'
-__requires__ = 'alot==0.8'
+# EASY-INSTALL-ENTRY-SCRIPT: 'alot==0.8.1','console_scripts','alot'
+__requires__ = 'alot==0.8.1'
 import re
 import sys
 from pkg_resources import load_entry_point
@@ -8,5 +8,5 @@ from pkg_resources import load_entry_point
 if __name__ == '__main__':
     sys.argv[0] = re.sub(r'(-script\.pyw?|\.exe)?$', '', sys.argv[0])
     sys.exit(
-        load_entry_point('alot==0.8', 'console_scripts', 'alot')()
+        load_entry_point('alot==0.8.1', 'console_scripts', 'alot')()
     )

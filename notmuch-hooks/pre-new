@@ -1,2 +1,6 @@
 #!/bin/sh
 mbsync -qq -a
+
+sfeed_update 2>&1 | grep '^FAIL'
+sfeed_mbox /home/noctua/.sfeed/feeds/* > /home/noctua/.sfeed/feeds.mbox
+fdm -q -f /home/noctua/.sfeed/fdm.conf fetch

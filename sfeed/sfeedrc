@@ -1,0 +1,22 @@
+feeds() {
+	# feed <name> <feedurl> [basesiteurl] [encoding]
+	# get youtube Atom feed: curl -s -L 'https://www.youtube.com/user/gocoding/videos' | sfeed_web | cut -f 1
+
+	feed "Giant in the Playground" "http://www.giantitp.com/comics/oots.rss"
+	feed "XKCD" "https://xkcd.com/atom.xml" "https://xkcd.com"
+	feed "Ulyssis" "https://ulyssis.org/feed/"
+	feed "Schneier on Security" "https://www.schneier.com/blog/atom.xml"
+	feed "PHD Comics" "https://phdcomics.com/gradfeed.php" "https://www.phdcomics.com"
+	feed "Void news" "https://voidlinux.org/atom.xml" "https://voidlinux.org"
+	feed "Uniprot" "https://www.uniprot.org/news/?format=rss"
+	feed "qutebrowser" "http://blog.qutebrowser.org/feeds/all.rss.xml"
+	feed "This week in Rust" "https://this-week-in-rust.org/rss.xml"
+	feed "Saturday Morning Breakfast Cereal" "https://www.smbc-comics.com/comic/rss"
+	feed "Minute Physics" "https://www.youtube.com/feeds/videos.xml?channel_id=UCUHW94eEFW7hkUMVaZz4eDg"
+	feed "Primitive Technology" "https://www.youtube.com/feeds/videos.xml?channel_id=UCAL3JXZSzSm8AlZyD3nQdBA"
+	feed "Nicolaas" "http://feeds.soundcloud.com/users/soundcloud:users:454191234/sounds.rss"
+	feed "Kiwilox" "https://web.stagram.com/rss/n/kiwilox"
+	feed "Jolla Blog" "https://blog.jolla.com/feed/"
+	feed "CCC" "https://events.ccc.de/feed/"
+	feed "Patrick Rothfuss" "https://blog.patrickrothfuss.com/feed/"
+}

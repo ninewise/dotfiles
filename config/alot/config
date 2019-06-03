@@ -1,10 +1,13 @@
 
 initial_command = search query:inbox
 periodic_hook_frequency = 60
-
+edit_headers_blacklist = Content-Type, MIME-Version
 attachment_prefix = /data/temporary
 prefer_plaintext = True
-editor_cmd = "dvtm 'vis %s'"
+
+editor_spawn = True
+editor_in_thread = True
+terminal_cmd = 'st -e'
 
 theme = "mutt"
 
@@ -90,6 +93,7 @@ theme = "mutt"
         A = untag archived ; unfold
         n = nextpart
         p = prevpart
+        u = pipeto --background selecturl
 
 [tags]
 
