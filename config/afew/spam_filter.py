@@ -2,6 +2,18 @@ from afew.filters.BaseFilter import Filter
 from afew.FilterRegistry import register_filter
 
 spammers = """
+nsitysim.com
+onlinepublishers.co
+ijeert.com
+eonlinepublishers.com
+journalsres.org
+gniindia.org
+molbio2019.com
+itise.org
+iacrlrd2019.org
+hspcorporation.org
+peerreviewjournal.com
+2019cmcb.com
 iarjset.com
 ibc-congress2019.com
 drugtech-2018.com

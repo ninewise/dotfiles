@@ -3,3 +3,4 @@
 afew --tag --new
 notmuch search tag:new | cut -d' ' --complement -f1 | xargs -0 --no-run-if-empty notify-send
 notmuch tag -new +unread -- tag:new
+notmuch tag -new -unread -- tag:spam

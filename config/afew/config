@@ -1,9 +1,5 @@
 [SpamFilter]
 [KnownSpammers]
-[Filter.0]
-message = SPAM should not go to inbox
-query = tag:spam
-tags = -new
 
 [FolderNameFilter]
 folder_blacklist = Inbox Sent Drafts Trash
