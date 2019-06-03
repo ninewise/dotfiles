@@ -47,8 +47,9 @@ interactives = {
 	["python"] = "!python -i $vis_filename",
 	["haskell"] = "!stack ghci $vis_filepath",
 	["lithaskell"] = "!stack ghci $vis_filepath",
-	["latex"] = "!pdflatex $vis_filepath",
+	["latex"] = "!tectonic '$vis_filepath'",
 }
+
 vis:map(vis.modes.NORMAL, ";i", function()
 	local command = interactives[vis.win.syntax]
 	if command then
