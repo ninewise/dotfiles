@@ -34,7 +34,8 @@ c.url.default_page = "about:blank"
 c.url.start_pages = ["qute://bookmarks"]
 c.url.searchengines = { "startpage": "https://startpage.com/do/search?query={}"
                       , "ecosia": "https://www.ecosia.org/search?q={}"
-                      , "DEFAULT": "https://3g2upl4pq6kufc4m.onion/html?q={}"
+                      , "ddg": "https://3g2upl4pq6kufc4m.onion/html?q={}"
+                      , "DEFAULT": "https://framabee.org/?q={}"
                       }
 c.aliases = { "wq": "quit --save"
             , "set": "set -t"
