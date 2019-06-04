@@ -66,16 +66,26 @@ vis:map(vis.modes.NORMAL, ";b", function()
 end)
 
 vis:map(vis.modes.INSERT, '<Backspace>', function()
-	local found_tab = true
 	local tabwidth = 4
+	local single_selection = false
 	for selection in vis.win:selections_iterator() do
-		local pos = selection.pos
-		if not pos or pos < tabwidth or vis.win.file:content(pos - tabwidth, tabwidth) ~= string.rep(' ', tabwidth) then
-			found_tab = false
+		if single_selection then
+		    single_selection = false
 			break
 		end
-	end             
-	vis:feedkeys(string.rep('<vis-delete-char-prev>', found_tab and tabwidth or 1))
+		single_selection = true
+	end
+
+	local to_stop = (vis.win.selection.col - 1) % tabwidth
+	if to_stop == 0 then
+		to_stop = tabwidth
+	end
+
+	if single_selection and to_stop > 1 and vis.win.file:content(vis.win.selection.pos - to_stop, to_stop) == string.rep(' ', to_stop) then
+		vis:feedkeys(string.rep('<vis-delete-char-prev>', to_stop))
+	else
+		vis:feedkeys('<vis-delete-char-prev>')
+	end
 end)
 
 vis:map(vis.modes.NORMAL, ";s", function()
@@ -84,4 +94,12 @@ end)
 
 vis:map(vis.modes.NORMAL, ";p", function()
 	vis:command("<xclip -o")
+end)
+
+vis:map(vis.modes.VISUAL, ';a', function()
+	if vis.count then
+		vis:command(string.format(':|par %d', vis.count))
+	else
+		vis:command(':|par')
+	end
 end)
