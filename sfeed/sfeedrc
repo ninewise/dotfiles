@@ -15,7 +15,6 @@ feeds() {
 	feed "Minute Physics" "https://www.youtube.com/feeds/videos.xml?channel_id=UCUHW94eEFW7hkUMVaZz4eDg"
 	feed "Primitive Technology" "https://www.youtube.com/feeds/videos.xml?channel_id=UCAL3JXZSzSm8AlZyD3nQdBA"
 	feed "Nicolaas" "http://feeds.soundcloud.com/users/soundcloud:users:454191234/sounds.rss"
-	feed "Kiwilox" "https://web.stagram.com/rss/n/kiwilox"
 	feed "Jolla Blog" "https://blog.jolla.com/feed/"
 	feed "CCC" "https://events.ccc.de/feed/"
 	feed "Patrick Rothfuss" "https://blog.patrickrothfuss.com/feed/"
