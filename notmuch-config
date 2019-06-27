@@ -88,4 +88,4 @@ exclude_tags=spam;
 synchronize_flags=true
 
 [query]
-inbox=not tag:spam and not tag:archived
+inbox=tag:inbox

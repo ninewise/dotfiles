@@ -1,9 +1,9 @@
-[SpamFilter]
-[KnownSpammers]
-
 [FolderNameFilter]
 folder_blacklist = Inbox Sent Drafts Trash
 maildir_separator = /
+
+[SpamFilter]
+[KnownSpammers]
 
 [TagOrContact.1]
 query = tag:posteo
@@ -23,4 +23,9 @@ message = The Unipept alias
 query = to:unipept@ugent.be
 tags = +unipept
 
+[Filter.4]
+query = tag:dodona and subject:'Onderwijsinstelling aangemaakt voor .*'
+tags = -new
+
 [ListMailsFilter]
+[InboxFilter]

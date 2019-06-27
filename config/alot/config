@@ -1,5 +1,5 @@
 
-initial_command = search query:inbox
+initial_command = search tag:inbox
 periodic_hook_frequency = 60
 edit_headers_blacklist = Content-Type, MIME-Version
 attachment_prefix = /data/temporary
@@ -22,7 +22,7 @@ theme = "mutt"
         sendmail_command = /usr/bin/msmtp --account=posteo -t
         sent_box = maildir:///data/mail/posteo/Sent
         draft_box = maildir:///data/mail/posteo/Drafts
-        sent_tags = posteo
+        sent_tags = posteo,inbox
         passed_tags = # none
         sign_by_default = False
 
@@ -40,7 +40,7 @@ theme = "mutt"
         sendmail_command = /usr/bin/msmtp --account=gmail -t
         sent_box = maildir:///data/mail/gmail/Sent
         draft_box = maildir:///data/mail/gmail/Sent
-        sent_tags = gmail
+        sent_tags = gmail,inbox
         passed_tags = # none
         sign_by_default = True
 
@@ -58,7 +58,7 @@ theme = "mutt"
         sendmail_command = /usr/bin/msmtp --account=ugent -t
         sent_box = maildir:///data/mail/ugent/Sent
         draft_box = maildir:///data/mail/ugent/Sent
-        sent_tags = ugent
+        sent_tags = ugent,inbox
         passed_tags = # none
         sign_by_default = True
 
@@ -74,7 +74,7 @@ theme = "mutt"
         sendmail_command = /usr/bin/true
         sent_box = maildir:///data/mail/todo
         draft_box = maildir:///data/mail/todo
-        sent_tags = todo
+        sent_tags = todo,inbox
         passed_tags = # none
 
 
@@ -84,24 +84,24 @@ theme = "mutt"
     n = compose --sender todo@localhost --to todo
 
     [[search]]
-        x = tag spam
-        a = tag archived
-        A = untag archived
+        x = toggletags spam,inbox
+        a = untag inbox
+        A = tag inbox
 
     [[thread]]
-        a = tag archived ; fold
-        A = untag archived ; unfold
+        a = untag inbox ; fold
+        A = tag inbox ; unfold
         n = nextpart
         p = prevpart
         u = pipeto --background selecturl
 
 [tags]
 
+    [[inbox]]
+        translated = 
+
     [[encrypted]]
         translated =
-
-    [[archived]]
-        translated = 
 
     [[replied]]
         translated = 

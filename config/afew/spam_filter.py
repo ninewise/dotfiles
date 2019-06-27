@@ -2,6 +2,13 @@ from afew.filters.BaseFilter import Filter
 from afew.FilterRegistry import register_filter
 
 spammers = """
+golbalpublication.online
+all.bg
+vodokanal.poltava.ua
+qingteng.xyz
+guaranten.com
+remedyonlineoa.info
+pharm2019-sa.com
 nsitysim.com
 onlinepublishers.co
 ijeert.com
@@ -159,3 +166,4 @@ class KnownSpammers(Filter):
 
 	def handle_message(self, message):
 		self.add_tags(message, 'spam')
+		self.remove_tags(message, 'new')
