@@ -36,6 +36,7 @@ c.url.searchengines = { "startpage": "https://startpage.com/do/search?query={}"
                       , "ecosia": "https://www.ecosia.org/search?q={}"
                       , "ddg": "https://3g2upl4pq6kufc4m.onion/html?q={}"
                       , "DEFAULT": "https://framabee.org/?q={}"
+                      , "invidious": "https://www.invidio.us/search?q={}"
                       }
 c.aliases = { "wq": "quit --save"
             , "set": "set -t"
