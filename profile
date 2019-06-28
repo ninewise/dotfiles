@@ -20,6 +20,7 @@ export EDITOR="vis"
 export LEDGER_FILE="/data/documents/ledger/ledger.journal"
 export LESSHISTFILE=-
 export FZF_DEFAULT_COMMAND='(git ls-files -co --exclude-standard || rg --files) 2> /dev/null'
+export LC_ALL=en_US.utf8
 
 #stty -ixon # disable <C-s>
 
