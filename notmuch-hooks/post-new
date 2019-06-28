@@ -1,4 +1,61 @@
 #!/bin/sh
 
-afew --tag --new
-notmuch search tag:unread | cut -d' ' --complement -f1 | xargs -0 --no-run-if-empty notify-send
+addtag() { notmuch tag +"$1" -- "tag:new and ($2) and not tag:$1"; }
+archive() { notmuch tag -new -unread -- "$@" and tag:new; }
+spam() { notmuch tag -new -unread +spam -- "$@" and '(' tag:new or tag:unread or not tag:spam ')'; }
+
+# Tag mails by their origin (top-level maildir)
+for maildir in /data/mail/*; do
+	origin="$(basename "$maildir")"
+	addtag "$origin" "folder:/$origin/"
+done
+
+# Spam
+spam "subject:/^\[SPAM\]/"
+# TODO: Known spammers
+
+# Some aliases
+addtag zeus "to:felixvdj@zeus.ugent.be"
+addtag dodona "to:dodona@ugent.be"
+addtag unipept "to:unipept@ugent.be"
+
+# More complex tagging
+for mid in $(notmuch search --output=messages tag:new); do
+
+	tag=false
+
+	# +-tags become actual tags
+	for tag in $(notmuch show --format=raw "$mid" | sed -n '/^\tfor/s/.*<[^>]*+\([^@]*\)@.*>.*/\1/p' | sort | uniq); do
+		addtag "$tag" "$mid"
+		tag=true
+	done
+
+	# messages from contacts get a contact tag
+	for sender in $(notmuch address --output=sender --output=address "$mid"); do
+		if khard list "$sender" > /dev/null 2>&1; then
+			addtag contact "$mid"
+			tag=true
+		fi
+	done
+
+	# mails to posteo must have a tag
+	if ! "$tag"; then
+		addtag killed "$mid and tag:posteo"
+	fi
+
+	# list ids
+	for list in $(notmuch show --format=raw "$mid" | sed -n '/^List-Id:/,/^\w/p' | sed '$d' | tr '\n' ' ' | sed 's/[^<]*<// ; s/\..*//'); do
+		addtag "lists" "$mid"
+		addtag "lists/$list" "$mid"
+	done
+done
+
+# Uninteresting
+archive tag:dodona and subject:'Onderwijsinstelling aangemaakt voor .*'
+
+# Notify about new messages
+notmuch search tag:new | cut -d' ' --complement -f1 | xargs -0 --no-run-if-empty notify-send
+
+# Inbox remaining not-spam
+addtag inbox "not tag:spam"
+notmuch tag -new -- tag:new
