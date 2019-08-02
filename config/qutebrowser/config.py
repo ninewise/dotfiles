@@ -60,18 +60,15 @@ config.unbind('Sb')
 
 # Allowing javascript for...
 allowed = [ 'https://duckduckgo.com/*'
-          , 'https://calendar.google.com/*'
           , 'https://www.facebookcorewwwi.onion/*'
-          , 'https://www.glowing-bear.org/*'
           , 'https://github.com/*'
           , 'https://*.ugent.be/*'
-          , 'https://secure.ogone.com/*'             # bancontact
-          , 'https://belgium-3dsecure.wlp-acs.com/*' # bancontact
-          , 'https://bcr.girogate.be/*'              # bancontact
-          , 'https://*.axabank.be/*'
+          , 'https://secure.ogone.com/*'                 # bancontact
+          , 'https://belgium-3dsecure.wlp-acs.com/*'     # bancontact
+          , 'https://bcr.girogate.be/*'                  # bancontact
+          , 'https://bancontact.girogate.be/*'           # bancontact
+          , 'https://belgium-uvj-3dsecure.wlp-acs.com/*' # bancontact
           , 'https://*.triodos.be/*'
-          , 'https://*.ing.be/*'
-          , 'https://accounts.google.com/*'
           , 'https://www.openstreetmap.org/*'
           , 'https://web.whatsapp.com'
           , 'https://chat.zeus.gent/*'
