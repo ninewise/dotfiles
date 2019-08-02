@@ -50,6 +50,9 @@ for mid in $(notmuch search --output=messages tag:new); do
 	done
 done
 
+# Github notifications
+addtag github "from:notifications@github.com"
+
 # Uninteresting
 archive tag:dodona and subject:'Onderwijsinstelling aangemaakt voor .*'
 
