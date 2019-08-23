@@ -1,3 +1,18 @@
+# if yash is built with line-editing enabled...
+if command --identify --builtin-command bindkey >/dev/null; then
+	# print job status update ASAP, but only while line-editing
+	set --notify-le
+
+	# some terminfo data are broken; meta flags have to be ignored for UTF-8
+	set --le-no-conv-meta
+
+	# I'll try emacs mode
+	set --emacs
+fi
+
+# set history
+HISTFILE=~/.yash_history
+HISTSIZE=5000
 
 # Get ourselves a nice prompt
 ks() { s="$?" ; $* ; return "$s" ; }
@@ -6,7 +21,7 @@ prompt_git() {
         local branch="$(git branch | sed -n 's/^\* (*\(.* \)*\([^ )]*\))*$/\2/p')"
         local behind="$(git status --branch --porcelain=2 | sed -n 's/^# branch\.ab.*-\([^0].*\)$/⇃\1/p')"
         local before="$(git status --branch --porcelain=2 | sed -n 's/^# branch\.ab +\([^0].*\) .*$/↿\1/p')"
-        local status="$(git status --porcelain | sed 's/\(..\).*/\1/' | cat <(echo OK) -  | tail -1)"
+        local status="$({ echo OK; git status --porcelain | sed 's/\(..\).*/\1/'; } | tail -1)"
         
         echo " (${branch}${behind}${before}|${status})"
     fi
@@ -23,44 +38,16 @@ prompt_status() {
     else echo "%"
     fi
 }
-BOLD="\001$(tput bold)\002"
-GREEN="\001$(tput setaf 2)\002"
-RESET="\001$(tput sgr0)\002"
-PS1="$BOLD[\t]$RESET $GREEN\$(ks prompt_pwd)$RESET\$(ks prompt_git)\$(ks prompt_agent) \$(prompt_status) "
+prompt_date() {
+	date +%H:%M:%S
+}
+BOLD="\fo."
+GREEN="\fg."
+RESET="\fD."
+PS1="$BOLD[\$(ks prompt_date)]$RESET $GREEN\$(ks prompt_pwd)$RESET\$(ks prompt_git)\$(ks prompt_agent) \$(prompt_status) "
 unset BOLD
 unset GREEN
 unset RESET
-
-# Completion
-_comp_git() {
-    local IFS=$'\n'
-    # $1 is the name of the command whose arguments are being completed
-    # $2 is the word being completed
-    # $3 is the word preceding the word being completed
-
-    # branch names
-    COMPREPLY=( $(git branch -a --format "%(refname:short)" | grep "^$2") )
-
-    # remotes
-    COMPREPLY+=( $(git remote | grep "^$2") )
-
-    # files
-    COMPREPLY+=( $(git ls-files -coz --exclude-standard "$2*" | tr '\0' '\n' | sed "s?\($2[^/]*\).*?\1?") )
-
-    # subcommands
-    if [ "$3" = "git" ]; then
-        COMPREPLY+=( $({ compgen -c "git-"; command ls /usr/libexec/git-core; } | sed -n 's/^git-//p' | grep "^$2") )
-    fi
-}
-
-complete -c man
-complete -cf sudo
-complete -cf exec
-complete -cf run
-complete -o filenames -F _comp_git git
-
-# history
-export HISTCONTROL=ignorespace:erasedups
 
 # Color ls
 ls_() {
@@ -78,22 +65,13 @@ alias nano="vis"
 alias agent='eval "$(ssh-agent)" && ssh-add'
 alias unlock='gpg-connect-agent <<<bye'
 
-alias stop-after-this-song="mpc single && mpc idle && mpc single"
-
-alias morning="maintain && gitfetcher"
-
 alias weechat="ssh -t weechat@Chatmachine abduco -A weechat"
-alias bearchat="ssh -f -N -L localhost:9001:localhost:8001 weechat@Chatmachine"
 
 go() {
     dir="$(lr /home /data /etc -t '(name ~~ ".*" && prune || print) && type = d && !(name = ".git")' \
           | fzf --height 10 \
           )"
     [ -n "$dir" ] && cd "$dir" || false
-}
-
-run() {
-    exec "$@" > /dev/null 2>&1 &
 }
 
 terminfo() {
