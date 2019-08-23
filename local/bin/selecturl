@@ -1,0 +1,2 @@
+#!/bin/sh
+urlscan -n | dmenu | xargs --no-run-if-empty qutebrowser
