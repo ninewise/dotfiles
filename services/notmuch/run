@@ -1,6 +1,9 @@
 #!/bin/sh
 exec env                                         \
-    HOME="${HOME:-/home/noctua}"                 \
-    PATH="/usr/local/bin:$HOME/.local/bin:$PATH" \
-    DISPLAY="${DISPLAY:-:0}"                     \
+    HOME="${HOME:-/home/noctua}"                               \
+    XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-/home/noctua/.config}" \
+    LC_ALL="en_US.utf-8"                                       \
+    LANG="en_US.utf-8"                                         \
+    PATH="/usr/local/bin:$HOME/.local/bin:$PATH"               \
+    DISPLAY="${DISPLAY:-:0}"                                   \
     ./notmuch
