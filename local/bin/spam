@@ -1,0 +1,15 @@
+#!/bin/sh
+
+mid="id:$1"
+file="$(notmuch show "$mid" | sed -n '1s/.*filename:\([^ ]*\).*/\1/p')"
+temp="$(mktemp)"
+
+cat > "$temp" <<HERE
+References: <$1>
+HERE
+
+alot compose --sender felix.vanderjeugt@ugent.be \
+             --template="$temp" \
+             --subject spam \
+             --to spam@ugent.be \
+             --attach "$file"
