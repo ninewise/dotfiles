@@ -55,6 +55,10 @@ addtag github "from:notifications@github.com"
 
 # Uninteresting
 archive tag:dodona and subject:'Onderwijsinstelling aangemaakt voor .*'
+archive tag:github and subject:dodona-edu/dodona and thread:{from:dependabot}
+
+# And stay down!
+#addtag killed "thread:{tag:killed}"
 
 # Notify about new messages
 notmuch search tag:new | cut -d' ' --complement -f1 | xargs -0 --no-run-if-empty notify-send
