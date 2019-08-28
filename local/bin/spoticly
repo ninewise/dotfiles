@@ -1,0 +1,9 @@
+#!/bin/sh
+
+case "$1" in
+pp) message="PlayPause" ;;
+p) message="Previous" ;;
+n) message="Next" ;;
+esac
+
+qdbus org.mpris.MediaPlayer2.spotifyd /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player."$message"
