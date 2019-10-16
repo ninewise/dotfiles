@@ -50,6 +50,11 @@ for mid in $(notmuch search --output=messages tag:new); do
 	done
 done
 
+# Unmute threads with new messages
+for mutetag in $(notmuch search --output=tags -- tag:muted and thread:{tag:new} | grep 'muted/'); do
+	notmuch tag -muted -"$mutetag" +inbox -- tag:"$mutetag" and thread:{tag:new}
+done
+
 # Github notifications
 addtag github "from:notifications@github.com"
 
@@ -66,3 +71,12 @@ notmuch search tag:new | cut -d' ' --complement -f1 | xargs -0 --no-run-if-empty
 # Inbox remaining not-spam
 addtag inbox "not tag:spam"
 notmuch tag -new -- tag:new
+
+# Unmute threads on their day of unmuting
+today="$(date +'%s')"
+for mutetag in $(notmuch search --output=tags tag:muted | grep 'muted/'); do
+	until="$(date -d "${mutetag#*/}" +'%s')"
+	if [ "$today" -gt "$until"  ]; then
+		notmuch tag -muted -"$mutetag" +inbox -- tag:"$mutetag"
+	fi
+done
