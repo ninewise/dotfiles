@@ -8,8 +8,12 @@ dmenu_run
 dvtm*
 dwm
 gloss-juicy-viewer
+hledger
 hlint
+ikhal
 jshon
+khal
+khald
 notmuch
 rbenv
 readtags
@@ -23,9 +27,6 @@ unlit
 vis
 vis-*
 wjt
-khal
-ikhal
-khald
 
 # shouldn't share this one with the world
 macaddress
