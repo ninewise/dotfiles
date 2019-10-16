@@ -1,0 +1,4 @@
+#!/usr/bin/sh
+cd /data/programming/clirail
+[ -z "$*" ] && set -- gent lokeren
+./clirail.py "$@" | head
