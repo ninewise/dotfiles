@@ -18,4 +18,8 @@ feeds() {
 	feed "Jolla Blog" "https://blog.jolla.com/feed/"
 	feed "CCC" "https://events.ccc.de/feed/"
 	feed "Patrick Rothfuss" "https://blog.patrickrothfuss.com/feed/"
+	feed "Jasper Van der Jeugt" "https://jaspervdj.be/rss.xml"
+	feed "Aphyr" "https://aphyr.com/posts.atom"
+	feed "Yash forum" "https://osdn.net/projects/yash/forums/16356/rss/"
+	feed "Leah Neukirchen" "https://leahneukirchen.org/blog/index.atom"
 }
