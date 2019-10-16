@@ -11,8 +11,11 @@ if command --identify --builtin-command bindkey >/dev/null; then
 fi
 
 # set history
-HISTFILE=~/.yash_history
+HISTFILE=
 HISTSIZE=5000
+HISTRMDUP=5000
+history -r .yash_history
+trap 'h=$(mktemp) && history -w $h && history -c && history -r .yash_history && history -r $h && history -w .yash_history && rm $h' EXIT
 
 # Get ourselves a nice prompt
 ks() { s="$?" ; $* ; return "$s" ; }
