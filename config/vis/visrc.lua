@@ -3,6 +3,7 @@ require('vis')
 require('plugins/complete-word')
 require('plugins/myfiletype')
 require('plugins/editorconfig/editorconfig')
+require('plugins/vis-quickfix/quickfix')
 
 vis.events.subscribe(vis.events.INIT, function()
 	-- Your global configuration options
@@ -70,7 +71,7 @@ vis:map(vis.modes.INSERT, '<Backspace>', function()
 	local single_selection = false
 	for selection in vis.win:selections_iterator() do
 		if single_selection then
-		    single_selection = false
+			single_selection = false
 			break
 		end
 		single_selection = true
@@ -103,3 +104,11 @@ vis:map(vis.modes.VISUAL, ';a', function()
 		vis:command(':|par')
 	end
 end)
+
+vis:command_register("sts", function(argv, force, win, selection, range)
+	local lines = win.file.lines
+	for index=1, #lines do
+		lines[index] = lines[index]:gsub("%s+$", "")
+	end
+	return true
+end, "Strip line trailing spaces")
