@@ -14,8 +14,8 @@ fi
 HISTFILE=
 HISTSIZE=5000
 HISTRMDUP=5000
-history -r .yash_history
-trap 'h=$(mktemp) && history -w $h && history -c && history -r .yash_history && history -r $h && history -w .yash_history && rm $h' EXIT
+history -r "$HOME/.yash_history"
+trap 'h=$(mktemp) && history -w $h && history -c && history -r "$HOME/.yash_history" && history -r $h && history -w $HOME/.yash_history && rm $h' EXIT
 
 # Get ourselves a nice prompt
 ks() { s="$?" ; $* ; return "$s" ; }
