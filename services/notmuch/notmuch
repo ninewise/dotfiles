@@ -1,11 +1,11 @@
-#!/bin/sh
+#!/bin/sh -e
 
 # check for internet connection
-ip route ls | grep -v '' && exit 1
+ip route ls | grep -q '.'
 
 # check if the gpg-agent is running
-pgrep gpg-agent >/dev/null || exit 2
+pgrep gpg-agent > /dev/null
 
-notmuch --config="$HOME/.notmuch-config" new --quiet 2>&1 \
-    | xargs -0 --no-run-if-empty notify-send              \
-    && exec sleep 3m
+notmuch new --quiet 2>&1 | xargs -0 --no-run-if-empty notify-send
+
+exec sleep 3m

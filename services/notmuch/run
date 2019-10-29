@@ -1,5 +1,5 @@
 #!/bin/sh
-exec env                                         \
+exec env                                                       \
     HOME="${HOME:-/home/noctua}"                               \
     XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-/home/noctua/.config}" \
     LC_ALL="en_US.utf-8"                                       \

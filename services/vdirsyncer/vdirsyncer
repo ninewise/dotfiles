@@ -1,10 +1,10 @@
 #!/bin/sh -e
 
 # check for internet connection
-! ip route ls | grep -v ''
+ip route ls | grep -q '.'
 
 # check if the gpg-agent is running
-pgrep gpg-agent >/dev/null
+pgrep gpg-agent > /dev/null
 
 vdirsyncer -v WARNING sync 2>&1
 
