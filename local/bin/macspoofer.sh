@@ -12,6 +12,7 @@ sudo ip link set "$enp" address "$mac"
 sudo ip link set "$enp" up
 
 # No more wireless
+sudo sv stop /var/service/iwd
 sudo ip link set "$wlp" down
 
 # Restart tor on network change
