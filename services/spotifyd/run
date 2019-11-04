@@ -1,0 +1,9 @@
+#!/bin/sh -e
+exec > /dev/null
+exec env -i                                                    \
+    HOME="${HOME:-/home/noctua}"                               \
+    XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-/home/noctua/.config}" \
+    XDG_CACHE_HOME="${XDG_CONFIG_HOME:-/home/noctua/.cache}"   \
+    PATH="/usr/local/bin:$HOME/.cargo/bin:$PATH"               \
+    DISPLAY=":0"                                               \
+    /home/noctua/.cargo/bin/spotifyd --no-daemon
