@@ -1,4 +1,12 @@
 #!/bin/sh
+# Copies a previous transaction to today.
+#
+# Select a previous transaction by fuzzy matching on the titles. This
+# transaction is then copied to the end of the journal, uncleared and
+# set to the current date. Finally, it opens the end of the file in vi.
+#
+# Bonus over `hledger add`: interactive matching it easier, and
+# transaction formatting is retained because it's just a copy.
 
 ledger="${1:-$LEDGER_FILE}"
 
@@ -27,7 +35,7 @@ x
 wq
 HERE
 
-# review change: open end of the file in vis
-vis +\$ "$ledger"
+# review change: open end of the file
+vi +\$ "$ledger"
 
 clear
