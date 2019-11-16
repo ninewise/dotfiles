@@ -2,6 +2,7 @@
 
 ledger="${1:-$LEDGER_FILE}"
 
+# fuzzy select a transaction title
 selection="$(sed -n 's/....-..-..\( [*!]\)\? //p' "$ledger" | sort | uniq | fzf)"
 [ -z "$selection" ] && clear && exit 0 # quit if escaped
 
@@ -26,5 +27,7 @@ x
 wq
 HERE
 
+# review change: open end of the file in vis
 vis +\$ "$ledger"
+
 clear
