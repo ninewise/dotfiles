@@ -3,10 +3,15 @@
 #
 # Select a previous transaction by fuzzy matching on the titles. This
 # transaction is then copied to the end of the journal, uncleared and
-# set to the current date. Finally, it opens the end of the file in vi.
+# set to the current date. Finally, it opens the end of the file in
+# $EDITOR.
 #
 # Bonus over `hledger add`: interactive matching it easier, and
 # transaction formatting is retained because it's just a copy.
+#
+# Depends on:
+# - fzf (https://github.com/junegunn/fzf)
+# - ed
 
 ledger="${1:-$LEDGER_FILE}"
 
@@ -35,7 +40,11 @@ x
 wq
 HERE
 
-# review change: open end of the file
-vi +\$ "$ledger"
+# review change: open end of the file (if I know how)
+case "$EDITOR" in
+vi*)   "$EDITOR" +\$ "$ledger" ;;
+emacs) "$EDITOR" "$ledger" -f end-of-buffer ;;
+*)     "$EDITOR" "$ledger" ;;
+esac
 
 clear
