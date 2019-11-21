@@ -1,17 +1,18 @@
 #!/bin/bash
 
-contains() {
-    what="$1"
-    shift
-    while [ -n "$1" ]; do
-        [ "$what" = "$1" ] && return 0
-        shift
-    done
-    return 1
-}
-
-where="${1:-above}"
-contains "$where" "above" "below" "left-of" "right-of" || exit 1
-
 xset dpms 0 0 0
-xrandr --output DP1 --auto --$where eDP1
+
+dp1="$(xrandr --listactivemonitors | grep ' DP1$')"
+dp1_1="$(xrandr --listactivemonitors | grep ' DP1-1$')"
+dp1_2="$(xrandr --listactivemonitors | grep ' DP1-2$')"
+
+if [ -n "$dp1" -a -z "$dp1_1" -a -z "$dp1_2" ]; then
+	xrandr --output DP1 --auto --above eDP1
+elif [ -z "$dp1" -a -n "$dp1_1" -a -z "$dp1_2" ]; then
+	xrandr --output DP1-1 --auto --above eDP1
+elif [ -z "$dp1" -a -n "$dp1_1" -a -n "$dp1_2" ]; then
+	xrandr --output DP1-1 --auto --left-of eDP1 \
+	       --output DP1-2 --auto --right-of eDP1
+fi
+
+~/.fehbg
