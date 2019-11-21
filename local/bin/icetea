@@ -1,0 +1,11 @@
+#!/bin/sh
+base='https://tap.zeus.gent'
+user='felixvdj'
+token="$(pass show ugent/zeus/tap)"
+
+curl --header 'Accept: application/json' \
+     --header 'Content-Type: application/json' \
+     --header "Authorization: Token token=$token" \
+     --data '{"order":{"order_items_attributes":[{"count":1,"product_id":1}]}}' \
+     --location \
+     "$base/users/$user/orders.json"
