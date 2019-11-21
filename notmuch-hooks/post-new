@@ -59,14 +59,17 @@ done
 addtag github "from:notifications@github.com"
 
 # Uninteresting
-archive tag:dodona and subject:'Onderwijsinstelling aangemaakt voor .*'
-archive tag:github and subject:dodona-edu/dodona and thread:{from:dependabot}
+archive tag:dodona subject:'Onderwijsinstelling aangemaakt voor .*'
+archive tag:dodona from:'logcheck system account'
+archive tag:github thread:{from:dependabot} \
+	-subject:Security \
+	-to:mention@noreply.github.com  \
+	-to:assign@noreply.github.com \
+	-to:review_requested@noreply.github.com \
+	-to:security_alert@noreply.github.com
 
 # And stay down!
 #addtag killed "thread:{tag:killed}"
-
-# Notify about new messages
-notmuch search tag:new | cut -d' ' --complement -f1 | xargs -0 --no-run-if-empty notify-send
 
 # Inbox remaining not-spam
 addtag inbox "not tag:spam"
