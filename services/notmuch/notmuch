@@ -6,6 +6,6 @@ ip route ls | grep -q '.'
 # check if the gpg-agent is running
 pgrep gpg-agent > /dev/null
 
-notmuch new --quiet 2>&1 | xargs -0 --no-run-if-empty notify-send
+notmuch new --quiet 2>&1
 
 exec sleep 3m

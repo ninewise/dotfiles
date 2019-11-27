@@ -35,6 +35,10 @@ prompt_pwd() {
 prompt_agent() {
     [ -z "$SSH_AGENT_PID" ] || echo " (A)"
 }
+prompt_mail() {
+    unread="$(notmuch count tag:unread)"
+    [ "$unread" = "0" ] || echo " ($unread mails)"
+}
 prompt_status() {
     if [ "$?" = "0" ]
     then echo "$"
@@ -47,7 +51,7 @@ prompt_date() {
 BOLD="\fo."
 GREEN="\fg."
 RESET="\fD."
-PS1="$BOLD[\$(ks prompt_date)]$RESET $GREEN\$(ks prompt_pwd)$RESET\$(ks prompt_git)\$(ks prompt_agent) \$(prompt_status) "
+PS1="$BOLD[\$(ks prompt_date)]$RESET $GREEN\$(ks prompt_pwd)$RESET\$(ks prompt_git)\$(ks prompt_agent)\$(ks prompt_mail) \$(prompt_status) "
 unset BOLD
 unset GREEN
 unset RESET
@@ -69,6 +73,7 @@ alias agent='eval "$(ssh-agent)" && ssh-add'
 alias unlock='gpg-connect-agent <<<bye'
 
 alias weechat="ssh -t weechat@Chatmachine abduco -A weechat"
+alias agenda="khal list today 7d"
 
 go() {
     dir="$(lr /home /data /etc -t '(name ~~ ".*" && prune || print) && type = d && !(name = ".git")' \
