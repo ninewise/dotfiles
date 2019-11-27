@@ -61,6 +61,7 @@ addtag github "from:notifications@github.com"
 # Uninteresting
 archive tag:dodona subject:'Onderwijsinstelling aangemaakt voor .*'
 archive tag:dodona from:'logcheck system account'
+archive tag:dodona subject:'A request took'
 archive tag:github thread:{from:dependabot} \
 	-subject:Security \
 	-to:mention@noreply.github.com  \
