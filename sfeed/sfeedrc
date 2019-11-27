@@ -22,4 +22,6 @@ feeds() {
 	feed "Aphyr" "https://aphyr.com/posts.atom"
 	feed "Yash forum" "https://osdn.net/projects/yash/forums/16356/rss/"
 	feed "Leah Neukirchen" "https://leahneukirchen.org/blog/index.atom"
+	feed "Infogroep" "https://infogroep.be/feed.xml"
+	feed "Zeus" "https://zeus.ugent.be/feed.xml"
 }
