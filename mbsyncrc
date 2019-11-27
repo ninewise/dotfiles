@@ -10,7 +10,7 @@ CertificateFile "/etc/ssl/certs/ca-certificates.crt"
 IMAPAccount     ugent
 Host            "owa.ugent.be"
 User            "felix.vanderjeugt@ugent.be"
-PassCmd         "pass show ugent | head -1"
+PassCmd         "pass show ugent/_ | head -1"
 AuthMechs       "PLAIN"
 SSLTYPE         "IMAPS"
 CertificateFile "/etc/ssl/certs/ca-certificates.crt"
