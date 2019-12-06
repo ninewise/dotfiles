@@ -105,6 +105,7 @@ end)
 vis:map(vis.modes.VISUAL, ';a', function()
 	if vis.count then
 		vis:command(string.format(':|par %d', vis.count))
+		vis.count = nil
 	else
 		vis:command(':|par')
 	end
