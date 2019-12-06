@@ -19,20 +19,25 @@ vis.events.subscribe(vis.events.WIN_OPEN, function(win)
 	vis:command('set number')
 end)
 
+vis:map(vis.modes.NORMAL, "<Escape>", function()
+	if vis.count then
+		vis.count = nil
+	else
+		vis:feedkeys"<vis-selections-remove-all>"
+	end
+end)
+
 vis:command_register("fzf", function(argv, force, cur_win, selection, range)
 	local out = io.popen("fzf"):read()
-	--local out = io.popen("fzf " .. table.concat(argv, " ")):read()
 	if out then
 		if argv[1] then
 			vis:command(string.format('e "%s"', out))
-			-- or vis:command(string.format('open %s', out))
-			-- should e return false when failed
 		else
 			vis:command(string.format('open "%s"', out))
 		end
 		vis:feedkeys("<vis-redraw>")
 	end
-end)
+end, 'fuzzy file search')
 
 vis:map(vis.modes.NORMAL, ";l", function()
 	vis:command('fzf')
