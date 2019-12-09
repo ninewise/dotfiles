@@ -46,7 +46,6 @@ c.aliases = { "wq": "quit --save"
 config.bind("<backspace>", "back", mode="normal")
 config.bind("x", "spawn --detach mpv {url}", mode="normal")
 config.bind(";x", "hint links spawn --detach mpv {hint-url}", mode="normal")
-config.bind("si", "jseval --quiet --file simplyread.js", mode="normal")
 config.bind("<Alt+j>", "prompt-item-focus next", mode="prompt")
 config.bind("<Alt+k>", "prompt-item-focus prev", mode="prompt")
 config.bind("<Alt+l>", "fake-key -g /", mode="prompt")
