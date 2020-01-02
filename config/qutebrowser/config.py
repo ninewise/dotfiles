@@ -2,22 +2,8 @@
 
 config.backend = "webengine"
 config.load_autoconfig = False
-
-# c.qt.force_software_rendering = "software-opengl"
-
 c.completion.shrink = True
 c.confirm_quit = ["downloads"]
-# c.content.developer_extras = True
-c.content.proxy = "socks://localhost:9050"
-c.content.javascript.enabled = False
-c.content.canvas_reading = False # https://en.wikipedia.org/wiki/Canvas_fingerprinting
-c.content.webgl = False # https://browserleaks.com/webgl
-c.content.ssl_strict = True
-c.content.headers.accept_language = "en-US,en;q=0.5"
-c.content.headers.custom = { "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8" }
-c.content.headers.user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36"
-c.content.webrtc_ip_handling_policy = "default-public-interface-only"
-c.content.cookies.accept = "no-3rdparty"
 c.downloads.location.directory = "/data/temporary"
 c.downloads.location.suggestion = "both"
 c.downloads.open_dispatcher = "rifle"
@@ -38,11 +24,26 @@ c.url.searchengines = { "startpage": "https://startpage.com/do/search?query={}"
                       , "framabee": "https://framabee.org/?q={}"
                       , "invidious": "http://axqzx4s6s54s32yentfqojs3x5i7faxza6xo3ehd4bzzsg2ii4fv2iid.onion/search?q={}"
                       }
+
+# Privacy
+c.content.proxy = "socks://localhost:9050"
+c.content.javascript.enabled = False
+c.content.canvas_reading = False # https://en.wikipedia.org/wiki/Canvas_fingerprinting
+c.content.webgl = False # https://browserleaks.com/webgl
+c.content.ssl_strict = True
+c.content.headers.accept_language = "en-US,en;q=0.5"
+c.content.headers.custom = { "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8" }
+c.content.headers.user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36"
+c.content.webrtc_ip_handling_policy = "default-public-interface-only"
+c.content.cookies.accept = "no-3rdparty"
+
+# Aliases
 c.aliases = { "wq": "quit --save"
             , "set": "set -t"
             , "quickmarks": "open qute://bookmarks/"
             }
 
+# Bindings
 config.bind("<backspace>", "back", mode="normal")
 config.bind("x", "spawn --detach mpv {url}", mode="normal")
 config.bind(";x", "hint links spawn --detach mpv {hint-url}", mode="normal")
@@ -81,4 +82,3 @@ allowed = [ 'https://duckduckgo.com/*'
 
 for pattern in allowed:
     config.set('content.javascript.enabled', True, pattern)
-
