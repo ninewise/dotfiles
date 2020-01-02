@@ -1,0 +1,14 @@
+#!/bin/sh
+base='https://tab.zeus.gent'
+user='felixvdj'
+token="$(pass show ugent/zeus/tab)"
+
+query="$base/users/$user.json"
+
+[ "$1" = "hist" ] && query="$base/users/$user/transactions.json"
+
+curl --header 'Accept: application/json' \
+     --header 'Content-Type: application/json' \
+     --header "Authorization: Token token=$token" \
+     --location \
+     "$query"
