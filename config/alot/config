@@ -36,7 +36,6 @@ theme = "mutt"
         realname = Felix Van der Jeugt
         address = felix.vanderjeugt@gmail.com
         alias_regexp = felix\.vanderjeugt\+.+@gmail.com
-        gpg_key = 68FF561137C38F9618E97339AF25A2C2862AA368
         sendmail_command = /usr/bin/msmtp --account=gmail -t
         sent_box = maildir:///data/mail/gmail/Sent
         draft_box = maildir:///data/mail/gmail/Sent
