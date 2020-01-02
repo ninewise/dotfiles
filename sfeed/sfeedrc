@@ -24,4 +24,5 @@ feeds() {
 	feed "Leah Neukirchen" "https://leahneukirchen.org/blog/index.atom"
 	feed "Infogroep" "https://infogroep.be/feed.xml"
 	feed "Zeus" "https://zeus.ugent.be/feed.xml"
+	feed "FOSDEM" "https://fosdem.org/2020/rss.xml"
 }
