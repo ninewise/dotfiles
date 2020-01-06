@@ -69,8 +69,8 @@ archive tag:github thread:{from:dependabot} \
 	-to:review_requested@noreply.github.com \
 	-to:security_alert@noreply.github.com
 
-# And stay down!
-#addtag killed "thread:{tag:killed}"
+# Muted threads stay muted.
+archive thread:{tag:muted}
 
 # Inbox remaining not-spam
 addtag inbox "not tag:spam"
