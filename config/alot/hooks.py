@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 
-async def mute(ui, days):
+async def delay(ui, days):
 	from datetime import date, timedelta
 	datestr = str(date.today() + timedelta(days=days))
-	await ui.apply_commandline(f'toggletags inbox,muted,muted/{datestr}')
+	await ui.apply_commandline(f'toggletags inbox,delay,delay/{datestr}')
 
 async def spam(ui):
 	from alot.buffers import EnvelopeBuffer
