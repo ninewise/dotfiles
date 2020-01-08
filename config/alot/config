@@ -84,8 +84,8 @@ theme = "mutt"
 
     [[search]]
         x = toggletags spam,inbox
-        a = untag inbox
-        A = tag inbox
+        a = toggletags inbox
+        A = toggletags inbox,muted
         1 = call hooks.delay(ui,1)
         2 = call hooks.delay(ui,2)
         3 = call hooks.delay(ui,3)
@@ -98,8 +98,8 @@ theme = "mutt"
         i = call hooks.spam(ui)
 
     [[thread]]
-        a = untag inbox ; fold
-        A = tag inbox ; unfold
+        a = toggletags inbox ; fold
+        A = toggletags inbox,muted ; fold
         n = nextpart
         p = prevpart
         u = pipeto --background selecturl

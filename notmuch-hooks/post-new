@@ -62,6 +62,7 @@ addtag github "from:notifications@github.com"
 archive tag:dodona subject:'Onderwijsinstelling aangemaakt voor .*'
 archive tag:dodona from:'logcheck system account'
 archive tag:dodona subject:'A request took'
+archive tag:dodona subject:'Een gebruiker kon niet inloggen'
 archive tag:github thread:{from:dependabot} \
 	-subject:Security \
 	-to:mention@noreply.github.com  \
@@ -69,8 +70,9 @@ archive tag:github thread:{from:dependabot} \
 	-to:review_requested@noreply.github.com \
 	-to:security_alert@noreply.github.com
 
-# Muted threads stay muted.
+# Muted threads stay muted for a month after arrival
 archive thread:{tag:muted}
+notmuch tag -muted -- tag:muted and date:'..30_days'
 
 # Inbox remaining not-spam
 addtag inbox "not tag:spam"
@@ -81,6 +83,6 @@ today="$(date +'%s')"
 for delaytag in $(notmuch search --output=tags tag:delay | grep 'delay/'); do
 	until="$(date -d "${delaytag#*/}" +'%s')"
 	if [ "$today" -gt "$until"  ]; then
-		notmuch tag -delay -"$delay" +inbox -- tag:"$delay"
+		notmuch tag -delay -"$delaytag" +inbox -- tag:"$delaytag"
 	fi
 done
