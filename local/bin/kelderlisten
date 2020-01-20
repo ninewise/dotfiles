@@ -1,2 +1,2 @@
 #!/bin/sh
-curl -s kelder.zeus.ugent.be/messages/ | w3m -dump -T text/html
+curl -sL https://kelder.zeus.ugent.be/messages/ | w3m -dump -T text/html

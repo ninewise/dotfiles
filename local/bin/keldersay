@@ -1,2 +1,2 @@
 #!/bin/sh
-curl -s --header "Content-Type: text/plain" -d "$*" kelder.zeus.ugent.be/messages/ --output /dev/null
+curl -s --header "Content-Type: text/plain" --header "X-Username: $(users)" -d "$*" https://kelder.zeus.ugent.be/messages/
