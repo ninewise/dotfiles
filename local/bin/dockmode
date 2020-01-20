@@ -2,9 +2,9 @@
 
 xset dpms 0 0 0
 
-dp1="$(xrandr --listactivemonitors | grep ' DP1$')"
-dp1_1="$(xrandr --listactivemonitors | grep ' DP1-1$')"
-dp1_2="$(xrandr --listactivemonitors | grep ' DP1-2$')"
+dp1="$(xrandr | grep '^DP1 connected')"
+dp1_1="$(xrandr | grep '^DP1-1 connected')"
+dp1_2="$(xrandr | grep '^DP1-2 connected')"
 
 if [ -n "$dp1" -a -z "$dp1_1" -a -z "$dp1_2" ]; then
 	xrandr --output DP1 --auto --above eDP1
