@@ -65,6 +65,7 @@ archive tag:dodona subject:'A request took'
 archive tag:dodona subject:'Een gebruiker kon niet inloggen'
 archive tag:dodona subject:"Mysql2::Error: Table 'dodona.active_storage_blobs' doesn't exist"
 archive tag:dodona subject:'status was changed to internal error' 'course_id: 186'
+archive tag:dodona subject:'status was changed to internal error' 'course_id: 175'
 archive tag:dodona subject:'status was changed to internal error' 'user_id: 3'
 archive tag:github thread:{from:dependabot} \
 	-subject:Security \
