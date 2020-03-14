@@ -3,7 +3,7 @@ initial_command = search tag:inbox
 periodic_hook_frequency = 60
 edit_headers_blacklist = Content-Type, MIME-Version
 attachment_prefix = /data/temporary
-prefer_plaintext = True
+prefer_plaintext = False
 
 editor_spawn = True
 editor_in_thread = True
@@ -70,7 +70,7 @@ theme = "mutt"
     [[todo]]
         realname = Felix Van der Jeugt
         address = todo@localhost
-        sendmail_command = /usr/bin/true
+        sendmail_command = true
         sent_box = maildir:///data/mail/todo
         draft_box = maildir:///data/mail/todo
         sent_tags = todo,inbox
