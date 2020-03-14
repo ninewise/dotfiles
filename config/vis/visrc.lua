@@ -1,4 +1,7 @@
 -- load standard vis module, providing parts of the Lua API
+
+-- get inspiration from: https://src.adamsgaard.dk/dotfiles/file/.config/vis/visrc.lua.html
+
 require('vis')
 require('plugins/complete-word')
 require('plugins/myfiletype')
@@ -47,19 +50,29 @@ vis:map(vis.modes.NORMAL, ";o", function()
 	vis:command('fzf true')
 end)
 
+vis:map(vis.modes.NORMAL, ";r", function()
+	local choice = io.popen('fzf < ' .. vis.win.file.path):read()
+	if choice then
+		local line = vis.win.selection.line
+		table.insert(vis.win.file.lines, line + 1, choice)
+		vis.win.selection:to(line + 1, 0)
+	end
+	vis:feedkeys("<vis-redraw>")
+end, 'fuzzy line copy')
+
 vis:map(vis.modes.NORMAL, ";;", "<vis-window-next>")
 
 interactives = {
-	["python"] = "!python -i $vis_filename",
-	["haskell"] = "!stack ghci $vis_filepath",
-	["lithaskell"] = "!stack ghci $vis_filepath",
-	["latex"] = "!tectonic '$vis_filepath'",
+	["python"] = "!python -i ",
+	["haskell"] = "!stack ghci ",
+	["lithaskell"] = "!stack ghci ",
+	["latex"] = "!tectonic ",
 }
 
 vis:map(vis.modes.NORMAL, ";i", function()
 	local command = interactives[vis.win.syntax]
 	if command then
-		vis:command(command)
+		vis:command(command.."'"..vis.win.file.name.."'")
 	end
 end)
 
@@ -95,7 +108,7 @@ vis:map(vis.modes.INSERT, '<Backspace>', function()
 end)
 
 vis:map(vis.modes.NORMAL, ";s", function()
-	vis:command("!sent $vis_filepath")
+	vis:command("!sent '"..vis.win.file.path.."'")
 end)
 
 vis:map(vis.modes.NORMAL, ";p", function()
