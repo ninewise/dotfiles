@@ -20,7 +20,9 @@ c.url.default_page = "about:blank"
 c.url.start_pages = ["qute://bookmarks"]
 c.url.searchengines = { "startpage": "https://startpage.com/do/search?query={}"
                       , "ecosia": "https://www.ecosia.org/search?q={}"
-                      , "DEFAULT": "https://3g2upl4pq6kufc4m.onion/html?q={}" # ddg
+                      , "DEFAULT": "https://lite.qwant.com/?q={}"
+                      , "duckduckgo": "https://duckduckgo.com/html?q={}"
+                      , "duckduckgonion": "https://3g2upl4pq6kufc4m.onion/html?q={}"
                       , "framabee": "https://framabee.org/?q={}"
                       , "invidious": "http://axqzx4s6s54s32yentfqojs3x5i7faxza6xo3ehd4bzzsg2ii4fv2iid.onion/search?q={}"
                       }
