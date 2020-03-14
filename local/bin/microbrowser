@@ -1,0 +1,2 @@
+#!/bin/sh
+exec qutebrowser --basedir "$HOME/.config/microbrowser" 'https://teams.microsoft.com'
