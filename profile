@@ -24,6 +24,11 @@ export LESSHISTFILE=-
 export FZF_DEFAULT_COMMAND='(git ls-files -co --exclude-standard || rg --files) 2> /dev/null'
 export LC_ALL=en_US.utf8
 
+# Select Dock sound card if it's there
+if [ -e /proc/asound/Dock ]; then
+	export ALSA_CARD=Dock
+fi
+
 #stty -ixon # disable <C-s>
 
 # Start X if we're in tty1
