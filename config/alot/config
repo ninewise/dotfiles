@@ -102,6 +102,7 @@ theme = "mutt"
         A = toggletags inbox,muted ; fold
         n = nextpart
         p = prevpart
+        r = reply --all
         u = pipeto --background selecturl
         1 = call hooks.delay(ui,1)
         2 = call hooks.delay(ui,2)
