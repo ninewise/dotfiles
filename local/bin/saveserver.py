@@ -17,7 +17,7 @@ FORM = """
 def form():
     if request.method == "POST":
         for f in request.files.getlist('the_file'):
-            f.save('./foto_' + secure_filename(f.filename))
+            f.save('./' + secure_filename(f.filename))
     return FORM
 
 
