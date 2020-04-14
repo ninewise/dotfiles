@@ -11,13 +11,9 @@ if command --identify --builtin-command bindkey >/dev/null; then
 fi
 
 # arrange history
-HISTFILE=
+HISTFILE=~/.yash_history
 HISTSIZE=5000
 HISTRMDUP=5000
-histstart=$(mktemp)
-history -r "$HOME/.yash_history"
-history -w "$histstart"
-trap "history -w - | diff --old-line-format='' '$histstart' - > '$HOME/.yash_history' && rm '$histstart'" EXIT
 
 # Get ourselves a nice prompt
 ks() { s="$?" ; $* ; return "$s" ; }
@@ -77,7 +73,8 @@ alias unlock='gpg-connect-agent <<<bye'
 alias weechat="ssh -t weechat@Chatmachine abduco -A weechat"
 alias agenda="khal list today 7d"
 
-alias haccounts="hledger -I --alias '/.*:Accounts .*:(.*)/=Accounts:\1' bal accounts"
+alias haccounts="hledger -I --alias '/.*:Accounts [^:]*:(.*)/=Accounts:\1' bal accounts"
+alias ladd='ladd -a /data/documents/ledger/2020/main.journal /data/documents/ledger/*/main.journal'
 
 go() {
     dir="$(lr /home /data /etc -t '(name ~~ ".*" && prune || print) && type = d && !(name = ".git")' \

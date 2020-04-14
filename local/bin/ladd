@@ -1,50 +1,54 @@
 #!/bin/sh
-# Copies a previous transaction to today.
-#
-# Select a previous transaction by fuzzy matching on the titles. This
-# transaction is then copied to the end of the journal, uncleared and
-# set to the current date. Finally, it opens the end of the file in
-# $EDITOR.
-#
-# Bonus over `hledger add`: interactive matching it easier, and
-# transaction formatting is retained because it's just a copy.
-#
-# Depends on:
-# - fzf (https://github.com/junegunn/fzf)
-# - ed
+USAGE="
+$(basename $0) [-a add_file] query_files...
 
-ledger="${1:-$LEDGER_FILE}"
+Copies a previous transaction to today.
+
+Select a previous transaction by fuzzy matching on the titles. This
+transaction is then copied to the end of the journal, uncleared and set
+to the current date. Finally, it opens the end of the file in $EDITOR.
+
+Bonus over 'hledger add': interactive matching it easier, and
+transaction formatting is retained because it's just a copy.
+
+    add_file     The transaction is appended to this file.
+                 Default (if set): \$LEDGER_ADD_FILE
+                 Default (otherwise): \$LEDGER_FILE
+
+    query_files  A list of files to query for previous transactions.
+                 Default: \$LEDGER_FILE
+
+Depends on:
+- fzf (https://github.com/junegunn/fzf)
+- sponge (https://joeyh.name/code/moreutils/)
+
+If you split files by year, it may be useful to alias (in 2020):
+
+    alias ladd='ladd -a .../2020/main.journal .../*/main.journal'
+"
+
+add_file="${LEDGER_ADD_FILE:-$LEDGER_FILE}"
+while getopts a: f; do
+	case "$f" in
+	a) add_file="$OPTARG";;
+	\?) echo "$USAGE"; exit 1;;
+	esac
+done
+shift $((OPTIND - 1))
 
 # fuzzy select a transaction title
-selection="$(sed -n 's/....-..-..\( [*!]\)\? //p' "$ledger" | sort | uniq | fzf)"
-[ -z "$selection" ] && clear && exit 0 # quit if escaped
+selection="$(sed -n 's/....-..-..\( [*!]\)\? //p' "${@:-$LEDGER_FILE}" | sort | uniq | fzf)"
+[ -z "$selection" ] && exit 0 # quit if escaped
 
-cat <<HERE | ed --silent "$ledger"
-# append a newline for easier searching
-\$a
-
-.
-# yank matching transaction (closed by empty line)
-?^....-..-..\( [*!]\)\? ${selection}\$?;/^\$/y
-# select line below last none-empty line
-$
-?^..*?
-+
-# put transaction
-x
-# replace date with today
-?^\$?
-+s/....-..-..\( [*!]\)\?/$(date +'%Y-%m-%d')/
-# delete empty lines at end and quit
-/^\$/,\$d
-wq
-HERE
+sed -n "/....-..-..\( [*!]\)\? ${selection}\$/,/^\$/p" "${@:-$LEDGER_FILE}" | # print matching transactions
+	sed '${/^$/d}' | # remove trailing empty line
+	sed -n '/^$/{s/.*//;x;d};H;${x;p}' | # remove all before the last empty line
+	sed "s/^....-..-..\( [*!]\)\?/$(date +'%Y-%m-%d')/" | # replace date iwht today, remove marker
+	sponge -a "$add_file" # append to the file, use sponge in case it's also an input file
 
 # review change: open end of the file (if I know how)
 case "$EDITOR" in
-vi*)   "$EDITOR" +\$ "$ledger" ;;
-emacs) "$EDITOR" "$ledger" -f end-of-buffer ;;
-*)     "$EDITOR" "$ledger" ;;
+vi*)   "$EDITOR" +\$ "$add_file" ;;
+emacs) "$EDITOR" "$add_file" -f end-of-buffer ;;
+*)     "$EDITOR" "$add_file" ;;
 esac
-
-clear

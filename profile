@@ -19,7 +19,7 @@ export PATH="$HOME/.local/bin:$CABAL_HOME/bin:$RBENV_HOME/shims:$CARGO_HOME/bin:
 # Environmental settings
 export ESCDELAY=50 # for dvtm e.a.
 export EDITOR="vis"
-export LEDGER_FILE="/data/documents/ledger/ledger.journal"
+export LEDGER_FILE="/data/documents/ledger/all.journal"
 export LESSHISTFILE=-
 export FZF_DEFAULT_COMMAND='(git ls-files -co --exclude-standard || rg --files) 2> /dev/null'
 export LC_ALL=en_US.utf8
