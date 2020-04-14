@@ -51,7 +51,7 @@ vis:map(vis.modes.NORMAL, ";o", function()
 end)
 
 vis:map(vis.modes.NORMAL, ";r", function()
-	local choice = io.popen('fzf < ' .. vis.win.file.path):read()
+	local choice = io.popen('tac < ' .. vis.win.file.path .. ' | fzf'):read()
 	if choice then
 		local line = vis.win.selection.line
 		table.insert(vis.win.file.lines, line + 1, choice)
