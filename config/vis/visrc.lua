@@ -26,7 +26,7 @@ vis:map(vis.modes.NORMAL, "<Escape>", function()
 	if vis.count then
 		vis.count = nil
 	else
-		vis:feedkeys"<vis-selections-remove-all>"
+		vis:feedkeys("<vis-selections-remove-all>")
 	end
 end)
 
