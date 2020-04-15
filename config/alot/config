@@ -5,9 +5,7 @@ edit_headers_blacklist = Content-Type, MIME-Version
 attachment_prefix = /data/temporary
 prefer_plaintext = False
 
-editor_spawn = True
-editor_in_thread = True
-terminal_cmd = 'st -e'
+editor_cmd = st -e vis
 
 theme = "mutt"
 
