@@ -43,12 +43,12 @@ selection="$(sed -n 's/....-..-..\( [*!]\)\? //p' "${@:-$LEDGER_FILE}" | sort | 
 sed -n "/....-..-..\( [*!]\)\? ${selection}\$/,/^\$/p" "${@:-$LEDGER_FILE}" | # print matching transactions
 	sed '${/^$/d}' | # remove trailing empty line
 	sed -n '/^$/{s/.*//;x;d};H;${x;p}' | # remove all before the last empty line
-	sed "s/^....-..-..\( [*!]\)\?/$(date +'%Y-%m-%d')/" | # replace date iwht today, remove marker
+	sed "s/^....-..-..\( [*!]\)\?/$(date +'%Y-%m-%d')/" | # replace date with today, remove marker
 	sponge -a "$add_file" # append to the file, use sponge in case it's also an input file
 
 # review change: open end of the file (if I know how)
 case "$EDITOR" in
-vi*)   "$EDITOR" +\$ "$add_file" ;;
-emacs) "$EDITOR" "$add_file" -f end-of-buffer ;;
-*)     "$EDITOR" "$add_file" ;;
+vi*|nvi*) "$EDITOR" +\$ "$add_file" ;;
+emacs)    "$EDITOR" "$add_file" -f end-of-buffer ;;
+*)        "$EDITOR" "$add_file" ;;
 esac
