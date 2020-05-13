@@ -1,0 +1,6 @@
+#!/bin/sh
+torsocks wget "$@"
+image="$(basename "$@")"
+feh "$image"
+mv "$image" /data/pictures/anselmages/
+ln -s ../anselmages/"$image" /data/pictures/background-source/"$image"
