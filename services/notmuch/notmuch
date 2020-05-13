@@ -8,4 +8,4 @@ pgrep gpg-agent > /dev/null
 
 notmuch new --quiet 2>&1
 
-exec sleep 3m
+exec sleep 1m
