@@ -12,7 +12,7 @@ chmod 0700 "$XDG_RUNTIME_DIR"
 export CABAL_HOME="$HOME/.cabal"
 export CARGO_HOME="$HOME/.cargo"
 export RBENV_HOME="$HOME/.rbenv"
-export JAVA_HOME="/usr/lib/jvm/oracle-jdk/"
+export JAVA_HOME="/usr/lib/jvm/openjdk11/"
 export TEX_BIN="/opt/texlive/2019/bin/x86_64-linux/"
 export PATH="$HOME/.local/bin:$CABAL_HOME/bin:$RBENV_HOME/shims:$CARGO_HOME/bin:$JAVA_HOME/bin:$TEX_BIN:$PATH"
 
