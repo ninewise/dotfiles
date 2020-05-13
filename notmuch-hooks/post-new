@@ -19,6 +19,14 @@ addtag zeus "to:felixvdj@zeus.ugent.be"
 addtag dodona "to:dodona@ugent.be"
 addtag unipept "to:unipept@ugent.be"
 
+# These mails tend to be numerous and do not need additional tagging
+archive tag:dodona subject:"Mysql2::Error: Table 'dodona.active_storage_blobs' doesn't exist"
+archive tag:dodona subject:'A request took'
+archive tag:dodona subject:'Errno::ENOENT'
+archive tag:unipept subject:'Mysql2::Error::ConnectionError'
+archive tag:unipept subject:'invalid value for Integer'
+archive tag:unipept subject:'NoMethodError'
+
 # More complex tagging
 for mid in $(notmuch search --output=messages tag:new); do
 
@@ -61,14 +69,14 @@ addtag github "from:notifications@github.com"
 # Uninteresting
 archive tag:dodona subject:'Onderwijsinstelling aangemaakt voor .*'
 archive tag:dodona from:'logcheck system account'
-archive tag:dodona subject:'A request took'
+archive tag:dodona from:'KlasCement'
 archive tag:dodona subject:'Een gebruiker kon niet inloggen'
-archive tag:dodona subject:"Mysql2::Error: Table 'dodona.active_storage_blobs' doesn't exist"
 archive tag:dodona subject:'status was changed to internal error' 'course_id: 186' # computergebruik 2019-2020
 archive tag:dodona subject:'status was changed to internal error' 'course_id: 175' # FEA 2019-2020
 archive tag:dodona subject:'status was changed to internal error' 'course_id: 156' # GUGC 2019-2020
 archive tag:dodona subject:'status was changed to internal error' 'course_id: 234' # industrieel ingenieur 2019-2020
 archive tag:dodona subject:'status was changed to internal error' 'course_id: 264' # scriptingtalen 2019-2020
+archive tag:dodona subject:'status was changed to internal error' 'course_id: 294' # python testen eerstjaars 2019-2020
 archive tag:dodona subject:'status was changed to internal error' 'user_id: 3' # Peter
 archive tag:github thread:{from:dependabot} \
 	-subject:Security \
