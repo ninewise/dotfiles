@@ -3,7 +3,7 @@ initial_command = search tag:inbox
 periodic_hook_frequency = 60
 edit_headers_blacklist = Content-Type, MIME-Version
 attachment_prefix = /data/temporary
-prefer_plaintext = False
+prefer_plaintext = True
 
 editor_cmd = st -e vis
 
@@ -98,8 +98,7 @@ theme = "mutt"
     [[thread]]
         a = toggletags inbox ; fold
         A = toggletags inbox,muted ; fold
-        n = nextpart
-        p = prevpart
+        n = togglemimepart
         r = reply --all
         u = pipeto --background selecturl
         1 = call hooks.delay(ui,1)
