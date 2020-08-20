@@ -22,19 +22,24 @@ export EDITOR="vis"
 export LEDGER_FILE="/data/documents/ledger/all.journal"
 export LESSHISTFILE=-
 export FZF_DEFAULT_COMMAND='(git ls-files -co --exclude-standard || rg --files) 2> /dev/null'
+export SKIM_DEFAULT_COMMAND='(git ls-files -co --exclude-standard || rg --files) 2> /dev/null'
 export LC_ALL=en_US.utf8
 
 # Select Dock sound card if it's there
-if [ -e /proc/asound/Dock ]; then
-	export ALSA_CARD=Dock
-fi
+#(it's broken)
+#if [ -e /proc/asound/Dock ]; then
+#	export ALSA_CARD=Dock
+#fi
+
+# Nix Shells
+. /etc/profile.d/nix.sh
+#export NIX_BUILD_SHELL=yash
 
 #stty -ixon # disable <C-s>
 
 # Start X if we're in tty1
-xsession() {
-    startx 2>&1 || vlock
-    #sudo poweroff
-    #sleep infinity
-}
-if tty | grep -q '/dev/tty1'; then xsession; fi
+if tty | grep -q '/dev/tty1'; then
+	startx 2>&1 || vlock
+	#sudo poweroff
+	#sleep infinity
+fi

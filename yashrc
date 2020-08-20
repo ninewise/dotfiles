@@ -18,13 +18,14 @@ HISTRMDUP=5000
 # Get ourselves a nice prompt
 ks() { s="$?" ; $* ; return "$s" ; }
 prompt_git() {
-    if git status 2>/dev/null 1>&2; then
-        local branch="$(git branch | sed -n 's/^\* (*\(.* \)*\([^ )]*\))*$/\2/p')"
-        local behind="$(git status --branch --porcelain=2 | sed -n 's/^# branch\.ab.*-\([^0].*\)$/⇃\1/p')"
-        local before="$(git status --branch --porcelain=2 | sed -n 's/^# branch\.ab +\([^0].*\) .*$/↿\1/p')"
-        local status="$({ echo OK; git status --porcelain | sed 's/\(..\).*/\1/'; } | tail -1)"
+    porcelain="$(git status --branch --porcelain 2>/dev/null)"
+    if test "$?" = 0; then
+        local branch="$(printf '%s' "$porcelain" | sed -n '1s/## \([^.]*\)\.\.\..*/\1/p')"
+        local behind="$(printf '%s' "$porcelain" | sed -n '1s/## .*behind \([0-9]*\).*/⇃\1/p')"
+        local ahead="$(printf '%s' "$porcelain" | sed -n '1s/## .*ahead \([0-9]*\).*/↿\1/p')"
+        local status="$({ echo OK; printf '%s' "$porcelain" | sed '/##/d;s/\(..\).*/\1/'; } | tail -1)"
         
-        echo " (${branch}${behind}${before}|${status})"
+        echo " (${branch}${behind}${ahead}|${status})"
     fi
 }
 prompt_pwd() {
@@ -55,10 +56,11 @@ unset GREEN
 unset RESET
 
 # Color ls
-ls_() {
-    lr -1FGG "$@" | git column --mode=dense --padding=3
-}
-alias ls="ls_"
+# ls_() {
+#     lr -1FGG "$@" | git column --mode=dense --padding=3
+# }
+# alias ls="ls_"
+alias ls="ls --color=auto"
 alias ll="lr -Fl1Ghov"
 
 # There is only one vis
@@ -70,17 +72,23 @@ alias nano="vis"
 alias agent='eval "$(ssh-agent)" && ssh-add'
 alias unlock='gpg-connect-agent <<<bye'
 
-alias weechat="ssh -t weechat@Chatmachine abduco -A weechat"
+alias weechat="ssh -t weechat@Hetzner abduco -A weechat"
 alias agenda="khal list today 7d"
 
+# Ledger
 alias haccounts="hledger -I --alias '/.*:Accounts [^:]*:(.*)/=Accounts:\1' bal accounts"
 alias ladd='ladd -a /data/documents/ledger/2020/main.journal /data/documents/ledger/*/main.journal'
 alias is='hledger is -b $(date -d "6 months ago" +%Y-%m) -MTA --tree -2'
+alias cf='hledger cf -b $(date -d "6 months ago" +%Y-%m) -MTA --tree -2'
 alias bs='hledger bs not:accounts'
+
+# Rust debugging
+alias rustdb="RUST_TEST_THREADS=1 RUST_GDB=cgdb rust-gdb"
+alias rtdb='rustdb $(cargo test -v 2>&1 | grep "Running.*$(pwd)" |  cut -f2 -d"\`")'
 
 go() {
     dir="$(lr /home /data /etc -t '(name ~~ ".*" && prune || print) && type = d && !(name = ".git")' \
-          | fzf --height 10 \
+          | sk --height 10 \
           )"
     [ -n "$dir" ] && cd "$dir" || false
 }
