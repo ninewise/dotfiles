@@ -77,6 +77,8 @@ archive tag:dodona subject:'status was changed to internal error' 'course_id: 15
 archive tag:dodona subject:'status was changed to internal error' 'course_id: 234' # industrieel ingenieur 2019-2020
 archive tag:dodona subject:'status was changed to internal error' 'course_id: 264' # scriptingtalen 2019-2020
 archive tag:dodona subject:'status was changed to internal error' 'course_id: 294' # python testen eerstjaars 2019-2020
+archive tag:dodona subject:'status was changed to internal error' 'course_id: 317' # C testcursus 2020-2021
+archive tag:dodona subject:'status was changed to internal error' 'course_id: 335' # R basic
 archive tag:dodona subject:'status was changed to internal error' 'user_id: 3' # Peter
 archive tag:github thread:{from:dependabot} \
 	-subject:Security \
@@ -84,6 +86,7 @@ archive tag:github thread:{from:dependabot} \
 	-to:assign@noreply.github.com \
 	-to:review_requested@noreply.github.com \
 	-to:security_alert@noreply.github.com
+archive tag:ugent subject:'Belnet FileSender: Ontvangstbevestiging'
 
 # Muted threads stay muted for a month after arrival
 archive thread:{tag:muted}
