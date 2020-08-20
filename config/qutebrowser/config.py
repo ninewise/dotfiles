@@ -21,11 +21,18 @@ c.url.start_pages = ["qute://bookmarks"]
 c.url.searchengines = { "startpage": "https://startpage.com/do/search?query={}"
                       , "ecosia": "https://www.ecosia.org/search?q={}"
                       , "qwant": "https://lite.qwant.com/?q={}"
-                      , "DEFAULT": "https://beta.cliqz.com/search?q={}"
+                      , "cliqz": "https://beta.cliqz.com/search?q={}" # discontinued
                       , "duckduckgo": "https://duckduckgo.com/html?q={}"
                       , "duckduckgonion": "https://3g2upl4pq6kufc4m.onion/html?q={}"
                       , "framabee": "https://framabee.org/?q={}"
                       , "invidious": "http://axqzx4s6s54s32yentfqojs3x5i7faxza6xo3ehd4bzzsg2ii4fv2iid.onion/search?q={}"
+                      , "openstreetmap": "https://www.openstreetmap.org/search?query={}"
+                      , "wikipedia": "https://en.wikipedia.org/w/index.php?search={}"
+                      , "wikipedia/nl": "https://nl.wikipedia.org/w/index.php?search={}"
+                      , "hoogle": "https://hoogle.haskell.org/?hoogle={}"
+                      , "snopyta": "http://juy4e6eicawzdrz7.onion/?q={}"
+                      , "DEFAULT": "http://juy4e6eicawzdrz7.onion/?q={}"
+                      , "telefoonboek": "https://telefoonboek.ugent.be/nl/simple?name={}"
                       }
 
 # Privacy
@@ -38,7 +45,6 @@ c.content.headers.accept_language = "en-US,en;q=0.5"
 c.content.headers.custom = { "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8" }
 c.content.headers.user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36"
 c.content.webrtc_ip_handling_policy = "default-public-interface-only"
-c.content.cookies.accept = "no-3rdparty"
 
 # Aliases
 c.aliases = { "wq": "quit --save"
@@ -54,6 +60,10 @@ config.bind("<Alt+j>", "prompt-item-focus next", mode="prompt")
 config.bind("<Alt+k>", "prompt-item-focus prev", mode="prompt")
 config.bind("<Alt+l>", "fake-key -g /", mode="prompt")
 config.bind("<Alt+h>", "rl-unix-filename-rubout", mode="prompt")
+config.bind("o", "set-cmd-text -s :open -s ", mode="normal")
+config.bind("O", "set-cmd-text -s :open -s -t ", mode="normal")
+config.bind("\\", "set-cmd-text -s :open ", mode="normal")
+config.bind("|", "set-cmd-text -s :open -t ", mode="normal")
 
 # I don't use bookmarks
 config.unbind('wB')
@@ -63,7 +73,6 @@ config.unbind('Sb')
 
 # Allowing javascript for...
 allowed = [ 'https://duckduckgo.com/*'
-          , 'https://www.facebookcorewwwi.onion/*'
           , 'https://github.com/*'
           , 'https://*.ugent.be/*'
           , 'https://secure.ogone.com/*'                 # bancontact
@@ -73,8 +82,6 @@ allowed = [ 'https://duckduckgo.com/*'
           , 'https://belgium-uvj-3dsecure.wlp-acs.com/*' # bancontact
           , 'https://*.triodos.be/*'
           , 'https://www.openstreetmap.org/*'
-          , 'https://web.whatsapp.com'
-          , 'https://chat.zeus.gent/*'
           , 'https://mattermost.zeus.gent/*'
           , 'https://posteo.de/*'
           , 'https://doc.rust-lang.org/*'
@@ -85,3 +92,16 @@ allowed = [ 'https://duckduckgo.com/*'
 
 for pattern in allowed:
     config.set('content.javascript.enabled', True, pattern)
+
+# Allowing cookies for...
+c.content.cookies.accept = "never"
+allowed = [ 'https://github.com/*'
+          , 'https://*.ugent.be/*'
+          , 'https://*.triodos.be/*'
+          , 'https://mattermost.zeus.gent/*'
+          , 'https://posteo.de/*'
+          , 'https://homebank.argenta.be/*'
+          , 'https://mbasic.facebookcorewwwi.onion/*'
+          ]
+for pattern in allowed:
+    config.set('content.cookies.accept', "no-3rdparty", pattern)
