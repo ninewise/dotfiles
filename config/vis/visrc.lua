@@ -5,7 +5,7 @@
 require('vis')
 require('plugins/complete-word')
 require('plugins/myfiletype')
-require('plugins/editorconfig/editorconfig')
+require('plugins/editorconfig/init')
 require('plugins/vis-quickfix/quickfix')
 
 vis.events.subscribe(vis.events.INIT, function()
@@ -22,6 +22,11 @@ vis.events.subscribe(vis.events.WIN_OPEN, function(win)
 	vis:command('set number')
 end)
 
+vis:map(vis.modes.NORMAL, ";;", "<vis-window-next>")
+
+--------------------------------------------------------------------------------
+-- Escape removes counts
+
 vis:map(vis.modes.NORMAL, "<Escape>", function()
 	if vis.count then
 		vis.count = nil
@@ -30,28 +35,34 @@ vis:map(vis.modes.NORMAL, "<Escape>", function()
 	end
 end)
 
-vis:command_register("fzf", function(argv, force, cur_win, selection, range)
-	local out = io.popen("fzf"):read()
+--------------------------------------------------------------------------------
+-- Fuzzy search filenames to open files
+
+vis:command_register("skim", function(argv, force, cur_win, selection, range)
+	local out = io.popen("sk"):read()
 	if out then
-		if argv[1] then
-			vis:command(string.format('e "%s"', out))
-		else
-			vis:command(string.format('open "%s"', out))
-		end
+		vis:command(string.format(argv[1]..' "%s"', out))
 		vis:feedkeys("<vis-redraw>")
 	end
 end, 'fuzzy file search')
 
 vis:map(vis.modes.NORMAL, ";l", function()
-	vis:command('fzf')
+	vis:command('skim open')
 end)
 
 vis:map(vis.modes.NORMAL, ";o", function()
-	vis:command('fzf true')
+	vis:command('skim e')
 end)
 
+vis:map(vis.modes.NORMAL, ";v", function()
+	vis:command('skim vsplit')
+end)
+
+--------------------------------------------------------------------------------
+-- Fuzzy search lines to copy them
+
 vis:map(vis.modes.NORMAL, ";r", function()
-	local choice = io.popen('tac < ' .. vis.win.file.path .. ' | fzf'):read()
+	local choice = io.popen('sk --tac < ' .. vis.win.file.path):read()
 	if choice then
 		local line = vis.win.selection.line
 		table.insert(vis.win.file.lines, line + 1, choice)
@@ -60,12 +71,35 @@ vis:map(vis.modes.NORMAL, ";r", function()
 	vis:feedkeys("<vis-redraw>")
 end, 'fuzzy line copy')
 
-vis:map(vis.modes.NORMAL, ";;", "<vis-window-next>")
+--------------------------------------------------------------------------------
+-- Fuzzy search lines to open files
+
+vis:command_register("rg", function(argv, force, cur_win, selection, range)
+	local out = io.popen("sk --ansi -i -c 'rg --color=always --line-number "..'"{}"'.."'"):read()
+	if out then
+		local filename = string.find(out, ':')
+		local linenumber = string.find(out, ':', filename + 1)
+		vis:command(string.format(argv[1]..' "%s"', string.sub(out, 0, filename - 1)))
+		vis.win.selection:to(tonumber(string.sub(out, filename + 1, linenumber - 1)), 0)
+		vis:feedkeys("<vis-redraw>")
+	end
+end, 'fuzzy grep open')
+
+vis:map(vis.modes.NORMAL, ";g", function()
+	vis:command('rg open')
+end)
+
+vis:map(vis.modes.NORMAL, ";G", function()
+	vis:command('rg e')
+end)
+
+--------------------------------------------------------------------------------
+-- Some interactive programs
 
 interactives = {
 	["python"] = "!python -i ",
-	["haskell"] = "!stack ghci ",
-	["lithaskell"] = "!stack ghci ",
+	["haskell"] = "!cabal repl ",
+	["lithaskell"] = "!cabal repl ",
 	["latex"] = "!tectonic ",
 }
 
@@ -76,6 +110,13 @@ vis:map(vis.modes.NORMAL, ";i", function()
 	end
 end)
 
+vis:map(vis.modes.NORMAL, ";s", function()
+	vis:command("!sent '"..vis.win.file.path.."'")
+end)
+
+--------------------------------------------------------------------------------
+-- Swap between light and dark themes
+
 vis:map(vis.modes.NORMAL, ";w", function()
 	vis:command('set theme light-16')
 end)
@@ -83,6 +124,9 @@ end)
 vis:map(vis.modes.NORMAL, ";b", function()
 	vis:command('set theme dark-16')
 end)
+
+--------------------------------------------------------------------------------
+-- Backspace removes 4 spaces if need be
 
 vis:map(vis.modes.INSERT, '<Backspace>', function()
 	local tabwidth = 4
@@ -107,13 +151,8 @@ vis:map(vis.modes.INSERT, '<Backspace>', function()
 	end
 end)
 
-vis:map(vis.modes.NORMAL, ";s", function()
-	vis:command("!sent '"..vis.win.file.path.."'")
-end)
-
-vis:map(vis.modes.NORMAL, ";p", function()
-	vis:command("<xclip -o")
-end)
+--------------------------------------------------------------------------------
+-- Hardwrapping
 
 vis:map(vis.modes.VISUAL, ';a', function()
 	if vis.count then
@@ -123,6 +162,9 @@ vis:map(vis.modes.VISUAL, ';a', function()
 		vis:command(':|par')
 	end
 end)
+
+--------------------------------------------------------------------------------
+-- Strip trailing spaces
 
 vis:command_register("sts", function(argv, force, win, selection, range)
 	local lines = win.file.lines
