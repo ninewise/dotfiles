@@ -4,6 +4,7 @@ periodic_hook_frequency = 60
 edit_headers_blacklist = Content-Type, MIME-Version
 attachment_prefix = /data/temporary
 prefer_plaintext = True
+thread_authors_replace_me = False
 
 editor_cmd = st -e vis
 
@@ -93,6 +94,7 @@ theme = "mutt"
         7 = call hooks.delay(ui,7)
         8 = call hooks.delay(ui,8)
         9 = call hooks.delay(ui,9)
+        0 = call hooks.delay(ui,0)
         i = call hooks.spam(ui)
 
     [[thread]]
@@ -110,6 +112,7 @@ theme = "mutt"
         7 = call hooks.delay(ui,7)
         8 = call hooks.delay(ui,8)
         9 = call hooks.delay(ui,9)
+        0 = call hooks.delay(ui,0)
         i = call hooks.spam(ui)
 
 [tags]
