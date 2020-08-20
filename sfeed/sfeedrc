@@ -26,4 +26,5 @@ feeds() {
 	feed "Zeus" "https://zeus.ugent.be/feed.xml"
 	feed "FOSDEM" "https://fosdem.org/2020/rss.xml"
 	feed "Iris" "https://irisgent.be/atom.xml"
+	feed "BE-Alert" "https://www.be-alert.be/nl/rss.xml"
 }
