@@ -1,4 +1,5 @@
 #!/bin/sh
+[ "$#" -eq 0 ] && exit
 torsocks wget "$@"
 image="$(basename "$@")"
 feh "$image"
