@@ -1,0 +1,40 @@
+#!/bin/sh
+set -e
+
+cdtemp() {
+	dir="$(mktemp --directory --tmpdir open.XXXXXXXX)"
+	echo "$dir"
+	cd "$dir"
+}
+
+extract() {
+	echo "$2" | sed "s/$1/\1/"
+}
+
+invideous() {
+	cdtemp
+	youtube-dl "https://invidio.us/watch?v=$1"
+	exec mpv *
+}
+
+download() {
+	cdtemp
+	wget "$1"
+	caseit *
+}
+
+caseit() {
+	case "$1" in
+	https://*youtube.com/*) invideous "$(extract '.*v=\([A-Za-z-]*\)' "$1")" ;;
+	https://youtu.be/*) invideous "$(extract '.*\/\([A-Za-z-]*\)' "$1")" ;;
+	https://invidio.us/*) invideous "$(extract '.*v=\([A-Za-z-]*\)' "$1")" ;;
+	http*) download "$1" ;;
+	esac
+
+	case "$(file -b --mime-type "$1")" in
+	image/*) feh "$1" ;;
+	video/*) mpv "$1" ;;
+	esac
+}
+
+caseit "$1"
