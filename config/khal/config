@@ -14,6 +14,9 @@ path = /data/calendar/default/default
 [[twist]]
 path = /data/calendar/twist
 
+[[food]]
+path = /data/calendar/food
+
 [locale]
 timeformat = %H:%M
 dateformat = %Y-%m-%d
