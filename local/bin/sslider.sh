@@ -1,5 +1,6 @@
 #!/bin/sh
-card="$(aplay -l | sed -n 's/^card [0-9]*: \(\w*\).*/\1/p' | tail -1)"
+#card="$(aplay -l | sed -n 's/^card [0-9]*: \(\w*\).*/\1/p' | tail -1)"
+card=PCH
 control="$(amixer -c "$card" scontrols | sed -n "1s/.*'\(.*\)'.*/\1/p")"
 
 uplimit="$(amixer -c "$card" get "$control" | grep "Limits:" | tr -s ' ' | cut -d' ' -f6)"
