@@ -20,7 +20,7 @@ ks() { s="$?" ; $* ; return "$s" ; }
 prompt_git() {
     porcelain="$(git status --branch --porcelain 2>/dev/null)"
     if test "$?" = 0; then
-        local branch="$(printf '%s' "$porcelain" | sed -n '1s/## \([^.]*\)\.\.\..*/\1/p')"
+        local branch="$(printf '%s' "$porcelain" | sed -n 's/\.\.\..*//;1s/## //p')"
         local behind="$(printf '%s' "$porcelain" | sed -n '1s/## .*behind \([0-9]*\).*/⇃\1/p')"
         local ahead="$(printf '%s' "$porcelain" | sed -n '1s/## .*ahead \([0-9]*\).*/↿\1/p')"
         local status="$({ echo OK; printf '%s' "$porcelain" | sed '/##/d;s/\(..\).*/\1/'; } | tail -1)"
