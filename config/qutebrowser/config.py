@@ -44,7 +44,7 @@ c.content.webgl = False # https://browserleaks.com/webgl
 c.content.ssl_strict = True
 c.content.headers.accept_language = "en-US,en;q=0.5"
 c.content.headers.custom = { "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8" }
-c.content.headers.user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36"
+c.content.headers.user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.163 Safari/537.36"
 c.content.webrtc_ip_handling_policy = "default-public-interface-only"
 
 # Aliases
@@ -78,6 +78,7 @@ allowed = [ 'https://duckduckgo.com/*'
           , 'https://*.ugent.be/*'
           , 'https://secure.ogone.com/*'                 # bancontact
           , 'https://belgium-3dsecure.wlp-acs.com/*'     # bancontact
+          , 'https://belgium-3ds.wlp-acs.com/*'          # bancontact
           , 'https://bcr.girogate.be/*'                  # bancontact
           , 'https://bancontact.girogate.be/*'           # bancontact
           , 'https://belgium-uvj-3dsecure.wlp-acs.com/*' # bancontact
