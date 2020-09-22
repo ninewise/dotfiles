@@ -21,4 +21,5 @@
 	ff = merge --ff-only @{upstream}
 	co = checkout
 	jn = merge --no-ff --log --edit
-
+[rebase]
+	autoSquash = true
