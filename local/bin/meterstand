@@ -1,0 +1,4 @@
+#!/bin/sh
+FILE=/data/documents/verpleegsterstraat-249/meterstanden.csv
+sed -i '${p;s/.*,/'"$(date --iso)"',/}' "$FILE"
+"$EDITOR" "$FILE"
