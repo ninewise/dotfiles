@@ -31,10 +31,6 @@ export LC_ALL=en_US.utf8
 #	export ALSA_CARD=Dock
 #fi
 
-# Nix Shells
-. /etc/profile.d/nix.sh
-#export NIX_BUILD_SHELL=yash
-
 #stty -ixon # disable <C-s>
 
 # Start X if we're in tty1
