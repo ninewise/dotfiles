@@ -1,5 +1,8 @@
 #!/usr/bin/python
 
+from qutebrowser.api import interceptor
+from PyQt5.QtCore import QUrl, QUrlQuery
+
 config.backend = "webengine"
 config.load_autoconfig = False
 c.completion.shrink = True
@@ -107,3 +110,20 @@ allowed = [ 'https://github.com/*'
           ]
 for pattern in allowed:
     config.set('content.cookies.accept', "no-3rdparty", pattern)
+
+# Some redirects
+redirects = { 'www.reddit.com': 'old.reddit.com'
+            , 'www.youtube.com': 'c7hqkpkpemu6e7emz5b4vyz7idjgdvgaaa3dyimmeojqbgpea3xqjoid.onion'
+            , 'www.youtube.be': 'c7hqkpkpemu6e7emz5b4vyz7idjgdvgaaa3dyimmeojqbgpea3xqjoid.onion'
+            , 'youtu.be': 'c7hqkpkpemu6e7emz5b4vyz7idjgdvgaaa3dyimmeojqbgpea3xqjoid.onion'
+            }
+
+def intercept(info: interceptor.Request) -> None:
+    if new_host := redirects.get(info.request_url.host()):
+        new_url = QUrl(info.request_url)
+        new_url.setHost(new_host)
+        if info.request_url.scheme() == 'https' and new_host.endswith('.onion'):
+            new_url.setScheme('http')
+        info.redirect(new_url)
+
+interceptor.register(intercept)
