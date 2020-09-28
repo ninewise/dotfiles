@@ -126,4 +126,9 @@ def intercept(info: interceptor.Request) -> None:
             new_url.setScheme('http')
         info.redirect(new_url)
 
+    elif 'juy4e6eicawzdrz7.onion' == info.request_url.host() and 'https' == info.request_url.scheme():
+        new_url = QUrl(info.request_url)
+        new_url.setScheme('http')
+        info.redirect(new_url)
+
 interceptor.register(intercept)
