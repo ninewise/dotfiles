@@ -27,9 +27,9 @@ export LC_ALL=en_US.utf8
 
 # Select Dock sound card if it's there
 #(it's broken)
-#if [ -e /proc/asound/Dock ]; then
-#	export ALSA_CARD=Dock
-#fi
+if [ -e /proc/asound/Dock ]; then
+	export ALSA_CARD=Dock
+fi
 
 #stty -ixon # disable <C-s>
 
