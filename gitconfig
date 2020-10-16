@@ -15,11 +15,14 @@
 	program = gpg2
 [commit]
 	gpgsign = true
+[pager]
+	status = true
 [alias]
 	pf = push --force-with-lease
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 	ff = merge --ff-only @{upstream}
 	co = checkout
 	jn = merge --no-ff --log --edit
+	s = status -vv
 [rebase]
 	autoSquash = true
