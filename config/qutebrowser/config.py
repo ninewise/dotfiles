@@ -106,7 +106,7 @@ allowed = [ 'https://github.com/*'
           , 'https://mattermost.zeus.gent/*'
           , 'https://posteo.de/*'
           , 'https://homebank.argenta.be/*'
-          , 'https://mbasic.facebookcorewwwi.onion/*'
+          , 'https://*.facebookcorewwwi.onion/*'
           ]
 for pattern in allowed:
     config.set('content.cookies.accept', "no-3rdparty", pattern)
@@ -116,6 +116,7 @@ redirects = { 'www.reddit.com': 'old.reddit.com'
             , 'www.youtube.com': 'c7hqkpkpemu6e7emz5b4vyz7idjgdvgaaa3dyimmeojqbgpea3xqjoid.onion'
             , 'www.youtube.be': 'c7hqkpkpemu6e7emz5b4vyz7idjgdvgaaa3dyimmeojqbgpea3xqjoid.onion'
             , 'youtu.be': 'c7hqkpkpemu6e7emz5b4vyz7idjgdvgaaa3dyimmeojqbgpea3xqjoid.onion'
+            , 'twitter.com': 'nitter.net'
             }
 
 def intercept(info: interceptor.Request) -> None:
