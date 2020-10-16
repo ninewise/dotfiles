@@ -27,6 +27,7 @@ unlit
 vis
 vis-*
 wjt
+qutebrowser
 
 # shouldn't share this one with the world
 macaddress
