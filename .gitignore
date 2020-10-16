@@ -17,6 +17,7 @@ vim/spell
 services/*/supervise
 services/*/lock
 services/*/current
+services/*/down
 
 # other
 *.pyc

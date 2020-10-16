@@ -1,9 +1,17 @@
 #!/bin/sh
-exec env                                                       \
-    HOME="${HOME:-/home/noctua}"                               \
-    XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-/home/noctua/.config}" \
-    LC_ALL="en_US.utf-8"                                       \
-    LANG="en_US.utf-8"                                         \
-    PATH="/usr/local/bin:$HOME/.local/bin:$PATH"               \
-    DISPLAY="${DISPLAY:-:0}"                                   \
-    ./notmuch
+export USER="$(whoami)"
+export HOME=/home/"$USER"
+export DISPLAY=":0"
+. "$HOME"/.profile
+
+set -e
+
+# check for internet connection
+ip route ls | grep -q '.'
+
+# check if the gpg-agent is running
+pgrep gpg-agent > /dev/null
+
+notmuch new --quiet 2>&1
+
+exec sleep 1m
