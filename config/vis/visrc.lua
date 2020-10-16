@@ -98,8 +98,8 @@ end)
 
 interactives = {
 	["python"] = "!python -i ",
-	["haskell"] = "!cabal repl ",
-	["lithaskell"] = "!cabal repl ",
+	["haskell"] = "!stack ghci ",
+	["lithaskell"] = "!stack ghci ",
 	["latex"] = "!tectonic ",
 }
 
