@@ -5,8 +5,7 @@
 require('vis')
 require('plugins/complete-word')
 require('plugins/myfiletype')
-require('plugins/editorconfig/init')
-require('plugins/vis-quickfix/quickfix')
+require('plugins/editorconfig/editorconfig')
 
 vis.events.subscribe(vis.events.INIT, function()
 	-- Your global configuration options

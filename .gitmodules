@@ -1,0 +1,3 @@
+[submodule "config/vis/plugins/editorconfig"]
+	path = config/vis/plugins/editorconfig
+	url = https://github.com/vktec/vis-editorconfig
