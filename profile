@@ -24,6 +24,7 @@ export LESSHISTFILE=-
 export FZF_DEFAULT_COMMAND='(git ls-files -co --exclude-standard || rg --files) 2> /dev/null'
 export SKIM_DEFAULT_COMMAND='(git ls-files -co --exclude-standard || rg --files) 2> /dev/null'
 export LC_ALL=en_US.utf8
+export BOGOFILTER_DIR="$XDG_DATA_HOME/bogofilter"
 
 # Select Dock sound card if it's there
 #(it's broken)

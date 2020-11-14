@@ -10,10 +10,6 @@ for maildir in /data/mail/*; do
 	addtag "$origin" "folder:/$origin/"
 done
 
-# Spam
-spam "subject:/^\[SPAM\]/"
-# TODO: Known spammers
-
 # Some aliases
 addtag zeus "to:felixvdj@zeus.ugent.be"
 addtag dodona "to:dodona@ugent.be"
@@ -60,7 +56,7 @@ done
 
 # Undelay threads with new messages
 for delaytag in $(notmuch search --output=tags -- tag:delay and thread:{tag:new} | grep 'delay/'); do
-	notmuch tag -delay -"$delaytag" +inbox -- tag:"$delaytag" and thread:{tag:new}
+	notmuch tag -delay -"$delaytag" +flagged -- tag:"$delaytag" and thread:{tag:new}
 done
 
 # Github notifications
@@ -78,7 +74,9 @@ archive tag:dodona subject:'status was changed to internal error' 'course_id: 33
 archive tag:dodona subject:'status was changed to internal error' 'course_id: 339' # Data Mining 2020-2021
 archive tag:dodona subject:'status was changed to internal error' 'course_id: 346' # Programming Basics 2020-2021
 archive tag:dodona subject:'status was changed to internal error' 'course_id: 349' # Programmingin Python 2020-2021
+archive tag:dodona subject:'status was changed to internal error' 'course_id: 374' # Statistiek 2020-2021
 archive tag:dodona subject:'status was changed to internal error' 'course_id: 375' # Statistiek: introductie tot R 2020-2021
+archive tag:dodona subject:'status was changed to internal error' 'course_id: 376' # Statistiek: Data Exploratie .. 2020-2021
 archive tag:dodona subject:'status was changed to internal error' 'course_id: 380' # C# 2020-2021
 archive tag:dodona subject:'status was changed to internal error' 'course_id: 384' # E620500A 2020-2021
 archive tag:dodona subject:'status was changed to internal error' 'user_id: 3' # Peter
@@ -94,8 +92,17 @@ archive tag:ugent subject:'Belnet FileSender: Ontvangstbevestiging'
 archive thread:{tag:muted}
 notmuch tag -muted -- tag:muted and date:'..30_days'
 
+# Bogofilter
+for mid in $(notmuch search --output=messages tag:new); do
+	case "$(notmuch show --format=raw "$mid" | bogofilter -eut)" in
+	H*) true ;;
+	S*) spam "$mid" ; echo "$mid" >> ~/spamtest;;
+	U*) true ;;
+	esac
+done
+
 # Inbox remaining not-spam
-addtag inbox "not tag:spam"
+addtag flagged "not tag:spam"
 notmuch tag -new -- tag:new
 
 # Show threads after their delay
@@ -103,6 +110,6 @@ today="$(date +'%s')"
 for delaytag in $(notmuch search --output=tags tag:delay | grep 'delay/'); do
 	until="$(date -d "${delaytag#*/}" +'%s')"
 	if [ "$today" -gt "$until"  ]; then
-		notmuch tag -delay -"$delaytag" +inbox -- tag:"$delaytag"
+		notmuch tag -delay -"$delaytag" +flagged -- tag:"$delaytag"
 	fi
 done

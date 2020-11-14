@@ -15,20 +15,20 @@ async def delay(ui, days):
 
 	if days != 0:
 		for message in messages:
-			if 'inbox' in message.get_tags():
+			if 'flagged' in message.get_tags():
 				message.add_tags(['delay', datetag])
-		await ui.apply_commandline('untag inbox,unread')
+		await ui.apply_commandline('untag flagged,unread')
 	else:
 		for message in messages:
 			if 'delay' in message.get_tags():
 				message.remove_tags([t for t in message.get_tags() if t.startswith('delay')])
-				message.add_tags(['inbox'])
+				message.add_tags(['flagged'])
 		await ui.apply_commandline('untag delay,delay/*')
 
 async def spam(ui):
 	message = ui.current_buffer.get_selected_message()
 	message.add_tags(['spam'])
-	message.remove_tags(['unread', 'inbox'])
+	message.remove_tags(['unread', 'flagged'])
 	if 'ugent' in message.get_tags():
 		envelope = Envelope(
 			headers=dict(

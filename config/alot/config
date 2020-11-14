@@ -1,5 +1,5 @@
 
-initial_command = search tag:inbox
+initial_command = search tag:flagged
 periodic_hook_frequency = 60
 edit_headers_blacklist = Content-Type, MIME-Version
 attachment_prefix = /data/temporary
@@ -21,7 +21,7 @@ theme = "mutt"
         sendmail_command = /usr/bin/msmtp --account=posteo -t
         sent_box = maildir:///data/mail/posteo/Sent
         draft_box = maildir:///data/mail/posteo/Drafts
-        sent_tags = posteo,inbox
+        sent_tags = posteo,flagged
         passed_tags = # none
         sign_by_default = False
 
@@ -38,7 +38,7 @@ theme = "mutt"
         sendmail_command = /usr/bin/msmtp --account=gmail -t
         sent_box = maildir:///data/mail/gmail/Sent
         draft_box = maildir:///data/mail/gmail/Sent
-        sent_tags = gmail,inbox
+        sent_tags = gmail,flagged
         passed_tags = # none
         sign_by_default = True
 
@@ -56,7 +56,7 @@ theme = "mutt"
         sendmail_command = /usr/bin/msmtp --account=ugent -t
         sent_box = maildir:///data/mail/ugent/Sent
         draft_box = maildir:///data/mail/ugent/Sent
-        sent_tags = ugent,inbox
+        sent_tags = ugent,flagged
         passed_tags = # none
         sign_by_default = True
 
@@ -72,7 +72,7 @@ theme = "mutt"
         sendmail_command = true
         sent_box = maildir:///data/mail/todo
         draft_box = maildir:///data/mail/todo
-        sent_tags = todo,inbox
+        sent_tags = todo,flagged
         passed_tags = # none
 
 
@@ -82,9 +82,8 @@ theme = "mutt"
     n = compose --sender todo@localhost --to todo
 
     [[search]]
-        x = toggletags spam,inbox
-        a = toggletags inbox
-        A = toggletags inbox,muted
+        a = toggletags flagged
+        A = toggletags flagged,muted
         1 = call hooks.delay(ui,1)
         2 = call hooks.delay(ui,2)
         3 = call hooks.delay(ui,3)
@@ -96,10 +95,11 @@ theme = "mutt"
         9 = call hooks.delay(ui,9)
         0 = call hooks.delay(ui,0)
         i = call hooks.spam(ui)
+        x = call hooks.togglespam(ui)
 
     [[thread]]
-        a = toggletags inbox ; fold
-        A = toggletags inbox,muted ; fold
+        a = toggletags flagged ; fold
+        A = toggletags flagged,muted ; fold
         n = togglemimepart
         r = reply --all
         u = pipeto --background selecturl
@@ -117,7 +117,7 @@ theme = "mutt"
 
 [tags]
 
-    [[inbox]]
+    [[flagged]]
         translated = 
 
     [[encrypted]]
