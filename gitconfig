@@ -26,3 +26,5 @@
 	s = status -vv
 [rebase]
 	autoSquash = true
+[rerere]
+	enabled = true
