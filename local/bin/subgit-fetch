@@ -1,0 +1,37 @@
+#!/bin/sh
+
+task="$1"
+repo="$2"
+
+set -e
+
+if [ ! -d "$repo" ]; then
+	mkdir -p "$repo"
+	cd "$repo"
+	git init
+else
+	cd "$repo"
+fi
+
+if [ ! -z "$(git status --porcelain)" ]; then
+	echo "Requires a clean working tree" >&2
+	exit 1
+fi
+
+# update existing submodules
+git submodule foreach git fetch origin
+git submodule foreach git reset --hard origin/master
+
+for remote in $(ssh git@subgit.ugent.be task students -l "$task" | cut -f4); do
+	if [ -d "$(basename "$remote")" ]; then
+		true # exists
+	elif [ -z "$(git ls-remote "$remote")" ]; then
+		echo "No branches at $remote"
+	else
+		echo "adding $remote"
+		git submodule --quiet add "$remote"
+	fi
+done
+
+git add .
+git commit -v
