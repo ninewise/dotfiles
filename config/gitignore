@@ -17,6 +17,7 @@ a.out
 # Haskell
 .stack-work
 *.hi
+stack.yaml.lock
 
 # Rust
 Cargo.lock
