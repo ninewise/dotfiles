@@ -1,6 +1,6 @@
 #!/bin/bash
 
-xset dpms 0 0 0
+xset dpms 0 0 300
 
 dp1="$(xrandr | grep '^DP1 connected')"
 dp1_1="$(xrandr | grep '^DP1-1 connected')"
