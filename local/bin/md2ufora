@@ -1,0 +1,35 @@
+#!/bin/sh
+
+pandoc --shift-heading-level-by=-1 -N -f markdown --mathml -s -t html5 "$1" | \
+    sed 's/<math/<span style="font-size: 10pt;">&/g;s|</math>|&</span>|g;s/<table/& border=1 /g' | \
+    sed 's/{studentnr}/{OrgDefinedId}/' | \
+    sed 's@<div class="sourceCode"@<div style="background:#EEEEEE;padding:0 0.5em;border: 1px solid #AAAAAA;"@g ' | \
+    sed 's@<span class="al">@<span style="color: #ff0000; font-weight: bold;">@g ' | \
+    sed 's@<span class="an">@<span style="color: #60a0b0; font-weight: bold; font-style: italic;">@g ' | \
+    sed 's@<span class="at">@<span style="color: #7d9029;">@g ' | \
+    sed 's@<span class="bn">@<span style="color: #40a070;">@g ' | \
+    sed 's@<span class="bu">@<span style="">@g ' | \
+    sed 's@<span class="cf">@<span style="color: #007020; font-weight: bold;">@g ' | \
+    sed 's@<span class="ch">@<span style="color: #4070a0;">@g ' | \
+    sed 's@<span class="cn">@<span style="color: #880000;">@g ' | \
+    sed 's@<span class="co">@<span style="color: #60a0b0; font-style: italic;">@g ' | \
+    sed 's@<span class="cv">@<span style="color: #60a0b0; font-weight: bold; font-style: italic;">@g ' | \
+    sed 's@<span class="do">@<span style="color: #ba2121; font-style: italic;">@g ' | \
+    sed 's@<span class="dt">@<span style="color: #902000;">@g ' | \
+    sed 's@<span class="dv">@<span style="color: #40a070;">@g ' | \
+    sed 's@<span class="er">@<span style="color: #ff0000; font-weight: bold;">@g ' | \
+    sed 's@<span class="ex">@<span style="">@g ' | \
+    sed 's@<span class="fl">@<span style="color: #40a070;">@g ' | \
+    sed 's@<span class="fu">@<span style="color: #06287e;">@g ' | \
+    sed 's@<span class="im">@<span style="">@g ' | \
+    sed 's@<span class="in">@<span style="color: #60a0b0; font-weight: bold; font-style: italic;">@g ' | \
+    sed 's@<span class="kw">@<span style="color: #007020; font-weight: bold;">@g ' | \
+    sed 's@<span class="op">@<span style="color: #666666;">@g ' | \
+    sed 's@<span class="ot">@<span style="color: #007020;">@g ' | \
+    sed 's@<span class="pp">@<span style="color: #bc7a00;">@g ' | \
+    sed 's@<span class="sc">@<span style="color: #4070a0;">@g ' | \
+    sed 's@<span class="ss">@<span style="color: #bb6688;">@g ' | \
+    sed 's@<span class="st">@<span style="color: #4070a0;">@g ' | \
+    sed 's@<span class="va">@<span style="color: #19177c;">@g ' | \
+    sed 's@<span class="vs">@<span style="color: #4070a0;">@g ' | \
+    sed 's@<span class="wa">@<span style="color: #60a0b0; font-weight: bold; font-style: italic;">@g '

@@ -1,0 +1,6 @@
+#!/bin/sh
+input="$1"
+
+[ ! -f "$input" ] && echo 'invalid input file' && exit 1
+
+pandoc --pdf-engine=tectonic -V papersize=A4 -V geometry:margin=1in -o output.pdf "$@"
