@@ -1,0 +1,4 @@
+#!/bin/sh
+exec vlogger -t ninewise-x
+#[ -d /var/log/ninewise/x ] || mkdir /var/log/ninewise/x 
+#exec svlogd -tt /var/log/ninewise/x
