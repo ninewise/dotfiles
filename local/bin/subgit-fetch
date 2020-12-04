@@ -20,7 +20,7 @@ fi
 
 # update existing submodules
 git submodule foreach git fetch origin
-git submodule foreach git reset --hard origin/master
+git submodule foreach git reset --hard origin/master > /dev/null 2>&1
 
 for remote in $(ssh git@subgit.ugent.be task students -l "$task" | cut -f4); do
 	if [ -d "$(basename "$remote")" ]; then
@@ -29,7 +29,7 @@ for remote in $(ssh git@subgit.ugent.be task students -l "$task" | cut -f4); do
 		echo "No branches at $remote"
 	else
 		echo "adding $remote"
-		git submodule --quiet add "$remote"
+		git submodule --quiet add --force "$remote" || true
 	fi
 done
 
