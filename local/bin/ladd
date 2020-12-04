@@ -19,7 +19,7 @@ transaction formatting is retained because it's just a copy.
                  Default: \$LEDGER_FILE
 
 Depends on:
-- fzf (https://github.com/junegunn/fzf)
+- skim (https://github.com/lotabout/skim)
 - sponge (https://joeyh.name/code/moreutils/)
 
 If you split files by year, it may be useful to alias (in 2020):
@@ -37,7 +37,7 @@ done
 shift $((OPTIND - 1))
 
 # fuzzy select a transaction title
-selection="$(sed -n 's/....-..-..\( [*!]\)\? //p' "${@:-$LEDGER_FILE}" | sort | uniq | fzf)"
+selection="$(sed -n 's/....-..-..\( [*!]\)\? //p' "${@:-$LEDGER_FILE}" | sort | uniq | sk)"
 [ -z "$selection" ] && exit 0 # quit if escaped
 
 sed -n "/....-..-..\( [*!]\)\? ${selection}\$/,/^\$/p" "${@:-$LEDGER_FILE}" | # print matching transactions
