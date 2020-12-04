@@ -1,4 +1,6 @@
-#!/usr/bin/sh
-cd /data/programming/clirail
-[ -z "$*" ] && set -- gent lokeren
-./clirail.py "$@" | head
+#!/usr/bin/python3
+
+import sys
+from clirail.clirail_main import main
+
+main(*sys.argv[1:])
