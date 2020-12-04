@@ -2,12 +2,13 @@
 
 from qutebrowser.api import interceptor
 from PyQt5.QtCore import QUrl, QUrlQuery
+from unalix import clear_url
 
 config.backend = "webengine"
 config.load_autoconfig = False
 c.completion.shrink = True
 c.confirm_quit = ["downloads"]
-c.downloads.location.directory = "/data/temporary"
+c.downloads.location.directory = "/tmp"
 c.downloads.location.suggestion = "both"
 c.downloads.open_dispatcher = "rifle"
 c.editor.command = ["st", "-e", "vis", "{}"]
@@ -107,6 +108,7 @@ allowed = [ 'https://github.com/*'
           , 'https://posteo.de/*'
           , 'https://homebank.argenta.be/*'
           , 'https://*.facebookcorewwwi.onion/*'
+          , 'https://adventofcode.com/*'
           ]
 for pattern in allowed:
     config.set('content.cookies.accept', "no-3rdparty", pattern)
@@ -119,17 +121,23 @@ redirects = { 'www.reddit.com': 'old.reddit.com'
             , 'twitter.com': 'nitter.net'
             }
 
-def intercept(info: interceptor.Request) -> None:
-    if new_host := redirects.get(info.request_url.host()):
-        new_url = QUrl(info.request_url)
-        new_url.setHost(new_host)
-        if info.request_url.scheme() == 'https' and new_host.endswith('.onion'):
-            new_url.setScheme('http')
-        info.redirect(new_url)
+nohttps = [ 'c7hqkpkpemu6e7emz5b4vyz7idjgdvgaaa3dyimmeojqbgpea3xqjoid.onion'
+          , 'juy4e6eicawzdrz7.onion'
+          ]
 
-    elif 'juy4e6eicawzdrz7.onion' == info.request_url.host() and 'https' == info.request_url.scheme():
-        new_url = QUrl(info.request_url)
+def intercept(info: interceptor.Request) -> None:
+    if not info.request_url.scheme().startswith('http'):
+        return
+
+    new_url = QUrl(clear_url(info.request_url.url()))
+
+    if new_host := redirects.get(new_url.host()):
+        new_url.setHost(new_host)
+
+    if new_url.scheme() == 'https' and new_url.host() in nohttps:
         new_url.setScheme('http')
+
+    if new_url != info.request_url:
         info.redirect(new_url)
 
 interceptor.register(intercept)
