@@ -7,6 +7,7 @@ export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_RUNTIME_DIR="/tmp/runtime-$(whoami)"
 mkdir -p "$XDG_RUNTIME_DIR"
 chmod 0700 "$XDG_RUNTIME_DIR"
+export XDG_DOWNLOAD_DIR="/tmp"
 
 # Local scripts
 export CABAL_HOME="$HOME/.cabal"
@@ -25,6 +26,7 @@ export FZF_DEFAULT_COMMAND='(git ls-files -co --exclude-standard || rg --files) 
 export SKIM_DEFAULT_COMMAND='(git ls-files -co --exclude-standard || rg --files) 2> /dev/null'
 export LC_ALL=en_US.utf8
 export BOGOFILTER_DIR="$XDG_DATA_HOME/bogofilter"
+export TERMINAL=st
 
 # Select Dock sound card if it's there
 #(it's broken)
@@ -33,10 +35,3 @@ if [ -e /proc/asound/Dock ]; then
 fi
 
 #stty -ixon # disable <C-s>
-
-# Start X if we're in tty1
-if tty | grep -q '/dev/tty1'; then
-	startx 2>&1 || vlock
-	#sudo poweroff
-	#sleep infinity
-fi

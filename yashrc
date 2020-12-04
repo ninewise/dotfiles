@@ -21,8 +21,8 @@ prompt_git() {
     porcelain="$(git status --branch --porcelain 2>/dev/null)"
     if test "$?" = 0; then
         local branch="$(printf '%s' "$porcelain" | sed -n 's/\.\.\..*//;1s/## //p')"
-        local behind="$(printf '%s' "$porcelain" | sed -n '1s/## .*behind \([0-9]*\).*/⇃\1/p')"
-        local ahead="$(printf '%s' "$porcelain" | sed -n '1s/## .*ahead \([0-9]*\).*/↿\1/p')"
+        local behind="$(printf '%s' "$porcelain" | sed -n '1s/## .*behind \([0-9]*\).*/-\1/p')"
+        local ahead="$(printf '%s' "$porcelain" | sed -n '1s/## .*ahead \([0-9]*\).*/+\1/p')"
         local status="$({ echo OK; printf '%s' "$porcelain" | sed '/##/d;s/\(..\).*/\1/'; } | tail -1)"
         
         echo " (${branch}${behind}${ahead}|${status})"
@@ -33,10 +33,6 @@ prompt_pwd() {
 }
 prompt_agent() {
     [ -z "$SSH_AGENT_PID" ] || echo " (A)"
-}
-prompt_mail() {
-    unread="$(notmuch count tag:unread)"
-    [ "$unread" = "0" ] || echo " ($unread mails)"
 }
 prompt_status() {
     if [ "$?" = "0" ]
@@ -50,7 +46,7 @@ prompt_date() {
 BOLD="\fo."
 GREEN="\fg."
 RESET="\fD."
-PS1="$BOLD[\$(ks prompt_date)]$RESET $GREEN\$(ks prompt_pwd)$RESET\$(ks prompt_git)\$(ks prompt_agent)\$(ks prompt_mail) \$(prompt_status) "
+PS1="$BOLD[\$(ks prompt_date)]$RESET $GREEN\$(ks prompt_pwd)$RESET\$(ks prompt_git)\$(ks prompt_agent) \$(prompt_status) "
 unset BOLD
 unset GREEN
 unset RESET
