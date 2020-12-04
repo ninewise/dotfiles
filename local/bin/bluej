@@ -1,3 +1,0 @@
-#!/bin/sh
-cd /data/courses/java-programmeren/bluej
-make run
