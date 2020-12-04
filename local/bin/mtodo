@@ -1,0 +1,16 @@
+#!/bin/sh
+f="$(mktemp)"
+vis - > "$f" <<HERE
+Date: $(date --rfc-email)
+To: todo@localhost
+From: todo@localhost
+Subject:
+Message-Id: $(mgenmid)
+User-Agent: mtodo
+
+
+HERE
+
+[ ! -s "$f" ] && exit
+
+mdeliver /data/mail/todo < "$f"

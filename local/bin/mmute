@@ -1,0 +1,7 @@
+#!/bin/sh
+if [ -z "$*" ]; then
+	exec mmute .
+else
+	mseq "$@" | mshow -qh message-id:references:in-reply-to | grep -o '<[^>]*>' | cat ~/.mblaze/muted - | sort | uniq | sponge ~/.mblaze/muted
+	marchive "$@"
+fi

@@ -1,0 +1,6 @@
+#!/bin/sh
+if [ -z "$*" ]; then
+	mflag -Sf
+else
+	mflag -Sf "$@"
+fi

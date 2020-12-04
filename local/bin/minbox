@@ -1,0 +1,3 @@
+#!/bin/sh
+mdirs /data/mail/ | mlist -F | msort -d | mthread | mseq -S
+mscan

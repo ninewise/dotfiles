@@ -1,0 +1,1 @@
+text/html: w3m -dump -o display_link_number=1 -I $PIPE_CHARSET -T text/html

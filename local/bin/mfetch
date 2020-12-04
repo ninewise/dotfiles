@@ -1,0 +1,48 @@
+#!/bin/sh
+# Split outbox emails
+mlist /data/mail/outbox | mpick -t 'from =~ "posteo"' | mflag -F | mrefile /data/mail/posteo/Sent
+mlist /data/mail/outbox | mpick -t 'from =~ "ugent"' | mflag -F | mrefile /data/mail/ugent/Sent
+mlist /data/mail/outbox | mpick -t 'from =~ "gmail"' | mflag -F | mrefile /data/mail/gmail/Sent
+
+# Sync email
+mbsync -a
+
+# No further processing if there are no new mails
+if ! mdirs /data/mail | mlist -N | grep -q .; then
+	exit
+fi
+
+set -e
+
+# Incorporate new mails and store them in the temp sequence
+minc $(mdirs /data/mail) | mflag -F | mseq -S
+
+{
+	# Ignores
+	mpick -t 'to =~ "unipept@ugent.be" && subject ~~ "*Mysql2::Error::ConnectionError*"'
+	mpick -t 'to =~ "dodona@ugent.be" && from =~ "KlasCement"'
+	mpick -t 'to =~ "dodona@ugent.be" && from =~ "logcheck system account"'
+	mpick -t 'to =~ "dodona@ugent.be" && subject =~ "A request took"'
+	mpick -t 'to =~ "dodona@ugent.be" && subject =~ "Onderwijsinstelling aangemaakt voor"'
+	mpick -t 'to =~ "dodona@ugent.be" && subject =~ "Een gebruiker kon niet inloggen"'
+	mpick -t 'to =~ "dodona@ugent.be" && subject =~ "Invalid or unknown LTI provider"'
+	mpick -t 'to =~ "dodona@ugent.be" && subject =~ "Faraday::ConnectionFailed"'
+	mpick -t 'to =~ "dodona@ugent.be" && subject =~ "internal error"' \
+	    | xargs grep -E -l 'course_id: (284|317|335|339|346|349|355|359|374|375|376|380|384|414)'
+	mpick -t 'to =~ "dodona@ugent.be" && subject =~ "internal error"' \
+	    | xargs grep -E -l 'user_id: 3'
+	mpick -t 'subject =~ "\[hackers\] \[slstatus\]"'
+	mpick -t 'from =~ "dependabot-preview"'
+
+	# Muted mails
+	for muted in $(cat ~/.mblaze/muted); do
+		mpick -t '"references" =~~ "'"$muted"'"'
+	done
+} | sort | uniq | marchive
+
+# Clear muted sequence
+#mseq -f < ~/.mblaze/muted | mpick -t 'date < "'"$(date -I -d '1 month ago')"'"' | sponge ~/.mblaze/muted
+
+# Show the remaining new mails
+mseq -f | mlist -F | mseq -S
+mscan
