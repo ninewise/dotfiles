@@ -1,6 +1,6 @@
 #!/bin/sh
 [ "$#" -eq 0 ] && exit
-torsocks wget "$@"
+torsocks curl -O "$@"
 image="$(basename "$@")"
 feh "$image"
 mv "$image" /data/pictures/anselmages/
