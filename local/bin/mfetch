@@ -4,6 +4,17 @@ mlist /data/mail/outbox | mpick -t 'from =~ "posteo"' | mflag -F | mrefile /data
 mlist /data/mail/outbox | mpick -t 'from =~ "ugent"' | mflag -F | mrefile /data/mail/ugent/Sent
 mlist /data/mail/outbox | mpick -t 'from =~ "gmail"' | mflag -F | mrefile /data/mail/gmail/Sent
 
+# Find new messages in feeds
+d="$(mktemp -d)"
+mmkdir "$d"
+sfeed_update
+sfeed_mbox ~/.sfeed/feeds/* | mdeliver -M -v "$d" | while read mail; do
+	if ! mlist /data/mail/feeds | magrep -q message-id:"$(mshow -qh message-id "$mail" | cut -d' ' -f2)"; then
+		mdeliver /data/mail/feeds < "$mail"
+	fi
+done
+rm -rf "$d"
+
 # Sync email
 mbsync -a
 
@@ -11,8 +22,6 @@ mbsync -a
 if ! mdirs /data/mail | mlist -N | grep -q .; then
 	exit
 fi
-
-set -e
 
 # Incorporate new mails and store them in the temp sequence
 minc $(mdirs /data/mail) | mflag -F | mseq -S
@@ -38,7 +47,7 @@ minc $(mdirs /data/mail) | mflag -F | mseq -S
 	for muted in $(cat ~/.mblaze/muted); do
 		mpick -t '"references" =~~ "'"$muted"'"'
 	done
-} | sort | uniq | marchive
+} | sort | uniq | mflag -Sf
 
 # Clear muted sequence
 #mseq -f < ~/.mblaze/muted | mpick -t 'date < "'"$(date -I -d '1 month ago')"'"' | sponge ~/.mblaze/muted
