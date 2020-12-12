@@ -23,10 +23,13 @@ git submodule foreach git fetch origin
 git submodule foreach git reset --hard origin/master > /dev/null 2>&1
 
 for remote in $(ssh git@subgit.ugent.be task students -l "$task" | cut -f4); do
-	if [ -d "$(basename "$remote")" ]; then
-		true # exists
-	elif [ -z "$(git ls-remote "$remote")" ]; then
-		echo "No branches at $remote"
+	if [ -d "$(basename "$remote")" ]; then continue; fi # exists
+	remotes="$(git ls-remote "$remote")"
+	if ! echo "$remotes" | grep -q HEAD; then
+		printf 'No HEAD at %s' "$remote"
+		count="$(echo "$remotes" | grep -o refs/heads | wc -l)"
+		if [ "$count" -gt 0 ]; then printf ' (but %d other)' "$count"; fi
+		printf '\n'
 	else
 		echo "adding $remote"
 		git submodule --quiet add --force "$remote" || true
