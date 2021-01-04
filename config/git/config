@@ -9,8 +9,6 @@
 [push]
 	default = simple
 	followTags = true
-[core]
-	excludesfile = ~/.config/gitignore
 [gpg]
 	program = gpg2
 [commit]
