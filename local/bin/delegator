@@ -1,0 +1,51 @@
+#!/bin/sh
+
+set -e
+
+if [ -t 1 ]; then
+	pick() {
+		sk
+	}
+	inject() {
+		echo "$@"
+	}
+else
+	window="$(xdotool getwindowfocus)"
+	pick() {
+		dmenu -i -l 10
+	}
+	inject() {
+		xdotool type --clearmodifiers --window "$window" "$*"
+		xdotool windowfocus "$window"
+	}
+fi
+
+choice="$(pick <<HERE
+email address
+password
+clipboard
+selection
+run
+HERE
+)"
+
+case "$choice" in
+'email address')
+	choice="$(khard email -p --remove-first-line | sed 's/\(.*\)\t\(.*\)\t\(.*\)/\2 <\1>/' | pick)"
+	inject "$choice"
+	;;
+'password')
+	choice="$(cd ~/.password-store; find * -name '*.gpg' | sed 's/\.gpg$//' | sort -d | pick)"
+	inject "$(pass show $choice | head -1)"
+	;;
+'clipboard')
+	inject "$(xclip -o -sel c)"
+	;;
+'selection')
+	inject "$(xclip -o)"
+	;;
+'run')
+	choice="$(dmenu_path | pick)"
+	exec "$choice"
+	;;
+esac
