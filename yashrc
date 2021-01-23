@@ -12,8 +12,8 @@ fi
 
 # arrange history
 HISTFILE=~/.yash_history
-HISTSIZE=5000
-HISTRMDUP=5000
+HISTSIZE=10000
+HISTRMDUP=10000
 
 # Get ourselves a nice prompt
 ks() { s="$?" ; $* ; return "$s" ; }
@@ -73,7 +73,7 @@ alias agenda="khal list today 7d"
 
 # Ledger
 alias haccounts="hledger -I --alias '/.*:Accounts [^:]*:(.*)/=Accounts:\1' bal accounts"
-alias ladd='ladd -a /data/documents/ledger/2020/main.journal /data/documents/ledger/*/main.journal'
+alias ladd='ladd -a /data/documents/ledger/2021/main.journal /data/documents/ledger/*/main.journal'
 alias is='hledger is -b $(date -d "7 months ago" +%Y-%m) -e $(date +%Y-%m) -MTA --tree -2'
 alias cf='hledger cf -b $(date -d "7 months ago" +%Y-%m) -e $(date +%Y-%m) -MTA --tree -2'
 alias bs='hledger bs not:accounts'
