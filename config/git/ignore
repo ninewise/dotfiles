@@ -28,3 +28,6 @@ target/
 *.aux
 *.toc
 *.pdf
+
+# Python 
+__pycache__
