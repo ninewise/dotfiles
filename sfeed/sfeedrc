@@ -27,4 +27,5 @@ feeds() {
 	feed "FOSDEM" "https://fosdem.org/2021/rss.xml"
 	feed "BE-Alert" "https://www.be-alert.be/nl/rss.xml"
 	feed "Martanne" "https://www.brain-dump.org/blog/index.xml"
+	feed "Instagram T21" "https://bibliogram.snopyta.org/u/tvervack/rss.xml"
 }
