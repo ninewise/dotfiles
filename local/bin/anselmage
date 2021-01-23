@@ -2,6 +2,6 @@
 [ "$#" -eq 0 ] && exit
 torsocks curl -O "$@"
 image="$(basename "$@")"
-feh "$image"
+rifle -fF "$image"
 mv "$image" /data/pictures/anselmages/
 ln -s ../anselmages/"$image" /data/pictures/background-source/"$image"
