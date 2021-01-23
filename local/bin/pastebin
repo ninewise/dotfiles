@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# curl -F "sprunge=<-" sprunge.us
+
+# curl -F c=@- https://ptpb.pw/?u=1
+curl -F 'f:1=<-' ix.io
+
