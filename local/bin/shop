@@ -1,0 +1,29 @@
+#!/bin/sh
+
+shop="$1"
+
+askwithdefault() {
+	read -p "$1 [$2] " answer
+	echo "${answer:-$2}"
+}
+
+transaction="$(mktemp)"
+trap "rm '$transaction'" EXIT KILL
+exec 3> "$transaction"
+
+date="$(askwithdefault 'Transaction date?' "$(date +'%Y-%m-%d')")"
+printf '%s %s\n' "$date" "$shop" >&3
+while account="$(hledger accounts desc:"$shop" | sk)"; do
+	read -p "Price? " price
+	read -p "Comment? " comment
+	printf "    %s%$((66 - ${#account}))s" "$account" "€$price" >&3
+	if [ -n "$comment" ]; then
+		printf ' ; %s\n' "$comment" >&3
+	else
+		printf '\n' >&3
+	fi
+done
+
+exec 3>&-
+
+cat "$transaction"
