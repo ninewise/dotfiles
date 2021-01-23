@@ -1,0 +1,6 @@
+#!/bin/sh
+if [ -z "$*" ]; then
+	mshow
+else
+	mshow "$@"
+fi | xurls | xargs rifle
