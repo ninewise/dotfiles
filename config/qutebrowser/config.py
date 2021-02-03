@@ -5,13 +5,16 @@ from PyQt5.QtCore import QUrl, QUrlQuery
 from unalix import clear_url
 
 config.backend = "webengine"
-config.load_autoconfig = False
+config.load_autoconfig(False)
 c.completion.shrink = True
 c.confirm_quit = ["downloads"]
 c.downloads.location.directory = "/tmp"
 c.downloads.location.suggestion = "both"
 c.downloads.open_dispatcher = "rifle"
 c.editor.command = ["st", "-e", "vis", "{}"]
+c.fileselect.handler = "external"
+c.fileselect.multiple_files.command = ["st", "-e", "ranger", "--choosefiles={}"]
+c.fileselect.single_file.command = ["st", "-e", "ranger", "--choosefile={}"]
 c.hints.auto_follow = "full-match"
 c.hints.dictionary = "/usr/share/dict/mnemonic"
 c.hints.mode = "word"
@@ -36,8 +39,10 @@ c.url.searchengines = { "startpage": "https://startpage.com/do/search?query={}"
                       , "wikipedia/nl": "https://nl.wikipedia.org/w/index.php?search={}"
                       , "hoogle": "https://hoogle.haskell.org/?hoogle={}"
                       , "snopyta": "http://juy4e6eicawzdrz7.onion/?q={}"
-                      , "DEFAULT": "http://juy4e6eicawzdrz7.onion/?q={}"
                       , "telefoonboek": "https://telefoonboek.ugent.be/nl/simple?name={}"
+                      , "prvcy": "http://hmfztxt3pfhevucl.onion/?q={}"
+                      , "monicz.pl": "http://upzhip7hatfbsi5xcwyw6n2bpappt3j4gkvwjmyb7qo6urcyhmlekpad.onion/?q={}"
+                      , "DEFAULT": "http://upzhip7hatfbsi5xcwyw6n2bpappt3j4gkvwjmyb7qo6urcyhmlekpad.onion/?q={}"
                       }
 
 # Privacy
@@ -50,6 +55,9 @@ c.content.headers.accept_language = "en-US,en;q=0.5"
 c.content.headers.custom = { "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8" }
 c.content.headers.user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.125 Safari/537.36"
 c.content.webrtc_ip_handling_policy = "default-public-interface-only"
+
+# Adblocking
+c.content.blocking.enabled = True
 
 # Aliases
 c.aliases = { "wq": "quit --save"
@@ -88,11 +96,13 @@ allowed = [ 'https://duckduckgo.com/*'
           , 'https://belgium-uvj-3dsecure.wlp-acs.com/*' # bancontact
           , 'https://*.triodos.be/*'
           , 'https://www.openstreetmap.org/*'
-          , 'https://mattermost.zeus.gent/*'
+          , 'https://*.zeus.gent/*'
+          , 'https://zeus.gent/*'
           , 'https://posteo.de/*'
           , 'https://doc.rust-lang.org/*'
           , 'https://www.paypal.com/*'
           , 'https://www.paypal-topup.be/*'
+          , 'https://argenta.be/*'
           , 'https://homebank.argenta.be/*'
           ]
 
@@ -104,8 +114,10 @@ c.content.cookies.accept = "never"
 allowed = [ 'https://github.com/*'
           , 'https://*.ugent.be/*'
           , 'https://*.triodos.be/*'
-          , 'https://mattermost.zeus.gent/*'
+          , 'https://*.zeus.gent/*'
+          , 'https://zeus.gent/*'
           , 'https://posteo.de/*'
+          , 'https://argenta.be/*'
           , 'https://homebank.argenta.be/*'
           , 'https://*.facebookcorewwwi.onion/*'
           , 'https://adventofcode.com/*'
@@ -123,6 +135,8 @@ redirects = { 'www.reddit.com': 'old.reddit.com'
 
 nohttps = [ 'c7hqkpkpemu6e7emz5b4vyz7idjgdvgaaa3dyimmeojqbgpea3xqjoid.onion'
           , 'juy4e6eicawzdrz7.onion'
+          , 'hmfztxt3pfhevucl.onion'
+          , 'upzhip7hatfbsi5xcwyw6n2bpappt3j4gkvwjmyb7qo6urcyhmlekpad.onion'
           ]
 
 def intercept(info: interceptor.Request) -> None:
