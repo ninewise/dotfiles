@@ -1,6 +1,6 @@
 #!/bin/sh
 
-pandoc --shift-heading-level-by=-1 -N -f markdown --mathml -s -t html5 "$1" | \
+pandoc -f markdown --mathml -s -t html5 "$1" | \
     sed 's/<math/<span style="font-size: 10pt;">&/g;s|</math>|&</span>|g;s/<table/& border=1 /g' | \
     sed 's/{studentnr}/{OrgDefinedId}/' | \
     sed 's@<div class="sourceCode"@<div style="background:#EEEEEE;padding:0 0.5em;border: 1px solid #AAAAAA;"@g ' | \
