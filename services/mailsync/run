@@ -1,30 +1,27 @@
 #!/bin/sh
+export USER="$(whoami)"
+export HOME=/home/"$USER"
+export DISPLAY=":0"
+
+set -e
+
 # Split outbox emails
 mlist /data/mail/outbox | mpick -t 'from =~~ "posteo"' | mflag -F | mrefile /data/mail/posteo/Sent
 mlist /data/mail/outbox | mpick -t 'from =~~ "ugent"' | mflag -F | mrefile /data/mail/ugent/Sent
 mlist /data/mail/outbox | mpick -t 'from =~~ "gmail"' | mflag -F | mrefile /data/mail/gmail/Sent
 
-# Find new messages in feeds
-d="$(mktemp -d)"
-mmkdir "$d"
-date
-sfeed_update
-date
-sfeed_mbox ~/.sfeed/feeds/* | mdeliver -M -v "$d" | while read mail; do
-	if ! mlist /data/mail/feeds | magrep -q message-id:"$(mshow -qh message-id "$mail" | cut -d' ' -f2)"; then
-		mdeliver /data/mail/feeds < "$mail"
-		# TODO -X dfprst or -X '' (no flags)
-	fi
-done
-date
-rm -rf "$d"
+# check for internet connection
+ip route ls | grep -q '.'
+
+# check if the gpg-agent is running
+pgrep gpg-agent > /dev/null
 
 # Sync email
-mbsync -a
+mbsync -a -q
 
 # No further processing if there are no new mails
 if ! mdirs /data/mail | mlist -N | grep -q .; then
-	exit
+	exec sleep 1m
 fi
 
 # Incorporate new mails and store them in the temp sequence
@@ -51,11 +48,7 @@ minc $(mdirs /data/mail) > "$s"
 	for muted in $(cat ~/.mblaze/muted); do
 		mpick -t '"references" =~~ "'"$muted"'"' < "$s"
 	done
-} | sort | uniq | mflag -Sf
+} | sort | uniq | mflag -Sf > /dev/null
 
 # Clear muted sequence
 #mseq -f < ~/.mblaze/muted | mpick -t 'date < "'"$(date -I -d '1 month ago')"'"' | sponge ~/.mblaze/muted
-
-# Show the remaining new mails
-mseq -f < "$s" | mpick -t 'flagged || ! seen' | mseq -S
-mscan

@@ -1,0 +1,25 @@
+#!/bin/sh
+export USER="$(whoami)"
+export HOME=/home/"$USER"
+export DISPLAY=":0"
+
+set -e
+
+# check for internet connection
+ip route ls | grep -q '.'
+
+# check if the gpg-agent is running
+pgrep gpg-agent > /dev/null
+
+# Find new messages in feeds
+d="$(mktemp -d)"
+mmkdir "$d"
+sfeed_update > /dev/null 2>&1
+sfeed_mbox ~/.sfeed/feeds/* | mdeliver -M -v "$d" | while read mail; do
+	if ! mlist /data/mail/feeds | magrep -q message-id:"$(mshow -qh message-id "$mail" | cut -d' ' -f2)"; then
+		mdeliver -X F /data/mail/feeds < "$mail" > /dev/null
+	fi
+done
+rm -rf "$d"
+
+exec sleep 1h

@@ -2,7 +2,6 @@
 export USER="$(whoami)"
 export HOME=/home/"$USER"
 export DISPLAY=":0"
-. "$HOME"/.profile
 
 set -e
 
