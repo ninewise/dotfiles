@@ -26,6 +26,8 @@ password
 clipboard
 selection
 run
+otp
+student
 HERE
 )"
 
@@ -36,7 +38,7 @@ case "$choice" in
 	;;
 'password')
 	choice="$(cd ~/.password-store; find * -name '*.gpg' | sed 's/\.gpg$//' | sort -d | pick)"
-	inject "$(pass show $choice | head -1)"
+	inject "$(pass show "$choice" | head -1)"
 	;;
 'clipboard')
 	inject "$(xclip -o -sel c)"
@@ -47,5 +49,13 @@ case "$choice" in
 'run')
 	choice="$(dmenu_path | pick)"
 	exec "$choice"
+	;;
+'otp')
+	choice="$(cd ~/.password-store/otp; find * -name '*.gpg' | sed 's/\.gpg$//' | sort -d | pick)"
+	inject "$(pass otp code otp/"$choice" | head -1)"
+	;;
+'student')
+	choice="$(pick < /data/courses/students.csv)"
+	inject "$choice"
 	;;
 esac
