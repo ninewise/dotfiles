@@ -43,10 +43,16 @@ prompt_status() {
 prompt_date() {
 	date +%H:%M:%S
 }
+prompt_mail() {
+	#unread="$(mpick -t '! seen' | wc -l)"
+	unread="$(mlist -s $(mdirs /data/mail) | wc -l)"
+	[ "$unread" -eq 1 ] && printf ' (1 mail)'
+	[ "$unread" -gt 1 ] && printf ' (%s mails)' "$unread"
+}
 BOLD="\fo."
 GREEN="\fg."
 RESET="\fD."
-PS1="$BOLD[\$(ks prompt_date)]$RESET $GREEN\$(ks prompt_pwd)$RESET\$(ks prompt_git)\$(ks prompt_agent) \$(prompt_status) "
+PS1="$BOLD[\$(ks prompt_date)]$RESET $GREEN\$(ks prompt_pwd)$RESET\$(ks prompt_git)\$(ks prompt_agent)\$(ks prompt_mail) \$(prompt_status) "
 unset BOLD
 unset GREEN
 unset RESET
