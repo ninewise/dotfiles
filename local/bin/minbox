@@ -1,3 +1,5 @@
 #!/bin/sh
-mdirs /data/mail/ | mlist -F | msort -d | mthread | mseq -S
+mdirs /data/mail/ | mlist -F | mseq -S
+mdirs /data/mail/ | mlist -s | mseq -A
+msort -d | mthread | mseq -S
 mscan
