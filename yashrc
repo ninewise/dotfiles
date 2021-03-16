@@ -52,12 +52,13 @@ unset GREEN
 unset RESET
 
 # Color ls
-# ls_() {
-#     lr -1FGG "$@" | git column --mode=dense --padding=3
-# }
-# alias ls="ls_"
 alias ls="ls --color=auto"
 alias ll="lr -Fl1Ghov"
+
+# Email
+alias marchive="mflag -fSt"
+alias mspam="mflag -fST"
+alias mkeep="mflag -FSt"
 
 # There is only one vis
 alias vim="vis"

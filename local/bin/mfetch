@@ -1,18 +1,22 @@
 #!/bin/sh
 # Split outbox emails
-mlist /data/mail/outbox | mpick -t 'from =~ "posteo"' | mflag -F | mrefile /data/mail/posteo/Sent
-mlist /data/mail/outbox | mpick -t 'from =~ "ugent"' | mflag -F | mrefile /data/mail/ugent/Sent
-mlist /data/mail/outbox | mpick -t 'from =~ "gmail"' | mflag -F | mrefile /data/mail/gmail/Sent
+mlist /data/mail/outbox | mpick -t 'from =~~ "posteo"' | mflag -F | mrefile /data/mail/posteo/Sent
+mlist /data/mail/outbox | mpick -t 'from =~~ "ugent"' | mflag -F | mrefile /data/mail/ugent/Sent
+mlist /data/mail/outbox | mpick -t 'from =~~ "gmail"' | mflag -F | mrefile /data/mail/gmail/Sent
 
 # Find new messages in feeds
 d="$(mktemp -d)"
 mmkdir "$d"
+date
 sfeed_update
+date
 sfeed_mbox ~/.sfeed/feeds/* | mdeliver -M -v "$d" | while read mail; do
 	if ! mlist /data/mail/feeds | magrep -q message-id:"$(mshow -qh message-id "$mail" | cut -d' ' -f2)"; then
 		mdeliver /data/mail/feeds < "$mail"
+		# TODO -X dfprst or -X '' (no flags)
 	fi
 done
+date
 rm -rf "$d"
 
 # Sync email
@@ -24,28 +28,28 @@ if ! mdirs /data/mail | mlist -N | grep -q .; then
 fi
 
 # Incorporate new mails and store them in the temp sequence
-minc $(mdirs /data/mail) | mflag -F | mseq -S
+s="$(mktemp)"
+minc $(mdirs /data/mail) > "$s"
 
 {
 	# Ignores
-	mpick -t 'to =~ "unipept@ugent.be" && subject ~~ "*Mysql2::Error::ConnectionError*"'
-	mpick -t 'to =~ "dodona@ugent.be" && from =~ "KlasCement"'
-	mpick -t 'to =~ "dodona@ugent.be" && from =~ "logcheck system account"'
-	mpick -t 'to =~ "dodona@ugent.be" && subject =~ "A request took"'
-	mpick -t 'to =~ "dodona@ugent.be" && subject =~ "Onderwijsinstelling aangemaakt voor"'
-	mpick -t 'to =~ "dodona@ugent.be" && subject =~ "Een gebruiker kon niet inloggen"'
-	mpick -t 'to =~ "dodona@ugent.be" && subject =~ "Invalid or unknown LTI provider"'
-	mpick -t 'to =~ "dodona@ugent.be" && subject =~ "Faraday::ConnectionFailed"'
-	mpick -t 'to =~ "dodona@ugent.be" && subject =~ "internal error"' \
+	mpick -t 'to =~ "unipept@ugent.be" && subject ~~ "*Mysql2::Error::ConnectionError*"' < "$s"
+	mpick -t 'to =~ "dodona@ugent.be" && from =~ "logcheck system account"' < "$s"
+	mpick -t 'to =~ "dodona@ugent.be" && subject =~ "A request took"' < "$s"
+	mpick -t 'to =~ "dodona@ugent.be" && subject =~ "Onderwijsinstelling aangemaakt voor"' < "$s"
+	mpick -t 'to =~ "dodona@ugent.be" && subject =~ "Een gebruiker kon niet inloggen"' < "$s"
+	mpick -t 'to =~ "dodona@ugent.be" && subject =~ "Invalid or unknown LTI provider"' < "$s"
+	mpick -t 'to =~ "dodona@ugent.be" && subject =~ "Faraday::ConnectionFailed"' < "$s"
+	mpick -t 'to =~ "dodona@ugent.be" && subject =~ "internal error"' < "$s" \
 	    | xargs grep -E -l 'course_id: (284|317|335|339|346|349|355|359|374|375|376|380|384|414)'
-	mpick -t 'to =~ "dodona@ugent.be" && subject =~ "internal error"' \
+	mpick -t 'to =~ "dodona@ugent.be" && subject =~ "internal error"' < "$s" \
 	    | xargs grep -E -l 'user_id: 3'
-	mpick -t 'subject =~ "\[hackers\] \[slstatus\]"'
-	mpick -t 'from =~ "dependabot-preview"'
+	mpick -t 'subject =~ "\[hackers\] \[slstatus\]"' < "$s"
+	mpick -t 'from =~ "dependabot-preview"' < "$s"
 
 	# Muted mails
 	for muted in $(cat ~/.mblaze/muted); do
-		mpick -t '"references" =~~ "'"$muted"'"'
+		mpick -t '"references" =~~ "'"$muted"'"' < "$s"
 	done
 } | sort | uniq | mflag -Sf
 
@@ -53,5 +57,5 @@ minc $(mdirs /data/mail) | mflag -F | mseq -S
 #mseq -f < ~/.mblaze/muted | mpick -t 'date < "'"$(date -I -d '1 month ago')"'"' | sponge ~/.mblaze/muted
 
 # Show the remaining new mails
-mseq -f | mlist -F | mseq -S
+mseq -f < "$s" | mpick -t 'flagged || ! seen' | mseq -S
 mscan
