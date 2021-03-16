@@ -23,6 +23,7 @@ c.session.default_name = "default"
 c.tabs.background = True
 c.tabs.last_close = "close"
 c.tabs.show = "multiple"
+c.tabs.favicons.show = "never"
 c.url.default_page = "about:blank"
 c.url.start_pages = ["qute://bookmarks"]
 c.url.searchengines = { "startpage": "https://startpage.com/do/search?query={}"
@@ -44,6 +45,10 @@ c.url.searchengines = { "startpage": "https://startpage.com/do/search?query={}"
                       , "monicz.pl": "http://upzhip7hatfbsi5xcwyw6n2bpappt3j4gkvwjmyb7qo6urcyhmlekpad.onion/?q={}"
                       , "DEFAULT": "http://upzhip7hatfbsi5xcwyw6n2bpappt3j4gkvwjmyb7qo6urcyhmlekpad.onion/?q={}"
                       }
+c.colors.webpage.prefers_color_scheme_dark = True
+c.colors.webpage.darkmode.enabled = True
+#c.colors.webpage.darkmode.policy.images = "never"
+c.colors.webpage.bg = 'black'
 
 # Privacy
 c.content.proxy = "socks://localhost:9050"
@@ -126,19 +131,22 @@ for pattern in allowed:
     config.set('content.cookies.accept', "no-3rdparty", pattern)
 
 # Some redirects
-redirects = { 'www.reddit.com': 'old.reddit.com'
+redirects = { 'www.reddit.com': 'www.teddit.net'
             , 'www.youtube.com': 'c7hqkpkpemu6e7emz5b4vyz7idjgdvgaaa3dyimmeojqbgpea3xqjoid.onion'
             , 'www.youtube.be': 'c7hqkpkpemu6e7emz5b4vyz7idjgdvgaaa3dyimmeojqbgpea3xqjoid.onion'
             , 'youtu.be': 'c7hqkpkpemu6e7emz5b4vyz7idjgdvgaaa3dyimmeojqbgpea3xqjoid.onion'
-            , 'twitter.com': 'nitter.net'
+            , 'twitter.com': '3nzoldnxplag42gqjs23xvghtzf6t6yzssrtytnntc6ppc7xxuoneoad.onion'
+            , 'www.twitter.com': '3nzoldnxplag42gqjs23xvghtzf6t6yzssrtytnntc6ppc7xxuoneoad.onion'
             }
 
 nohttps = [ 'c7hqkpkpemu6e7emz5b4vyz7idjgdvgaaa3dyimmeojqbgpea3xqjoid.onion'
           , 'juy4e6eicawzdrz7.onion'
           , 'hmfztxt3pfhevucl.onion'
           , 'upzhip7hatfbsi5xcwyw6n2bpappt3j4gkvwjmyb7qo6urcyhmlekpad.onion'
+          , '3nzoldnxplag42gqjs23xvghtzf6t6yzssrtytnntc6ppc7xxuoneoad.onion'
           ]
 
+@interceptor.register
 def intercept(info: interceptor.Request) -> None:
     if not info.request_url.scheme().startswith('http'):
         return
@@ -153,5 +161,3 @@ def intercept(info: interceptor.Request) -> None:
 
     if new_url != info.request_url:
         info.redirect(new_url)
-
-interceptor.register(intercept)
