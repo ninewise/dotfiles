@@ -65,6 +65,8 @@ alias ll="lr -Fl1Ghov"
 alias marchive="mflag -fSt"
 alias mspam="mflag -fST"
 alias mkeep="mflag -FSt"
+alias munread="mdirs /data/mail | mlist -s | mseq -S && mscan"
+alias minbox="mdirs /data/mail | mlist -dt | mpick -t 'flagged || ! seen' | msort -d | mthread | mseq -S && mscan"
 
 # There is only one vis
 alias vim="vis"
