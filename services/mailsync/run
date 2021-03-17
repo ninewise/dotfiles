@@ -6,9 +6,9 @@ export DISPLAY=":0"
 set -e
 
 # Split outbox emails
-mlist /data/mail/outbox | mpick -t 'from =~~ "posteo"' | mflag -F | mrefile /data/mail/posteo/Sent
-mlist /data/mail/outbox | mpick -t 'from =~~ "ugent"' | mflag -F | mrefile /data/mail/ugent/Sent
-mlist /data/mail/outbox | mpick -t 'from =~~ "gmail"' | mflag -F | mrefile /data/mail/gmail/Sent
+mlist -d /data/mail/outbox | mpick -t 'from =~~ "posteo"' | mflag -F | mrefile /data/mail/posteo/Sent
+mlist -d /data/mail/outbox | mpick -t 'from =~~ "ugent"' | mflag -F | mrefile /data/mail/ugent/Sent
+mlist -d /data/mail/outbox | mpick -t 'from =~~ "gmail"' | mflag -F | mrefile /data/mail/gmail/Sent
 
 # check for internet connection
 ip route ls | grep -q '.'
@@ -26,6 +26,7 @@ fi
 
 # Incorporate new mails and store them in the temp sequence
 s="$(mktemp)"
+trap "rm '$s'" EXIT KILL
 minc $(mdirs /data/mail) > "$s"
 
 {
@@ -40,7 +41,7 @@ minc $(mdirs /data/mail) > "$s"
 	mpick -t 'to =~ "dodona@ugent.be" && subject =~ "internal error"' < "$s" \
 	    | xargs grep -E -l 'course_id: (284|317|335|339|346|349|355|359|374|375|376|380|384|414)'
 	mpick -t 'to =~ "dodona@ugent.be" && subject =~ "internal error"' < "$s" \
-	    | xargs grep -E -l 'user_id: 3'
+	    | xargs grep -E -l 'user_id: (3|7078)'
 	mpick -t 'subject =~ "\[hackers\] \[slstatus\]"' < "$s"
 	mpick -t 'from =~ "dependabot-preview"' < "$s"
 
