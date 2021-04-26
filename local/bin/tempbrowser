@@ -1,2 +1,2 @@
 #!/bin/sh
-qutebrowser --temp-basedir
+qutebrowser --temp-basedir "$@"
