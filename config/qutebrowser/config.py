@@ -45,7 +45,7 @@ c.url.searchengines = { "startpage": "https://startpage.com/do/search?query={}"
                       , "monicz.pl": "http://upzhip7hatfbsi5xcwyw6n2bpappt3j4gkvwjmyb7qo6urcyhmlekpad.onion/?q={}"
                       , "DEFAULT": "http://upzhip7hatfbsi5xcwyw6n2bpappt3j4gkvwjmyb7qo6urcyhmlekpad.onion/?q={}"
                       }
-c.colors.webpage.prefers_color_scheme_dark = True
+c.colors.webpage.preferred_color_scheme = "dark"
 c.colors.webpage.darkmode.enabled = True
 #c.colors.webpage.darkmode.policy.images = "never"
 c.colors.webpage.bg = 'black'
@@ -55,10 +55,10 @@ c.content.proxy = "socks://localhost:9050"
 c.content.javascript.enabled = False
 c.content.canvas_reading = False # https://en.wikipedia.org/wiki/Canvas_fingerprinting
 c.content.webgl = False # https://browserleaks.com/webgl
-c.content.ssl_strict = True
+c.content.tls.certificate_errors = "block"
 c.content.headers.accept_language = "en-US,en;q=0.5"
 c.content.headers.custom = { "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8" }
-c.content.headers.user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.125 Safari/537.36"
+c.content.headers.user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36"
 c.content.webrtc_ip_handling_policy = "default-public-interface-only"
 
 # Adblocking
@@ -137,6 +137,7 @@ redirects = { 'www.reddit.com': 'www.teddit.net'
             , 'youtu.be': 'c7hqkpkpemu6e7emz5b4vyz7idjgdvgaaa3dyimmeojqbgpea3xqjoid.onion'
             , 'twitter.com': '3nzoldnxplag42gqjs23xvghtzf6t6yzssrtytnntc6ppc7xxuoneoad.onion'
             , 'www.twitter.com': '3nzoldnxplag42gqjs23xvghtzf6t6yzssrtytnntc6ppc7xxuoneoad.onion'
+            , 'mobile.twitter.com': '3nzoldnxplag42gqjs23xvghtzf6t6yzssrtytnntc6ppc7xxuoneoad.onion'
             }
 
 nohttps = [ 'c7hqkpkpemu6e7emz5b4vyz7idjgdvgaaa3dyimmeojqbgpea3xqjoid.onion'
