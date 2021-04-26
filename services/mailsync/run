@@ -32,6 +32,7 @@ minc $(mdirs /data/mail) > "$s"
 {
 	# Ignores
 	mpick -t 'to =~ "unipept@ugent.be" && subject ~~ "*Mysql2::Error::ConnectionError*"' < "$s"
+	mpick -t 'to =~ "unipept@ugent.be" && subject =~ "elixir_logo.*not present"' < "$s"
 	mpick -t 'to =~ "dodona@ugent.be" && from =~ "logcheck system account"' < "$s"
 	mpick -t 'to =~ "dodona@ugent.be" && subject =~ "A request took"' < "$s"
 	mpick -t 'to =~ "dodona@ugent.be" && subject =~ "Onderwijsinstelling aangemaakt voor"' < "$s"
@@ -39,11 +40,11 @@ minc $(mdirs /data/mail) > "$s"
 	mpick -t 'to =~ "dodona@ugent.be" && subject =~ "Invalid or unknown LTI provider"' < "$s"
 	mpick -t 'to =~ "dodona@ugent.be" && subject =~ "Faraday::ConnectionFailed"' < "$s"
 	mpick -t 'to =~ "dodona@ugent.be" && subject =~ "internal error"' < "$s" \
-	    | xargs grep -E -l 'course_id: (284|317|335|339|346|349|355|359|374|375|376|380|384|414)'
-	mpick -t 'to =~ "dodona@ugent.be" && subject =~ "internal error"' < "$s" \
-	    | xargs grep -E -l 'user_id: (3|7078)'
+	    | xargs rg --files-without-match 'judge=>"(java12|haskell|biopythia)"'
 	mpick -t 'subject =~ "\[hackers\] \[slstatus\]"' < "$s"
-	mpick -t 'from =~ "dependabot-preview"' < "$s"
+	mpick -t 'subject =~ "\[hackers\] \[svkdb\]"' < "$s"
+	mpick -t 'to = "dodona-edu/dodona <dodona@noreply.github.com>" && subject ~~ "*Bump * from * to *"' < "$s"
+	mpick -t 'from = "<dodona@ugent.be>" && subject ~~ "* vraagt om lesgeversrechten"' < "$s"
 
 	# Muted mails
 	for muted in $(cat ~/.mblaze/muted); do
