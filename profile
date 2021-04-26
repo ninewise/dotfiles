@@ -10,12 +10,13 @@ chmod 0700 "$XDG_RUNTIME_DIR"
 export XDG_DOWNLOAD_DIR="/tmp"
 
 # Local scripts
-export CABAL_HOME="$HOME/.cabal"
-export CARGO_HOME="$HOME/.cargo"
-export RBENV_HOME="$HOME/.rbenv"
+export CABAL_HOME="/data/homes/cabal"
+export STACK_ROOT="/data/homes/stack"
+export CARGO_HOME="/data/homes/cargo"
+export RUSTUP_HOME="/data/homes/rustup"
 export JAVA_HOME="/usr/lib/jvm/openjdk11/"
 export TEX_BIN="/opt/texlive/2019/bin/x86_64-linux/"
-export PATH="$HOME/.local/bin:$CABAL_HOME/bin:$RBENV_HOME/shims:$CARGO_HOME/bin:$JAVA_HOME/bin:$TEX_BIN:$PATH"
+export PATH="$HOME/.local/bin:$CABAL_HOME/bin:$CARGO_HOME/bin:$JAVA_HOME/bin:$TEX_BIN:$PATH"
 
 # Environmental settings
 export ESCDELAY=50 # for dvtm e.a.
