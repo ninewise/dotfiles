@@ -44,7 +44,7 @@ prompt_date() {
 	date +%H:%M:%S
 }
 prompt_mail() {
-	unread="$(mlist -ds $(mdirs /data/mail) | wc -l)"
+	unread="$(mlist -nds $(mdirs /data/mail) | wc -l)"
 	[ "$unread" -eq 1 ] && printf ' (1 mail)'
 	[ "$unread" -gt 1 ] && printf ' (%s mails)' "$unread"
 }
@@ -64,8 +64,8 @@ alias ll="lr -Fl1Ghov"
 alias marchive="mflag -fSt"
 alias mspam="mflag -fST"
 alias mkeep="mflag -FSt"
-alias munread="mdirs /data/mail | mlist -ds | mseq -S && mscan"
-alias minbox="mdirs /data/mail | mlist -dt | mpick -t 'flagged || ! seen' | msort -d | mthread | mseq -S && mscan"
+alias munread="mdirs /data/mail | mlist -nds | mseq -S && mscan"
+alias minbox="mdirs /data/mail | mlist -ndt | mpick -t 'flagged || ! seen' | msort -d | mthread | mseq -S && mscan"
 
 # There is only one vis
 alias vim="vis"
