@@ -45,6 +45,7 @@ minc $(mdirs /data/mail) > "$s"
 	mpick -t 'subject =~ "\[hackers\] \[svkdb\]"' < "$s"
 	mpick -t 'to = "dodona-edu/dodona <dodona@noreply.github.com>" && subject ~~ "*Bump * from * to *"' < "$s"
 	mpick -t 'from = "<dodona@ugent.be>" && subject ~~ "* vraagt om lesgeversrechten"' < "$s"
+	mpick -t 'from = "<dodona@ugent.be>" && subject ~~ "* Je vraag naar lesgeversrechten werd goedgekeurd"' < "$s"
 
 	# Muted mails
 	for muted in $(cat ~/.mblaze/muted); do
