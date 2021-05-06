@@ -162,6 +162,15 @@ vis:map(vis.modes.VISUAL, ';a', function()
 	end
 end)
 
+vis:map(vis.modes.NORMAL, ';a', function()
+	if vis.count then
+		vis:command(string.format(':1,$|mreflow %d', vis.count))
+		vis.count = nil
+	else
+		vis:command(':1,$|mreflow')
+	end
+end)
+
 --------------------------------------------------------------------------------
 -- Strip trailing spaces
 
