@@ -28,6 +28,7 @@ selection
 run
 otp
 student
+curl
 HERE
 )"
 
@@ -58,4 +59,10 @@ case "$choice" in
 	choice="$(pick < /data/courses/students.csv)"
 	inject "$choice"
 	;;
+'curl')
+	d="$(mktemp -d)"
+	trap "rm -r '$d'" EXIT KILL
+	cd "$d"
+	curl -OJ "$(xclip -o)"
+	rifle -fF *
 esac
