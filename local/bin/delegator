@@ -56,7 +56,7 @@ case "$choice" in
 	inject "$(pass otp code otp/"$choice" | head -1)"
 	;;
 'student')
-	choice="$(pick < /data/courses/students.csv)"
+	choice="$(pick < /data/courses/students.list)"
 	inject "$choice"
 	;;
 'curl')
