@@ -8,7 +8,7 @@ printf "\n"
 
 read line || exit 0
 while true; do
-	if [ "${line% wrote:}" != "$line" ]; then
+	if [ "${line% wrote:}" != "$line" -o "${line%,}" != "$line" ]; then
 		printf "%s\n" "$line"
 		read line || exit 0
 	fi
