@@ -42,6 +42,7 @@ c.url.searchengines = { "startpage": "https://startpage.com/do/search?query={}"
                       , "snopyta": "http://juy4e6eicawzdrz7.onion/?q={}"
                       , "telefoonboek": "https://telefoonboek.ugent.be/nl/simple?name={}"
                       , "prvcy": "http://hmfztxt3pfhevucl.onion/?q={}"
+                      , "wiktionary": "https://en.wiktionary.org/w/index.php?search={}"
                       , "monicz.pl": "http://upzhip7hatfbsi5xcwyw6n2bpappt3j4gkvwjmyb7qo6urcyhmlekpad.onion/?q={}"
                       , "DEFAULT": "http://upzhip7hatfbsi5xcwyw6n2bpappt3j4gkvwjmyb7qo6urcyhmlekpad.onion/?q={}"
                       }
