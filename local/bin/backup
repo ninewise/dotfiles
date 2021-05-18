@@ -17,20 +17,40 @@ borg create                           \
 	--compression lz4                 \
 	--exclude-caches                  \
 	--exclude '/etc/sv/*/supervise'   \
+	--exclude '/etc/sudoers'          \
+	--exclude '/etc/securetty'        \
+	--exclude '/etc/wpa_supplicant/wpa_supplicant.conf' \
+	--exclude '/etc/sudoers.dist'     \
+	--exclude '/etc/kernel.d/post-install/50-grub' \
+	--exclude '/etc/kernel.d/post-remove/50-grub' \
+	--exclude '/etc/.pwd.lock'        \
+	--exclude '/etc/gshadow-'         \
+	--exclude '/etc/passwd-'          \
+	--exclude '/etc/shadow-'          \
+	--exclude '/etc/shadow'           \
+	--exclude '/etc/gshadow'          \
 	--exclude '/var/tmp/*'            \
 	--exclude '/var/db/*'             \
 	--exclude '/var/cache'            \
 	--exclude '/var/lib/alsa'         \
 	--exclude '/var/lib/tor'          \
+	--exclude '/var/lib/random-seed'  \
+	--exclude '/var/log/tallylog'     \
+	--exclude '/var/log/btmp'         \
+	--exclude '/var/log/dmesg.log'    \
+	--exclude '/var/log/faillog'      \
 	--exclude '/data/homes/*'         \
+	--exclude '/data/mail/*/.uidvalidity' \
 	--exclude '/data/music/*'         \
 	--exclude '/data/pictures/*'      \
 	--exclude '/data/programming/*'   \
 	--exclude '/data/torrents/*'      \
 	--exclude '/home/*/.ssh/control*' \
+	--exclude '/home/*/services/*/supervise' \
 	--exclude '*/.git/*'              \
 	--exclude '*/.stack-work/*'       \
 	--exclude '*/lock'                \
+	--exclude '*/.mbsyncstate*'       \
 	\
 	::'{hostname}-{now}'              \
 	/etc                              \
