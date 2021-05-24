@@ -1,0 +1,14 @@
+#!/bin/sh
+
+# lines of form:
+# Givenname Last Name (student number) <email address>
+LIST="${LIST:-/data/courses/students.list}"
+
+while read line; do
+	name="${line% (*}"
+	number="${line%) *}"
+	number="${number#* (}"
+	if [ -e "$number" ]; then
+		ln -s "$number" "$name"
+	fi
+done < "$LIST"
