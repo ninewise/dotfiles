@@ -33,6 +33,7 @@ minc $(mdirs /data/mail) > "$s"
 	# Ignores
 	mpick -t 'to =~ "unipept@ugent.be" && subject ~~ "*Mysql2::Error::ConnectionError*"' < "$s"
 	mpick -t 'to =~ "unipept@ugent.be" && subject =~ "elixir_logo.*not present"' < "$s"
+	mpick -t 'to =~ "unipept@ugent.be" && subject ~~ "*ActiveRecord::NoDatabaseError*Unknown database *unipept*"' < "$s"
 	mpick -t 'to =~ "dodona@ugent.be" && from =~ "logcheck system account"' < "$s"
 	mpick -t 'to =~ "dodona@ugent.be" && subject =~ "A request took"' < "$s"
 	mpick -t 'to =~ "dodona@ugent.be" && subject =~ "Onderwijsinstelling aangemaakt voor"' < "$s"
