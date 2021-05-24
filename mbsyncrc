@@ -51,64 +51,64 @@ Inbox        "/data/mail/posteo/Inbox"
 
 # Channels {{{
 Channel   gmail-inbox
-Master    ":gmail-remote:"
-Slave     ":gmail-local:"
-Create    "Slave"
+Far       ":gmail-remote:"
+Near      ":gmail-local:"
+Create    "Near"
 Pattern   "INBOX"
 SyncState "*"
 
 Channel   gmail-sent
-Master    ":gmail-remote:[Google Mail]/Sent Mail"
-Slave     ":gmail-local:Sent"
-Create    "Slave"
+Far       ":gmail-remote:[Google Mail]/Sent Mail"
+Near      ":gmail-local:Sent"
+Create    "Near"
 SyncState "*"
 
 Channel   gmail-trash
-Master    ":gmail-remote:[Google Mail]/Bin"
-Slave     ":gmail-local:Trash"
-Create    "Slave"
+Far       ":gmail-remote:[Google Mail]/Bin"
+Near      ":gmail-local:Trash"
+Create    "Near"
 SyncState "*"
 
 Channel   ugent-inbox
-Master    ":ugent-remote:Inbox"
-Slave     ":ugent-local:"
-Create    "Slave"
+Far       ":ugent-remote:INBOX"
+Near      ":ugent-local:"
+Create    "Near"
 SyncState "*"
 
 Channel   ugent-sent
-Master    ":ugent-remote:Verzonden Items"
-Slave     ":ugent-local:Sent"
-Create    "Slave"
+Far       ":ugent-remote:Verzonden Items"
+Near      ":ugent-local:Sent"
+Create    "Near"
 SyncState "*"
 
 Channel   ugent-trash
-Master    ":ugent-remote:Verwijderde Items"
-Slave     ":ugent-local:Trash"
-Create    "Slave"
+Far       ":ugent-remote:Verwijderde Items"
+Near      ":ugent-local:Trash"
+Create    "Near"
 SyncState "*"
 
 Channel   posteo-inbox
-Master    ":posteo-remote:Inbox"
-Slave     ":posteo-local:"
-Create    "Slave"
+Far       ":posteo-remote:INBOX"
+Near      ":posteo-local:"
+Create    "Near"
 SyncState "*"
 
 Channel   posteo-sent
-Master    ":posteo-remote:Sent"
-Slave     ":posteo-local:Sent"
-Create    "Slave"
+Far       ":posteo-remote:Sent"
+Near      ":posteo-local:Sent"
+Create    "Near"
 SyncState "*"
 
 Channel   posteo-trash
-Master    ":posteo-remote:Trash"
-Slave     ":posteo-local:Trash"
-Create    "Slave"
+Far       ":posteo-remote:Trash"
+Near      ":posteo-local:Trash"
+Create    "Near"
 SyncState "*"
 
 Channel   posteo-draft
-Master    ":posteo-remote:Drafts"
-Slave     ":posteo-local:Drafts"
-Create    "Slave"
+Far       ":posteo-remote:Drafts"
+Near      ":posteo-local:Drafts"
+Create    "Near"
 SyncState "*"
 # }}}
 
