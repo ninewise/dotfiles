@@ -1,12 +1,4 @@
-
 # Accounts {{{
-IMAPAccount     gmail
-Host            "imap.gmail.com"
-User            "felix.vanderjeugt@gmail.com"
-PassCmd         "pass show other/gmail"
-SSLType         "IMAPS"
-CertificateFile "/etc/ssl/certs/ca-certificates.crt"
-
 IMAPAccount     ugent
 Host            "owa.ugent.be"
 User            "felix.vanderjeugt@ugent.be"
@@ -23,9 +15,6 @@ SSLTYPE         "IMAPS"
 # }}} Accounts
 
 # Remote Stores {{{
-IMAPStore gmail-remote
-Account   "gmail"
-
 IMAPStore ugent-remote
 Account   "ugent"
 
@@ -34,10 +23,6 @@ Account   "posteo"
 # }}}
 
 # Local Stores {{{
-MaildirStore gmail-local
-Path         "/data/mail/gmail/"
-Inbox        "/data/mail/gmail/Inbox"
-
 MaildirStore ugent-local
 Path         "/data/mail/ugent/"
 Inbox        "/data/mail/ugent/Inbox"
@@ -50,25 +35,6 @@ Inbox        "/data/mail/posteo/Inbox"
 # }}}
 
 # Channels {{{
-Channel   gmail-inbox
-Far       ":gmail-remote:"
-Near      ":gmail-local:"
-Create    "Near"
-Pattern   "INBOX"
-SyncState "*"
-
-Channel   gmail-sent
-Far       ":gmail-remote:[Google Mail]/Sent Mail"
-Near      ":gmail-local:Sent"
-Create    "Near"
-SyncState "*"
-
-Channel   gmail-trash
-Far       ":gmail-remote:[Google Mail]/Bin"
-Near      ":gmail-local:Trash"
-Create    "Near"
-SyncState "*"
-
 Channel   ugent-inbox
 Far       ":ugent-remote:INBOX"
 Near      ":ugent-local:"
@@ -113,11 +79,6 @@ SyncState "*"
 # }}}
 
 # Groups {{{
-Group   gmail
-Channel "gmail-inbox"
-Channel "gmail-sent"
-Channel "gmail-trash"
-
 Group   ugent
 Channel "ugent-inbox"
 Channel "ugent-sent"
