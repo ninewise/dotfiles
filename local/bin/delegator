@@ -29,6 +29,7 @@ run
 otp
 student
 curl
+clipmenu
 HERE
 )"
 
@@ -65,4 +66,8 @@ case "$choice" in
 	cd "$d"
 	curl -OJ "$(xclip -o)"
 	rifle -fF *
+	;;
+'clipmenu')
+	exec clipmenu
+	;;
 esac
