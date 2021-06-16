@@ -43,7 +43,6 @@ borg create                           \
 	--exclude '/data/mail/*/.uidvalidity' \
 	--exclude '/data/music/*'         \
 	--exclude '/data/pictures/*'      \
-	--exclude '/data/programming/*'   \
 	--exclude '/data/torrents/*'      \
 	--exclude '/home/*/.ssh/control*' \
 	--exclude '/home/*/services/*/supervise' \
@@ -51,6 +50,12 @@ borg create                           \
 	--exclude '*/.stack-work/*'       \
 	--exclude '*/lock'                \
 	--exclude '*/.mbsyncstate*'       \
+	--exclude '*/target/*'            \
+	--exclude '*/build/*'             \
+	--exclude '/data/programming/void-packages/*' \
+	--exclude '/data/programming/SP-Flash-Tool-src/*' \
+	--exclude '/data/programming/obs-v4l2sink/*' \
+	--exclude '/data/programming/obs-studio/*' \
 	\
 	::'{hostname}-{now}'              \
 	/etc                              \
