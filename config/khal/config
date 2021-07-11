@@ -17,6 +17,10 @@ path = /data/calendar/twist
 [[food]]
 path = /data/calendar/food
 
+[[readonly]]
+path = /data/calendar/readonly
+color = dark green
+
 [locale]
 timeformat = %H:%M
 dateformat = %Y-%m-%d
