@@ -61,6 +61,84 @@ c.content.headers.accept_language = "en-US,en;q=0.5"
 c.content.headers.custom = { "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8" }
 c.content.headers.user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36"
 c.content.webrtc_ip_handling_policy = "default-public-interface-only"
+c.content.blocking.hosts.lists = (
+ [ "https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts"
+ , "https://raw.githubusercontent.com/imkarthikk/pihole-facebook/master/pihole-facebook.txt"
+ , "https://raw.githubusercontent.com/PolishFiltersTeam/KADhosts/master/KADhosts.txt"
+ , "https://raw.githubusercontent.com/FadeMind/hosts.extras/master/add.Spam/hosts"
+ , "https://v.firebog.net/hosts/static/w3kbl.txt"
+ , "https://adaway.org/hosts.txt"
+ , "https://v.firebog.net/hosts/AdguardDNS.txt"
+ , "https://v.firebog.net/hosts/Admiral.txt"
+ , "https://raw.githubusercontent.com/anudeepND/blacklist/master/adservers.txt"
+ , "https://s3.amazonaws.com/lists.disconnect.me/simple_ad.txt"
+ , "https://v.firebog.net/hosts/Easylist.txt"
+ , "https://pgl.yoyo.org/adservers/serverlist.php?hostformat=hosts&showintro=0&mimetype=plaintext"
+ , "https://raw.githubusercontent.com/FadeMind/hosts.extras/master/UncheckyAds/hosts"
+ , "https://raw.githubusercontent.com/bigdargon/hostsVN/master/hosts"
+ , "https://v.firebog.net/hosts/Easyprivacy.txt"
+ , "https://v.firebog.net/hosts/Prigent-Ads.txt"
+ , "https://raw.githubusercontent.com/FadeMind/hosts.extras/master/add.2o7Net/hosts"
+ , "https://raw.githubusercontent.com/crazy-max/WindowsSpyBlocker/master/data/hosts/spy.txt"
+ , "https://hostfiles.frogeye.fr/firstparty-trackers-hosts.txt"
+ , "https://raw.githubusercontent.com/DandelionSprout/adfilt/master/Alternate%20versions%20Anti-Malware%20List/AntiMalwareHosts.txt"
+ , "https://osint.digitalside.it/Threat-Intel/lists/latestdomains.txt"
+ , "https://s3.amazonaws.com/lists.disconnect.me/simple_malvertising.txt"
+ , "https://v.firebog.net/hosts/Prigent-Crypto.txt"
+ , "https://bitbucket.org/ethanr/dns-blacklists/raw/8575c9f96e5b4a1308f2f12394abd86d0927a4a0/bad_lists/Mandiant_APT1_Report_Appendix_D.txt"
+ , "https://phishing.army/download/phishing_army_blocklist_extended.txt"
+ , "https://gitlab.com/quidsup/notrack-blocklists/raw/master/notrack-malware.txt"
+ , "https://v.firebog.net/hosts/Shalla-mal.txt"
+ , "https://raw.githubusercontent.com/Spam404/lists/master/main-blacklist.txt"
+ , "https://raw.githubusercontent.com/FadeMind/hosts.extras/master/add.Risk/hosts"
+ , "https://urlhaus.abuse.ch/downloads/hostfile/"
+ , "https://zerodot1.gitlab.io/CoinBlockerLists/hosts_browser"
+ , "https://raw.githubusercontent.com/PolishFiltersTeam/KADhosts/master/KADhosts.txt"
+ , "https://raw.githubusercontent.com/FadeMind/hosts.extras/master/add.Spam/hosts"
+ , "https://v.firebog.net/hosts/static/w3kbl.txt"
+ , "https://raw.githubusercontent.com/matomo-org/referrer-spam-blacklist/master/spammers.txt"
+ , "https://someonewhocares.org/hosts/zero/hosts"
+ , "https://raw.githubusercontent.com/VeleSila/yhosts/master/hosts"
+ , "https://winhelp2002.mvps.org/hosts.txt"
+ , "https://v.firebog.net/hosts/neohostsbasic.txt"
+ , "https://raw.githubusercontent.com/RooneyMcNibNug/pihole-stuff/master/SNAFU.txt"
+ , "https://paulgb.github.io/BarbBlock/blacklists/hosts-file.txt"
+ , "https://adaway.org/hosts.txt"
+ , "https://v.firebog.net/hosts/AdguardDNS.txt"
+ , "https://v.firebog.net/hosts/Admiral.txt"
+ , "https://raw.githubusercontent.com/anudeepND/blacklist/master/adservers.txt"
+ , "https://s3.amazonaws.com/lists.disconnect.me/simple_ad.txt"
+ , "https://v.firebog.net/hosts/Easylist.txt"
+ , "https://pgl.yoyo.org/adservers/serverlist.php?hostformat=hosts&showintro=0&mimetype=plaintext"
+ , "https://raw.githubusercontent.com/FadeMind/hosts.extras/master/UncheckyAds/hosts"
+ , "https://raw.githubusercontent.com/bigdargon/hostsVN/master/hosts"
+ , "https://raw.githubusercontent.com/jdlingyu/ad-wars/master/hosts"
+ , "https://v.firebog.net/hosts/Easyprivacy.txt"
+ , "https://v.firebog.net/hosts/Prigent-Ads.txt"
+ , "https://raw.githubusercontent.com/FadeMind/hosts.extras/master/add.2o7Net/hosts"
+ , "https://raw.githubusercontent.com/crazy-max/WindowsSpyBlocker/master/data/hosts/spy.txt"
+ , "https://hostfiles.frogeye.fr/firstparty-trackers-hosts.txt"
+ , "https://hostfiles.frogeye.fr/multiparty-trackers-hosts.txt"
+ , "https://www.github.developerdan.com/hosts/lists/ads-and-tracking-extended.txt"
+ , "https://raw.githubusercontent.com/Perflyst/PiHoleBlocklist/master/android-tracking.txt"
+ , "https://raw.githubusercontent.com/Perflyst/PiHoleBlocklist/master/SmartTV.txt"
+ , "https://raw.githubusercontent.com/Perflyst/PiHoleBlocklist/master/AmazonFireTV.txt"
+ , "https://gitlab.com/quidsup/notrack-blocklists/raw/master/notrack-blocklist.txt"
+ , "https://raw.githubusercontent.com/DandelionSprout/adfilt/master/Alternate%20versions%20Anti-Malware%20List/AntiMalwareHosts.txt"
+ , "https://osint.digitalside.it/Threat-Intel/lists/latestdomains.txt"
+ , "https://s3.amazonaws.com/lists.disconnect.me/simple_malvertising.txt"
+ , "https://v.firebog.net/hosts/Prigent-Crypto.txt"
+ , "https://bitbucket.org/ethanr/dns-blacklists/raw/8575c9f96e5b4a1308f2f12394abd86d0927a4a0/bad_lists/Mandiant_APT1_Report_Appendix_D.txt"
+ , "https://phishing.army/download/phishing_army_blocklist_extended.txt"
+ , "https://gitlab.com/quidsup/notrack-blocklists/raw/master/notrack-malware.txt"
+ , "https://v.firebog.net/hosts/Shalla-mal.txt"
+ , "https://raw.githubusercontent.com/Spam404/lists/master/main-blacklist.txt"
+ , "https://raw.githubusercontent.com/FadeMind/hosts.extras/master/add.Risk/hosts"
+ , "https://urlhaus.abuse.ch/downloads/hostfile/"
+ , "https://v.firebog.net/hosts/Prigent-Malware.txt"
+ , "https://raw.githubusercontent.com/HorusTeknoloji/TR-PhishingList/master/url-lists.txt"
+ , "https://zerodot1.gitlab.io/CoinBlockerLists/hosts_browser"
+ ])
 
 # Adblocking
 c.content.blocking.enabled = True
@@ -93,7 +171,6 @@ config.unbind('Sb')
 # Allowing javascript for...
 allowed = [ 'https://duckduckgo.com/*'
           , 'https://github.com/*'
-          , 'https://*.ugent.be/*'
           , 'https://secure.ogone.com/*'                 # bancontact
           , 'https://belgium-3dsecure.wlp-acs.com/*'     # bancontact
           , 'https://belgium-3ds.wlp-acs.com/*'          # bancontact
@@ -110,6 +187,7 @@ allowed = [ 'https://duckduckgo.com/*'
           , 'https://www.paypal-topup.be/*'
           , 'https://argenta.be/*'
           , 'https://homebank.argenta.be/*'
+          , 'https://*.facebookwkhpilnemxj7asaniu7vnjjbiltxjqhye3mhbshg7kx5tfyd.onion/*'
           ]
 
 for pattern in allowed:
@@ -118,14 +196,13 @@ for pattern in allowed:
 # Allowing cookies for...
 c.content.cookies.accept = "never"
 allowed = [ 'https://github.com/*'
-          , 'https://*.ugent.be/*'
           , 'https://*.triodos.be/*'
           , 'https://*.zeus.gent/*'
           , 'https://zeus.gent/*'
           , 'https://posteo.de/*'
           , 'https://argenta.be/*'
           , 'https://homebank.argenta.be/*'
-          , 'https://*.facebookcorewwwi.onion/*'
+          , 'https://*.facebookwkhpilnemxj7asaniu7vnjjbiltxjqhye3mhbshg7kx5tfyd.onion/*'
           , 'https://adventofcode.com/*'
           ]
 for pattern in allowed:

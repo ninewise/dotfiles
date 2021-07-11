@@ -1,2 +1,2 @@
 #!/bin/sh
-exec qutebrowser --basedir "$HOME/.config/facebrowser" --config-py "$HOME/.config/qutebrowser/config.py" 'https://mbasic.facebookcorewwwi.onion/messages'
+exec qutebrowser --basedir "$HOME/.config/facebrowser" --config-py "$HOME/.config/qutebrowser/config.py" 'https://www.facebookwkhpilnemxj7asaniu7vnjjbiltxjqhye3mhbshg7kx5tfyd.onion/messages'
