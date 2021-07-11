@@ -1,22 +1,22 @@
 #!/bin/sh
 
 # Do not modify headers
-while read line && [ -n "$line" ]; do
+while IFS='\n' read line && [ -n "$line" ]; do
 	printf "%s\n" "$line"
 done
 printf "\n"
 
-read line || exit 0
+IFS='\n' read line || exit 0
 while true; do
 	if [ "${line% wrote:}" != "$line" -o "${line%,}" != "$line" ]; then
 		printf "%s\n" "$line"
-		read line || exit 0
+		IFS='\n' read line || exit 0
 	fi
 	while [ -n "$line" ]; do
 		printf "%s\n" "$line"
-		read line || exit 0
+		IFS='\n' read line || exit 0
 	done | par $* | sed 's/$/ /;$s/ $//'
-	read line || exit 0
+	IFS='\n' read line || exit 0
 	if [ -z "$line" ]; then
 		exit 0
 	else
