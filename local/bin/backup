@@ -8,65 +8,113 @@ trap 'echo $( date ) Backup interrupted >&2; exit 2' INT TERM
 
 info "Starting backup"
 
-borg create                           \
-	--verbose                         \
-	--filter AME                      \
-	--list                            \
-	--stats                           \
-	--show-rc                         \
-	--compression lz4                 \
-	--exclude-caches                  \
-	--exclude '/etc/sv/*/supervise'   \
-	--exclude '/etc/sudoers'          \
-	--exclude '/etc/securetty'        \
-	--exclude '/etc/wpa_supplicant/wpa_supplicant.conf' \
-	--exclude '/etc/sudoers.dist'     \
-	--exclude '/etc/kernel.d/post-install/50-grub' \
-	--exclude '/etc/kernel.d/post-remove/50-grub' \
-	--exclude '/etc/.pwd.lock'        \
-	--exclude '/etc/gshadow-'         \
-	--exclude '/etc/passwd-'          \
-	--exclude '/etc/shadow-'          \
-	--exclude '/etc/shadow'           \
-	--exclude '/etc/gshadow'          \
-	--exclude '/var/tmp/*'            \
-	--exclude '/var/db/*'             \
-	--exclude '/var/cache'            \
-	--exclude '/var/lib/alsa'         \
-	--exclude '/var/lib/tor'          \
-	--exclude '/var/lib/random-seed'  \
-	--exclude '/var/log/tallylog'     \
-	--exclude '/var/log/btmp'         \
-	--exclude '/var/log/dmesg.log'    \
-	--exclude '/var/log/faillog'      \
-	--exclude '/data/homes/*'         \
-	--exclude '/data/mail/*/.uidvalidity' \
-	--exclude '/data/music/*'         \
-	--exclude '/data/pictures/*'      \
-	--exclude '/data/torrents/*'      \
-	--exclude '/home/*/.ssh/control*' \
-	--exclude '/home/*/services/*/supervise' \
-	--exclude '*/.git/*'              \
-	--exclude '*/.stack-work/*'       \
-	--exclude '*/lock'                \
-	--exclude '*/.mbsyncstate*'       \
-	--exclude '*/target/*'            \
-	--exclude '*/build/*'             \
-	--exclude '/data/programming/void-packages/*' \
-	--exclude '/data/programming/SP-Flash-Tool-src/*' \
-	--exclude '/data/programming/obs-v4l2sink/*' \
-	--exclude '/data/programming/obs-studio/*' \
-	\
-	::'{hostname}-{now}'              \
-	/etc                              \
-	/var                              \
-	/home/ninewise/dotfiles           \
-	/home/ninewise/.gnupg             \
-	/home/ninewise/.password-store    \
-	/home/ninewise/.ssh               \
-	/home/ninewise/.xmonad/src/       \
-	/home/ninewise/.yash_history      \
-	/data
+case "$(hostname)" in
+mantle)
+	borg create                           \
+		--verbose                         \
+		--filter AME                      \
+		--list                            \
+		--stats                           \
+		--show-rc                         \
+		--compression lz4                 \
+		--exclude-caches                  \
+		--exclude '/etc/sv/*/supervise'   \
+		--exclude '/etc/sudoers'          \
+		--exclude '/etc/securetty'        \
+		--exclude '/etc/wpa_supplicant/wpa_supplicant.conf' \
+		--exclude '/etc/sudoers.dist'     \
+		--exclude '/etc/kernel.d/post-install/50-grub' \
+		--exclude '/etc/kernel.d/post-remove/50-grub' \
+		--exclude '/etc/.pwd.lock'        \
+		--exclude '/etc/gshadow-'         \
+		--exclude '/etc/passwd-'          \
+		--exclude '/etc/shadow-'          \
+		--exclude '/etc/shadow'           \
+		--exclude '/etc/gshadow'          \
+		--exclude '/var/tmp/*'            \
+		--exclude '/var/db/*'             \
+		--exclude '/var/cache'            \
+		--exclude '/var/lib/alsa'         \
+		--exclude '/var/lib/tor'          \
+		--exclude '/var/lib/random-seed'  \
+		--exclude '/var/log/tallylog'     \
+		--exclude '/var/log/btmp'         \
+		--exclude '/var/log/dmesg.log'    \
+		--exclude '/var/log/faillog'      \
+		--exclude '/data/homes/*'         \
+		--exclude '/data/mail/*/.uidvalidity' \
+		--exclude '/data/music/*'         \
+		--exclude '/data/pictures/*'      \
+		--exclude '/data/torrents/*'      \
+		--exclude '/home/*/.ssh/control*' \
+		--exclude '/home/*/services/*/supervise' \
+		--exclude '*/.git/*'              \
+		--exclude '*/.stack-work/*'       \
+		--exclude '*/lock'                \
+		--exclude '*/.mbsyncstate*'       \
+		--exclude '*/target/*'            \
+		--exclude '*/build/*'             \
+		--exclude '/data/programming/void-packages/*' \
+		--exclude '/data/programming/SP-Flash-Tool-src/*' \
+		--exclude '/data/programming/obs-v4l2sink/*' \
+		--exclude '/data/programming/obs-studio/*' \
+		\
+		::'{hostname}-{now}'              \
+		/etc                              \
+		/var                              \
+		/home/ninewise/dotfiles           \
+		/home/ninewise/.gnupg             \
+		/home/ninewise/.password-store    \
+		/home/ninewise/.ssh               \
+		/home/ninewise/.xmonad/src/       \
+		/home/ninewise/.yash_history      \
+		/data ;;
+abysm)
+	borg create                           \
+		--verbose                         \
+		--filter AME                      \
+		--list                            \
+		--stats                           \
+		--show-rc                         \
+		--compression lz4                 \
+		--exclude-caches                  \
+		--exclude '/etc/sv/*/supervise'   \
+		--exclude '/etc/sudoers'          \
+		--exclude '/etc/securetty'        \
+		--exclude '/etc/wpa_supplicant/wpa_supplicant.conf' \
+		--exclude '/etc/sudoers.dist'     \
+		--exclude '/etc/kernel.d/post-install/50-grub' \
+		--exclude '/etc/kernel.d/post-remove/50-grub' \
+		--exclude '/etc/gshadow-'         \
+		--exclude '/etc/gshadow'          \
+		--exclude '/etc/passwd-'          \
+		--exclude '/etc/shadow-'          \
+		--exclude '/etc/shadow'           \
+		--exclude '/var/tmp/*'            \
+		--exclude '/var/db/*'             \
+		--exclude '/var/cache'            \
+		--exclude '/var/lib/alsa'         \
+		--exclude '/var/lib/tor'          \
+		--exclude '/var/lib/random-seed'  \
+		--exclude '/var/log/tallylog'     \
+		--exclude '/var/log/btmp'         \
+		--exclude '/var/log/dmesg.log'    \
+		--exclude '/var/log/faillog'      \
+		--exclude '/home/*/.*'            \
+		--exclude '/home/*/services/*/supervise' \
+		--exclude '/home/*/dotfiles'      \
+		--exclude '*/.git/*'              \
+		--exclude '*/.stack-work/*'       \
+		--exclude '*/lock'                \
+		--exclude '*.lock'                \
+		--exclude '*/.mbsyncstate*'       \
+		--exclude '*/target/*'            \
+		--exclude '*/build/*'             \
+		::'{hostname}-{now}'              \
+		/etc                              \
+		/var                              \
+		/home/noctua/ ;;
+esac
 
 backup_exit=$?
 
