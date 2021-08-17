@@ -30,6 +30,7 @@ target/
 *.pdf
 *.bbl
 *.blg
+*.out
 
 # Python 
 __pycache__
