@@ -8,14 +8,12 @@ dp1_2="$(xrandr | grep '^DP1-2 connected')"
 dp1_3="$(xrandr | grep '^DP1-3 connected')"
 
 if [ -n "$dp1" -a -z "$dp1_1" -a -z "$dp1_2" -a -z "$dp1_3" ]; then
-	xrandr --output DP1 --auto --above eDP1
+	xrandr --output DP1 --auto --primary --above eDP1
 elif [ -z "$dp1" -a -n "$dp1_1" -a -z "$dp1_2" -a -z "$dp1_3" ]; then
-	xrandr --output DP1-1 --auto --above eDP1
+	xrandr --output DP1-1 --auto --primary --above eDP1
 elif [ -z "$dp1" -a -n "$dp1_1" -a -n "$dp1_2" -a -z "$dp1_3" ]; then
 	xrandr --output DP1-1 --auto --left-of eDP1 \
 	       --output DP1-2 --auto --right-of eDP1
 elif [ -z "$dp1" -a -z "$dp1_1" -a -z "$dp1_2" -a -n "$dp1_3" ]; then
-	xrandr --output DP1-3 --auto --above eDP1
+	xrandr --output DP1-3 --auto --primary --above eDP1
 fi
-
-~/.fehbg
