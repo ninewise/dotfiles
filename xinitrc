@@ -5,13 +5,14 @@ forklog() {
     $* 2>&1 | logger &
 }
 
-xset dpms 0 0 50 s off
-xset r rate 300 55
-# xsetroot -solid "#002a3b"
+case "$(hostname)" in
+mantle) xset dpms 0 0 300 s off ;;
+abysm) xset dpms 0 0 50 s off ;;
+esac
 
-forklog feh --bg-fill $(find -L /data/pictures/background-source/ -type f | sort -R | head)
+xset r rate 300 55
+
+forklog bgs -z $(find -L /data/pictures/background-source/ -type f | sort -R | head)
 forklog redshift
 
-exec dwm
-
-exec valgrind --extra-debuginfo-path=/data/programming/dwm/ --track-origins=yes --leak-check=full --show-leak-kinds=all dwm
+exec xmonad
