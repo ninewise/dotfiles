@@ -1,5 +1,5 @@
 Local-Mailbox: Felix Van der Jeugt <felix.vanderjeugt@posteo.net>
 Alternate-Mailboxes: Felix Van der Jeugt <Felix.VanderJeugt@UGent.be>,Felix Van der Jeugt <felix.vanderjeugt@ugent.be>,Felix Van der Jeugt <felix.vanderjeugt@gmail.com>,Felix Van der Jeugt <felix.vanderjeugt@12urenloop.be>
-Sendmail: msmtp
+Sendmail: msmtp -t
 FQDN: mantle
 Outbox: /data/mail/outbox
