@@ -28,6 +28,8 @@ target/
 *.aux
 *.toc
 *.pdf
+*.bbl
+*.blg
 
 # Python 
 __pycache__
