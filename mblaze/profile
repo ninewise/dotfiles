@@ -3,3 +3,4 @@ Alternate-Mailboxes: Felix Van der Jeugt <Felix.VanderJeugt@UGent.be>,Felix Van 
 Sendmail: msmtp -t
 FQDN: mantle
 Outbox: /data/mail/outbox
+Scan-Format: %c%u %3n  %d  %17f  %i%S
