@@ -161,6 +161,10 @@ config.bind("o", "set-cmd-text -s :open -s ", mode="normal")
 config.bind("O", "set-cmd-text -s :open -s -t ", mode="normal")
 config.bind("\\", "set-cmd-text -s :open ", mode="normal")
 config.bind("|", "set-cmd-text -s :open -t ", mode="normal")
+config.bind(";t", "hint links spawn --detach tempbrowser {hint-url}", mode="normal")
+config.bind(";n", "hint links spawn --detach newbrowser {hint-url}", mode="normal")
+config.bind("gt", "spawn --detach tempbrowser {url}", mode="normal")
+config.bind("gn", "spawn --detach newbrowser {url}", mode="normal")
 
 # I don't use bookmarks
 config.unbind('wB')
