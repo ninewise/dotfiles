@@ -1,9 +1,8 @@
 #!/bin/sh
-
 if [ -z "$*" ]; then
 	exec munsubscribe .
 else
-	for url in $(mshow -qh list-unsubscribe "$@" | grep -o '<http[^>]*>' | sed -e 's/^<//' -e 's/>$//'); do
-		curl -w '%{http_code}' -s -o /dev/null "$url"
+	for url in $(mshow -qh list-unsubscribe "$@" | xurls -m http); do
+		curl -L -w '%{http_code}' -s -o /dev/null "$url"
 	done
 fi
