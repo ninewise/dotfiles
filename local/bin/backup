@@ -78,10 +78,14 @@ abysm)
 		--show-rc                         \
 		--compression lz4                 \
 		--exclude-caches                  \
+		--exclude '/etc/dhcpcd.secret'    \
+		--exclude '/etc/iwd/main.conf'    \
 		--exclude '/etc/sv/*/supervise'   \
+		--exclude '/etc/sv/*/log/run'     \
 		--exclude '/etc/sudoers'          \
 		--exclude '/etc/securetty'        \
 		--exclude '/etc/wpa_supplicant/wpa_supplicant.conf' \
+		--exclude '/etc/sv/wpa_supplicant/conf' \
 		--exclude '/etc/sudoers.dist'     \
 		--exclude '/etc/kernel.d/post-install/50-grub' \
 		--exclude '/etc/kernel.d/post-remove/50-grub' \
@@ -90,16 +94,22 @@ abysm)
 		--exclude '/etc/passwd-'          \
 		--exclude '/etc/shadow-'          \
 		--exclude '/etc/shadow'           \
+		--exclude '/etc/ssh/ssh_host_*_key' \
+		--exclude '/etc/udev/rules.d/*'   \
+		--exclude '/etc/X11/xorg.conf.d/*' \
 		--exclude '/var/tmp/*'            \
 		--exclude '/var/db/*'             \
 		--exclude '/var/cache'            \
 		--exclude '/var/lib/alsa'         \
+		--exclude '/var/lib/ead'          \
+		--exclude '/var/lib/iwd'          \
 		--exclude '/var/lib/tor'          \
 		--exclude '/var/lib/random-seed'  \
 		--exclude '/var/log/tallylog'     \
 		--exclude '/var/log/btmp'         \
 		--exclude '/var/log/dmesg.log'    \
 		--exclude '/var/log/faillog'      \
+		--exclude '/var/log/lastlog'      \
 		--exclude '/home/*/.*'            \
 		--exclude '/home/*/services/*/supervise' \
 		--exclude '/home/*/dotfiles'      \
