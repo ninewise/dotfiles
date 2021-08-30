@@ -1,14 +1,5 @@
 #!/bin/sh
 
-# Add one IP to the list of split tunnel
-add_ip ()
-{
-	export CISCO_SPLIT_INC_${CISCO_SPLIT_INC}_ADDR=$1
-        export CISCO_SPLIT_INC_${CISCO_SPLIT_INC}_MASK=255.255.255.255
-        export CISCO_SPLIT_INC_${CISCO_SPLIT_INC}_MASKLEN=32
-        export CISCO_SPLIT_INC=$(($CISCO_SPLIT_INC + 1))
-}
-
 # Initialize empty split tunnel list
 export CISCO_SPLIT_INC=0
 
@@ -16,12 +7,43 @@ export CISCO_SPLIT_INC=0
 # Comment following line to use DNS beyond VPN tunnel
 unset INTERNAL_IP4_DNS
 
+# Add one IP to the list of split tunnel
+add_ip ()
+{
+	export CISCO_SPLIT_INC_${CISCO_SPLIT_INC}_ADDR=$1
+	export CISCO_SPLIT_INC_${CISCO_SPLIT_INC}_MASK=255.255.255.255
+	export CISCO_SPLIT_INC_${CISCO_SPLIT_INC}_MASKLEN=32
+	export CISCO_SPLIT_INC=$(($CISCO_SPLIT_INC + 1))
+}
+
 # List of IPs beyond VPN tunnel
 add_ip 157.193.40.2    # Helios
 add_ip 157.193.228.59  # Moriarty
 add_ip 157.193.16.10   # HPC
 add_ip 157.193.40.15   # HPC
 add_ip 157.193.48.109  # Athena
+add_ip 157.193.48.69   # Athena 2
+add_ip 157.193.48.176  # Athena 3
+add_ip 157.193.230.248 # Mycroft
+add_ip 157.193.228.113 # Sisyphus
+add_ip 157.193.229.74  # Salmoneus
+add_ip 157.193.229.60  # Tantalus
+add_ip 157.193.231.129 # Dodona
+add_ip 157.193.231.157 # Naos
+add_ip 157.193.228.61  # Adler
+add_ip 157.193.228.112 # Lethe
+add_ip 157.193.43.10   # Files
+add_ip 157.193.40.10   # Webhost
+add_ip 157.193.43.107  # Homes
+add_ip 157.193.47.120  # Webssh
+add_ip 157.193.43.115  # Gokar
+add_ip 157.193.231.15  # Subgit
+add_ip 157.193.172.28  # Alice CI
+add_ip 157.193.244.73  # Mumble
+add_ip 157.193.236.29  # ufiler01
+add_ip 157.193.229.63  # Phocus
+add_ip 157.193.42.243  # Isis10
+add_ip 157.193.236.59  # Isilon
 
 # Execute default script
 . /etc/vpnc/vpnc-script
