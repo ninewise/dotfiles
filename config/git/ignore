@@ -1,3 +1,4 @@
+*.diff
 
 # Compressed files
 *.gz
