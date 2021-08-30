@@ -22,7 +22,7 @@ if [ -n "$1" ]; then
         shift
     done
 else
-    mpv --no-correct-pts --fps=4 http://kelder.zeus.ugent.be/webcam/video/mjpg.cgi 
+    mpv --no-correct-pts --fps=6 http://kelder.zeus.ugent.be/webcam/video/mjpg.cgi 
 fi
 
 
