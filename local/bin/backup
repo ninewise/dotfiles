@@ -30,6 +30,7 @@ mantle)
 		--exclude '/etc/passwd-'          \
 		--exclude '/etc/shadow-'          \
 		--exclude '/etc/shadow'           \
+		--exclude '/etc/ssh/ssh_*_key'    \
 		--exclude '/etc/gshadow'          \
 		--exclude '/var/tmp/*'            \
 		--exclude '/var/db/*'             \
