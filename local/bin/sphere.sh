@@ -6,7 +6,7 @@ if [ -n "$1" ]; then
     while [ -n "$1" ]; do
         case $1 in
             scrot) foto="$(mktemp XXXXXX.jpg)"
-                   curl http://kelder.zeus.ugent.be/webcam/video/mjpg.cgi \
+                   curl -L http://kelder.zeus.ugent.be/webcam/video/mjpg.cgi \
                        | ffmpeg -y -ss 0 -i - -vframes 1 -q:v 2 "$foto"
                    feh "$foto"
                    rm "$foto"
