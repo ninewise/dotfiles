@@ -1,0 +1,18 @@
+#!/bin/sh
+sudo sv stop iwd
+
+conf="$(mktemp)"
+
+cat > "$conf" <<HERE
+ctrl_interface=DIR=/run/wpa_supplicant GROUP=wheel
+network={
+	ssid="eduroam"
+	key_mgmt=WPA-EAP
+	auth_alg=OPEN
+	eap=PEAP
+	identity="fvdrjeug@ugent.be"
+	password="$(pass show ugent/_ | head -1)"
+}
+HERE
+
+sudo wpa_supplicant -iwlp58s0 -c"$conf"
