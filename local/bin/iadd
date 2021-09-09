@@ -1,0 +1,30 @@
+#!/bin/sh
+tmp="$(mktemp)"
+trap "rm -f $tmp" EXIT KILL
+
+add_file="${1:-${LEDGER_ADD_FILE:-$LEDGER_FILE}}"
+
+description="$(hledger descriptions | sk -p 'description> ')" || exit
+date="$(for d in $(seq -7 0); do date --iso -d "$d days"; done | sk -p 'date> ' --no-sort --tac)"
+printf '\n%s %s\n' "$date" "$description" > "$tmp"
+diff="0.00"
+while account="$(hledger accounts desc:"$description" | sk -p "account ($diff)> " )"; do
+	echo "$account"
+	read -p "price ($diff): " price
+	read -p 'comment: ' comment
+	if [ -n "$comment" ]; then
+		printf '    %-56s%10s ; %s\n' "$account" "€$price" "$comment" >> "$tmp"
+	else
+		printf '    %-56s%10s\n' "$account" "€$price" >> "$tmp"
+	fi
+	diff="$(printf '(%s) - (%s)\n' "$diff" "$price" | bc)"
+done
+
+cat "$tmp" >> "$add_file"
+
+# review change: open end of the file (if I know how)
+case "$EDITOR" in
+vi*|nvi*) "$EDITOR" +\$ "$add_file" ;;
+emacs)    "$EDITOR" "$add_file" -f end-of-buffer ;;
+*)        "$EDITOR" "$add_file" ;;
+esac
