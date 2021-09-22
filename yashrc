@@ -65,7 +65,7 @@ alias marchive="mflag -fSt"
 alias mspam="mflag -fST"
 alias mkeep="mflag -FSt"
 alias munread="mdirs /data/mail | mlist -nds | mseq -S && mscan"
-alias minbox="mdirs /data/mail | mlist -ndt | mpick -t 'flagged || ! seen' | msort -d | mthread | mseq -S && mscan"
+alias minbox="mdirs /data/mail | mlist -ndt | mpick -t 'flagged || ! seen' | msort -d | mthread | mseq -S && MBLAZE_PAGER=cat mscan"
 export MBLAZE_PAGER='less -RF'
 
 # There is only one vis
