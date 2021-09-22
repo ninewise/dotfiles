@@ -67,7 +67,7 @@ vis:map(vis.modes.NORMAL, ";r", function()
 		table.insert(vis.win.file.lines, line + 1, choice)
 		vis.win.selection:to(line + 1, 0)
 	end
-	vis:feedkeys("<vis-redraw>")
+	vis:feedkeys("<vis-redraw>f€l")
 end, 'fuzzy line copy')
 
 --------------------------------------------------------------------------------
