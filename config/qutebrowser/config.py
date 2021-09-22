@@ -31,7 +31,7 @@ c.url.searchengines = { "startpage": "https://startpage.com/do/search?query={}"
                       , "qwant": "https://lite.qwant.com/?q={}"
                       , "cliqz": "https://beta.cliqz.com/search?q={}" # discontinued
                       , "duckduckgo": "https://duckduckgo.com/html?q={}"
-                      , "duckduckgonion": "https://3g2upl4pq6kufc4m.onion/html?q={}"
+                      , "duckduckgonion": "https://duckduckgogg42xjoc72x3sjasowoarfbgcmvfimaftt6twagswzczad.onion/html?q={}"
                       , "framabee": "https://framabee.org/?q={}"
                       , "invidious": "http://c7hqkpkpemu6e7emz5b4vyz7idjgdvgaaa3dyimmeojqbgpea3xqjoid.onion/search?q={}"
                       , "invidious-untor": "https://invidious.snopyta.org/search?q={}"
