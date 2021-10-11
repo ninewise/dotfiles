@@ -11,9 +11,10 @@ if command --identify --builtin-command bindkey >/dev/null; then
 fi
 
 # arrange history
+set --hist-space
 HISTFILE=~/.yash_history
-HISTSIZE=10000
-HISTRMDUP=10000
+HISTSIZE=50000
+HISTRMDUP=50000
 
 # Get ourselves a nice prompt
 ks() { s="$?" ; $* ; return "$s" ; }
