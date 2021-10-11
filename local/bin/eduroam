@@ -2,6 +2,7 @@
 sudo sv stop iwd
 
 conf="$(mktemp)"
+trap "rm '$conf'" EXIT QUIT
 
 cat > "$conf" <<HERE
 ctrl_interface=DIR=/run/wpa_supplicant GROUP=wheel
