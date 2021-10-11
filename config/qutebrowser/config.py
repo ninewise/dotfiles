@@ -44,6 +44,7 @@ c.url.searchengines = { "startpage": "https://startpage.com/do/search?query={}"
                       , "prvcy": "http://hmfztxt3pfhevucl.onion/?q={}"
                       , "wiktionary": "https://en.wiktionary.org/w/index.php?search={}"
                       , "monicz.pl": "http://upzhip7hatfbsi5xcwyw6n2bpappt3j4gkvwjmyb7qo6urcyhmlekpad.onion/?q={}"
+                      , "trantor": "http://kx5thpx2olielkihfyo4jgjqfb7zx7wxr3sd4xzt26ochei4m6f7tayd.onion/search/?q={}"
                       , "DEFAULT": "http://upzhip7hatfbsi5xcwyw6n2bpappt3j4gkvwjmyb7qo6urcyhmlekpad.onion/?q={}"
                       }
 c.colors.webpage.preferred_color_scheme = "dark"
