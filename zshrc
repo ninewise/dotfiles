@@ -15,6 +15,7 @@ bindkey -e
 # End of lines configured by zsh-newuser-install
 
 setopt SH_WORD_SPLIT
+unsetopt NOMATCH
 
 # Get ourselves a nice prompt
 ks() { s="$?" ; $* ; return "$s" ; }
