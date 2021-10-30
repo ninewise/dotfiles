@@ -68,7 +68,7 @@ mantle)
 		/home/ninewise/.password-store    \
 		/home/ninewise/.ssh               \
 		/home/ninewise/.xmonad/src/       \
-		/home/ninewise/.yash_history      \
+		/home/ninewise/.zsh_history       \
 		/data ;;
 abysm)
 	borg create                           \
@@ -125,6 +125,9 @@ abysm)
 		::'{hostname}-{now}'              \
 		/etc                              \
 		/var                              \
+		/home/noctua/.password-store      \
+		/home/noctua/.zsh_history         \
+		/home/noctua/.ssh                 \
 		/home/noctua/ ;;
 esac
 

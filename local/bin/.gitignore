@@ -31,8 +31,39 @@ qutebrowser
 alot
 xmonad
 shelltest
-mmime
 snakeviz
+
+# mblaze
+mmime
+maddr
+magrep
+mbnc
+mcolor
+mcom
+mdate
+mdeliver
+mdirs
+mexport
+mflag
+mflow
+mfwd
+mgenmid
+mhdr
+minc
+mless
+mlist
+mmkdir
+mpick
+mquote
+mrefile
+mrep
+mscan
+msed
+mseq
+mshow
+msort
+mthread
+museragent
 
 # shouldn't share this one with the world
 macaddress
