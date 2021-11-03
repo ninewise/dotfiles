@@ -112,9 +112,16 @@ abysm)
 		--exclude '/var/log/dmesg.log'    \
 		--exclude '/var/log/faillog'      \
 		--exclude '/var/log/lastlog'      \
-		--exclude '/home/*/.*'            \
+		--exclude '/home/*/.ssh/control*' \
 		--exclude '/home/*/services/*/supervise' \
 		--exclude '/home/*/dotfiles'      \
+		--exclude '/home/*/.local/share'  \
+		--exclude '/home/*/.local/lib'    \
+		--exclude '/home/*/.cache'        \
+		--exclude '/home/*/.dbus'         \
+		--exclude '/home/*/.hoogle'       \
+		--exclude '/home/*/.config/microbrowser/data' \
+		--exclude '/home/*/.config/googlebrowser/data' \
 		--exclude '*/.git/*'              \
 		--exclude '*/.stack-work/*'       \
 		--exclude '*/lock'                \
