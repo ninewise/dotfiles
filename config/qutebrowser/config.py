@@ -31,7 +31,6 @@ c.url.searchengines = { "startpage": "https://startpage.com/do/search?query={}"
                       , "qwant": "https://lite.qwant.com/?q={}"
                       , "cliqz": "https://beta.cliqz.com/search?q={}" # discontinued
                       , "duckduckgo": "https://duckduckgo.com/html?q={}"
-                      , "duckduckgonion": "https://duckduckgogg42xjoc72x3sjasowoarfbgcmvfimaftt6twagswzczad.onion/html?q={}"
                       , "framabee": "https://framabee.org/?q={}"
                       , "invidious": "http://c7hqkpkpemu6e7emz5b4vyz7idjgdvgaaa3dyimmeojqbgpea3xqjoid.onion/search?q={}"
                       , "invidious-untor": "https://invidious.snopyta.org/search?q={}"
@@ -45,7 +44,8 @@ c.url.searchengines = { "startpage": "https://startpage.com/do/search?query={}"
                       , "wiktionary": "https://en.wiktionary.org/w/index.php?search={}"
                       , "monicz.pl": "http://upzhip7hatfbsi5xcwyw6n2bpappt3j4gkvwjmyb7qo6urcyhmlekpad.onion/?q={}"
                       , "trantor": "http://kx5thpx2olielkihfyo4jgjqfb7zx7wxr3sd4xzt26ochei4m6f7tayd.onion/search/?q={}"
-                      , "DEFAULT": "http://upzhip7hatfbsi5xcwyw6n2bpappt3j4gkvwjmyb7qo6urcyhmlekpad.onion/?q={}"
+                      , "duckduckgonion": "https://duckduckgogg42xjoc72x3sjasowoarfbgcmvfimaftt6twagswzczad.onion/html?q={}"
+                      , "DEFAULT": "https://duckduckgogg42xjoc72x3sjasowoarfbgcmvfimaftt6twagswzczad.onion/html?q={}"
                       }
 c.colors.webpage.preferred_color_scheme = "dark"
 c.colors.webpage.darkmode.enabled = True
