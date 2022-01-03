@@ -2,7 +2,7 @@
 
 # lines of form:
 # Givenname Last Name (student number) <email address>
-LIST="${LIST:-/data/courses/students.list}"
+LIST="${LIST:-$HOME/.local/share/students.list}"
 
 while read line; do
 	name="${line% (*}"
