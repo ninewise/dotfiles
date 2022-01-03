@@ -17,7 +17,7 @@ ip route ls | grep -q '.'
 pgrep gpg-agent > /dev/null
 
 # Sync email
-mbsync -a -q
+mbsync -a -q || true
 
 # No further processing if there are no new mails
 if ! mdirs /data/mail | mlist -N | grep -q .; then
