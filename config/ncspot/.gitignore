@@ -1,2 +1,3 @@
 credentials.toml
 userstate.toml
+userstate.cbor
