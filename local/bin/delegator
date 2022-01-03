@@ -64,7 +64,7 @@ case "$choice" in
 	d="$(mktemp -d)"
 	trap "rm -r '$d'" EXIT KILL
 	cd "$d"
-	curl -OJ "$(xclip -o)"
+	curl -LOJ "$(xclip -o)"
 	rifle -fF *
 	;;
 'clipmenu')
