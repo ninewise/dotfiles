@@ -1,0 +1,9 @@
+#!/bin/sh
+
+printf 'OrgDefinedId,%s Text Grade,End-of-Line Indicator\n' "${1:-Commit}"
+
+for d in 0*; do
+	cd "$d"
+	printf "#%s,%s,#\n" "$d" "$(git log --oneline | head -1 | tr -d ',')"
+	cd ..
+done
