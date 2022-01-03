@@ -100,6 +100,7 @@ interactives = {
 	["haskell"] = "!stack ghci ",
 	["lithaskell"] = "!stack ghci ",
 	["latex"] = "!tectonic ",
+	["lua"] = "!luajit -i ",
 }
 
 vis:map(vis.modes.NORMAL, ";i", function()
