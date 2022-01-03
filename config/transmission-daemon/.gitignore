@@ -2,3 +2,4 @@ dht.dat
 resume
 stats.json
 torrents
+settings.json.tmp.*
