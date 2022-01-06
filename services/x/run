@@ -1,6 +1,6 @@
 #!/bin/sh
 cd "$HOME"
 
-. "$HOME"/.yash_profile
+. "$HOME"/.profile
 
 exec xinit 2>&1
