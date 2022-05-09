@@ -22,7 +22,8 @@ fi
 
 choice="$(pick <<HERE
 email address
-password
+pass
+lpass
 clipboard
 selection
 run
@@ -30,6 +31,8 @@ otp
 student
 curl
 clipmenu
+yubikey
+emoji
 HERE
 )"
 
@@ -38,9 +41,13 @@ case "$choice" in
 	choice="$(khard email -p --remove-first-line | sed 's/\(.*\)\t\(.*\)\t\(.*\)/\2 <\1>/' | pick)"
 	inject "$choice"
 	;;
-'password')
+'pass')
 	choice="$(cd ~/.password-store; find * -name '*.gpg' | sed 's/\.gpg$//' | sort -d | pick)"
 	inject "$(pass show "$choice" | head -1)"
+	;;
+'lpass')
+	choice="$(lpass ls --format '%an' --color=never | grep -v '^$' | pick)"
+	inject "$(lpass show --password "$choice" | head -1)"
 	;;
 'clipboard')
 	inject "$(xclip -o -sel c)"
@@ -69,5 +76,13 @@ case "$choice" in
 	;;
 'clipmenu')
 	exec clipmenu
+	;;
+'yubikey')
+	choice="$(ykman oath accounts list | pick)"
+	inject "$(ykman oath accounts code -s "$choice")"
+	;;
+'emoji')
+	choice="$(uni emoji all -f '%(name), %(cldr_full), %(emoji)' | awk -F', ' '{ i=1; while($i != $NF && $i != "") { print($i, $NF); i++ }}' | pick)"
+	inject "${choice##* }"
 	;;
 esac
