@@ -33,6 +33,7 @@ curl
 clipmenu
 yubikey
 emoji
+spotify-title
 HERE
 )"
 
@@ -84,5 +85,8 @@ case "$choice" in
 'emoji')
 	choice="$(uni emoji all -f '%(name), %(cldr_full), %(emoji)' | awk -F', ' '{ i=1; while($i != $NF && $i != "") { print($i, $NF); i++ }}' | pick)"
 	inject "${choice##* }"
+	;;
+'spotify-title')
+	inject "$(curl -L "$(xclip -o)" | sed -n 's@.*<title>\(.*\) - song by \(.*\) | Spotify</title>.*@\1 - \2@p')"
 	;;
 esac
