@@ -1,6 +1,9 @@
 #!/bin/sh
+HOME=/home/ninewise
+
 cd "$HOME"
 
 . "$HOME"/.profile
 
-exec xinit 2>&1
+# requires allowed_users = anybody (man Xorg.wrap) in /etc/X11/Xorg.wrapper
+exec xinit >> "$HOME/xlog" 2>&1
