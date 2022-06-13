@@ -29,10 +29,9 @@ export LC_ALL=en_US.utf8
 export BOGOFILTER_DIR="$XDG_DATA_HOME/bogofilter"
 export TERMINAL=st
 
-# Select Dock sound card if it's there
-#(it's broken)
-if [ -e /proc/asound/Dock ]; then
-	export ALSA_CARD=Dock
+# Clean spotify cachedir
+if [ -d "$HOME/.cache/ncspot/librespot/files" ]; then
+	rm -r "$HOME/.cache/ncspot/librespot/files"
 fi
 
 #stty -ixon # disable <C-s>

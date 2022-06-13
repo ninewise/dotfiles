@@ -75,7 +75,9 @@ alias agent='eval "$(ssh-agent)" && ssh-add'
 alias unlock='gpg-connect-agent <<<bye'
 
 alias weechat="ssh -t weechat@Hetzner abduco -A weechat"
-alias agenda="khal list today 7d"
+alias agenda="khal list today 7d --format '{calendar-color}{cancelled}{start-end-time-style}{repeat-symbol} {title}{reset}'"
+alias plan="khal list --notstarted now eod"
+alias ncspot="abduco -A ncspot ncspot"
 
 # Ledger
 alias haccounts="hledger -I --alias '/.*:Accounts [^:]*:(.*)/=Accounts:\1' bal accounts"
