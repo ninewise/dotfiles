@@ -27,6 +27,7 @@ dateformat = %Y-%m-%d
 longdateformat = %Y-%m-%d
 datetimeformat = %Y-%m-%d %H:%M
 longdatetimeformat = %Y-%m-%d %H:%M
+weeknumbers = left
 
 [default]
 highlight_event_days = True
@@ -36,7 +37,8 @@ show_all_days = True
 timedelta = 1d
 
 [highlight_days]
-multiple = dark green
+multiple = yellow
+default_color = ''
 
 [view]
-dynamic_days = False
+agenda_day_format = '{bold}=========== {name}, {date-long}{reset}'
