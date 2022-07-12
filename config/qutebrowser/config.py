@@ -45,7 +45,8 @@ c.url.searchengines = { "startpage": "https://startpage.com/do/search?query={}"
                       , "monicz.pl": "http://upzhip7hatfbsi5xcwyw6n2bpappt3j4gkvwjmyb7qo6urcyhmlekpad.onion/?q={}"
                       , "trantor": "http://kx5thpx2olielkihfyo4jgjqfb7zx7wxr3sd4xzt26ochei4m6f7tayd.onion/search/?q={}"
                       , "duckduckgonion": "https://duckduckgogg42xjoc72x3sjasowoarfbgcmvfimaftt6twagswzczad.onion/html?q={}"
-                      , "DEFAULT": "https://duckduckgogg42xjoc72x3sjasowoarfbgcmvfimaftt6twagswzczad.onion/html?q={}"
+                      , "mellowchan": "https://srx.mellowchan.xyz/?q={}"
+                      , "DEFAULT": "https://srx.mellowchan.xyz/?q={}"
                       }
 c.colors.webpage.preferred_color_scheme = "dark"
 c.colors.webpage.darkmode.enabled = True
