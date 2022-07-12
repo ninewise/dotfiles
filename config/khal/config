@@ -11,6 +11,10 @@ color = dark red
 [[default]]
 path = /data/calendar/default/default
 
+[[sigasi]]
+path = /data/calendar/sigasi/fzzurm
+color = dark blue
+
 [[twist]]
 path = /data/calendar/twist
 

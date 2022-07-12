@@ -11,6 +11,6 @@ ip route ls | grep -q '.'
 # check if the gpg-agent is running
 pgrep gpg-agent > /dev/null
 
-vdirsyncer -v CRITICAL sync 2>&1
+torsocks vdirsyncer -v CRITICAL sync 2>&1
 
 exec sleep 10m
