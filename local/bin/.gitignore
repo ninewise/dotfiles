@@ -1,5 +1,6 @@
 
 # Some actual binary files
+alot
 cabal
 ctags
 dmenu
@@ -7,6 +8,8 @@ dmenu_path
 dmenu_run
 dvtm*
 dwm
+flask
+ghc
 gloss-juicy-viewer
 hledger
 hlint
@@ -14,25 +17,31 @@ ikhal
 jshon
 khal
 khald
+mfauth
 notmuch
+qmk
+qutebrowser
 rbenv
 readtags
 sent
+shelltest
+shelltest
+snakeviz
+snakeviz
 st
 stest
 stylish-haskell
 tox
 tox-quickstart
 unlit
+unpar
 vis
 vis-*
 wjt
-qutebrowser
-alot
 xmonad
-shelltest
-snakeviz
-flask
+
+# unshared scripts
+mreflow.py
 
 # mblaze
 mmime
