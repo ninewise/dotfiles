@@ -61,7 +61,7 @@ end)
 -- Fuzzy search lines to copy them
 
 vis:map(vis.modes.NORMAL, ";r", function()
-	local choice = io.popen('sk < ' .. vis.win.file.path):read()
+	local choice = io.popen('tac < ' .. vis.win.file.path .. ' | uniq | sk'):read()
 	if choice then
 		local line = vis.win.selection.line
 		table.insert(vis.win.file.lines, line + 1, choice)
