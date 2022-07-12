@@ -38,6 +38,7 @@ mantle)
 		--exclude '/var/lib/alsa'         \
 		--exclude '/var/lib/tor'          \
 		--exclude '/var/lib/random-seed'  \
+		--exclude '/var/lib/seedrng'      \
 		--exclude '/var/log/tallylog'     \
 		--exclude '/var/log/btmp'         \
 		--exclude '/var/log/dmesg.log'    \
@@ -49,6 +50,7 @@ mantle)
 		--exclude '/data/torrents/*'      \
 		--exclude '/home/*/.ssh/control*' \
 		--exclude '/home/*/services/*/supervise' \
+		--exclude '/home/*/.config/transmission/resume' \
 		--exclude '*/.git/*'              \
 		--exclude '*/.stack-work/*'       \
 		--exclude '*/lock'                \
