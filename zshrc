@@ -81,8 +81,6 @@ alias ncspot="abduco -A ncspot ncspot"
 
 # Ledger
 alias haccounts="hledger -I --alias '/.*:Accounts [^:]*:(.*)/=Accounts:\1' bal accounts"
-alias ladd='ladd -a /data/documents/ledger/2021/main.journal /data/documents/ledger/*/main.journal'
-alias iadd='iadd /data/documents/ledger/2021/main.journal'
 alias is='hledger is -b $(date -d "7 months ago" +%Y-%m) -e $(date +%Y-%m) -MTA --tree -2'
 alias cf='hledger cf -b $(date -d "7 months ago" +%Y-%m) -e $(date +%Y-%m) -MTA --tree -2'
 alias bs='hledger bs not:accounts'
