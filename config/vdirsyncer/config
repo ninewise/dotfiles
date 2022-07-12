@@ -21,16 +21,16 @@ password.fetch = ["command", "pass", "other/vdirsyncer"]
 [pair posteo_arbeit]
 a = "arbeit_local"
 b = "arbeit_remote"
-collections = ["oqzdgp"]
+collections = ["fzzurm"]
 
 [storage arbeit_local]
 type = "filesystem"
-path = "/data/calendar/arbeit"
+path = "/data/calendar/sigasi"
 fileext = ".ics"
 
 [storage arbeit_remote]
 type = "caldav"
-url = "https://posteo.de:8443/calendars/felix.vanderjeugt/oqzdgp/"
+url = "https://posteo.de:8443/calendars/felix.vanderjeugt/fzzurmm/"
 username = "felix.vanderjeugt@posteo.net"
 password.fetch = ["command", "pass", "other/vdirsyncer"]
 
