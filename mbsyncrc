@@ -1,10 +1,12 @@
 # Accounts {{{
 IMAPAccount     ugent
-Host            "owa.ugent.be"
+Host            "outlook.office365.com"
+Port            993
 User            "felix.vanderjeugt@ugent.be"
-PassCmd         "pass show ugent/_ | head -1"
-AuthMechs       "PLAIN"
-SSLTYPE         "IMAPS"
+PassCmd         "mfauth access microsoft"
+AuthMechs       "XOAUTH2"
+SSLType         "IMAPS"
+SSLVersions     "TLSv1"
 CertificateFile "/etc/ssl/certs/ca-certificates.crt"
 
 IMAPAccount     posteo
