@@ -1,5 +1,5 @@
 #!/bin/sh
-base='https://tab.zeus.gent'
+base='https://tab.zeus.gent/api/v1'
 user='felixvdj'
 token="$(pass show ugent/zeus/tab)"
 
