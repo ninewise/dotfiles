@@ -50,7 +50,7 @@ mantle)
 		--exclude '/data/torrents/*'      \
 		--exclude '/home/*/.ssh/control*' \
 		--exclude '/home/*/services/*/supervise' \
-		--exclude '/home/*/.config/transmission/resume' \
+		--exclude '/home/*/.config/transmission*/resume' \
 		--exclude '*/.git/*'              \
 		--exclude '*/.stack-work/*'       \
 		--exclude '*/lock'                \
