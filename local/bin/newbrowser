@@ -1,2 +1,2 @@
 #!/bin/sh
-exec qutebrowser --temp-basedir --config-py $HOME/.config/qutebrowser/config.py "$@"
+exec qutebrowser --temp-basedir -s content.proxy socks://localhost:9050 --config-py $HOME/.config/qutebrowser/config.py "$@"
