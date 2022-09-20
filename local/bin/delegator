@@ -34,6 +34,8 @@ clipmenu
 yubikey
 emoji
 spotify-title
+youtube-dl
+audio-dl
 HERE
 )"
 
@@ -87,6 +89,24 @@ case "$choice" in
 	inject "${choice##* }"
 	;;
 'spotify-title')
-	inject "$(curl -L "$(xclip -o)" | sed -n 's@.*<title>\(.*\) - song by \(.*\) | Spotify</title>.*@\1 - \2@p')"
+	inject "$(curl -L "$(xclip -o)" | sed -n 's@.*<title>\(.*\) - song \(and lyrics \)\?by \(.*\) | Spotify</title>.*@\1 - \3@p')"
+	;;
+'youtube-dl')
+	d="$(mktemp -d)"
+	trap "rm -r '$d'" EXIT KILL
+	cd "$d"
+	yt-dlp "$(xclip -o)"
+	if mplayer -v >/dev/null; then
+		exec st mplayer *
+	else
+		exec st mpv *
+	fi
+	;;
+'audio-dl')
+	d="$(mktemp -d)"
+	trap "rm -r '$d'" EXIT KILL
+	cd "$d"
+	yt-dlp -x "$(xclip -o)"
+	exec st mpv --no-video *
 	;;
 esac
