@@ -24,6 +24,9 @@ prompt_git() {
     porcelain="$(git status --branch --porcelain 2>/dev/null)"
     if test "$?" = 0; then
         branch="$(printf '%s' "$porcelain" | sed -n 's/\.\.\..*//;1s/## //p')"
+        if [ ${#branch} -gt 30 ]; then
+            branch="$(printf '%.27s...' "$branch")"
+        fi
         behind="$(printf '%s' "$porcelain" | sed -n '1s/## .*behind \([0-9]*\).*/-\1/p')"
         ahead="$(printf '%s' "$porcelain" | sed -n '1s/## .*ahead \([0-9]*\).*/+\1/p')"
         gstatus="$({ echo OK; printf '%s' "$porcelain" | sed '/##/d;s/\(..\).*/\1/'; } | tail -1)"
@@ -75,9 +78,11 @@ alias agent='eval "$(ssh-agent)" && ssh-add'
 alias unlock='gpg-connect-agent <<<bye'
 
 alias weechat="ssh -t weechat@Hetzner abduco -A weechat"
-alias agenda="khal list today 7d --format '{calendar-color}{cancelled}{start-end-time-style}{repeat-symbol} {title}{reset}'"
-alias plan="khal list --notstarted now eod"
 alias ncspot="abduco -A ncspot ncspot"
+
+function agenda() {
+	khal calendar --format '{calendar-color}{cancelled}{start-end-time-style}{repeat-symbol} {title}{reset}' ${@:-today 2d}
+}
 
 # Ledger
 alias haccounts="hledger -I --alias '/.*:Accounts [^:]*:(.*)/=Accounts:\1' bal accounts"
