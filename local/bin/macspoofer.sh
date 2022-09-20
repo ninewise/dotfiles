@@ -2,7 +2,7 @@
 
 # Reading our private mac
 here="$(dirname "$0")"
-mac="$(cat "$here/macaddress")"
+mac="${1:-$(cat "$here/macaddress")}"
 enp="$(basename /sys/class/net/enp*)"
 wlp="$(basename /sys/class/net/wlp*)"
 
@@ -12,8 +12,10 @@ sudo ip link set "$enp" address "$mac"
 sudo ip link set "$enp" up
 
 # No more wireless
-sudo sv stop /var/service/iwd
-sudo ip link set "$wlp" down
+if [ -e /var/service/iwd ]; then
+	sudo sv stop /var/service/iwd
+	sudo ip link set "$wlp" down
+fi
 
 # Restart tor on network change
 sudo sv restart tor
