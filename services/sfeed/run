@@ -15,11 +15,15 @@ pgrep gpg-agent > /dev/null
 d="$(mktemp -d)"
 trap "rm -rf '$d'" EXIT KILL
 mmkdir "$d"
-sfeed_update > /dev/null 2>&1
+sfeed_update > /dev/null 2>&1 || true
 sfeed_mbox ~/.sfeed/feeds/* | mdeliver -M -v "$d" | while read mail; do
-	if ! mlist /data/mail/feeds | magrep -q message-id:"$(mshow -qh message-id "$mail" | cut -d' ' -f2)"; then
-		mdeliver /data/mail/feeds < "$mail" > /dev/null
+	if mlist /data/mail/feeds | magrep -q message-id:"$(mshow -qh message-id "$mail" | cut -d' ' -f2)"; then
+		continue
 	fi
+	if rg -qF "$(mshow -O "$mail" 1)" /data/mail/feeds; then
+		continue
+	fi
+	mdeliver /data/mail/feeds < "$mail" > /dev/null
 done
 rm -rf "$d"
 

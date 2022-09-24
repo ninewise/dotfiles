@@ -12,6 +12,7 @@ feeds() {
 	feed "This week in Rust" "https://this-week-in-rust.org/rss.xml"
 	feed "Saturday Morning Breakfast Cereal" "https://www.smbc-comics.com/comic/rss"
 	feed "Minute Physics" "https://www.youtube.com/feeds/videos.xml?channel_id=UCUHW94eEFW7hkUMVaZz4eDg"
+	feed "Minute Food" "https://www.youtube.com/feeds/videos.xml?channel_id=UCA0g3liRXdpqyhxiQiE55tA"
 	feed "Primitive Technology" "https://www.youtube.com/feeds/videos.xml?channel_id=UCAL3JXZSzSm8AlZyD3nQdBA"
 	feed "Nicolaas" "http://feeds.soundcloud.com/users/soundcloud:users:454191234/sounds.rss"
 	feed "Jolla Blog" "https://blog.jolla.com/feed/"
@@ -26,5 +27,5 @@ feeds() {
 	feed "FOSDEM" "https://fosdem.org/2021/rss.xml"
 	feed "BE-Alert" "https://www.be-alert.be/nl/rss.xml"
 	feed "Martanne" "https://www.brain-dump.org/blog/index.xml"
-	feed "Instagram T21" "https://bibliogram.snopyta.org/u/tvervack/rss.xml"
+	# feed "Instagram T21" "https://bibliogram.snopyta.org/u/tvervack/rss.xml"
 }
