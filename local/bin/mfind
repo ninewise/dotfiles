@@ -3,5 +3,5 @@ mdirs /data/mail | mlist | mseq -S
 for filter in "$@"; do
     magrep -i "$filter" | mseq -S
 done
-msort -d | mseq -S
+msort -d | uniq | mseq -S
 mscan
