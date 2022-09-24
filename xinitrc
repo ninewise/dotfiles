@@ -15,5 +15,7 @@ xset r rate 300 55
 
 forklog $backimg $(find -L /data/pictures/background-source/ -type f | sort -R | head)
 forklog redshift
+forklog pipewire
+forklog pipewire-pulse
 
 exec xmonad
