@@ -194,6 +194,8 @@ allowed = [ 'https://duckduckgo.com/*'
           , 'https://argenta.be/*'
           , 'https://homebank.argenta.be/*'
           , 'https://*.facebookwkhpilnemxj7asaniu7vnjjbiltxjqhye3mhbshg7kx5tfyd.onion/*'
+          , 'https://sr.ht/*'
+          , 'https://*.sr.ht/*'
           ]
 
 for pattern in allowed:
@@ -210,6 +212,8 @@ allowed = [ 'https://github.com/*'
           , 'https://homebank.argenta.be/*'
           , 'https://*.facebookwkhpilnemxj7asaniu7vnjjbiltxjqhye3mhbshg7kx5tfyd.onion/*'
           , 'https://adventofcode.com/*'
+          , 'https://sr.ht/*'
+          , 'https://*.sr.ht/*'
           ]
 for pattern in allowed:
     config.set('content.cookies.accept', "no-3rdparty", pattern)
@@ -229,6 +233,7 @@ nohttps = [ 'c7hqkpkpemu6e7emz5b4vyz7idjgdvgaaa3dyimmeojqbgpea3xqjoid.onion'
           , 'hmfztxt3pfhevucl.onion'
           , 'upzhip7hatfbsi5xcwyw6n2bpappt3j4gkvwjmyb7qo6urcyhmlekpad.onion'
           , '3nzoldnxplag42gqjs23xvghtzf6t6yzssrtytnntc6ppc7xxuoneoad.onion'
+          , 'kx5thpx2olielkihfyo4jgjqfb7zx7wxr3sd4xzt26ochei4m6f7tayd.onion'
           ]
 
 @interceptor.register
