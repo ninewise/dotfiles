@@ -1,5 +1,5 @@
 #!/bin/sh
-if pamixer -v >/dev/null; then
+if pamixer -v >/dev/null 2>&1; then
 	uplimit=100
 	lolimit=0
 	current="$(pamixer --get-volume)"
